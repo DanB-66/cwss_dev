@@ -1,0 +1,173 @@
+{
+    "cwsData": 
+        {
+            "generalContent": {
+                "siteTitle": "Code Workshop Systems Ltd",
+                "introCopy": "Welcome to Code Workshop! Yes, indeed."
+            },
+            "projects": [
+                {
+                    "client": "EE",
+                    "agency": "Sapient Nitro",
+                    "projectName": "EE launch",
+                    "projectDescription": "Partner portal for existing EE, T-mobile and Orange resellers to access branding and marketing information.",
+                    "duration": "3 weeks",
+                    "bogusNode": "This is bogus!",
+                    "description": "HTML/CSS/JS implementation for EE launch",
+                    "extendedInfo": {
+                        "agencyDetails": "Sapient is a consulting and technology company with a global headcount of over 7k.",
+                        "workUndertaken": "I was part of a two-man front end team developing a portal site for internal partners. Due to a short deadline, the pages were developed from wireframes and styleguides with full GD for only some of the elements, this was sucessfully accomplished by an ongoing consultation and review process with designers and IA's.",
+                        "otherDetails": [
+                            "Login form scripting for clientside validation and querying REST login service",
+                            "Assisting implementation with Jahia CMS"
+                        ]
+                    },
+                    "assets": {
+                        "images": [
+                            {
+                                "title": "EEimg1title",
+                                "url": "img/jobs/thumb_morrisons.gif"
+                            }
+                        ],
+                        "links": [
+                            {
+                                "title": "EElink1title",
+                                "url": "http://www.google.com"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "client": "Toni+Guy/Unilever",
+                    "agency": "SapientNitro",
+                    "projectName": "Hair meet Wardrobe",
+                    "projectDescription": "Hair Fashion inspiration from Toni&Guy. Recreate this season's catwalk & street-style looks with 4 style collections",
+                    "duration": "3 months",
+                    "description": "Part of a three man 'Phase 3' FE team extending and bug fixing existing code.",
+                    "extendedInfo": {
+                        "agencyDetails": "Sapient is a consulting and technology company with a global headcount of over 7k.",
+                        "workUndertaken": "UI development, additional and extended product templates/functionality, implementation/specification of Google hashbang (#!) url mapping to SEO content, url manipulation for additional locales.",
+                        "otherDetails": [
+                            "Work with nationally and internationally distributed teams",
+                            "Agile methodology",
+                            "Extensive work with legacy systems",
+                            "Scripting work with existing internal libraries"
+                        ]
+                    },
+                    "assets": {
+                        "images": [
+                            {
+                                "title": "TG img1 title",
+                                "url": "img/jobs/thumb_rbs.gif"
+                            },
+                            {
+                                "title": "TG img2 title",
+                                "url": "img/jobs/thumb_vodafone.gif"
+                            }
+                        ],
+                        "links": [
+                            {
+                                "title": "TG link1 title",
+                                "url": "http://www.google.com"
+                            },
+                            {
+                                "title": "TG link2 title",
+                                "url": "http://www.ebay.com"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "client": "Sure/Unilever",
+                    "agency": "Iris",
+                    "projectName": "Sure Men Fast Cash Races",
+                    "projectDescription": "Competition pack code redemption site",
+                    "duration": "1 month",
+                    "description": "HTML5 build of competition site, including video assets of races and work with .net developer.",
+                    "extendedInfo": {
+                        "agencyDetails": "Iris are one of the world's leading independent integrated agency groups.",
+                        "Work Undertaken": "Build of 'Sure Men Fast Cash Races' which allowed consumers to enter a pack code and then watch a series of 'Top Gear' style drag races with the posibility of winning &pound;10!",
+                        "otherDetails": [
+                            "HTML5 template development for .net",
+                            "Video encoding"
+                        ]
+                    },
+                    "assets": {
+                        "images": [
+                            {
+                                "title": "sure img1 title",
+                                "url": "img/jobs/thumb_morrisons.gif"
+                            },
+                            {
+                                "title": "sure img2 title",
+                                "url": "img/jobs/thumb_morrisons.gif"
+                            },
+                            {
+                                "title": "sure img3 title",
+                                "url": "img/jobs/thumb_morrisons.gif"
+                            }
+                        ],
+                        "links": [
+                            {
+                                "title": "sure link1 title",
+                                "url": "http://www.google.com"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "client": "Vodafone",
+                    "agency": "SapientNitro",
+                    "projectName": "Vodafone BAU",
+                    "projectDescription": "'Business As Usual' ongoing work for Vodafone",
+                    "duration": "8 months",
+                    "description": "HTML/CSS/JS implementation and maintenance work on the Vodafone uk site, including ongoing BAU work and new microsites.",
+                    "extendedInfo": {
+                        "agencyDetails": "Sapient is a consulting and technology company with a global headcount of over 7k.",
+                        "workUndertaken": "I was brought in as part of a team to help improve the existing codebase and to implement new projects, including a microsite for the launch of the iPhone 4 on the Vodafone network.",
+                        "otherDetails": [
+                            "Work with nationally and internationally distributed teams",
+                            "Agile methodology",
+                            "Extensive work with legacy systems",
+                            "Scripting work with existing internal libraries"
+                        ]
+                    },
+                    "assets": {
+                        "images": [
+                            {
+                                "title": "Vodaimg 1 title",
+                                "url": "img/jobs/thumb_vodafone.gif"
+                            }
+                        ],
+                        "links": [
+                            {
+                                "title": "EElink1 & title",
+                                "url": "http://www.google.com"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "client": "fantasy client",
+                    "agency": "SapientNitrate",
+                    "projectName": "fantasy bla",
+                    "projectDescription": "'Business As Usual' ongoing work for Vodafone",
+                    "description": "HTML/CSS/JS implementation and maintenance work on the Vodafone uk site, including ongoing BAU work and new microsites.",
+                    "extendedInfo": {
+                        "agencyDetails": "Sapient is a consulting and technology company with a global headcount of over 7k.",
+                        "workUndertaken": "I was brought in as part of a team to help improve the existing codebase and to implement new projects, including a microsite for the launch of the iPhone 4 on the Vodafone network."
+                    },
+                    "assets": [
+                        {
+                            "links": [
+                                {
+                                    "title": "fantasy link1 title",
+                                    "url": "http://www.google.com"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    }

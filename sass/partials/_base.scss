@@ -1,0 +1,41 @@
+/* sass base */
+@import "compass/reset",
+		"compass/css3",
+		"compass/utilities";
+
+// colours
+$default_text_color: #000;//default  eg body text
+
+
+$primary_color: #999;
+$secondary_color: #dcdcdc;
+
+$control_color: #333;
+$control_hover_color: #ccc;
+$control_background_color: #666;
+$control_background_hover_color: #999;
+$control_color_disabled: #ccc;
+$control_color_disabled_background: #d4d4d4;
+
+$single_space: 0.625rem;
+$double_space: 1.25rem;
+
+$small_radius: 1rem;
+$medium_radius: 1.5625rem;
+
+// breakpoints
+@mixin breakpoint($point) {
+	@if $point == maxi {
+		@media (max-width: 1600px) { @content; }
+	}
+	@if $point == midi {
+		@media (max-width: 1250px) { @content; }
+	}
+	@else if $point == mini {
+		@media (max-width: 800px)  { @content; }
+	}
+	@else if $point == micro {
+		@media (max-width: 320px)  { @content; }
+	}
+}
+
