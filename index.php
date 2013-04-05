@@ -25,7 +25,7 @@
 
 		<p class="caveat">
 			Under (slow) construction... keep getting hired! So this time round, I left photoshop and my sketchbooks in the bottom of the drawer and started with a <a href="json/cws.json">json</a> content file, then some <a href="js/project_carousel.js">js</a> to render that out via a <a href="templates/_cws.tmpl.html">dust template</a> into the beginnings of a carousel. <a href="sass/main_sass_eg.txt">Sass</a> helped to make a start on the styling. Currently finishing work on the history manipulation. There will eventually be some sort of <a href="projects_php.php">non js</a> seo content rendered by <a href="modules/_project_list_seo.php.txt">php</a> from the same json. Completely incomplete!
-			<a href="#" onclick="$(this).parent().remove();">hide this</a>
+			<a href="#" onclick="$(this).parent().fadeOut();">hide this</a>
 		</p>
 
 		<div class="cwsCarousel">

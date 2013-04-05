@@ -1,5 +1,5 @@
 /* sass base */
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Ruby193\/lib\/ruby\/gems\/1\.9\.1\/gems\/compass-0\.12\.2\/frameworks\/compass\/stylesheets\/compass\/reset\/_utilities\.scss}line{font-family:\0000317}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Ruby200-x64\/lib\/ruby\/gems\/2\.0\.0\/gems\/compass-0\.12\.2\/frameworks\/compass\/stylesheets\/compass\/reset\/_utilities\.scss}line{font-family:\0000317}}
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -20,42 +20,42 @@ time, mark, audio, video {
   font-size: 100%;
   vertical-align: baseline; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Ruby193\/lib\/ruby\/gems\/1\.9\.1\/gems\/compass-0\.12\.2\/frameworks\/compass\/stylesheets\/compass\/reset\/_utilities\.scss}line{font-family:\0000322}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Ruby200-x64\/lib\/ruby\/gems\/2\.0\.0\/gems\/compass-0\.12\.2\/frameworks\/compass\/stylesheets\/compass\/reset\/_utilities\.scss}line{font-family:\0000322}}
 html {
   line-height: 1; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Ruby193\/lib\/ruby\/gems\/1\.9\.1\/gems\/compass-0\.12\.2\/frameworks\/compass\/stylesheets\/compass\/reset\/_utilities\.scss}line{font-family:\0000324}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Ruby200-x64\/lib\/ruby\/gems\/2\.0\.0\/gems\/compass-0\.12\.2\/frameworks\/compass\/stylesheets\/compass\/reset\/_utilities\.scss}line{font-family:\0000324}}
 ol, ul {
   list-style: none; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Ruby193\/lib\/ruby\/gems\/1\.9\.1\/gems\/compass-0\.12\.2\/frameworks\/compass\/stylesheets\/compass\/reset\/_utilities\.scss}line{font-family:\0000326}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Ruby200-x64\/lib\/ruby\/gems\/2\.0\.0\/gems\/compass-0\.12\.2\/frameworks\/compass\/stylesheets\/compass\/reset\/_utilities\.scss}line{font-family:\0000326}}
 table {
   border-collapse: collapse;
   border-spacing: 0; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Ruby193\/lib\/ruby\/gems\/1\.9\.1\/gems\/compass-0\.12\.2\/frameworks\/compass\/stylesheets\/compass\/reset\/_utilities\.scss}line{font-family:\0000328}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Ruby200-x64\/lib\/ruby\/gems\/2\.0\.0\/gems\/compass-0\.12\.2\/frameworks\/compass\/stylesheets\/compass\/reset\/_utilities\.scss}line{font-family:\0000328}}
 caption, th, td {
   text-align: left;
   font-weight: normal;
   vertical-align: middle; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Ruby193\/lib\/ruby\/gems\/1\.9\.1\/gems\/compass-0\.12\.2\/frameworks\/compass\/stylesheets\/compass\/reset\/_utilities\.scss}line{font-family:\0000330}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Ruby200-x64\/lib\/ruby\/gems\/2\.0\.0\/gems\/compass-0\.12\.2\/frameworks\/compass\/stylesheets\/compass\/reset\/_utilities\.scss}line{font-family:\0000330}}
 q, blockquote {
   quotes: none; }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Ruby193\/lib\/ruby\/gems\/1\.9\.1\/gems\/compass-0\.12\.2\/frameworks\/compass\/stylesheets\/compass\/reset\/_utilities\.scss}line{font-family:\00003103}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Ruby200-x64\/lib\/ruby\/gems\/2\.0\.0\/gems\/compass-0\.12\.2\/frameworks\/compass\/stylesheets\/compass\/reset\/_utilities\.scss}line{font-family:\00003103}}
   q:before, q:after, blockquote:before, blockquote:after {
     content: "";
     content: none; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Ruby193\/lib\/ruby\/gems\/1\.9\.1\/gems\/compass-0\.12\.2\/frameworks\/compass\/stylesheets\/compass\/reset\/_utilities\.scss}line{font-family:\0000332}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Ruby200-x64\/lib\/ruby\/gems\/2\.0\.0\/gems\/compass-0\.12\.2\/frameworks\/compass\/stylesheets\/compass\/reset\/_utilities\.scss}line{font-family:\0000332}}
 a img {
   border: none; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Ruby193\/lib\/ruby\/gems\/1\.9\.1\/gems\/compass-0\.12\.2\/frameworks\/compass\/stylesheets\/compass\/reset\/_utilities\.scss}line{font-family:\00003116}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Ruby200-x64\/lib\/ruby\/gems\/2\.0\.0\/gems\/compass-0\.12\.2\/frameworks\/compass\/stylesheets\/compass\/reset\/_utilities\.scss}line{font-family:\00003116}}
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
   display: block; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Dan\/PROJ\/CWSS\/dev\/sass\/partials\/_globalFooter\.scss}line{font-family:\000031}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/dev\/sass\/partials\/_globalFooter\.scss}line{font-family:\000031}}
 footer {
   color: #2f2f2b;
   font-size: 0.875em;
@@ -68,19 +68,19 @@ footer {
   -moz-transition-duration: 1.5s;
   -o-transition-duration: 1.5s;
   transition-duration: 1.5s; }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Dan\/PROJ\/CWSS\/dev\/sass\/partials\/_globalFooter\.scss}line{font-family:\000038}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/dev\/sass\/partials\/_globalFooter\.scss}line{font-family:\000038}}
   footer li {
     display: inline-block;
     margin-right: 1.25rem; }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Dan\/PROJ\/CWSS\/dev\/sass\/partials\/_globalFooter\.scss}line{font-family:\0000312}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/dev\/sass\/partials\/_globalFooter\.scss}line{font-family:\0000312}}
   footer:hover {
     color: #fff; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Dan\/PROJ\/CWSS\/dev\/sass\/screen\.scss}line{font-family:\000035}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/dev\/sass\/screen\.scss}line{font-family:\000035}}
 html {
   height: 100%; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Dan\/PROJ\/CWSS\/dev\/sass\/screen\.scss}line{font-family:\000038}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/dev\/sass\/screen\.scss}line{font-family:\000038}}
 body {
   color: black;
   	/* $experimental-support-for-svg: true;
@@ -91,22 +91,22 @@ body {
   font: 1em/1.4 sans-serif;
   height: 100%; }
   @media (max-width: 800px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Dan\/PROJ\/CWSS\/dev\/sass\/screen\.scss}line{font-family:\000038}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/dev\/sass\/screen\.scss}line{font-family:\000038}}
     body {
       font-size: 0.7708em; } }
   @media (max-width: 320px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Dan\/PROJ\/CWSS\/dev\/sass\/screen\.scss}line{font-family:\000038}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/dev\/sass\/screen\.scss}line{font-family:\000038}}
     body {
       font-size: 0.3125em;
       -webkit-text-size-adjust: none;
       /* as it need to go below the 6px min...   will do for now, there will be an alt layout is todo */ } }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Dan\/PROJ\/CWSS\/dev\/sass\/screen\.scss}line{font-family:\0000326}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/dev\/sass\/screen\.scss}line{font-family:\0000326}}
 #pageWrapper {
   min-height: 100%;
   margin-bottom: -2em; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Dan\/PROJ\/CWSS\/dev\/sass\/screen\.scss}line{font-family:\0000330}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/dev\/sass\/screen\.scss}line{font-family:\0000330}}
 #pageContent {
   width: 60em;
   margin: 0 auto;
@@ -114,7 +114,7 @@ body {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
   opacity: 0.8; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Dan\/PROJ\/CWSS\/dev\/sass\/screen\.scss}line{font-family:\0000337}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/dev\/sass\/screen\.scss}line{font-family:\0000337}}
 .global-header {
   color: gainsboro;
   border: 3px solid gainsboro;
@@ -133,13 +133,13 @@ body {
   font-weight: normal;
   font-size: 2em; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Dan\/PROJ\/CWSS\/dev\/sass\/screen\.scss}line{font-family:\0000351}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/dev\/sass\/screen\.scss}line{font-family:\0000351}}
 h1, h2 {
   background: transparent;
   font-size: 1em;
   margin: 0 0 -0.2em; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Dan\/PROJ\/CWSS\/dev\/sass\/screen\.scss}line{font-family:\0000356}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/dev\/sass\/screen\.scss}line{font-family:\0000356}}
 h2 {
   font-size: 0.5em;
   letter-spacing: 0.5em;
@@ -147,16 +147,16 @@ h2 {
   margin-right: 0.5em;
   text-transform: lowercase; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Dan\/PROJ\/CWSS\/dev\/sass\/screen\.scss}line{font-family:\0000363}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/dev\/sass\/screen\.scss}line{font-family:\0000363}}
 .cwsCarousel {
   height: 25em;
   background: gainsboro;
   position: relative;
   padding: 0 2em; }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Dan\/PROJ\/CWSS\/dev\/sass\/screen\.scss}line{font-family:\0000368}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/dev\/sass\/screen\.scss}line{font-family:\0000368}}
   .cwsCarousel .carousel {
     height: 100%; }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Dan\/PROJ\/CWSS\/dev\/sass\/screen\.scss}line{font-family:\0000371}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/dev\/sass\/screen\.scss}line{font-family:\0000371}}
   .cwsCarousel article {
     display: inline-block;
     vertical-align: top;
@@ -169,7 +169,7 @@ h2 {
     outline: 1px solid #000;
     overflow-y: auto;
     background: #a39d9f; }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Dan\/PROJ\/CWSS\/dev\/sass\/screen\.scss}line{font-family:\0000382}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/dev\/sass\/screen\.scss}line{font-family:\0000382}}
   .cwsCarousel .cwsCprev, .cwsCarousel .cwsCnext {
     position: absolute;
     top: 0;
@@ -188,21 +188,21 @@ h2 {
     -moz-transition-duration: 1s;
     -o-transition-duration: 1s;
     transition-duration: 1s; }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Dan\/PROJ\/CWSS\/dev\/sass\/screen\.scss}line{font-family:\0000395}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/dev\/sass\/screen\.scss}line{font-family:\0000395}}
   .cwsCarousel .cwsCprev:hover, .cwsCarousel .cwsCnext:hover, .cwsCarousel .cwsCprev:focus, .cwsCarousel .cwsCnext:focus {
     background-color: #999999;
     cursor: pointer; }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Dan\/PROJ\/CWSS\/dev\/sass\/screen\.scss}line{font-family:\0000399}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/dev\/sass\/screen\.scss}line{font-family:\0000399}}
   .cwsCarousel .cwsCprev.disabled, .cwsCarousel .cwsCnext.disabled, .cwsCarousel .cwsCprev.disabled:hover, .cwsCarousel .cwsCnext.disabled:hover, .cwsCarousel .cwsCprev.disabled:focus, .cwsCarousel .cwsCnext.disabled:focus {
     background-color: #d4d4d4;
     cursor: default; }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Dan\/PROJ\/CWSS\/dev\/sass\/screen\.scss}line{font-family:\00003103}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/dev\/sass\/screen\.scss}line{font-family:\00003103}}
   .cwsCarousel .cwsCprev {
     left: 0; }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Dan\/PROJ\/CWSS\/dev\/sass\/screen\.scss}line{font-family:\00003106}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/dev\/sass\/screen\.scss}line{font-family:\00003106}}
   .cwsCarousel .cwsCnext {
     right: 0; }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Dan\/PROJ\/CWSS\/dev\/sass\/screen\.scss}line{font-family:\00003109}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/dev\/sass\/screen\.scss}line{font-family:\00003109}}
   .cwsCarousel .cwsCprev:after, .cwsCarousel .cwsCnext:after {
     content: " ";
     position: absolute;
@@ -214,53 +214,53 @@ h2 {
     border-right: 1.3em solid #333333;
     border-bottom: 1em solid transparent;
     -webkit-transform: rotate(360deg); }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Dan\/PROJ\/CWSS\/dev\/sass\/screen\.scss}line{font-family:\00003121}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/dev\/sass\/screen\.scss}line{font-family:\00003121}}
   .cwsCarousel .cwsCprev:after {
     left: 0.25em; }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Dan\/PROJ\/CWSS\/dev\/sass\/screen\.scss}line{font-family:\00003124}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/dev\/sass\/screen\.scss}line{font-family:\00003124}}
   .cwsCarousel .cwsCnext:after {
     right: 0.25em;
     border-right: none;
     border-left: 1.3em solid #333333; }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Dan\/PROJ\/CWSS\/dev\/sass\/screen\.scss}line{font-family:\00003129}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/dev\/sass\/screen\.scss}line{font-family:\00003129}}
   .cwsCarousel .cwsCprev:hover:after, .cwsCarousel .cwsCnext:hover:after, .cwsCarousel .cwsCprev:focus:after, .cwsCarousel .cwsCnext:focus:after {
     border-right-color: #cccccc;
     border-left-color: #cccccc; }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Dan\/PROJ\/CWSS\/dev\/sass\/screen\.scss}line{font-family:\00003133}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/dev\/sass\/screen\.scss}line{font-family:\00003133}}
   .cwsCarousel .disabled:after, .cwsCarousel .cwsCprev.disabled:hover:after, .cwsCarousel .cwsCnext.disabled:hover:after, .cwsCarousel .cwsCprev.disabled:focus:after, .cwsCarousel .cwsCnext.disabled:focus:after {
     border-right-color: #cccccc;
     border-left-color: #cccccc; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Dan\/PROJ\/CWSS\/dev\/sass\/screen\.scss}line{font-family:\00003140}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/dev\/sass\/screen\.scss}line{font-family:\00003140}}
 .cwsCarousel article {
   line-height: 1.3; }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Dan\/PROJ\/CWSS\/dev\/sass\/screen\.scss}line{font-family:\00003143}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/dev\/sass\/screen\.scss}line{font-family:\00003143}}
 .cwsCarousel article h3 {
   font-weight: bold; }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Dan\/PROJ\/CWSS\/dev\/sass\/screen\.scss}line{font-family:\00003146}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/dev\/sass\/screen\.scss}line{font-family:\00003146}}
 .cwsCarousel article dd {
   margin-left: 0.6em;
   margin-bottom: 0.6em; }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Dan\/PROJ\/CWSS\/dev\/sass\/screen\.scss}line{font-family:\00003150}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/dev\/sass\/screen\.scss}line{font-family:\00003150}}
 .cwsCarousel article img {
   width: 100%;
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
   opacity: 1; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Dan\/PROJ\/CWSS\/dev\/sass\/screen\.scss}line{font-family:\00003156}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/dev\/sass\/screen\.scss}line{font-family:\00003156}}
 #projects {
   background: #ccc;
   padding: 1em; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Dan\/PROJ\/CWSS\/dev\/sass\/screen\.scss}line{font-family:\00003160}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/dev\/sass\/screen\.scss}line{font-family:\00003160}}
 #projects h3 {
   font-weight: bold;
   margin-top: 1em; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Dan\/PROJ\/CWSS\/dev\/sass\/screen\.scss}line{font-family:\00003165}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/dev\/sass\/screen\.scss}line{font-family:\00003165}}
 .caveat {
   margin-bottom: 1em; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Dan\/PROJ\/CWSS\/dev\/sass\/screen\.scss}line{font-family:\00003168}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/dev\/sass\/screen\.scss}line{font-family:\00003168}}
 .caveat a {
   color: #333; }
