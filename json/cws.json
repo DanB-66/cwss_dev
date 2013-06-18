@@ -1,6 +1,10 @@
 {
     "cwsData": 
         {
+            "uiLabels": {
+                "next": "Next",
+                "previous": "Previous"
+            },
             "generalContent": {
                 "siteTitle": "Code Workshop Systems Ltd",
                 "introCopy": "Code Workshop Systems is the commercial representation of myself, Dan Brown. For over a dozen years, I have provided London-based agencies and organisations with robust, reliable, standards-compliant digital content."
@@ -9,7 +13,7 @@
                 {
                     "client": "Confidential International Bank",
                     "agency": "Brilliant Basics",
-                    "projectName": "Confidential",
+                    "projectName": "1 Confidential",
                     "projectDescription": "Development of tablet banking app.",
                     "duration": "6 weeks",
                     "shortDescription": "Build-out of screens and flows for a tablet banking app",
@@ -34,7 +38,7 @@
                 {
                     "client": "EE",
                     "agency": "Sapient Nitro",
-                    "projectName": "EE launch",
+                    "projectName": "2 EE launch",
                     "projectDescription": "Partner portal for existing EE, T-mobile and Orange resellers to access branding and marketing information.",
                     "duration": "3 weeks",
                     "shortDescription": "HTML/CSS/JS implementation for EE launch",
@@ -64,7 +68,7 @@
                 {
                     "client": "Toni+Guy/Unilever",
                     "agency": "SapientNitro",
-                    "projectName": "Hair meet Wardrobe",
+                    "projectName": "3 Hair meet Wardrobe",
                     "projectDescription": "Hair Fashion inspiration from Toni&Guy. Recreate this season's catwalk & street-style looks with 4 style collections",
                     "duration": "3 months",
                     "shortDescription": "Part of a three man 'Phase 2' FE team extending and bug fixing existing code.",
@@ -100,13 +104,13 @@
                 {
                     "client": "Sure/Unilever",
                     "agency": "Iris",
-                    "projectName": "Sure Men Fast Cash Races",
+                    "projectName": "4 Sure Men Fast Cash Races",
                     "projectDescription": "Competition pack code redemption site",
                     "duration": "1 month",
                     "shortDescription": "HTML5 build of competition site, including video assets of races and work with .net developer.",
                     "extendedInfo": {
                         "agencyDetails": "Iris are one of the world's leading independent integrated agency groups.",
-                        "workUndertaken": "Build of 'Sure Men Fast Cash Races' which allowed consumers to enter a pack code and then watch a series of 'Top Gear' style drag races with the possibility of winning &pound;10!",
+                        "workUndertaken": "Build of 'Sure Men Fast Cash Races' which allowed consumers to enter a pack code and then watch a series of 'Top Gear' style drag races with the possibility of winning £10!",
                         "otherDetails": [
                             "HTML5 template development for .net",
                             "Video encoding"
@@ -134,7 +138,7 @@
                 {
                     "client": "Vodafone",
                     "agency": "SapientNitro",
-                    "projectName": "Vodafone BAU",
+                    "projectName": "5 Vodafone BAU",
                     "projectDescription": "'Business As Usual' ongoing work for Vodafone",
                     "duration": "8 months",
                     "shortDescription": "HTML/CSS/JS implementation and maintenance work on the Vodafone uk site, including ongoing BAU work and new microsites.",
@@ -170,7 +174,7 @@
                 {
                     "client": "Morrison's",
                     "agency": "Candi",
-                    "projectName": "Morrison's",
+                    "projectName": "6 Morrison's",
                     "projectDescription": "'Offers' and Wine Chooser module",
                     "shortDescription": "HTML/CSS/JS implementation work on Morrison's including a 'wine Chooser' module and 'Offers' pages.",
                     "extendedInfo": {
@@ -195,7 +199,7 @@
                 {
                     "client": "Telenor",
                     "agency": "Tonic",
-                    "projectName": "Telenor",
+                    "projectName": "7 Telenor",
                     "projectDescription": "Full front end of Telenor website",
                     "shortDescription": "HTML/CSS/JS build of templates for the Telenor website.",
                     "extendedInfo": {
@@ -214,7 +218,7 @@
                 {
                     "client": "KBC Securities",
                     "agency": "SAS",
-                    "projectName": "KBC Securities website",
+                    "projectName": "8 KBC Securities website",
                     "projectDescription": "Build of website for KBC Securities",
                     "shortDescription": "Implementation of designers layouts for a new website for KBC Securities.",
                     "extendedInfo": {

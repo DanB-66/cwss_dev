@@ -1,5 +1,5 @@
 <?php
-    $json = file_get_contents('json/cws.json');
+    $json = file_get_contents('json/cws_en.json');
     $data = json_decode($json,true);
     $decodedData = $data["cwsData"]["projects"];
     $tests = array(

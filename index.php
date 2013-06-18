@@ -1,7 +1,6 @@
 <?php 
 
 	$title = "Code Workshop - Projects";
-	
  ?>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -9,7 +8,7 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 <head>
-	<meta charset="UTF-8">
+<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<title><?php if(isset($title)) { echo $title; } else { echo "Code Workshop"; } ?></title>
 	<meta name="description" content="Code Workshop">
@@ -21,11 +20,12 @@
 
 <div id="pageWrapper">
 	<div id="pageContent">
+
 <?php include("includes/_header_global.php"); ?>
 
 		<p class="caveat">
-			Under (slow) construction... keep getting hired! So this time round, I left photoshop and my sketchbooks in the bottom of the drawer and started with a <a href="json/cws.json">json</a> content file, then some <a href="js/project_carousel.js">js</a> to render that out via a <a href="templates/_cws.tmpl.html">dust template</a> into the beginnings of a carousel. <a href="sass/main_sass_eg.txt">Sass</a> helped to make a start on the styling. Currently finishing work on the history manipulation. There will eventually be some sort of <a href="projects_php.php">non js</a> seo content rendered by <a href="modules/_project_list_seo.php.txt">php</a> from the same json. Completely incomplete!
-			<a href="#" onclick="$(this).parent().fadeOut();">hide this</a>
+			What's this? Its a WIP... so far it's mostly javascsript with no work on the visual side... and the data is a bit rough! Still reading? It uses <a href="json/cws_en.json">json</a> content files, <a href="js/project_carousel_v42.js">js</a> to render that out via a <a href="templates/_cws.tmpl.html">dust template</a> into a carousel/paging system. <a href="sass/main_sass_eg.txt">Sass</a> helps with the styling. Native browser back/fwd will drive the UI and state is maintained cross-browser eg bookmarking retaining 'page', 'multiple' and 'lang' selections. There will be some sort of <a href="projects_php.php">non js</a> seo content rendered by <a href="modules/_project_list_seo.php.txt">php</a> from the same json. Completely incomplete!
+			<a href="#" onclick="$(this).parent().slideUp(); event.preventDefault();">hide this</a>
 		</p>
 
 		<div class="cwsCarousel">
@@ -38,9 +38,8 @@
 <?php include("includes/_footer_global.php"); ?>
 
 <?php include("includes/_body_end_content.php"); ?>
-
-	<script src="templates/_cws.tmplcompiled.js"></script>
-	<script src="js/project_carousel.js"></script>
+<script src="templates/_cws.tmplcompiled_v42.js"></script>
+<script src="js/project_carousel_v42.js?"></script>
 
 </body>
 </html>

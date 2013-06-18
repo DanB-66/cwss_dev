@@ -1,64 +1,3 @@
-/* sass base partial */
-@import "compass/reset",
-		"compass/css3",
-		"compass/utilities";
-
-// colours
-$default_text_color: #000;//default  eg body text
-
-
-$primary_color: #999;
-$secondary_color: #dcdcdc;
-
-$control_color: #333;
-$control_hover_color: #ccc;
-$control_background_color: #666;
-$control_background_hover_color: #999;
-$control_color_disabled: #ccc;
-$control_color_disabled_background: #d4d4d4;
-
-$single_space: 0.625rem;
-$double_space: 1.25rem;
-
-$small_radius: 1rem;
-$medium_radius: 1.5625rem;
-
-// breakpoints
-@mixin breakpoint($point) {
-	@if $point == maxi {
-		@media (max-width: 1600px) { @content; }
-	}
-	@if $point == midi {
-		@media (max-width: 1250px) { @content; }
-	}
-	@else if $point == mini {
-		@media (max-width: 800px)  { @content; }
-	}
-	@else if $point == micro {
-		@media (max-width: 320px)  { @content; }
-	}
-}
-
-/* global footer partial */
-footer { 
-	color: #2f2f2b;
-	font-size: 0.875em;
-	text-align: center;
-	//@include opacity(0.3);
-	@include transition-property(color);
-	@include transition-duration(1.5s);
-	li {
-		display: inline-block;
-		margin-right: $double_space;
-	}
-	&:hover {
-		color:#fff;
-	}
-}
-
-
-// main sass file
-
 
 @import "partials/base",
         "partials/globalFooter";
@@ -71,6 +10,7 @@ body {
 	/* $experimental-support-for-svg: true;
     @include background-image(linear-gradient(#fff, #999)); */
 	background:#000 url(../img/cowset.jpg) center 50% fixed no-repeat;
+	//background:#999;
     -moz-background-size:cover;
     background-size:cover;	
     font:1em/1.4 sans-serif;
@@ -80,7 +20,7 @@ body {
 	}
 	@include breakpoint(micro) { 
 		font-size:0.3125em;
-		-webkit-text-size-adjust:none;	/* as it need to go below the 6px min...   will do for now, there will be an alt layout is todo */	
+		-webkit-text-size-adjust:none;	/* as it need to go below the 6px min...   too small I know, will do for now, there will be an alt layout is todo */	
 	}
 }
 
@@ -126,6 +66,7 @@ h2 {
     background: $secondary_color;
     position: relative;
     padding: 0 2em;
+	margin-top: 3em;
 	.carousel {
 		height: 100%;
 	}
@@ -133,12 +74,28 @@ h2 {
 		display: inline-block;
 		vertical-align: top;
 		@include box-sizing(border-box);
-		width: 33.33%;
+		width: 33.33%;/* default for ie8 */
 		padding: 0 0.2em;
 		height: 100%;
 		outline: 1px solid #000;
 		overflow-y: auto;
 		background: #a39d9f;
+	}
+	/* one items */
+	.multiple1 article{
+		width: 100%;
+	}
+	/* two items */
+	.multiple2 article{
+		width: 50%;
+	}
+	/* three items */
+	.multiple3 article {
+		width: 33.3333%;
+	}
+	/* four items */
+	.multiple4 article {
+		width: 25%;
 	}
 	.cwsCprev, .cwsCnext {
 		position: absolute;
@@ -194,6 +151,32 @@ h2 {
 	.disabled:after, .cwsCprev.disabled:hover:after, .cwsCnext.disabled:hover:after, .cwsCprev.disabled:focus:after, .cwsCnext.disabled:focus:after{
 		border-right-color: $control_color_disabled;
 		border-left-color: $control_color_disabled;
+	}
+}
+#controls {
+	position: absolute;
+	top: -2em;
+	padding-bottom: 3px;
+}
+#setMultipleControl, #setLangControl{
+	display: inline-block;
+	vertical-align: middle;
+	margin-right: 2em;
+	h4, ul, li {
+		font-weight: normal;
+		font-size: 0.85em;
+		display: inline-block;
+		vertical-align: middle;
+	}
+	li {
+		cursor: pointer;
+		margin-left:.3em;
+		&:hover, &.active {
+			color: orange;
+		}
+		&.active, &.active:hover {
+			cursor: default;
+		}
 	}
 }
 // content areas.. some basics

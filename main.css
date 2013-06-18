@@ -1,0 +1,23 @@
+/* sass main */
+@media -sass-debug-info{filename{font-family:file\:\/\/c\:\/Users\/Dan\/PROJ\/CWSS\/dev\/sass\/main\.scss}line{font-family:\000037}}
+body {
+  padding: 1em 3em; }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/c\:\/Users\/Dan\/PROJ\/CWSS\/dev\/sass\/main\.scss}line{font-family:\0000311}}
+h1 {
+  color: #999999;
+  background: #cccccc; }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/c\:\/Users\/Dan\/PROJ\/CWSS\/dev\/sass\/main\.scss}line{font-family:\0000315}}
+h1, h2 {
+  color: #cccccc;
+  border: 6px solid #cccccc;
+  border-width: 6px 0;
+  background: white;
+  padding: 7px 20px;
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  -ms-border-radius: 25px;
+  -o-border-radius: 25px;
+  border-radius: 25px;
+  text-transform: uppercase; }

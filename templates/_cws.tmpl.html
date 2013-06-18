@@ -1,4 +1,3 @@
-Dust.js template file (view source plz!)<br>(In prod use this template is compiled to a cacheable .js include. Note template logic for handling absent nodes.)
 <script type="text/html" id="projectsTemplate">
 
 <article>
@@ -44,7 +43,7 @@ Dust.js template file (view source plz!)<br>(In prod use this template is compil
             <dd>
                 <ul>
                     {#assets.links}
-                        <li><a href="{.url}" title="{.title}">{.title}</a></li>
+                        <li><a href="{.url}" title="{.title}" target="_blank">{.title}</a></li>
                     {/assets.links}
                 </ul>
             </dd>
