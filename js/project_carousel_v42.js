@@ -85,8 +85,9 @@ pushstate > statechange via UI btns and pasting url
 		},
 		
 		markMultiple : function(newMultiple) {// mark the menu selection for multiple
-			$('#setMultipleControl').find('li').removeClass('active');
-			$('#setMultipleControl').find('li:eq('+ --newMultiple +')').addClass('active');
+			var multipleMenu = $('#setMultipleControl');
+			multipleMenu.find('li').removeClass('active');
+			multipleMenu.find('li:eq('+ --newMultiple +')').addClass('active');
 		},
 		
 		setMultiple : function(newMultiple) {// action the new multiple
@@ -96,8 +97,9 @@ pushstate > statechange via UI btns and pasting url
 		},
 		
 		markLang : function(newLang) {// mark the menu selection for lang
-			$('#setLangControl').find('li').removeClass('active');
-			$('#setLangControl').find('#'+ newLang).addClass('active');
+			var langMenu = $('#setLangControl');
+			langMenu.find('li').removeClass('active');
+			langMenu.find('#'+ newLang).addClass('active');
 		},
 		
 		setLang : function(newLang) {// action the new lang
@@ -111,7 +113,7 @@ pushstate > statechange via UI btns and pasting url
 		buildUI : function(bIsRebuild) {// build elems on load and lang change
 			var controls = '<section id="controls"><section id="setMultipleControl"><h4>'+this.carouselContent.i18n.uImultiItems+':</h4><ul><li>1</li><li>2</li><li>3</li><li>4</li></ul></section><section id="setLangControl"><h4>'+this.carouselContent.i18n.uImultiLang+':</h4><ul><li id="en">'+this.carouselContent.i18n.localeNames.uIen+'</li><li id="fr">'+this.carouselContent.i18n.localeNames.uIfr+'</li></ul></section></section>';
 			var ui = '<a href="#" class="cwsCprev" title="'+this.carouselContent.i18n.uIprevious+'">'+this.carouselContent.i18n.uIprevious+'</a> <a href="#" class="cwsCnext" title="'+this.carouselContent.i18n.uInext+'">'+this.carouselContent.i18n.uInext+'</a><div class="carousel multiple'+CwsCarousel.multiple+'"></div>';
-			this.renderTarget.html(controls+ui);			
+			this.renderTarget.html(controls + ui);			
 			this.carouselContainer = this.renderTarget.children('.carousel');
 			if(bIsRebuild){// ie from lang select
 				bIsRebuild = 0;
@@ -119,16 +121,39 @@ pushstate > statechange via UI btns and pasting url
 			} else {
 				this.renderTarget.on('click','.cwsCprev',function(event){
 					if (!($(this).hasClass('disabled'))){
+						$(this).removeClass('tiltForward tiltBack');
 						CwsCarousel.showPage('back', 'undefined', true, 'undefined');
 					}
 					event.preventDefault();
 				});
 				this.renderTarget.on('click','.cwsCnext',function(event){
 					if (!($(this).hasClass('disabled'))){
+						$(this).removeClass('tiltForward tiltBack');
 						CwsCarousel.showPage('forward', 'undefined', true, 'undefined');
 					}
 					event.preventDefault();
 				});
+				
+ 				this.renderTarget.on('mouseover','.cwsCnext',function(event){
+					if (!($(this).hasClass('disabled'))){
+						$('.carousel').addClass('tiltForward');
+					}
+				});
+ 				this.renderTarget.on('mouseout','.cwsCnext',function(event){
+					if (!($(this).hasClass('disabled'))){
+						$('.carousel').removeClass('tiltForward');
+					}
+				});
+ 				this.renderTarget.on('mouseover','.cwsCprev',function(event){
+					if (!($(this).hasClass('disabled'))){
+						$('.carousel').addClass('tiltBack');
+					}
+				});
+ 				this.renderTarget.on('mouseout','.cwsCprev',function(event){
+					if (!($(this).hasClass('disabled'))){
+						$('.carousel').removeClass('tiltBack');
+					}
+				});					
 				
 				// delegate click on 'set multiple' control
 				this.renderTarget.on('click', '#setMultipleControl li', function(){
