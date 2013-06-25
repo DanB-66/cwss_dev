@@ -34,8 +34,8 @@ body {
 	padding: 1em 0 3em;
 	@include opacity(0.8);
 }
-//header
-.global-header {
+//global header
+#pageContent > header {
     color: $secondary_color;
     border: 3px solid $secondary_color;
     border-width: 3px 0;
@@ -214,25 +214,31 @@ h2 {
 //transitions
 .carousel{
 	position: relative;
-	-webkit-perspective: 900;
+	-webkit-perspective: 900px;
 }
 article{
 	-webkit-transform: rotateY(0.0001deg);
 	-webkit-transform-style: preserve-3d;
-	-webkit-transition: -webkit-transform 1s;
+	-webkit-backface-visibility: hidden;
+	-webkit-transition: -webkit-transform 500ms ease-out;
+	//-webkit-transition: all 500ms ease-out;
+	//margin-right:0;
 	//@include prefix(transition, 'all 2.0s linear');		
 }
 .carousel.tiltForward article:nth-child(1){
-	-webkit-transform: rotateY(20deg);
-	-webkit-transition-delay:600ms;	
+	-webkit-transform: rotateY(28deg);
+	-webkit-transition-delay:600ms;
+	//margin-left:100px;
 }
 .carousel.tiltForward article:nth-child(2){
-	-webkit-transform: rotateY(30deg);
-	-webkit-transition-delay:400ms;	
+	-webkit-transform: rotateY(33deg);
+	-webkit-transition-delay:400ms;
+//margin-right:-60px;	
 }
 .carousel.tiltForward article:nth-child(3){
-	-webkit-transform: rotateY(40deg);
-	-webkit-transition-delay:200ms;	
+	-webkit-transform: rotateY(42deg);
+	-webkit-transition-delay:200ms;
+//margin-right:-50px;	
 }
 .carousel.tiltForward article:nth-child(4){
 	-webkit-transform: rotateY(50deg);

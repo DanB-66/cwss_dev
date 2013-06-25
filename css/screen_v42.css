@@ -112,7 +112,7 @@ body {
   opacity: 0.8; }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/dev\/sass\/screen_v42\.scss}line{font-family:\0000338}}
-.global-header {
+#pageContent > header {
   color: gainsboro;
   border: 3px solid gainsboro;
   border-width: 3px 0;
@@ -304,50 +304,51 @@ h2 {
 @media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/dev\/sass\/screen_v42\.scss}line{font-family:\00003215}}
 .carousel {
   position: relative;
-  -webkit-perspective: 900; }
+  -webkit-perspective: 900px; }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/dev\/sass\/screen_v42\.scss}line{font-family:\00003219}}
 article {
   -webkit-transform: rotateY(0.0001deg);
   -webkit-transform-style: preserve-3d;
-  -webkit-transition: -webkit-transform 1s; }
+  -webkit-backface-visibility: hidden;
+  -webkit-transition: -webkit-transform 500ms ease-out; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/dev\/sass\/screen_v42\.scss}line{font-family:\00003225}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/dev\/sass\/screen_v42\.scss}line{font-family:\00003228}}
 .carousel.tiltForward article:nth-child(1) {
-  -webkit-transform: rotateY(20deg);
+  -webkit-transform: rotateY(28deg);
   -webkit-transition-delay: 600ms; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/dev\/sass\/screen_v42\.scss}line{font-family:\00003229}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/dev\/sass\/screen_v42\.scss}line{font-family:\00003233}}
 .carousel.tiltForward article:nth-child(2) {
-  -webkit-transform: rotateY(30deg);
+  -webkit-transform: rotateY(33deg);
   -webkit-transition-delay: 400ms; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/dev\/sass\/screen_v42\.scss}line{font-family:\00003233}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/dev\/sass\/screen_v42\.scss}line{font-family:\00003238}}
 .carousel.tiltForward article:nth-child(3) {
-  -webkit-transform: rotateY(40deg);
+  -webkit-transform: rotateY(42deg);
   -webkit-transition-delay: 200ms; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/dev\/sass\/screen_v42\.scss}line{font-family:\00003237}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/dev\/sass\/screen_v42\.scss}line{font-family:\00003243}}
 .carousel.tiltForward article:nth-child(4) {
   -webkit-transform: rotateY(50deg);
   -webkit-transition-delay: 0ms; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/dev\/sass\/screen_v42\.scss}line{font-family:\00003241}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/dev\/sass\/screen_v42\.scss}line{font-family:\00003247}}
 .carousel.tiltBack article:nth-child(1) {
   -webkit-transform: rotateY(-20deg);
   -webkit-transition-delay: 60ms; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/dev\/sass\/screen_v42\.scss}line{font-family:\00003245}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/dev\/sass\/screen_v42\.scss}line{font-family:\00003251}}
 .carousel.tiltBack article:nth-child(2) {
   -webkit-transform: rotateY(-30deg);
   -webkit-transition-delay: 30ms; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/dev\/sass\/screen_v42\.scss}line{font-family:\00003249}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/dev\/sass\/screen_v42\.scss}line{font-family:\00003255}}
 .carousel.tiltBack article:nth-child(3) {
   -webkit-transform: rotateY(-40deg);
   -webkit-transition-delay: 15ms; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/dev\/sass\/screen_v42\.scss}line{font-family:\00003253}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/dev\/sass\/screen_v42\.scss}line{font-family:\00003259}}
 .carousel.tiltBack article:nth-child(4) {
   -webkit-transform: rotateY(50deg);
   -webkit-transition-delay: 2ms; }

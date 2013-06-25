@@ -113,7 +113,7 @@ pushstate > statechange via UI btns and pasting url
 		buildUI : function(bIsRebuild) {// build elems on load and lang change
 			var controls = '<section id="controls"><section id="setMultipleControl"><h4>'+this.carouselContent.i18n.uImultiItems+':</h4><ul><li>1</li><li>2</li><li>3</li><li>4</li></ul></section><section id="setLangControl"><h4>'+this.carouselContent.i18n.uImultiLang+':</h4><ul><li id="en">'+this.carouselContent.i18n.localeNames.uIen+'</li><li id="fr">'+this.carouselContent.i18n.localeNames.uIfr+'</li></ul></section></section>';
 			var ui = '<a href="#" class="cwsCprev" title="'+this.carouselContent.i18n.uIprevious+'">'+this.carouselContent.i18n.uIprevious+'</a> <a href="#" class="cwsCnext" title="'+this.carouselContent.i18n.uInext+'">'+this.carouselContent.i18n.uInext+'</a><div class="carousel multiple'+CwsCarousel.multiple+'"></div>';
-			this.renderTarget.html(controls + ui);			
+			this.renderTarget.html(controls + ui);
 			this.carouselContainer = this.renderTarget.children('.carousel');
 			if(bIsRebuild){// ie from lang select
 				bIsRebuild = 0;
@@ -134,26 +134,26 @@ pushstate > statechange via UI btns and pasting url
 					event.preventDefault();
 				});
 				
- 				this.renderTarget.on('mouseover','.cwsCnext',function(event){
+				this.renderTarget.on('mouseover','.cwsCnext',function(event){
 					if (!($(this).hasClass('disabled'))){
 						$('.carousel').addClass('tiltForward');
 					}
 				});
- 				this.renderTarget.on('mouseout','.cwsCnext',function(event){
+				this.renderTarget.on('mouseout','.cwsCnext',function(event){
 					if (!($(this).hasClass('disabled'))){
 						$('.carousel').removeClass('tiltForward');
 					}
 				});
- 				this.renderTarget.on('mouseover','.cwsCprev',function(event){
+				this.renderTarget.on('mouseover','.cwsCprev',function(event){
 					if (!($(this).hasClass('disabled'))){
 						$('.carousel').addClass('tiltBack');
 					}
 				});
- 				this.renderTarget.on('mouseout','.cwsCprev',function(event){
+				this.renderTarget.on('mouseout','.cwsCprev',function(event){
 					if (!($(this).hasClass('disabled'))){
 						$('.carousel').removeClass('tiltBack');
 					}
-				});					
+				});
 				
 				// delegate click on 'set multiple' control
 				this.renderTarget.on('click', '#setMultipleControl li', function(){
@@ -207,18 +207,21 @@ pushstate > statechange via UI btns and pasting url
 		},
 
 		init : function() {
-		//debugger;
-			var pageFromUrl = 0;
+			//debugger;
+			var pageFromUrl = 0,
+				urlLocationType = '';
 			/* extract the page no, multiple and lang from url, if its present (eg bookmark, refresh or pasted url) */
-			if (window.location.search !== ''){//history-enabled eg html5
-				pageFromUrl = parseInt((window.location.search.split('=')[1]).split('+')[0], 10);
-				this.multiple = parseInt(window.location.search.split('+multiple=')[1].split('+lang=')[0], 10);
-				this.lang = window.location.search.split('+lang=')[1];
+			if (window.location.search !== ''){//history-enabled
+				urlLocationType = window.location.search;
 			} else if (window.location.hash !== ''){//non-history enabled
-				pageFromUrl = parseInt((window.location.hash.split('=')[1]).split('+')[0], 10);
-				this.multiple = parseInt(window.location.hash.split('+multiple=')[1].split('+lang=')[0], 10);
-				this.lang = window.location.hash.split('+lang=')[1].split('&')[0];
+				urlLocationType = window.location.hash;
 			}
+			if (urlLocationType !== ''){
+				pageFromUrl = parseInt((urlLocationType.split('=')[1]).split('+')[0], 10);
+				this.multiple = parseInt(urlLocationType.split('+multiple=')[1].split('+lang=')[0], 10);
+				this.lang = urlLocationType.split('+lang=')[1].split('&')[0];
+			}
+
 			if(pageFromUrl !== 0){//ie it's a bookmarked/pasted url
 				this.startItem = --pageFromUrl*this.multiple;
 			}
@@ -232,4 +235,3 @@ pushstate > statechange via UI btns and pasting url
 	CwsCarousel.init();
 
 }(jQuery, window));
-
