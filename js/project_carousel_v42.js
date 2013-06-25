@@ -34,6 +34,20 @@ pushstate > statechange via UI btns and pasting url
 				this.contentIndex = (this.contentIndex - (this.multiple * 2));
 			}
 			var that = this;
+
+			function setNav(){
+				if (that.contentIndex < that.carouselContentLength ) {
+					$('.cwsCnext').removeClass('disabled').attr('title', that.carouselContent.i18n.uInext);
+				} else {
+					$('.cwsCnext').addClass('disabled').attr('title', '');
+				}
+				if (that.contentIndex <= that.multiple) {
+					$('.cwsCprev').addClass('disabled').attr('title', '');
+				} else {
+					$('.cwsCprev').removeClass('disabled').attr('title',  that.carouselContent.i18n.uIprevious);
+				}
+			}
+
 			this.carouselContainer.fadeTo(700, 0, function(){
 				if (newMultiple !== 'undefined') {
 					that.carouselContainer.removeClass('multiple1 multiple2 multiple3 multiple4').addClass('multiple'+newMultiple);
@@ -58,7 +72,7 @@ pushstate > statechange via UI btns and pasting url
 
 				}
 				that.carouselContainer.html(that.carouselBuffer);
-				that.setNav();
+				setNav();
 				var currentPage = that.contentIndex/that.multiple;
 				
 				if (that.bCalledByUi === true){
@@ -69,19 +83,6 @@ pushstate > statechange via UI btns and pasting url
 				that.carouselContainer.fadeTo(700, 1);
 			});
 
-		},
-		
-		setNav : function(){
-			if (this.contentIndex < this.carouselContentLength ) {
-				$('.cwsCnext').removeClass('disabled').attr('title', this.carouselContent.i18n.uInext);
-			} else {
-				$('.cwsCnext').addClass('disabled').attr('title', '');
-			}
-			if (this.contentIndex <= this.multiple) {
-				$('.cwsCprev').addClass('disabled').attr('title', '');
-			} else {
-				$('.cwsCprev').removeClass('disabled').attr('title',  this.carouselContent.i18n.uIprevious);
-			}
 		},
 		
 		markMultiple : function(newMultiple) {// mark the menu selection for multiple
