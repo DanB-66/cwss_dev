@@ -27,7 +27,7 @@ pushstate > statechange via UI btns and pasting url
 		showPage : function(direction, index, bCalledByUi, newMultiple){
 			//console.log('showPage - direction, index, bCalledByUi, newMultiple '+direction, index, bCalledByUi, newMultiple); 
 			this.bCalledByUi = bCalledByUi;
-			if (index !== ('undefined' || NaN)){
+			if (index !== undefined){
 				this.contentIndex = index;
 			}
 			if (direction === 'back'){
@@ -49,7 +49,7 @@ pushstate > statechange via UI btns and pasting url
 			}
 
 			this.carouselContainer.fadeTo(700, 0, function(){
-				if (newMultiple !== 'undefined') {
+				if (newMultiple !== undefined) {
 					that.carouselContainer.removeClass('multiple1 multiple2 multiple3 multiple4').addClass('multiple'+newMultiple);
 				}
 				that.carouselContainer.empty();
@@ -118,24 +118,24 @@ pushstate > statechange via UI btns and pasting url
 			this.carouselContainer = this.renderTarget.children('.carousel');
 			if(bIsRebuild){// ie from lang select
 				bIsRebuild = 0;
-				this.showPage('undefined', (CwsCarousel.contentIndex - CwsCarousel.multiple), true, 'undefined');
+				this.showPage(undefined, (CwsCarousel.contentIndex - CwsCarousel.multiple), true, undefined);
 			} else {
 				this.renderTarget.on('click','.cwsCprev',function(event){
 					if (!($(this).hasClass('disabled'))){
-						$(this).removeClass('tiltForward tiltBack');
-						CwsCarousel.showPage('back', 'undefined', true, 'undefined');
+						//$(this).removeClass('tiltForward tiltBack');
+						CwsCarousel.showPage('back', undefined, true, undefined);
 					}
 					event.preventDefault();
 				});
 				this.renderTarget.on('click','.cwsCnext',function(event){
 					if (!($(this).hasClass('disabled'))){
-						$(this).removeClass('tiltForward tiltBack');
-						CwsCarousel.showPage('forward', 'undefined', true, 'undefined');
+						//$(this).removeClass('tiltForward tiltBack');
+						CwsCarousel.showPage('forward', undefined, true, undefined);
 					}
 					event.preventDefault();
 				});
 				
-				this.renderTarget.on('mouseover','.cwsCnext',function(event){
+/* 				this.renderTarget.on('mouseover','.cwsCnext',function(event){
 					if (!($(this).hasClass('disabled'))){
 						$('.carousel').addClass('tiltForward');
 					}
@@ -154,7 +154,7 @@ pushstate > statechange via UI btns and pasting url
 					if (!($(this).hasClass('disabled'))){
 						$('.carousel').removeClass('tiltBack');
 					}
-				});
+				}); */
 				
 				// delegate click on 'set multiple' control
 				this.renderTarget.on('click', '#setMultipleControl li', function(){
@@ -172,13 +172,13 @@ pushstate > statechange via UI btns and pasting url
 					}
 				});
 				
-				this.showPage('forward', this.startItem, true, 'undefined');//show first set based on referrer
+				this.showPage('forward', this.startItem, true, undefined);//show first set based on referrer
 				
 				History.Adapter.bind(window,'statechange',function(){// ie both browser back/fwd btn and app ui btns and initial load
 					var State = History.getState();
 					//console.log('STATECHANGE, cbui: ' + CwsCarousel.bCalledByUi + ' datastate: ' + State.data.state + ' mult: ' + CwsCarousel.multiple);
 					if(!CwsCarousel.bCalledByUi && (State.data.state >= CwsCarousel.multiple)){//native back fwd pressed, then show page based on History 
-						CwsCarousel.showPage('undefined', (State.data.state - CwsCarousel.multiple), false, 'undefined');					
+						CwsCarousel.showPage(undefined, (State.data.state - CwsCarousel.multiple), false, undefined);					
 					} else if (!CwsCarousel.bCalledByUi && !State.data.state) {
 						history.back();//then do normal back (note lowercase h)
 					}
