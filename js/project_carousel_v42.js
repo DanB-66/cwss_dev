@@ -52,7 +52,7 @@ pushstate > statechange via UI btns and pasting url
 			this.carouselContainer.fadeTo(700, 0, function(){
 
 				if (newMultiple !== undefined) {
-					that.carouselContainer.removeClass('multiple1 multiple2 multiple3 multiple4').addClass('multiple'+newMultiple);
+					that.carouselContainer.removeClass('multiple1 multiple2 multiple3 multiple4 enterLeft').addClass('multiple'+newMultiple);
 				}
 				that.carouselContainer.empty().removeClass('forward back');
 				that.carouselBuffer = '';
@@ -73,7 +73,7 @@ pushstate > statechange via UI btns and pasting url
 					that.contentIndex++;
 
 				}
-				that.carouselContainer.html(that.carouselBuffer);
+				that.carouselContainer.html(that.carouselBuffer).addClass('enterLeft');
 				setNav();
 				var currentPage = that.contentIndex/that.multiple;
 				
@@ -82,7 +82,9 @@ pushstate > statechange via UI btns and pasting url
 					that.History.pushState({state:that.contentIndex,rand:Math.random()}, that.pageTitle + ' - Page ' + currentPage, '?page=' + currentPage + '+multiple=' + that.multiple + '+lang=' + that.lang);
 					that.bCalledByUi = false;
 				}
-				that.carouselContainer.fadeTo(700, 1);
+				//that.carouselContainer.fadeTo(700, 1);
+				that.carouselContainer.fadeTo(7, 1);// debugging transitions
+
 			});
 
 		},

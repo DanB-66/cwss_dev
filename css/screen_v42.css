@@ -309,8 +309,8 @@ h2 {
 
 @media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/dev\/sass\/screen_v42\.scss}line{font-family:\00003220}}
 article {
-  transform: rotateY(0.0001deg);
-  -webkit-transform: rotateY(0.0001deg);
+  transform: rotateY(-150deg);
+  -webkit-transform: rotateY(-150deg);
   transform-style: preserve-3d;
   -webkit-transform-style: preserve-3d;
   -webkit-backface-visibility: hidden;
@@ -325,57 +325,69 @@ article {
   transition: all 200ms linear; }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/dev\/sass\/screen_v42\.scss}line{font-family:\00003232}}
+.enterLeft article {
+  transform: rotateY(0deg);
+  -webkit-transform: rotateY(0deg); }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/dev\/sass\/screen_v42\.scss}line{font-family:\00003236}}
 .carousel.forward article:last-child {
   transform: rotateY(50deg);
   -webkit-transform: rotateY(50deg);
   transition-delay: 50ms;
   -webkit-transition-delay: 50ms; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/dev\/sass\/screen_v42\.scss}line{font-family:\00003238}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/dev\/sass\/screen_v42\.scss}line{font-family:\00003242}}
 .carousel.forward article:nth-last-child(2) {
   transform: rotateY(40deg);
   -webkit-transform: rotateY(40deg);
   transition-delay: 400ms;
   -webkit-transition-delay: 400ms; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/dev\/sass\/screen_v42\.scss}line{font-family:\00003244}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/dev\/sass\/screen_v42\.scss}line{font-family:\00003248}}
 .carousel.forward article:nth-last-child(3) {
   transform: rotateY(30deg);
   -webkit-transform: rotateY(30deg);
   transition-delay: 800ms;
   -webkit-transition-delay: 800ms; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/dev\/sass\/screen_v42\.scss}line{font-family:\00003250}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/dev\/sass\/screen_v42\.scss}line{font-family:\00003254}}
 .carousel.forward article:nth-last-child(4) {
   transform: rotateY(20deg);
   -webkit-transform: rotateY(20deg);
   transition-delay: 1200ms;
   -webkit-transition-delay: 1200ms; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/dev\/sass\/screen_v42\.scss}line{font-family:\00003257}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/dev\/sass\/screen_v42\.scss}line{font-family:\00003261}}
 .carousel.back article:first-child {
   transform: rotateY(-50deg);
   -webkit-transform: rotateY(-50deg);
   transition-delay: 50ms;
   -webkit-transition-delay: 50ms; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/dev\/sass\/screen_v42\.scss}line{font-family:\00003263}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/dev\/sass\/screen_v42\.scss}line{font-family:\00003267}}
 .carousel.back article:nth-child(2) {
   transform: rotateY(-40deg);
   -webkit-transform: rotateY(-40deg);
   transition-delay: 400ms;
   -webkit-transition-delay: 400ms; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/dev\/sass\/screen_v42\.scss}line{font-family:\00003269}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/dev\/sass\/screen_v42\.scss}line{font-family:\00003273}}
 .carousel.back article:nth-child(3) {
   transform: rotateY(-30deg);
   -webkit-transform: rotateY(-30deg);
   transition-delay: 800ms;
   -webkit-transition-delay: 800ms; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/dev\/sass\/screen_v42\.scss}line{font-family:\00003275}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/dev\/sass\/screen_v42\.scss}line{font-family:\00003279}}
 .carousel.back article:nth-child(4) {
   transform: rotateY(-20deg);
   -webkit-transform: rotateY(-20deg);
   transition-delay: 1200ms;
   -webkit-transition-delay: 1200ms; }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/dev\/sass\/screen_v42\.scss}line{font-family:\00003286}}
+.carousel.xenterLeft article:first-child {
+  transform: rotateY(0deg);
+  -webkit-transform: rotateY(0deg);
+  transition-delay: 500ms;
+  -webkit-transition-delay: 500ms; }
