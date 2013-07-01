@@ -26,7 +26,7 @@ pushstate > statechange via UI btns and pasting url
 		newMultiple: '',
 
 		showPage : function(direction, index, bCalledByUi, newMultiple){
-			//console.log('showPage - direction, index, bCalledByUi, newMultiple '+direction, index, bCalledByUi, newMultiple); 			
+			//console.log('showPage - direction, index, bCalledByUi, newMultiple '+direction, index, bCalledByUi, newMultiple);
 			this.bCalledByUi = bCalledByUi;
 			if (index !== undefined){
 				this.contentIndex = index;

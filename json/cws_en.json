@@ -249,44 +249,6 @@
 						}
 					]
 				}
-			},
-			{
-				"client": "2KBC Securities",
-				"agency": "SAS",
-				"projectName": "KBC Securities website",
-				"projectDescription": "Build of website for KBC Securities",
-				"shortDescription": "Implementation of designers layouts for a new website for KBC Securities.",
-				"extendedInfo": {
-					"agencyDetails": "SAS London is an award-winning digital marketing and design agency specialising in digital, corporate, employee and brand communications.",
-					"workUndertaken": "I was brought in to develop a new site from designers layouts - the work is still in use today."
-				},
-				"assets": {
-					"links": [
-						{
-							"title": "KBC Securities website",
-							"url": "https://www.kbcsecurities.com/"
-						}
-					]
-				}
-			},
-			{
-				"client": "3KBC Securities",
-				"agency": "SAS",
-				"projectName": "KBC Securities website",
-				"projectDescription": "Build of website for KBC Securities",
-				"shortDescription": "Implementation of designers layouts for a new website for KBC Securities.",
-				"extendedInfo": {
-					"agencyDetails": "SAS London is an award-winning digital marketing and design agency specialising in digital, corporate, employee and brand communications.",
-					"workUndertaken": "I was brought in to develop a new site from designers layouts - the work is still in use today."
-				},
-				"assets": {
-					"links": [
-						{
-							"title": "KBC Securities website",
-							"url": "https://www.kbcsecurities.com/"
-						}
-					]
-				}
 			}
 		]
 	}
