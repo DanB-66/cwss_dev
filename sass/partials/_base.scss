@@ -44,6 +44,7 @@ $long_time: 5s;
 }
 
 //prefix for vendors
+//useage: @include prefix(transition, "color #{$animation-speed} linear, margin-left #{$animation-speed} linear");
 $prefixes: ('-webkit-','-moz-', '-o-', '-ms-', '');
 @mixin prefix($property, $value) { 
 	@each $prefix in $prefixes {

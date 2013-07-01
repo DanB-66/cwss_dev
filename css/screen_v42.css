@@ -304,51 +304,78 @@ h2 {
 @media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/dev\/sass\/screen_v42\.scss}line{font-family:\00003215}}
 .carousel {
   position: relative;
+  perspective: 900px;
   -webkit-perspective: 900px; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/dev\/sass\/screen_v42\.scss}line{font-family:\00003219}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/dev\/sass\/screen_v42\.scss}line{font-family:\00003220}}
 article {
+  transform: rotateY(0.0001deg);
   -webkit-transform: rotateY(0.0001deg);
+  transform-style: preserve-3d;
   -webkit-transform-style: preserve-3d;
   -webkit-backface-visibility: hidden;
-  -webkit-transition: -webkit-transform 500ms ease-out; }
+  -moz-backface-visibility: hidden;
+  -o-backface-visibility: hidden;
+  -ms-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transition: all 200ms linear;
+  -moz-transition: all 200ms linear;
+  -o-transition: all 200ms linear;
+  -ms-transition: all 200ms linear;
+  transition: all 200ms linear; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/dev\/sass\/screen_v42\.scss}line{font-family:\00003228}}
-.carousel.tiltForward article:nth-child(1) {
-  -webkit-transform: rotateY(28deg);
-  -webkit-transition-delay: 600ms; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/dev\/sass\/screen_v42\.scss}line{font-family:\00003233}}
-.carousel.tiltForward article:nth-child(2) {
-  -webkit-transform: rotateY(33deg);
-  -webkit-transition-delay: 400ms; }
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/dev\/sass\/screen_v42\.scss}line{font-family:\00003232}}
+.carousel.forward article:last-child {
+  transform: rotateY(50deg);
+  -webkit-transform: rotateY(50deg);
+  transition-delay: 50ms;
+  -webkit-transition-delay: 50ms; }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/dev\/sass\/screen_v42\.scss}line{font-family:\00003238}}
-.carousel.tiltForward article:nth-child(3) {
-  -webkit-transform: rotateY(42deg);
-  -webkit-transition-delay: 200ms; }
+.carousel.forward article:nth-last-child(2) {
+  transform: rotateY(40deg);
+  -webkit-transform: rotateY(40deg);
+  transition-delay: 400ms;
+  -webkit-transition-delay: 400ms; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/dev\/sass\/screen_v42\.scss}line{font-family:\00003243}}
-.carousel.tiltForward article:nth-child(4) {
-  -webkit-transform: rotateY(50deg);
-  -webkit-transition-delay: 0ms; }
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/dev\/sass\/screen_v42\.scss}line{font-family:\00003244}}
+.carousel.forward article:nth-last-child(3) {
+  transform: rotateY(30deg);
+  -webkit-transform: rotateY(30deg);
+  transition-delay: 800ms;
+  -webkit-transition-delay: 800ms; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/dev\/sass\/screen_v42\.scss}line{font-family:\00003247}}
-.carousel.tiltBack article:nth-child(1) {
-  -webkit-transform: rotateY(-20deg);
-  -webkit-transition-delay: 60ms; }
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/dev\/sass\/screen_v42\.scss}line{font-family:\00003250}}
+.carousel.forward article:nth-last-child(4) {
+  transform: rotateY(20deg);
+  -webkit-transform: rotateY(20deg);
+  transition-delay: 1200ms;
+  -webkit-transition-delay: 1200ms; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/dev\/sass\/screen_v42\.scss}line{font-family:\00003251}}
-.carousel.tiltBack article:nth-child(2) {
-  -webkit-transform: rotateY(-30deg);
-  -webkit-transition-delay: 30ms; }
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/dev\/sass\/screen_v42\.scss}line{font-family:\00003257}}
+.carousel.back article:first-child {
+  transform: rotateY(-50deg);
+  -webkit-transform: rotateY(-50deg);
+  transition-delay: 50ms;
+  -webkit-transition-delay: 50ms; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/dev\/sass\/screen_v42\.scss}line{font-family:\00003255}}
-.carousel.tiltBack article:nth-child(3) {
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/dev\/sass\/screen_v42\.scss}line{font-family:\00003263}}
+.carousel.back article:nth-child(2) {
+  transform: rotateY(-40deg);
   -webkit-transform: rotateY(-40deg);
-  -webkit-transition-delay: 15ms; }
+  transition-delay: 400ms;
+  -webkit-transition-delay: 400ms; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/dev\/sass\/screen_v42\.scss}line{font-family:\00003259}}
-.carousel.tiltBack article:nth-child(4) {
-  -webkit-transform: rotateY(50deg);
-  -webkit-transition-delay: 2ms; }
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/dev\/sass\/screen_v42\.scss}line{font-family:\00003269}}
+.carousel.back article:nth-child(3) {
+  transform: rotateY(-30deg);
+  -webkit-transform: rotateY(-30deg);
+  transition-delay: 800ms;
+  -webkit-transition-delay: 800ms; }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/dev\/sass\/screen_v42\.scss}line{font-family:\00003275}}
+.carousel.back article:nth-child(4) {
+  transform: rotateY(-20deg);
+  -webkit-transform: rotateY(-20deg);
+  transition-delay: 1200ms;
+  -webkit-transition-delay: 1200ms; }

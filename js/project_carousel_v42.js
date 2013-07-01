@@ -19,13 +19,14 @@ pushstate > statechange via UI btns and pasting url
 		carouselContentLength : '',
 		contentIndex : 0,//index of the project item
 		bCalledByUi : false,// true if UI nav used or refresh or initial load. False if browser native back/forward buttons used.
+		bHasCssTransforms : false,// test with modernizer
 		History : window.History,//history lib in use
 		pageTitle : document.title,
 		startItem: 0,
 		newMultiple: '',
 
 		showPage : function(direction, index, bCalledByUi, newMultiple){
-			//console.log('showPage - direction, index, bCalledByUi, newMultiple '+direction, index, bCalledByUi, newMultiple); 
+			//console.log('showPage - direction, index, bCalledByUi, newMultiple '+direction, index, bCalledByUi, newMultiple); 			
 			this.bCalledByUi = bCalledByUi;
 			if (index !== undefined){
 				this.contentIndex = index;
@@ -49,10 +50,11 @@ pushstate > statechange via UI btns and pasting url
 			}
 
 			this.carouselContainer.fadeTo(700, 0, function(){
+
 				if (newMultiple !== undefined) {
 					that.carouselContainer.removeClass('multiple1 multiple2 multiple3 multiple4').addClass('multiple'+newMultiple);
 				}
-				that.carouselContainer.empty();
+				that.carouselContainer.empty().removeClass('forward back');
 				that.carouselBuffer = '';
 				function incrementBuffer(err, output){
 					if(err !== null){
@@ -120,22 +122,34 @@ pushstate > statechange via UI btns and pasting url
 				bIsRebuild = 0;
 				this.showPage(undefined, (CwsCarousel.contentIndex - CwsCarousel.multiple), true, undefined);
 			} else {
-				this.renderTarget.on('click','.cwsCprev',function(event){
+				this.renderTarget.on('click','.cwsCprev, .cwsCnext',function(event){			
 					if (!($(this).hasClass('disabled'))){
-						//$(this).removeClass('tiltForward tiltBack');
-						CwsCarousel.showPage('back', undefined, true, undefined);
-					}
-					event.preventDefault();
-				});
-				this.renderTarget.on('click','.cwsCnext',function(event){
-					if (!($(this).hasClass('disabled'))){
-						//$(this).removeClass('tiltForward tiltBack');
-						CwsCarousel.showPage('forward', undefined, true, undefined);
+						var direction = 'forward';
+						if ($(this).hasClass('cwsCprev')){
+							direction = 'back';
+						}
+						if (CwsCarousel.bHasCssTransforms){
+							var transitionCount = 0;
+							CwsCarousel.carouselContainer.addClass(direction).on('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend',function(event){
+								transitionCount++;
+								if (transitionCount === CwsCarousel.carouselContainer.children().length){
+									CwsCarousel.carouselContainer.off('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend');									
+									CwsCarousel.showPage(direction, undefined, true, undefined);
+								}
+								
+							});
+
+						} else {
+							//console.log('no transitions');
+							CwsCarousel.showPage(direction, undefined, true, undefined);
+						}
+						
+						
 					}
 					event.preventDefault();
 				});
 				
-/* 				this.renderTarget.on('mouseover','.cwsCnext',function(event){
+/*  				this.renderTarget.on('mouseover','.cwsCnext',function(event){
 					if (!($(this).hasClass('disabled'))){
 						$('.carousel').addClass('tiltForward');
 					}
@@ -154,7 +168,7 @@ pushstate > statechange via UI btns and pasting url
 					if (!($(this).hasClass('disabled'))){
 						$('.carousel').removeClass('tiltBack');
 					}
-				}); */
+				});  */
 				
 				// delegate click on 'set multiple' control
 				this.renderTarget.on('click', '#setMultipleControl li', function(){
@@ -209,6 +223,9 @@ pushstate > statechange via UI btns and pasting url
 
 		init : function() {
 			//debugger;
+			if (Modernizr.csstransforms){
+				this.bHasCssTransforms = true;
+			}
 			var pageFromUrl = 0,
 				urlLocationType = '';
 			/* extract the page no, multiple and lang from url, if its present (eg bookmark, refresh or pasted url) */
