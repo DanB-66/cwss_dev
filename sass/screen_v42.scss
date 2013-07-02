@@ -3,24 +3,33 @@
         "partials/globalFooter";
 
 html {
-    height:100%;
+    height: 100%;
 }
 body {
-    color:$default_text_color;
+    color: $default_text_color;
 	// $experimental-support-for-svg: true;
     //@include background-image(linear-gradient(#fff, #999));
-	background:#000 url(../img/cowset.jpg) center 50% fixed no-repeat;
-	//background:#999;
-    -moz-background-size:cover;
-    background-size:cover;	
-    font:1em/1.4 sans-serif;
-    height:100%;
+	background: #000 url(../img/cowset.jpg) center 50% fixed no-repeat;
+	//background: #999;
+    -moz-background-size: cover;
+    background-size: cover;	
+    font: 1em/1.4 sans-serif;
+    height: 100%;
+	@include breakpoint(maxi) {
+		font-size: 1.5em; 
+	}
+	@include breakpoint(midi) { 
+		font-size: 1em; 
+	}
 	@include breakpoint(mini) { 
-		font-size:0.7708em; 
+		font-size: 0.7708em; 
 	}
 	@include breakpoint(micro) { 
-		font-size:0.3125em;
-		-webkit-text-size-adjust:none;	// as it need to go below the 6px min... too small I know, will do for now 	
+		font-size: 0.55em; 
+	}
+	@include breakpoint(nano) { 
+		font-size: 0.3125em;
+		-webkit-text-size-adjust: none;	// as it need to go below the 6px min... too small I know, just a quick test for now
 	}
 }
 
@@ -32,7 +41,6 @@ body {
     width: 60em;
     margin: 0 auto;
 	padding: 1em 0 3em;
-	@include opacity(0.8);
 }
 //global header
 #pageContent > header {
@@ -216,76 +224,111 @@ h2 {
 	position: relative;
 	perspective: 900px;
 	-webkit-perspective: 900px;
-}
-article{
-	transform: rotateY(-150deg);
-		-webkit-transform: rotateY(-150deg);
-	transform-style: preserve-3d;
-		-webkit-transform-style: preserve-3d;
-	@include prefix(backface-visibility, 'hidden');
-	//transition: transform 500ms ease-out;
-	//-webkit-transition: -webkit-transform 500ms ease-out;
-	//-webkit-transition: all 500ms ease-out;
-	//margin-right:0;
-	@include prefix(transition, 'all 200ms linear');		
-}
-.enterLeft article{
-	transform: rotateY(0deg);
-		-webkit-transform: rotateY(0deg);
-}
-.carousel.forward article:last-child{
-	transform: rotateY(50deg);
-		-webkit-transform: rotateY(50deg);
-	transition-delay:50ms;
-		-webkit-transition-delay:50ms;
-}
-.carousel.forward article:nth-last-child(2){
-	transform: rotateY(40deg);
-		-webkit-transform: rotateY(40deg);
-	transition-delay:400ms;
-		-webkit-transition-delay:400ms;
-}
-.carousel.forward article:nth-last-child(3){
-	transform: rotateY(30deg);
-		-webkit-transform: rotateY(30deg);
-	transition-delay:800ms;
-		-webkit-transition-delay:800ms;
-}
-.carousel.forward article:nth-last-child(4){
-	transform: rotateY(20deg);
-		-webkit-transform: rotateY(20deg);
-	transition-delay:1200ms;	
-		-webkit-transition-delay:1200ms;	
-}
-//back
-.carousel.back article:first-child{
-	transform: rotateY(-50deg);
-		-webkit-transform: rotateY(-50deg);
-	transition-delay:50ms;
-		-webkit-transition-delay:50ms;
-}
-.carousel.back article:nth-child(2){
-	transform: rotateY(-40deg);
-		-webkit-transform: rotateY(-40deg);
-	transition-delay:400ms;
-		-webkit-transition-delay:400ms;
-}
-.carousel.back article:nth-child(3){
-	transform: rotateY(-30deg);
-		-webkit-transform: rotateY(-30deg);
-	transition-delay:800ms;
-		-webkit-transition-delay:800ms;
-}
-.carousel.back article:nth-child(4){
-	transform: rotateY(-20deg);
-		-webkit-transform: rotateY(-20deg);
-	transition-delay:1200ms;	
-		-webkit-transition-delay:1200ms;	
-}
-//enter left
-.carousel.xenterLeft article:first-child{
-	transform: rotateY(0deg);
-		-webkit-transform: rotateY(0deg);
-	transition-delay:500ms;
-		-webkit-transition-delay:500ms;
+
+	article{
+		transform: rotateY(90deg);
+			-webkit-transform: rotateY(90deg);
+		transform-style: preserve-3d;
+			-webkit-transform-style: preserve-3d;
+		@include opacity(0);
+		@include prefix(backface-visibility, 'hidden');
+		@include prefix(transition, 'all 600ms ease-in');		
+	}
+
+
+
+	//forward
+	&.forward article:last-child{
+		transform: rotateY(50deg);
+			-webkit-transform: rotateY(50deg);
+		transition-delay: 50ms;
+			-webkit-transition-delay: 50ms;
+	}
+	&.forward article:nth-last-child(2){
+		transform: rotateY(40deg);
+			-webkit-transform: rotateY(40deg);
+		transition-delay: 400ms;
+			-webkit-transition-delay: 400ms;
+	}
+	&.forward article:nth-last-child(3){
+		transform: rotateY(30deg);
+			-webkit-transform: rotateY(30deg);
+		transition-delay: 800ms;
+			-webkit-transition-delay: 800ms;
+	}
+	&.forward article:nth-last-child(4){
+		transform: rotateY(20deg);
+			-webkit-transform: rotateY(20deg);
+		transition-delay: 1200ms;	
+			-webkit-transition-delay: 1200ms;	
+	}
+	//back
+	&.back article:first-child{
+		transform: rotateY(-50deg);
+			-webkit-transform: rotateY(-50deg);
+		transition-delay: 50ms;
+			-webkit-transition-delay: 50ms;
+	}
+	&.back article:nth-child(2){
+		transform: rotateY(-40deg);
+			-webkit-transform: rotateY(-40deg);
+		transition-delay: 400ms;
+			-webkit-transition-delay: 400ms;
+	}
+	&.back article:nth-child(3){
+		transform: rotateY(-30deg);
+			-webkit-transform: rotateY(-30deg);
+		transition-delay: 800ms;
+			-webkit-transition-delay: 800ms;
+	}
+	&.back article:nth-child(4){
+		transform: rotateY(-20deg);
+			-webkit-transform: rotateY(-20deg);
+		transition-delay: 1200ms;	
+			-webkit-transition-delay: 1200ms;	
+	}
+	//enter left
+	&.enterLeft article{
+		transform: rotateY(0deg);
+			-webkit-transform: rotateY(0deg);
+		@include opacity(1);
+	}
+	&.enterLeft article:first-child{
+		transition-delay: 200ms;
+			-webkit-transition-delay: 200ms;
+	}
+	&.enterLeft article:nth-child(2){
+		transition-delay: 400ms;
+			-webkit-transition-delay: 400ms;
+	}
+	&.enterLeft article:nth-child(3){
+		transition-delay: 600ms;
+			-webkit-transition-delay: 600ms;
+	}
+	&.enterLeft article:nth-child(4){
+		transition-delay: 800ms;
+			-webkit-transition-delay: 800ms;
+	}
+	//enter right
+	&.enterRight article{
+		transform: rotateY(0deg);
+			-webkit-transform: rotateY(0deg);
+		@include opacity(1);
+	}
+	&.enterRight article:last-child{
+		transition-delay: 200ms;
+			-webkit-transition-delay: 200ms;
+	}
+	&.enterRight article:nth-last-child(2){
+		transition-delay: 400ms;
+			-webkit-transition-delay: 400ms;
+	}
+	&.enterRight article:nth-last-child(3){
+		transition-delay: 600ms;
+			-webkit-transition-delay: 600ms;
+	}
+	&.enterRight article:nth-last-child(4){
+		transition-delay: 800ms;
+			-webkit-transition-delay: 800ms;
+	}
 }

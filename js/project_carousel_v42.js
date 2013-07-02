@@ -49,12 +49,12 @@ pushstate > statechange via UI btns and pasting url
 				}
 			}
 
-			this.carouselContainer.fadeTo(700, 0, function(){
+			this.carouselContainer.fadeTo(500, 0, function(){
 
 				if (newMultiple !== undefined) {
-					that.carouselContainer.removeClass('multiple1 multiple2 multiple3 multiple4 enterLeft').addClass('multiple'+newMultiple);
+					that.carouselContainer.removeClass('multiple1 multiple2 multiple3 multiple4').addClass('multiple'+newMultiple);
 				}
-				that.carouselContainer.empty().removeClass('forward back');
+				that.carouselContainer.empty().removeClass('forward back enterLeft enterRight');
 				that.carouselBuffer = '';
 				function incrementBuffer(err, output){
 					if(err !== null){
@@ -68,12 +68,16 @@ pushstate > statechange via UI btns and pasting url
 						var uiData = that.carouselUiContent;
 						var mergedJson = dust.makeBase(uiData);
 						mergedJson = mergedJson.push(projData);
-						dust.render('cwsProjects', mergedJson, incrementBuffer);
+						dust.render('cwsProjects', mergedJson, incrementBuffer);//'cwsProjects' is a compiled dust template already registered
 					}
 					that.contentIndex++;
 
 				}
-				that.carouselContainer.html(that.carouselBuffer).addClass('enterLeft');
+				var transitionInClass = 'enterLeft';
+				if (direction === 'back'){
+					transitionInClass = 'enterRight';
+				}
+				that.carouselContainer.html(that.carouselBuffer).addClass(transitionInClass);
 				setNav();
 				var currentPage = that.contentIndex/that.multiple;
 				
@@ -82,8 +86,7 @@ pushstate > statechange via UI btns and pasting url
 					that.History.pushState({state:that.contentIndex,rand:Math.random()}, that.pageTitle + ' - Page ' + currentPage, '?page=' + currentPage + '+multiple=' + that.multiple + '+lang=' + that.lang);
 					that.bCalledByUi = false;
 				}
-				//that.carouselContainer.fadeTo(700, 1);
-				that.carouselContainer.fadeTo(7, 1);// debugging transitions
+				that.carouselContainer.fadeTo(500, 1);
 
 			});
 
@@ -130,9 +133,9 @@ pushstate > statechange via UI btns and pasting url
 						if ($(this).hasClass('cwsCprev')){
 							direction = 'back';
 						}
-						if (CwsCarousel.bHasCssTransforms){
+						if (CwsCarousel.bHasCssTransforms){// wait for n transitions to end (sequenced)
 							var transitionCount = 0;
-							CwsCarousel.carouselContainer.addClass(direction).on('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend',function(event){
+							CwsCarousel.carouselContainer.addClass(direction).on('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend',function(){
 								transitionCount++;
 								if (transitionCount === CwsCarousel.carouselContainer.children().length){
 									CwsCarousel.carouselContainer.off('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend');									
@@ -150,27 +153,7 @@ pushstate > statechange via UI btns and pasting url
 					}
 					event.preventDefault();
 				});
-				
-/*  				this.renderTarget.on('mouseover','.cwsCnext',function(event){
-					if (!($(this).hasClass('disabled'))){
-						$('.carousel').addClass('tiltForward');
-					}
-				});
-				this.renderTarget.on('mouseout','.cwsCnext',function(event){
-					if (!($(this).hasClass('disabled'))){
-						$('.carousel').removeClass('tiltForward');
-					}
-				});
-				this.renderTarget.on('mouseover','.cwsCprev',function(event){
-					if (!($(this).hasClass('disabled'))){
-						$('.carousel').addClass('tiltBack');
-					}
-				});
-				this.renderTarget.on('mouseout','.cwsCprev',function(event){
-					if (!($(this).hasClass('disabled'))){
-						$('.carousel').removeClass('tiltBack');
-					}
-				});  */
+
 				
 				// delegate click on 'set multiple' control
 				this.renderTarget.on('click', '#setMultipleControl li', function(){
@@ -224,7 +207,6 @@ pushstate > statechange via UI btns and pasting url
 		},
 
 		init : function() {
-			//debugger;
 			if (Modernizr.csstransforms){
 				this.bHasCssTransforms = true;
 			}

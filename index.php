@@ -24,8 +24,8 @@
 <?php include("includes/_header_global.php"); ?>
 
 		<p class="caveat">
-			What's this? Its a WIP... so far it's mostly javascsript with no work on the visual side... and the data is a bit rough! Still reading? It uses <a href="json/cws_en.json">json</a> content files, <a href="js/project_carousel_v42.js">js</a> to render that out via a <a href="templates/_cws.tmpl.html">dust template</a> into a carousel/paging system. <a href="sass/main_sass_eg.txt">Sass</a> helps with the styling. Native browser back/fwd will drive the UI and state is maintained cross-browser eg bookmarking retaining 'page', 'multiple' and 'lang' selections. There will be some sort of <a href="projects_php.php">non js</a> seo content rendered by <a href="modules/_project_list_seo.php.txt">php</a> from the same json. Completely incomplete!
-			<a href="#" onclick="$(this).parent().slideUp(); event.preventDefault();">hide this</a>
+			What's this? Its a WIP... so far it's mostly javascsript with not much work on the visual side... and the data is a bit rough! Still reading? It uses <a href="json/cws_en.json">json</a> content files, <a href="js/project_carousel_v42.js">js</a> to render that out into a carousel/paging system via a <a href="templates/_cws.tmpl.txt">dust template</a>, which is pretty simple so far but does demo conditional logic eg absent nodes in the data. <a href="sass/main_sass_eg.txt">Sass</a> helps (a lot...) with the styling. Native browser back/fwd will drive the UI and state is maintained cross-browser eg bookmarking retaining 'page', 'multiple' and 'lang' selections. Works in IE8. 3D transitions: just a start ;) There will be some sort of <a href="projects_php.php">non js</a> content rendered by <a href="modules/_project_list_seo.php.txt">php</a> from the same json. Completely incomplete!
+			<a href="#" onclick="$(this).parent().slideUp(); return false;">hide this</a>
 		</p>
 
 		<div class="cwsCarousel">

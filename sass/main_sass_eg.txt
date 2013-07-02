@@ -1,6 +1,6 @@
 //BASE SASS FILE CONTENTS
 
-
+/* sass base */
 @import "compass/reset",
 		"compass/css3",
 		"compass/utilities";
@@ -32,20 +32,24 @@ $long_time: 5s;
 // breakpoints
 @mixin breakpoint($point) {
 	@if $point == maxi {
-		@media (max-width: 1600px) { @content; }
+		@media (min-width: 1600px) { @content; }
 	}
 	@if $point == midi {
-		@media (max-width: 1250px) { @content; }
+		@media (min-width: 1024px) and (max-width: 1599px) { @content; }
 	}
 	@else if $point == mini {
-		@media (max-width: 800px)  { @content; }
+		@media (min-width: 768px) and (max-width: 1023px)  { @content; }
 	}
 	@else if $point == micro {
-		@media (max-width: 320px)  { @content; }
+		@media (min-width: 600px) and (max-width: 767px)  { @content; }
+	}
+	@else if $point == nano {
+		@media (max-width: 599px)  { @content; }
 	}
 }
 
 //prefix for vendors
+//useage: @include prefix(transition, "color #{$animation-speed} linear, margin-left #{$animation-speed} linear");
 $prefixes: ('-webkit-','-moz-', '-o-', '-ms-', '');
 @mixin prefix($property, $value) { 
 	@each $prefix in $prefixes {
@@ -53,42 +57,39 @@ $prefixes: ('-webkit-','-moz-', '-o-', '-ms-', '');
 	}
 }
 
-//retina
-@mixin image-2x($image, $width, $height) {
-@media (min--moz-device-pixel-ratio: 1.3),
-		(-o-min-device-pixel-ratio: 2.6/2),
-		(-webkit-min-device-pixel-ratio: 1.3),
-		(min-device-pixel-ratio: 1.3),
-		(min-resolution: 1.3dppx) {
-		/* on retina, use image that's scaled by 2 */
-		background-image: url($image);
-		background-size: $width $height;
-	}
-}
-
 //MAIN SASS FILE CONTENTS
+
 @import "partials/base",
         "partials/globalFooter";
 
 html {
-    height:100%;
+    height: 100%;
 }
 body {
-    color:$default_text_color;
-	/* $experimental-support-for-svg: true;
-    @include background-image(linear-gradient(#fff, #999)); */
-	background:#000 url(../img/cowset.jpg) center 50% fixed no-repeat;
-	//background:#999;
-    -moz-background-size:cover;
-    background-size:cover;	
-    font:1em/1.4 sans-serif;
-    height:100%;
+    color: $default_text_color;
+	// $experimental-support-for-svg: true;
+    //@include background-image(linear-gradient(#fff, #999));
+	background: #000 url(../img/cowset.jpg) center 50% fixed no-repeat;
+	//background: #999;
+    -moz-background-size: cover;
+    background-size: cover;	
+    font: 1em/1.4 sans-serif;
+    height: 100%;
+	@include breakpoint(maxi) {
+		font-size: 1.5em; 
+	}
+	@include breakpoint(midi) { 
+		font-size: 1em; 
+	}
 	@include breakpoint(mini) { 
-		font-size:0.7708em; 
+		font-size: 0.7708em; 
 	}
 	@include breakpoint(micro) { 
-		font-size:0.3125em;
-		-webkit-text-size-adjust:none;	/* as it need to go below the 6px min...   too small I know, will do for now... */	
+		font-size: 0.55em; 
+	}
+	@include breakpoint(nano) { 
+		font-size: 0.3125em;
+		-webkit-text-size-adjust: none;	// as it need to go below the 6px min... too small I know, just a quick test for now
 	}
 }
 
@@ -100,10 +101,9 @@ body {
     width: 60em;
     margin: 0 auto;
 	padding: 1em 0 3em;
-	@include opacity(0.8);
 }
-//header
-.global-header {
+//global header
+#pageContent > header {
     color: $secondary_color;
     border: 3px solid $secondary_color;
     border-width: 3px 0;
@@ -142,26 +142,26 @@ h2 {
 		display: inline-block;
 		vertical-align: top;
 		@include box-sizing(border-box);
-		width: 33.33%;/* default for ie8 */
+		width: 33.33%;// default
 		padding: 0 0.2em;
 		height: 100%;
 		outline: 1px solid #000;
 		overflow-y: auto;
 		background: #a39d9f;
 	}
-	/* one items */
+	// one items
 	.multiple1 article{
 		width: 100%;
 	}
-	/* two items */
+	// two items
 	.multiple2 article{
 		width: 50%;
 	}
-	/* three items */
+	// three items
 	.multiple3 article {
 		width: 33.3333%;
 	}
-	/* four items */
+	// four items
 	.multiple4 article {
 		width: 25%;
 	}
@@ -176,7 +176,7 @@ h2 {
 		outline: 1px solid #000;
 		overflow: hidden;
 		@include transition-property(background-color);
-		@include transition-duration(1s);
+		@include transition-duration($short_time);
 	}
 	.cwsCprev:hover, .cwsCnext:hover, .cwsCprev:focus, .cwsCnext:focus {
 		background-color: $control_background_hover_color;
@@ -229,7 +229,7 @@ h2 {
 #setMultipleControl, #setLangControl{
 	display: inline-block;
 	vertical-align: middle;
-	margin-right: 2em;
+	margin-right: $double_space;
 	h4, ul, li {
 		font-weight: normal;
 		font-size: 0.85em;
@@ -240,14 +240,14 @@ h2 {
 		cursor: pointer;
 		margin-left:.3em;
 		&:hover, &.active {
-			color: orange;
+			color: $default_text_contrast_color;
 		}
 		&.active, &.active:hover {
 			cursor: default;
 		}
 	}
 }
-// content areas.. some basics
+// content areas.. just some basics for now
 .cwsCarousel {
 	article {
 		line-height: 1.3;
@@ -256,27 +256,139 @@ h2 {
 		font-weight: bold;
 	}
 	article dd {
-		margin-left: 0.6em;
-		margin-bottom: 0.6em;
+		margin-left: $single_space;
+		margin-bottom: $single_space;
 	}
 	article img {
 		width: 100%;
-		@include opacity(1);
 	}
 }
 // #projects on non-js
 #projects {
 	background: #ccc;
-	padding: 1em;
+	padding: $double_space;
 }
 #projects h3{
 	font-weight: bold;
-	margin-top: 1em;
+	margin-top: $double_space;
 }
 // some drivel
 .caveat {
-	margin-bottom: 1em;
+	margin-bottom: $single_space;
 }
 .caveat a {
-	color: #333;
+	color: $control_color;
+}
+//transitions
+.carousel{
+	position: relative;
+	perspective: 900px;
+	-webkit-perspective: 900px;
+
+	article{
+		transform: rotateY(90deg);
+			-webkit-transform: rotateY(90deg);
+		transform-style: preserve-3d;
+			-webkit-transform-style: preserve-3d;
+		@include opacity(0);
+		@include prefix(backface-visibility, 'hidden');
+		@include prefix(transition, 'all 600ms ease-in');		
+	}
+
+
+
+	//forward
+	&.forward article:last-child{
+		transform: rotateY(50deg);
+			-webkit-transform: rotateY(50deg);
+		transition-delay: 50ms;
+			-webkit-transition-delay: 50ms;
+	}
+	&.forward article:nth-last-child(2){
+		transform: rotateY(40deg);
+			-webkit-transform: rotateY(40deg);
+		transition-delay: 400ms;
+			-webkit-transition-delay: 400ms;
+	}
+	&.forward article:nth-last-child(3){
+		transform: rotateY(30deg);
+			-webkit-transform: rotateY(30deg);
+		transition-delay: 800ms;
+			-webkit-transition-delay: 800ms;
+	}
+	&.forward article:nth-last-child(4){
+		transform: rotateY(20deg);
+			-webkit-transform: rotateY(20deg);
+		transition-delay: 1200ms;	
+			-webkit-transition-delay: 1200ms;	
+	}
+	//back
+	&.back article:first-child{
+		transform: rotateY(-50deg);
+			-webkit-transform: rotateY(-50deg);
+		transition-delay: 50ms;
+			-webkit-transition-delay: 50ms;
+	}
+	&.back article:nth-child(2){
+		transform: rotateY(-40deg);
+			-webkit-transform: rotateY(-40deg);
+		transition-delay: 400ms;
+			-webkit-transition-delay: 400ms;
+	}
+	&.back article:nth-child(3){
+		transform: rotateY(-30deg);
+			-webkit-transform: rotateY(-30deg);
+		transition-delay: 800ms;
+			-webkit-transition-delay: 800ms;
+	}
+	&.back article:nth-child(4){
+		transform: rotateY(-20deg);
+			-webkit-transform: rotateY(-20deg);
+		transition-delay: 1200ms;	
+			-webkit-transition-delay: 1200ms;	
+	}
+	//enter left
+	&.enterLeft article{
+		transform: rotateY(0deg);
+			-webkit-transform: rotateY(0deg);
+		@include opacity(1);
+	}
+	&.enterLeft article:first-child{
+		transition-delay: 200ms;
+			-webkit-transition-delay: 200ms;
+	}
+	&.enterLeft article:nth-child(2){
+		transition-delay: 400ms;
+			-webkit-transition-delay: 400ms;
+	}
+	&.enterLeft article:nth-child(3){
+		transition-delay: 600ms;
+			-webkit-transition-delay: 600ms;
+	}
+	&.enterLeft article:nth-child(4){
+		transition-delay: 800ms;
+			-webkit-transition-delay: 800ms;
+	}
+	//enter right
+	&.enterRight article{
+		transform: rotateY(0deg);
+			-webkit-transform: rotateY(0deg);
+		@include opacity(1);
+	}
+	&.enterRight article:last-child{
+		transition-delay: 200ms;
+			-webkit-transition-delay: 200ms;
+	}
+	&.enterRight article:nth-last-child(2){
+		transition-delay: 400ms;
+			-webkit-transition-delay: 400ms;
+	}
+	&.enterRight article:nth-last-child(3){
+		transition-delay: 600ms;
+			-webkit-transition-delay: 600ms;
+	}
+	&.enterRight article:nth-last-child(4){
+		transition-delay: 800ms;
+			-webkit-transition-delay: 800ms;
+	}
 }
