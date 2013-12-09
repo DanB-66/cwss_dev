@@ -1,12 +1,14 @@
 /*global dust:true, History:true */
 
 /*
+using: jquery, dust.js templating, History.js
+
 statechange only via native back forward
 pushstate > statechange via UI btns and pasting url
 */
 
-;(function ( $, window, undefined ) {
-
+;(function ( window, $, undefined ) {
+/*use strict */
 	var CwsCarousel = {
 	
 		multiple : 3,//default 3, no if items per carousel page
@@ -197,7 +199,7 @@ pushstate > statechange via UI btns and pasting url
 				success: function( data ) {
 					CwsCarousel.carouselContent = data.cwsData;//data
 					CwsCarousel.carouselUiContent = data.cwsData.i18n;//ui labels data
-					CwsCarousel.carouselContentLength = CwsCarousel.carouselContent.projects.length;// length of the projects data 
+					CwsCarousel.carouselContentLength = CwsCarousel.carouselContent.projects.length;// length of the projects data  
 					CwsCarousel.buildUI(bIsRebuild);
 				},
 				error: function() {
@@ -225,7 +227,7 @@ pushstate > statechange via UI btns and pasting url
 			}
 
 			if(pageFromUrl !== 0){//ie it's a bookmarked/pasted url
-				this.startItem = --pageFromUrl*this.multiple;
+				this.startItem = --pageFromUrl*this.multiple;//Fix  --
 			}
 			
 			this.loadData(0);
@@ -236,4 +238,4 @@ pushstate > statechange via UI btns and pasting url
 	
 	CwsCarousel.init();
 
-}(jQuery, window));
+}(window, jQuery));

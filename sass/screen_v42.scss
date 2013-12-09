@@ -226,8 +226,8 @@ h2 {
 	-webkit-perspective: 900px;
 
 	article{
-		transform: rotateY(90deg);
-			-webkit-transform: rotateY(90deg);
+		transform: rotateY(-20deg);
+			-webkit-transform: rotateY(-20deg);
 		transform-style: preserve-3d;
 			-webkit-transform-style: preserve-3d;
 		@include opacity(0);
@@ -235,55 +235,53 @@ h2 {
 		@include prefix(transition, 'all 600ms ease-in');		
 	}
 
-
-
 	//forward
 	&.forward article:last-child{
-		transform: rotateY(50deg);
-			-webkit-transform: rotateY(50deg);
-		transition-delay: 50ms;
-			-webkit-transition-delay: 50ms;
+		transform: rotateY(50deg) translateX(50%);
+			-webkit-transform: rotateY(50deg) translateX(50%);
+		transition-delay: 1200ms;
+			-webkit-transition-delay: 1200ms;
 	}
 	&.forward article:nth-last-child(2){
-		transform: rotateY(40deg);
-			-webkit-transform: rotateY(40deg);
-		transition-delay: 400ms;
-			-webkit-transition-delay: 400ms;
-	}
-	&.forward article:nth-last-child(3){
-		transform: rotateY(30deg);
-			-webkit-transform: rotateY(30deg);
+		transform: rotateY(40deg) translateX(100%);
+			-webkit-transform: rotateY(40deg) translateX(100%);
 		transition-delay: 800ms;
 			-webkit-transition-delay: 800ms;
 	}
+	&.forward article:nth-last-child(3){
+		transform: rotateY(30deg) translateX(150%);
+			-webkit-transform: rotateY(30deg) translateX(150%);
+		transition-delay: 400ms;
+			-webkit-transition-delay: 400ms;
+	}
 	&.forward article:nth-last-child(4){
-		transform: rotateY(20deg);
-			-webkit-transform: rotateY(20deg);
-		transition-delay: 1200ms;	
-			-webkit-transition-delay: 1200ms;	
+		transform: rotateY(20deg) translateX(200%);
+			-webkit-transform: rotateY(20deg) translateX(200%);
+		transition-delay: 200ms;	
+			-webkit-transition-delay: 200ms;	
 	}
 	//back
 	&.back article:first-child{
-		transform: rotateY(-50deg);
-			-webkit-transform: rotateY(-50deg);
-		transition-delay: 50ms;
-			-webkit-transition-delay: 50ms;
+		transform: rotateY(-50deg) translateX(-50%);
+			-webkit-transform: rotateY(-50deg) translateX(-50%);
+		transition-delay: 1200ms;
+			-webkit-transition-delay: 1200ms;
 	}
 	&.back article:nth-child(2){
-		transform: rotateY(-40deg);
-			-webkit-transform: rotateY(-40deg);
+		transform: rotateY(-40deg) translateX(-100%);
+			-webkit-transform: rotateY(-40deg) translateX(-100%);
 		transition-delay: 400ms;
 			-webkit-transition-delay: 400ms;
 	}
 	&.back article:nth-child(3){
-		transform: rotateY(-30deg);
-			-webkit-transform: rotateY(-30deg);
+		transform: rotateY(-30deg) translateX(-150%);
+			-webkit-transform: rotateY(-30deg) translateX(-150%);
 		transition-delay: 800ms;
 			-webkit-transition-delay: 800ms;
 	}
 	&.back article:nth-child(4){
-		transform: rotateY(-20deg);
-			-webkit-transform: rotateY(-20deg);
+		transform: rotateY(-20deg) translateX(-200%);
+			-webkit-transform: rotateY(-20deg) translateX(-200%);
 		transition-delay: 1200ms;	
 			-webkit-transition-delay: 1200ms;	
 	}
@@ -331,4 +329,5 @@ h2 {
 		transition-delay: 800ms;
 			-webkit-transition-delay: 800ms;
 	}
+
 }
