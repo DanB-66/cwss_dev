@@ -38,8 +38,9 @@
 <?php include("includes/_footer_global.php"); ?>
 
 <?php include("includes/_body_end_content.php"); ?>
+<!-- moved to require
 <script src="templates/_cws.tmplcompiled_v42.js"></script>
-<script src="js/project_carousel_v42.js?"></script>
+<script src="js/project_carousel_v42.js?"></script>_>>
 
 </body>
 </html>
