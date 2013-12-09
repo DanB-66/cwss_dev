@@ -216,7 +216,7 @@ pushstate > statechange via UI btns and pasting url/loading
 			this.showPage(undefined, CwsCarousel.multiple, undefined, newMultiple);
 		},
 
-		markLang : function(newLang) {// mark the menu selection for lang
+		markLang : function(newLang) {// mark the menu selection for language
 			var langMenu = $('#setLangControl');
 			langMenu.find('li').removeClass('active');
 			langMenu.find('#'+ newLang).addClass('active');
