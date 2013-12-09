@@ -8,7 +8,7 @@ pushstate > statechange via UI btns and pasting url/loading
 */
 
 ;(function ( window, $, undefined ) {
-/*use strict*/
+/*use strict */
 	var CwsCarousel = {
 	
 		multiple : 3,//default 3, no if items per carousel page
@@ -19,44 +19,68 @@ pushstate > statechange via UI btns and pasting url/loading
 		carouselContainer : '',
 		carouselBuffer : '',//temp store of rendered dust for each page "group"
 		carouselContentLength : '',
-		contentIndex : '',//index of the last shown project item
+		contentIndex : 0,//index of the project item
+		bCalledByUi : false,// true if UI nav used or refresh or initial load. False if browser native back/forward buttons used.
 		bHasCssTransforms : false,// test with modernizer
 		History : window.History,//history lib in use
 		pageTitle : document.title,
-		startItem: '',
-		currentPage: '',
+		startItem: 0,
 		newMultiple: '',
 		newLang: '',
 
-		showPage : function(direction, index, newLang, newMultiple){
-			console.log('showPage - direction: '+direction+', index: '+index+', newLang: '+newLang+', newMultiple: '+newMultiple);
-
-			if (newMultiple !== undefined) {
-				this.multiple = newMultiple;
-			}
+		showPage : function(direction, index, bCalledByUi, newMultiple){
+			console.log('showPage - direction: '+direction+', index: '+index+', bCalledByUi: '+bCalledByUi+', newMultiple: '+newMultiple);
+	
+			this.bCalledByUi = bCalledByUi;
 			if (index !== undefined){
 				this.contentIndex = index;
 			}
-			if (direction === 'forward'){
-				this.contentIndex += this.multiple;
-			}
 			if (direction === 'back'){
-				this.contentIndex -= this.multiple ;
+				this.contentIndex = (this.contentIndex - (this.multiple * 2));
 			}
-			if (newLang !== undefined) {
-				console.info('newLang: '+newLang);
-				//this.lang = newLang; ?????????????????
-			}
-
-			this.currentPage = this.contentIndex/this.multiple;//fixing
-			console.log('contentIndex in showPage end: '+this.contentIndex);
 			var that = this;
 
-			this.carouselContainer.fadeTo(500, 0, function() {
-				//here: push state and let statechange manipulate ui
+			this.carouselContainer.fadeTo(500, 0, function(){
+			
+				var projData, uiData, mergedJson, i;
+												
+				if (newMultiple !== undefined) {
+					that.carouselContainer.removeClass('multiple1 multiple2 multiple3 multiple4').addClass('multiple'+newMultiple);
+				}
+				that.carouselContainer.empty().removeClass('forward back enterLeft enterRight');
+				that.carouselBuffer = '';
+				function incrementBuffer(err, output){
+					if(err !== null){
+						alert("dust error: " + err);
+					}
+					that.carouselBuffer += output;
+				}	
 				
-				console.log('PUSH STATE: content index- '+that.contentIndex +'- page title' + that.pageTitle + ' page=' + that.currentPage + ' multiple=' + that.multiple + ' lang=' + that.lang);
-				that.History.pushState({state:that.contentIndex, rand:Math.random(), direction:direction, lang:that.lang, multiple:that.multiple}, that.pageTitle + ' - Page ' + that.currentPage, '?page=' + that.currentPage + '+multiple=' + that.multiple + '+lang=' + that.lang);
+				for (i=0; i < that.multiple; i++) {
+					projData = that.carouselContent.projects[that.contentIndex];
+					uiData = that.carouselUiContent;
+					mergedJson = dust.makeBase(uiData);
+					mergedJson = mergedJson.push(projData);
+					if (that.contentIndex < that.carouselContentLength) {
+						dust.render('cwsProjects', mergedJson, incrementBuffer);//'cwsProjects' is a compiled dust template already registered
+					}
+					that.contentIndex++;
+				}
+				
+				var transitionInClass = 'enterLeft';
+				if (direction === 'back'){
+					transitionInClass = 'enterRight';
+				}
+				that.carouselContainer.html(that.carouselBuffer).addClass(transitionInClass);
+				var currentPage = that.contentIndex/that.multiple;
+				
+				//if (that.bCalledByUi === true){
+					console.log('PUSH STATE: content index- '+that.contentIndex +'- page title' + that.pageTitle + ' page=' + currentPage + ' multiple=' + that.multiple + ' lang=' + that.lang);
+					that.History.pushState({state:that.contentIndex, rand:Math.random(), lang:that.lang, multiple:that.multiple}, that.pageTitle + ' - Page ' + currentPage, '?page=' + currentPage + '+multiple=' + that.multiple + '+lang=' + that.lang);
+					//that.bCalledByUi = false;
+				//}
+				CwsCarousel.setNav();
+				that.carouselContainer.fadeTo(500, 1);
 
 			});
 
@@ -68,10 +92,9 @@ pushstate > statechange via UI btns and pasting url/loading
 			var ui = '<a href="#" class="cwsCprev" title="'+this.carouselContent.i18n.uIprevious+'">'+this.carouselContent.i18n.uIprevious+'</a> <a href="#" class="cwsCnext" title="'+this.carouselContent.i18n.uInext+'">'+this.carouselContent.i18n.uInext+'</a><div class="carousel multiple'+CwsCarousel.multiple+'"></div>';
 			this.renderTarget.html(controls + ui);
 			this.carouselContainer = this.renderTarget.children('.carousel');
-			if (bIsRebuild){// ie from lang select
-				//alert('lang');
+			if(bIsRebuild){// ie from lang select
 				bIsRebuild = 0;
-				this.showPage(undefined, undefined, CwsCarousel.lang, undefined);
+				this.showPage(undefined, (CwsCarousel.contentIndex - CwsCarousel.multiple), true, undefined);
 			} else {
 				this.renderTarget.on('click','.cwsCprev, .cwsCnext', function(event){			
 					if (!($(this).hasClass('disabled'))){
@@ -85,77 +108,38 @@ pushstate > statechange via UI btns and pasting url/loading
 								transitionCount++;
 								if (transitionCount === CwsCarousel.carouselContainer.children().length){
 									CwsCarousel.carouselContainer.off('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend');									
-									CwsCarousel.showPage(direction, undefined, undefined, undefined);
+									CwsCarousel.showPage(direction, undefined, true, undefined);
 								}
 								
 							});
 
 						} else {
 							//console.log('no transitions');
-							CwsCarousel.showPage(direction, undefined, undefined, undefined);
+							CwsCarousel.showPage(direction, undefined, true, undefined);
 						}
 						
 					}
 					event.preventDefault();
 				});
 
-				History.Adapter.bind(window,'statechange',function() {// ie both browser back/fwd btn and app ui btns and initial load - manipulate ui
-					//all logic to manipulate page navigation etc should be here
-					var State = History.getState(), projData, uiData, mergedJson, i, 
-						incrementBuffer = function(err, output){
-							if(err !== null){
-								alert("dust error: " + err);
-							}
-							CwsCarousel.carouselBuffer += output;
-						};
+				History.Adapter.bind(window,'statechange',function() {// ie both browser back/fwd btn and app ui btns and initial load
+					var State = History.getState();
+					console.log('STATECHANGE, cbui: ' + CwsCarousel.bCalledByUi + ' datastate: ' + State.data.state + ' mult: ' + State.data.multiple+ ' lang: ' + State.data.lang);
+					if(!CwsCarousel.bCalledByUi && (State.data.state >= CwsCarousel.multiple)){//native back fwd pressed, then show page based on History 
+						//CwsCarousel.showPage(undefined, (State.data.state - CwsCarousel.multiple), false, undefined);//good
 
-					console.log('STATECHANGE, datastate: ' + State.data.state + ' direction: ' + State.data.direction + ' mult: ' + State.data.multiple+ ' lang: ' + State.data.lang);
+						CwsCarousel.showPage(undefined, (State.data.state - CwsCarousel.multiple), false, undefined);//, CwsCarousel.lang#######changed						
+console.log('paging buttons back fwd');				
+					} else if (!CwsCarousel.bCalledByUi && (State.data.multiple !== CwsCarousel.multiple) ){
+console.log('not called by ui should change multiple now');
+console.log('lang should be: '+State.data.lang);//NOT CwsCarousel.lang !!!!
+console.log('multiple should be: '+State.data.multiple);//NOT CwsCarousel.lang !!!!	
+console.log('cws multiple is: '+CwsCarousel.multiple);//NOT CwsCarousel.lang !!!
+CwsCarousel.multiple = State.data.multiple;
+CwsCarousel.showPage('forward', 0, true, CwsCarousel.multiple);
 
-					if (Object.keys(State.data).length !== 0){//fix this in ie8 Object.keys no support
-						
-						CwsCarousel.carouselContainer.empty().removeClass('forward back enterLeft enterRight');
-						
-						if (State.data.multiple !== undefined) {
-							CwsCarousel.multiple = State.data.multiple;
-							CwsCarousel.carouselContainer.removeClass('multiple1 multiple2 multiple3 multiple4').addClass('multiple'+State.data.multiple);
-							CwsCarousel.markMultiple(State.data.multiple);
-						}						
-						if (State.data.state !== undefined) {
-							CwsCarousel.contentIndex = State.data.state;
-						}
-						if (State.data.lang !== undefined) {
-							CwsCarousel.lang = State.data.lang;
-						}
-						
-						CwsCarousel.carouselBuffer = '';
 
-						CwsCarousel.setNav();
-						//reduce CwsCarousel.contentIndex by multiple and iterate dust
-						CwsCarousel.contentIndex = CwsCarousel.contentIndex - CwsCarousel.multiple;// fix : this can be eg 3-2?
-						for (i=0; i < CwsCarousel.multiple; i++) {
-							projData = CwsCarousel.carouselContent.projects[CwsCarousel.contentIndex];
-							uiData = CwsCarousel.carouselUiContent;
-							mergedJson = dust.makeBase(uiData);
-							mergedJson = mergedJson.push(projData);
-							console.log('## CwsCarousel.contentIndex in dust: '+CwsCarousel.contentIndex);
-							if (CwsCarousel.contentIndex < CwsCarousel.carouselContentLength) {
-								dust.render('cwsProjects', mergedJson, incrementBuffer);//'cwsProjects' is a compiled dust template already registered
-							}
-							CwsCarousel.contentIndex++;
-						}
-						
-						var transitionInClass = 'enterLeft';
-						if (State.data.direction === 'back'){
-							transitionInClass = 'enterRight';
-						}
-						CwsCarousel.carouselContainer.html(CwsCarousel.carouselBuffer).addClass(transitionInClass);
-									
-						
-						CwsCarousel.carouselContainer.fadeTo(500, 1);
-						console.log('________________________________');
-						
-					} else {
-						alert('no State.data left, so do NORMAL history back');
+					} else if (!CwsCarousel.bCalledByUi && !State.data.state){
 						history.back();//then do normal back in users history to prev site(note lowercase h)
 					}
 
@@ -176,9 +160,8 @@ pushstate > statechange via UI btns and pasting url/loading
 						CwsCarousel.setLang(currId);
 					}
 				});
-				console.log('startItem for showpage',CwsCarousel.startItem);				
-				this.showPage(undefined, CwsCarousel.startItem, undefined, undefined);//show first set on load, potentially based on referrer
-				//debugger;
+				
+				this.showPage('forward', this.startItem, true, undefined);//show first set on load, potentially based on referrer
 				
 			}
 			this.markMultiple(this.multiple);//mark on page load
@@ -186,20 +169,19 @@ pushstate > statechange via UI btns and pasting url/loading
 
 		},
 
-		loadData : function(bIsRebuild) {//load json and pass bIsRebiuld to buildUI n????????????? beforeSend to set spinner?
+		loadData : function(bIsRebuild) {//load json and pass bIsRebiuld to buildUI
 			$.ajax({
 				url: 'json/cws_'+CwsCarousel.lang+'.json',
 				dataType: 'json',
 				cache: false,
-				success: function(data) {
+				success: function( data ) {
 					CwsCarousel.carouselContent = data.cwsData;//data
 					CwsCarousel.carouselUiContent = data.cwsData.i18n;//ui labels data
 					CwsCarousel.carouselContentLength = CwsCarousel.carouselContent.projects.length;// length of the projects data 
-//console.log('CwsCarousel.carouselContentLength: '+CwsCarousel.carouselContentLength);
 					CwsCarousel.buildUI(bIsRebuild);
 				},
 				error: function() {
-					alert('json failed to load...');
+					alert( "Failed to load json...");
 				}
 			});
 		},
@@ -213,7 +195,7 @@ pushstate > statechange via UI btns and pasting url/loading
 		setMultiple : function(newMultiple) {// action the new multiple
 			this.multiple = newMultiple;
 			this.markMultiple(newMultiple);
-			this.showPage(undefined, CwsCarousel.multiple, undefined, newMultiple);
+			this.showPage('forward', 0, true, newMultiple);
 		},
 
 		markLang : function(newLang) {// mark the menu selection for lang
@@ -225,17 +207,14 @@ pushstate > statechange via UI btns and pasting url/loading
 		setLang : function(newLang) {// action the new lang
 			this.lang = newLang;
 			this.carouselContainer.fadeTo(700, 0, function(){
-				CwsCarousel.loadData(1);//1= only refresh data		
+				CwsCarousel.loadData(1);//1= only refresh data
 				CwsCarousel.markLang(CwsCarousel.lang);
-				//debugger;
-				CwsCarousel.showPage(undefined, undefined, CwsCarousel.lang, undefined);
 			});
 		},
 
 		setNav : function() {// paging back/fwd buttons toggle inactive state
 			var next = $('.cwsCnext'),
 				prev = $('.cwsCprev');
-				//console.info('contentIndex in setnav: '+this.contentIndex);
 			if (this.contentIndex < this.carouselContentLength ) {
 				next.removeClass('disabled').attr('title', this.carouselContent.i18n.uInext);
 			} else {
@@ -246,10 +225,9 @@ pushstate > statechange via UI btns and pasting url/loading
 			} else {
 				prev.removeClass('disabled').attr('title',  this.carouselContent.i18n.uIprevious);
 			}
-		},	
+		},
 
 		init : function() {
-			//debugger;
 			var pageFromUrl = 0,
 				urlLocationType = '';
 			if (Modernizr.csstransforms){
@@ -266,14 +244,10 @@ pushstate > statechange via UI btns and pasting url/loading
 				this.multiple = parseInt(urlLocationType.split('+multiple=')[1].split('+lang=')[0], 10);
 				this.lang = urlLocationType.split('+lang=')[1].split('&')[0];
 			}
-			//debugger;
-			if(pageFromUrl !== 0){//ie it's a bookmarked/pasted url		
-				this.startItem = pageFromUrl*this.multiple;//Fix? --
-			} else {
-				//this.startItem = 0;
-				this.startItem = this.multiple;
+			if(pageFromUrl !== 0){//ie it's a bookmarked/pasted url
+				this.startItem = --pageFromUrl*this.multiple;//Fix? --
 			}
-			console.log('start item............................'+this.startItem);
+			
 			this.loadData(0);//0= rebuild full ui
 		}
 

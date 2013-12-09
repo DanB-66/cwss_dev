@@ -1,5 +1,6 @@
 
-@import "partials/base",
+@import "partials/normalize",
+		"partials/base",
         "partials/globalFooter";
 
 html {
@@ -36,6 +37,7 @@ body {
 #pageWrapper {
 	min-height: 100%;
 	margin-bottom:-2em;
+	overflow: hidden;
 }
 #pageContent {
     width: 60em;
@@ -68,6 +70,11 @@ h2 {
     margin-bottom: 0;
     margin-right: 0.5em;
     text-transform: lowercase;
+}
+ol, ul {
+	list-style: none;
+	padding: 0;
+	margin-top: 0;
 }
 .cwsCarousel {
 	height: 25em;//test
@@ -163,8 +170,7 @@ h2 {
 }
 #controls {
 	position: absolute;
-	top: -2em;
-	padding-bottom: 3px;
+	top: -1.8em;
 }
 #setMultipleControl, #setLangControl{
 	display: inline-block;
@@ -175,6 +181,8 @@ h2 {
 		font-size: 0.85em;
 		display: inline-block;
 		vertical-align: middle;
+		padding-left: 0;
+		margin: 0;
 	}
 	li {
 		cursor: pointer;
@@ -230,7 +238,7 @@ h2 {
 			-webkit-transform: rotateY(-20deg);
 		transform-style: preserve-3d;
 			-webkit-transform-style: preserve-3d;
-		@include opacity(0);
+		//@include opacity(0);
 		@include prefix(backface-visibility, 'hidden');
 		@include prefix(transition, 'all 600ms ease-in');		
 	}
