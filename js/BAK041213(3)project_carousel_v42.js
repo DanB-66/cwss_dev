@@ -37,13 +37,14 @@ define(['jquery', 'history', 'dust', 'dustTemplate1'], function ($) {
 			if (direction === 'back'){
 				this.contentIndex -= this.multiple ;
 			}
-			/*if (newLang !== undefined) {
+			if (newLang !== undefined) {
 				console.info('newLang is not undefined: '+newLang);
-			}*/
+				//this.lang = newLang; ?????????????????
+			}
 
 			this.currentPage = this.contentIndex/this.multiple;
-			
 			var that = this;
+
 			this.carouselContainer.fadeTo(500, 0, function() {
 				//here: push state and let statechange manipulate ui
 				
@@ -66,7 +67,7 @@ define(['jquery', 'history', 'dust', 'dustTemplate1'], function ($) {
 			this.renderTarget.html(controls + ui);
 			this.carouselContainer = this.renderTarget.children('.carousel');
 			if (bIsRebuild){// ie from lang select
-				//console.log('*****lang selected, in buildUI');
+				console.log('*****lang selected, in buildUI');
 				bIsRebuild = 0;
 				this.showPage(undefined, undefined, CwsCarousel.lang, undefined);
 			} else {
@@ -98,7 +99,13 @@ define(['jquery', 'history', 'dust', 'dustTemplate1'], function ($) {
 
 				History.Adapter.bind(window,'statechange',function() {// ie both browser back/fwd btn and app ui btns and initial load - manipulate ui
 					//all logic to manipulate page navigation etc should be here
-					var State = History.getState();
+					var State = History.getState(), projData, uiData, mergedJson, i, 
+						incrementBuffer = function(err, output){
+							if(err !== null){
+								alert("dust error: " + err);
+							}
+							CwsCarousel.carouselBuffer += output;
+						};
 
 					console.log('STATECHANGE, datastate: ' + State.data.state + ' direction: ' + State.data.direction + ' mult: ' + State.data.multiple+ ' lang: ' + State.data.lang);
 					
@@ -136,29 +143,50 @@ define(['jquery', 'history', 'dust', 'dustTemplate1'], function ($) {
 
 
 					if (Object.keys(State.data).length !== 0){
-			
+						
+						CwsCarousel.carouselContainer.empty().removeClass('forward back enterLeft enterRight');
+						
+						if (State.data.multiple !== undefined) {
+							CwsCarousel.multiple = State.data.multiple;
+							CwsCarousel.carouselContainer.removeClass('multiple1 multiple2 multiple3 multiple4').addClass('multiple'+State.data.multiple);
+							CwsCarousel.markMultiple(State.data.multiple);
+						}						
 						if (State.data.state !== undefined) {
 							CwsCarousel.contentIndex = State.data.state;
 						}
-				
-						if (State.data.lang !== CwsCarousel.lang) {
+						if (State.data.lang !== undefined) {
 							CwsCarousel.lang = State.data.lang;
-							//console.log('loading data, new lang from statechange back');
-							CwsCarousel.carouselContainer.fadeTo(500, 0, function() {
-								CwsCarousel.loadData(1);
-							});
-						} else if (State.data.multiple !== CwsCarousel.multiple) {	
-							//console.log('State.data.multiple !== CwsCarousel.multiple true due to back btn?');
-							CwsCarousel.multiple = State.data.multiple;
-							CwsCarousel.carouselContainer.fadeTo(500, 0, function() {
-								CwsCarousel.renderItems();
-							});
-						} else {
-							CwsCarousel.renderItems();
 						}
 						
+						CwsCarousel.carouselBuffer = '';
+
+						CwsCarousel.setNav();
+						//reduce CwsCarousel.contentIndex by multiple and iterate dust
+						CwsCarousel.contentIndex = CwsCarousel.contentIndex - CwsCarousel.multiple;// fix : this can be eg 3-2?
+						for (i=0; i < CwsCarousel.multiple; i++) {
+							projData = CwsCarousel.carouselContent.projects[CwsCarousel.contentIndex];
+							uiData = CwsCarousel.carouselUiContent;
+							mergedJson = dust.makeBase(uiData);
+							mergedJson = mergedJson.push(projData);
+							//console.log('## CwsCarousel.contentIndex in dust: '+CwsCarousel.contentIndex);
+							if (CwsCarousel.contentIndex < CwsCarousel.carouselContentLength) {
+								dust.render('cwsProjects', mergedJson, incrementBuffer);//'cwsProjects' is a compiled dust template already registered
+							}
+							CwsCarousel.contentIndex++;
+						}
+						
+						var transitionInClass = 'enterLeft';
+						if (State.data.direction === 'back'){
+							transitionInClass = 'enterRight';
+						}
+						CwsCarousel.carouselContainer.html(CwsCarousel.carouselBuffer).addClass(transitionInClass);
+									
+						
+						CwsCarousel.carouselContainer.fadeTo(500, 1);
+						console.log('________________________________');
+						
 					} else {
-						//alert('no State.data left, so do NORMAL history back');
+						alert('no State.data left, so do NORMAL history back');
 						history.back();//then do normal back in users history to prev site(note lowercase h)
 					}
 
@@ -206,51 +234,6 @@ define(['jquery', 'history', 'dust', 'dustTemplate1'], function ($) {
 			});
 		},
 
-		renderItems : function() {
-		
-			var incrementBuffer = function(err, output){
-				if(err !== null){
-					alert("dust error: " + err);
-				}
-				CwsCarousel.carouselBuffer += output;
-			};
-			
-			CwsCarousel.carouselContainer.empty().removeClass('forward back enterLeft enterRight');
-				
-			CwsCarousel.carouselContainer.removeClass('multiple1 multiple2 multiple3 multiple4').addClass('multiple'+CwsCarousel.multiple);
-			CwsCarousel.markMultiple(CwsCarousel.multiple);
-				
-		
-			CwsCarousel.carouselBuffer = '';
-
-			CwsCarousel.setNav();
-			//reduce CwsCarousel.contentIndex by multiple and iterate dust
-			CwsCarousel.contentIndex = CwsCarousel.contentIndex - CwsCarousel.multiple;// fix : this can be eg 3-2?
-			for (var i=0; i < CwsCarousel.multiple; i++) {
-				projData = CwsCarousel.carouselContent.projects[CwsCarousel.contentIndex];
-				uiData = CwsCarousel.carouselUiContent;
-				mergedJson = dust.makeBase(uiData);
-				mergedJson = mergedJson.push(projData);
-				//console.log('## CwsCarousel.contentIndex in dust: '+CwsCarousel.contentIndex);
-				if (CwsCarousel.contentIndex < CwsCarousel.carouselContentLength) {
-					dust.render('cwsProjects', mergedJson, incrementBuffer);//'cwsProjects' is a compiled dust template already registered
-				}
-				CwsCarousel.contentIndex++;
-			}
-			
-			var transitionInClass = 'enterLeft';
-			if (CwsCarousel === 'back'){
-				transitionInClass = 'enterRight';
-			}
-			CwsCarousel.carouselContainer.html(CwsCarousel.carouselBuffer).addClass(transitionInClass);
-						
-			
-			CwsCarousel.carouselContainer.fadeTo(500, 1);
-			console.log('________________________________');
-		
-		},
-
-
 		markMultiple : function(newMultiple) {// mark the menu selection for multiple
 			var multipleMenu = $('#setMultipleControl');
 			multipleMenu.find('li').removeClass('active');
@@ -259,6 +242,7 @@ define(['jquery', 'history', 'dust', 'dustTemplate1'], function ($) {
 
 		setMultiple : function(newMultiple) {// action the new multiple
 			this.multiple = newMultiple;
+			this.markMultiple(newMultiple);
 			this.showPage(undefined, CwsCarousel.multiple, undefined, newMultiple);
 		},
 
@@ -272,6 +256,9 @@ define(['jquery', 'history', 'dust', 'dustTemplate1'], function ($) {
 			this.lang = newLang;
 			this.carouselContainer.fadeTo(700, 0, function(){
 				CwsCarousel.loadData(1);//1= only refresh data		
+				CwsCarousel.markLang(CwsCarousel.lang);
+				//debugger;
+				CwsCarousel.showPage(undefined, undefined, CwsCarousel.lang, undefined);
 			});
 		},
 

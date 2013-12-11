@@ -187,6 +187,8 @@ ol, ul {
 	li {
 		cursor: pointer;
 		margin-left:.3em;
+		@include transition-property(color);
+		@include transition-duration($short_time);		
 		&:hover, &.active {
 			color: $default_text_contrast_color;
 		}
@@ -194,6 +196,9 @@ ol, ul {
 			cursor: default;
 		}
 	}
+}
+#setMultipleControl{
+	width: 13em;
 }
 // content areas... just some basics for now
 .cwsCarousel {
