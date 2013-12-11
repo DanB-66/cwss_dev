@@ -1,11 +1,27 @@
 requirejs.config({
-	'baseUrl': 'js/',
-	'paths': {
-		'jquery': '//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min',
-		'history': '//cdnjs.cloudflare.com/ajax/libs/history.js/1.8/bundled/html4+html5/jquery.history.min',
-		'dust': '//cdnjs.cloudflare.com/ajax/libs/dustjs-linkedin/1.2.3/dust-core.min',
-		'dustTemplate1': '../templates/_cws.tmplcompiled_v42'
+	baseUrl: 'js/vendor',
+	paths: {
+		//'jquery': ['//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min', 'jquery-1.10.2.min'],
+		//'history': ['//cdnjs.cloudflare.com/ajax/libs/history.js/1.8/bundled/html4+html5/jquery.history.min', 'jquery.history'],
+		//'dust': ['//cdnjs.cloudflare.com/ajax/libs/dustjs-linkedin/2.2.2/dust-core.min', 'dust-core-2.2.2.min'],
+		'jquery': 'jquery-1.10.2.min',
+		'history': 'jquery.history',
+		'dust': 'dust-core-2.2.2.min',
+		'dustTemplate1': '../../templates/_cws.tmplcompiled_v42'
+	},
+	shim: {
+		'history': {
+			deps: ['jquery'],
+			exports: 'History'
+		},
+		'dust': {
+			exports: 'dust'
+		},
+		'dustTemplate1': {
+			deps: ['dust']
+		}
 	}
 });
 
-requirejs(["main"]);
+// Load the main app module to start the app
+requirejs(['../main']);
