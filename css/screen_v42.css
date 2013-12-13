@@ -242,7 +242,7 @@ h2 { font-size: 0.5em; letter-spacing: 0.5em; margin-bottom: 0; margin-right: 0.
 ol, ul { list-style: none; padding: 0; margin-top: 0; }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\0000379}}
-.cwsCarousel { height: 25em; background: gainsboro; position: relative; padding: 0 2em; margin-top: 3em; }
+.cwsCarousel { height: 25em; background: gainsboro; position: relative; padding: 0 2em; margin-top: 2em; }
 @media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\0000385}}
 .cwsCarousel .carousel { height: 100%; }
 @media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\0000388}}
@@ -256,7 +256,7 @@ ol, ul { list-style: none; padding: 0; margin-top: 0; }
 @media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003112}}
 .cwsCarousel .multiple4 article { width: 25%; }
 @media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003115}}
-.cwsCarousel .cwsCprev, .cwsCarousel .cwsCnext { position: absolute; top: 0; bottom: 0; width: 2em; background-color: #666666; text-indent: -999px; white-space: nowrap; outline: 1px solid #000; overflow: hidden; -webkit-transition-property: background-color; -moz-transition-property: background-color; -o-transition-property: background-color; transition-property: background-color; -webkit-transition-duration: 1s; -moz-transition-duration: 1s; -o-transition-duration: 1s; transition-duration: 1s; }
+.cwsCarousel .cwsCprev, .cwsCarousel .cwsCnext { position: absolute; top: 0; bottom: 0; width: 2em; background-color: #666666; text-indent: -999px; white-space: nowrap; outline: 1px solid #000; overflow: hidden; -webkit-transition-property: background-color; -moz-transition-property: background-color; -o-transition-property: background-color; transition-property: background-color; -webkit-transition-duration: 0.5s; -moz-transition-duration: 0.5s; -o-transition-duration: 0.5s; transition-duration: 0.5s; }
 @media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003128}}
 .cwsCarousel .cwsCprev:hover, .cwsCarousel .cwsCnext:hover, .cwsCarousel .cwsCprev:focus, .cwsCarousel .cwsCnext:focus { background-color: #999999; cursor: pointer; }
 @media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003132}}
@@ -284,14 +284,14 @@ ol, ul { list-style: none; padding: 0; margin-top: 0; }
 @media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003179}}
 #setMultipleControl h4, #setMultipleControl ul, #setMultipleControl li, #setLangControl h4, #setLangControl ul, #setLangControl li { font-weight: normal; font-size: 0.85em; display: inline-block; vertical-align: middle; padding-left: 0; margin: 0; }
 @media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003187}}
-#setMultipleControl li, #setLangControl li { cursor: pointer; margin-left: .3em; -webkit-transition-property: color; -moz-transition-property: color; -o-transition-property: color; transition-property: color; -webkit-transition-duration: 1s; -moz-transition-duration: 1s; -o-transition-duration: 1s; transition-duration: 1s; }
+#setMultipleControl li, #setLangControl li { cursor: pointer; margin-left: .3em; -webkit-transition-property: color; -moz-transition-property: color; -o-transition-property: color; transition-property: color; -webkit-transition-duration: 0.5s; -moz-transition-duration: 0.5s; -o-transition-duration: 0.5s; transition-duration: 0.5s; }
 @media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003192}}
 #setMultipleControl li:hover, #setMultipleControl li.active, #setLangControl li:hover, #setLangControl li.active { color: #ff6600; }
 @media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003195}}
 #setMultipleControl li.active, #setMultipleControl li.active:hover, #setLangControl li.active, #setLangControl li.active:hover { cursor: default; }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003200}}
-#setMultipleControl { width: 13em; }
+#setMultipleControl { min-width: 14em; }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003205}}
 .cwsCarousel article { line-height: 1.3; }

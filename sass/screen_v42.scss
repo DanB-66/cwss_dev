@@ -81,7 +81,7 @@ ol, ul {
     background: $secondary_color;
     position: relative;
     padding: 0 2em;
-	margin-top: 3em;
+	margin-top: 2em;
 	.carousel {
 		height: 100%;
 	}
@@ -198,7 +198,7 @@ ol, ul {
 	}
 }
 #setMultipleControl{
-	width: 13em;
+	min-width: 14em;
 }
 // content areas... just some basics for now
 .cwsCarousel {
