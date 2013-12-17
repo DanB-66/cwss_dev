@@ -21,56 +21,119 @@
 				"uIfr": "French"
 			}
 		},
-		"generalContent": {
+		"generalIntro": {
 			"siteTitle": "Code Workshop Systems Ltd",
 			"introCopy": "Code Workshop Systems is the commercial representation of myself, Dan Brown. For over a dozen years, I have provided London-based agencies and organisations with robust, reliable, standards-compliant digital content."
 		},
 		"projects": [
 			{
-				"client": "Confidential International Bank",
-				"agency": "Brilliant Basics",
-				"projectName": "Confidential",
-				"projectDescription": "Development of tablet banking app.",
-				"duration": "6 weeks",
-				"shortDescription": "Build-out of screens and flows for a tablet banking app",
+				"client": "New Look",
+				"agency": "Velti",
+				"projectName": "m.newlook.com",
+				"projectDescription": "Mobile site for New Look clothing retailer.",
+				"duration": "5 months",
+				"shortDescription": "Browse and buy from the New Look range.",
 				"extendedInfo": {
-					"agencyDetails": "Brilliant Basics is a digital agency that helps define, design and construct customer centric digital products on the web, tablet and mobile",
-					"workUndertaken": "I was engaged in producing additional screens and content for an iPad banking app using an existing custom MVC framework. This also involved working with lead UX to implement client change requests and new functionality, estimating work and collaborating with other developers both offshore and local.",
+					"agencyDetails": "Velti was founded over 13 years ago to develop and execute highly interactive campaigns for mobile operators",
+					"workUndertaken": "Part of a team of two frontend and one (Zend) PHP dev building the next-generation mobile site for New Look, providing both product browsing and a streamlined transactional flow. Working to a tight spec from the client, a variety of technical challanges were overcome to deliver the project.",
 					"otherDetails": [
-						"Work with custom MVC code",
-						"Mustache templating",
-						"Use of GIT"
+						"Working with a pre-existing third-party API which supplied all product and store details",
+						"Services-oriented custom jQuery code",
+						"Extensive form validation work",
+						"JIRA and extensive QA rounds"
 					]
 				},
 				"assets": {
 					"images": [
 						{
-							"title": "Brilliant Basics",
-							"url": "img/jobs/bb.png"
+							"title": "New Look mobile site",
+							"url": "img/jobs/newlook.jpg"
+						}
+					],
+					"links": [
+						{
+							"title": "New Look mobile site",
+							"url": "https://m.newlook.com"
+						}
+					]
+				}
+			},
+			{
+				"client": "Accenture",
+				"agency": "Accenture Interactive.",
+				"projectName": "'Future Banking' iPad demos",
+				"projectDescription": "Tablet banking app prototype demos.",
+				"duration": "6 weeks",
+				"shortDescription": "Development of interactive iPad demos",
+				"extendedInfo": {
+					"agencyDetails": "Accenture Interactive can help you grow your business in entirely new ways.",
+					"workUndertaken": "I was brought in to help produce iPad demos and interactive concept pieces to help Accenture staff pitch digital capabilities to their existing clients.",
+					"otherDetails": [
+						"iPad webapp development",
+						"UI interactive scripting"
+					]
+				},
+				"assets": {
+					"images": [
+						{
+							"title": "Future Banking",
+							"url": "img/jobs/future_banking.png"
+						}
+					]
+				}
+			},
+			{
+				"client": "Confidential International Bank",
+				"agency": "Brilliant Basics",
+				"projectName": "Tablet Banking webapp",
+				"projectDescription": "Tablet and mobile banking app.",
+				"duration": "6 weeks",
+				"shortDescription": "Build-out of screens and flows for a tablet banking app",
+				"extendedInfo": {
+					"agencyDetails": "Brilliant Basics is a digital agency that helps define, design and construct customer centric digital products on the web, tablet and mobile",
+					"workUndertaken": "I was brought in to help produce additional screens and content for an iPad banking app which required quickly getting up to speed with their existing custom MVC framework. This also involved working with lead UX to implement client change requests and new functionality, estimating work and collaborating with other developers both offshore and local.",
+					"otherDetails": [
+						"Work with existing custom MVC code",
+						"Mustache templating",
+						"Use of GIT",
+						"Internationalisation work"
+					]
+				},
+				"assets": {
+					"images": [
+						{
+							"title": "Tablet Banking App",
+							"url": "img/jobs/ga_tabletcrop.jpg"
+						}
+					],
+					"links": [
+						{
+							"title": "App on iTunes",
+							"url": "https://itunes.apple.com/gb/app/hsbc-mobile-banking/id565993818?mt=8"
 						}
 					]
 				}
 			},
 			{
 				"client": "EE",
-				"agency": "Sapient Nitro",
-				"projectName": "EE launch",
-				"projectDescription": "Partner portal for existing EE, T-mobile and Orange resellers to access branding and marketing information.",
+				"agency": "SapientNitro",
+				"projectName": "EE launch 'Partner Portal'",
+				"projectDescription": "Portal site for existing T-mobile and Orange resellers to access and migrate to new EE branding and marketing information.",
 				"duration": "3 weeks",
 				"shortDescription": "HTML/CSS/JS implementation for EE launch",
 				"extendedInfo": {
 					"agencyDetails": "Sapient is a consulting and technology company with a global headcount of over 7k.",
-					"workUndertaken": "I was part of a two-man front end team developing a portal site for internal partners. Due to a short deadline, the pages were developed from wireframes and styleguides with full GD for only some of the elements, this was sucessfully accomplished by an ongoing consultation and review process with designers and IA's.",
+					"workUndertaken": "I was part of a two-man front end team developing a portal site for internal partners. Due to a short deadline, the pages were developed from wireframes and styleguides with full GD for only some of the elements, this was sucessfully accomplished by an ongoing consultation and onscreen review process with designers and IA's.",
 					"otherDetails": [
 						"Login form scripting for clientside validation and querying REST login service",
-						"Front end support for Jahia CMS developers"
+						"Front end support for offshore Jahia CMS developers"
 					]
 				},
 				"assets": {
 					"images": [
 						{
 							"title": "EE",
-							"url": "img/jobs/ee-logo.png"
+							"url": "img/jobs/ee_crop.jpg"
 						}
 					],
 					"links": [
@@ -83,7 +146,7 @@
 			},
 			{
 				"client": "Toni+Guy/Unilever",
-				"agency": "Sapient Nitro",
+				"agency": "SapientNitro",
 				"projectName": "Hair meet Wardrobe",
 				"projectDescription": "Hair Fashion inspiration from Toni&Guy. Recreate this season's catwalk & street-style looks with 4 style collections",
 				"duration": "3 months",
@@ -92,10 +155,9 @@
 					"agencyDetails": "Sapient is a consulting and technology company with a global headcount of over 7k.",
 					"workUndertaken": "UI development, additional and extended product templates and functionality, implementation and specification of Google hashbang (#!) url mapping to SEO content, url manipulation for additional locales.",
 					"otherDetails": [
-						"Work with nationally and internationally distributed teams",
+						"Liaison with offshore backend developers",
 						"Agile methodology",
-						"Extensive work with legacy systems",
-						"Scripting work with existing codebase"
+						"Extending functionality of existing codebase"
 					]
 				},
 				"assets": {
@@ -117,8 +179,32 @@
 					]
 				}
 			},
+						{
+				"client": "Global FMCG giant",
+				"agency": "SapientNitro",
+				"projectName": "Recipedia",
+				"projectDescription": "Unreleased recipe site",
+				"duration": "7 months",
+				"shortDescription": "Build of an innovative recipe site, including video assets, shopping lists and a fullscreen cooking mode.",
+				"extendedInfo": {
+					"agencyDetails": "Sapient is a consulting and technology company with a global headcount of over 7k.",
+					"workUndertaken": "Working with up to five frontend devs within a large team including BA's and offshore backend devs. Unfortunately the client decided not to release the project.",
+					"otherDetails": [
+						"Services driven scripting",
+						"Local storage"
+					]
+				},
+				"assets": {
+					"images": [
+						{
+							"title": "Recipedia",
+							"url": "img/jobs/recipedia.jpg"
+						}
+					]
+				}
+			},
 			{
-				"client": "Sure/Unilever",
+				"client": "Unilever",
 				"agency": "Iris",
 				"projectName": "Sure Men Fast Cash Races",
 				"projectDescription": "Competition pack code redemption site",
@@ -128,7 +214,7 @@
 					"agencyDetails": "Iris are one of the world's leading independent integrated agency groups.",
 					"workUndertaken": "Build of 'Sure Men Fast Cash Races' which allowed consumers to enter a pack code and then watch a series of 'Top Gear' style drag races with the possibility of winning £10!",
 					"otherDetails": [
-						"HTML5 template development for .net",
+						"HTML5 template development in collaboration with .net dev",
 						"Video encoding"
 					]
 				},
@@ -178,12 +264,6 @@
 							"title": "Vodafone VIP",
 							"url": "img/jobs/voda_streamline.jpg"
 						}
-					],
-					"links": [
-						{
-							"title": "Vodafone home",
-							"url": "http://www.vodafone.com"
-						}
 					]
 				}
 			},
@@ -202,12 +282,6 @@
 						{
 							"title": "Wine chooser",
 							"url": "img/jobs/thumb_morrisons.gif"
-						}
-					],
-					"links": [
-						{
-							"title": "Morrisons",
-							"url": "http://www.morrisons.com"
 						}
 					]
 				}
@@ -228,6 +302,12 @@
 							"title": "Telenor",
 							"url": "http://www.telenor.com"
 						}
+					],
+					"images": [
+						{
+							"title": "Telenor site",
+							"url": "img/jobs/thumb_telenor.gif"
+						}
 					]
 				}
 			},
@@ -246,6 +326,12 @@
 						{
 							"title": "KBC Securities website",
 							"url": "https://www.kbcsecurities.com/"
+						}
+					],
+					"images": [
+						{
+							"title": "KBC site",
+							"url": "img/jobs/kbc.png"
 						}
 					]
 				}

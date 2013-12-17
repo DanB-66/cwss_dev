@@ -27,19 +27,75 @@
 		},
 		"projects": [
 			{
-				"client": "En francais! Confidential International Bank",
-				"agency": "En francais! Brilliant Basics",
-				"projectName": "Confidential",
-				"projectDescription": "fr Development of tablet banking app.",
-				"duration": "fr 6 weeks",
-				"shortDescription": "En francais!  Build-out of screens and flows for a tablet banking app",
+				"client": "New Look",
+				"agency": "Velti",
+				"projectName": "m.newlook.com",
+				"projectDescription": "Site mobile pour New Look détaillant de vêtements.",
+				"duration": "5 mois",
+				"shortDescription": "Voir et acheter de la gamme New Look.",
 				"extendedInfo": {
-					"agencyDetails": "fr Brilliant Basics is a digital agency that helps define, design and construct customer centric digital products on the web, tablet and mobile",
-					"workUndertaken": "fr I was engaged in producing additional screens and content for an iPad banking app using an existing custom MVC framework. This also involved working with lead UX to implement client change requests and new functionality, estimating work and collaborating with other developers both offshore and local",
+					"agencyDetails": "Velti a été fondée il ya plus de 13 ans pour développer et exécuter des campagnes hautement interactifs pour les opérateurs mobiles.",
+					"workUndertaken": "Partie d'une équipe de deux frontend et un (Zend) développeur PHP construction du site mobile de prochaine génération pour New Look, fournissant à la fois la navigation de produit et un flux transactionnel rationalisé. Travailler à un spec serré du client, une variété de Challanges techniques ont été surmontés pour réaliser le projet.",
 					"otherDetails": [
-						"fr Work with custom MVC code",
-						"fr Mustache templating",
-						"fr Use of GIT"
+						"Travailler avec un API préexistante tiers qui a fourni tous les produits et magasins de détails",
+						"Services orientée le code de jQuery customisé",
+						"D'importants travaux de validation de formulaire",
+						"JIRA et de vastes tours d'AQ"
+					]
+				},
+				"assets": {
+					"images": [
+						{
+							"title": "Site mobile New Look",
+							"url": "img/jobs/newlook.jpg"
+						}
+					],
+					"links": [
+						{
+							"title": "Site mobile New Look",
+							"url": "https://m.newlook.com"
+						}
+					]
+				}
+			},
+			{
+				"client": "Accenture",
+				"agency": "Accenture Interactive.",
+				"projectName": "Demos 'la banque du futur' iPad.",
+				"projectDescription": "Bancaires Tablet démos application de prototypes.",
+				"duration": "6 semaine",
+				"shortDescription": "Développement des démos interactives iPad.",
+				"extendedInfo": {
+					"agencyDetails": "Accenture Interactive peut vous aider à développer votre entreprise dans des voies entièrement nouvelles.",
+					"workUndertaken": "J'ai été élevé pour aider à produire des démos iPad et des morceaux de concept interactif pour aider les capacités numériques de terrain de personnel Accenture à leurs clients existants.",
+					"otherDetails": [
+						"Développement de webapp iPad",
+						"UI script interactif"
+					]
+				},
+				"assets": {
+					"images": [
+						{
+							"title": "La banque du futur",
+							"url": "img/jobs/future_banking.png"
+						}
+					]
+				}
+			},
+			{
+				"client": "Confidentiel Banque Internationale",
+				"agency": "Brilliant Basics",
+				"projectName": "Confidentiel",
+				"projectDescription": "Développement de l'application bancaire de la tablette.",
+				"duration": "6 semaines",
+				"shortDescription": "Construire des écrans et des flux pour une application tablette bancaire",
+				"extendedInfo": {
+					"agencyDetails": "Brilliant Basics est une agence digitale qui permet de définir, concevoir et construire client produits digitale centrés sur le web, tablette et mobile",
+					"workUndertaken": "J'ai été engagé dans la production d'écrans et de contenu pour une application bancaire iPad supplémentaires à l'aide d'un cadre existant MVC personnalisé. Cela a également consisté à travailler avec UX conduire à la mise en œuvre des demandes de changement de client et de nouvelles fonctionnalités, l'estimation des travaux et la collaboration avec d'autres développeurs offshore et locale.",
+					"otherDetails": [
+						"Travailler avec le code MVC customisé",
+						"'Mustache' gabarits",
+						"Utilisation de GIT"
 					]
 				},
 				"assets": {
@@ -60,7 +116,7 @@
 				"shortDescription": "En francais! HTML/CSS/JS implementation for EE launch",
 				"extendedInfo": {
 					"agencyDetails": "Sapient is a consulting and technology company with a global headcount of over 7k.",
-					"workUndertaken": "I was part of a two-man front end team developing a portal site for internal partners. Due to a short deadline, the pages were developed from wireframes and styleguides with full GD for only some of the elements, this was sucessfully accomplished by an ongoing consultation and review process with designers and IA's.",
+					"workUndertaken": "En francais!  I was part of a two-man front end team developing a portal site for internal partners. Due to a short deadline, the pages were developed from wireframes and styleguides with full GD for only some of the elements, this was sucessfully accomplished by an ongoing consultation and review process with designers and IA's.",
 					"otherDetails": [
 						"Login form scripting for clientside validation and querying REST login service",
 						"Front end support for Jahia CMS developers"
@@ -90,7 +146,7 @@
 				"shortDescription": "En francais! Part of a three man 'Phase 2' FE team extending and bug fixing existing code.",
 				"extendedInfo": {
 					"agencyDetails": "Sapient is a consulting and technology company with a global headcount of over 7k.",
-					"workUndertaken": "UI development, additional and extended product templates and functionality, implementation and specification of Google hashbang (#!) url mapping to SEO content, url manipulation for additional locales.",
+					"workUndertaken": "En francais!  UI development, additional and extended product templates and functionality, implementation and specification of Google hashbang (#!) url mapping to SEO content, url manipulation for additional locales.",
 					"otherDetails": [
 						"Work with nationally and internationally distributed teams",
 						"Agile methodology",
@@ -126,7 +182,7 @@
 				"shortDescription": "En francais! HTML5 build of competition site, including video assets of races and work with .net developer.",
 				"extendedInfo": {
 					"agencyDetails": "Iris are one of the world's leading independent integrated agency groups.",
-					"workUndertaken": "Build of 'Sure Men Fast Cash Races' which allowed consumers to enter a pack code and then watch a series of 'Top Gear' style drag races with the possibility of winning £10!",
+					"workUndertaken": "En francais!  Build of 'Sure Men Fast Cash Races' which allowed consumers to enter a pack code and then watch a series of 'Top Gear' style drag races with the possibility of winning £10!",
 					"otherDetails": [
 						"HTML5 template development for .net",
 						"Video encoding"
@@ -160,7 +216,7 @@
 				"shortDescription": "HTML/CSS/JS implementation and maintenance work on the Vodafone uk site, including ongoing BAU work and new microsites.",
 				"extendedInfo": {
 					"agencyDetails": "Sapient is a consulting and technology company with a global headcount of over 7k.",
-					"workUndertaken": "I was brought in as part of a team to help improve the existing codebase and to implement new projects, including a microsite for the launch of the iPhone 4 on the Vodafone network.",
+					"workUndertaken": "En francais!  I was brought in as part of a team to help improve the existing codebase and to implement new projects, including a microsite for the launch of the iPhone 4 on the Vodafone network.",
 					"otherDetails": [
 						"Work with nationally and internationally distributed teams",
 						"Agile methodology",
@@ -195,7 +251,7 @@
 				"shortDescription": "HTML/CSS/JS implementation work on Morrison's including a 'Wine Chooser' module and 'Offers' pages.",
 				"extendedInfo": {
 					"agencyDetails": "Candi International was a UK digital agency dedicated to retailers and consumer brands.",
-					"workUndertaken": "I was brought in as part of a team to implement new projects, including working alongside .net devs."
+					"workUndertaken": "En francais! I was brought in as part of a team to implement new projects, including working alongside .net devs."
 				},
 				"assets": {
 					"images": [
@@ -220,7 +276,7 @@
 				"shortDescription": "HTML/CSS/JS build of templates for the Telenor website.",
 				"extendedInfo": {
 					"agencyDetails": "Tonic was an award winning digital agency in London.",
-					"workUndertaken": "Built the original front end. Client decided to change the background from white to black at the very last minute which was relatively easy with my well structured css."
+					"workUndertaken": "En francais! Built the original front end. Client decided to change the background from white to black at the very last minute which was relatively easy with my well structured css."
 				},
 				"assets": {
 					"links": [
@@ -239,7 +295,7 @@
 				"shortDescription": "Implementation of designers layouts for a new website for KBC Securities.",
 				"extendedInfo": {
 					"agencyDetails": "SAS London is an award-winning digital marketing and design agency specialising in digital, corporate, employee and brand communications.",
-					"workUndertaken": "I was brought in to develop a new site from designers layouts - the work is still in use today."
+					"workUndertaken": "En francais! I was brought in to develop a new site from designers layouts - the work is still in use today."
 				},
 				"assets": {
 					"links": [
