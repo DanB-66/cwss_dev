@@ -1,80 +1,21 @@
-//BASE SASS FILE CONTENTS
 
-/* sass base */
-@import "compass/reset",
-		"compass/css3",
-		"compass/utilities";
-
-// colours
-$default_text_color: #000;//default  eg body text
-$default_text_contrast_color: #f60;//orange eg links
-
-$primary_color: #999;
-$secondary_color: #dcdcdc;
-
-$control_color: #333;
-$control_hover_color: #ccc;
-$control_background_color: #666;
-$control_background_hover_color: #999;
-$control_color_disabled: #ccc;
-$control_color_disabled_background: #d4d4d4;
-
-$single_space: 0.625rem;
-$double_space: 1.25rem;
-
-$small_radius: 1rem;
-$medium_radius: 1.5625rem;
-
-$short_time: 1s;
-$medium_time: 2s;
-$long_time: 5s;
-
-// breakpoints
-@mixin breakpoint($point) {
-	@if $point == maxi {
-		@media (min-width: 1600px) { @content; }
-	}
-	@if $point == midi {
-		@media (min-width: 1024px) and (max-width: 1599px) { @content; }
-	}
-	@else if $point == mini {
-		@media (min-width: 768px) and (max-width: 1023px)  { @content; }
-	}
-	@else if $point == micro {
-		@media (min-width: 600px) and (max-width: 767px)  { @content; }
-	}
-	@else if $point == nano {
-		@media (max-width: 599px)  { @content; }
-	}
-}
-
-//prefix for vendors
-//useage: @include prefix(transition, "color #{$animation-speed} linear, margin-left #{$animation-speed} linear");
-$prefixes: ('-webkit-','-moz-', '-o-', '-ms-', '');
-@mixin prefix($property, $value) { 
-	@each $prefix in $prefixes {
-		#{$prefix}#{$property}: #{$value};
-	}
-}
-
-//MAIN SASS FILE CONTENTS
-
-@import "partials/base",
-        "partials/globalFooter";
+@import "partials/normalize",
+	"partials/base",
+	"partials/globalFooter";
 
 html {
-    height: 100%;
+	height: 100%;
 }
 body {
-    color: $default_text_color;
+	color: $default_text_color;
 	// $experimental-support-for-svg: true;
-    //@include background-image(linear-gradient(#fff, #999));
+	//@include background-image(linear-gradient(#fff, #999));
 	background: #000 url(../img/cowset.jpg) center 50% fixed no-repeat;
 	//background: #999;
-    -moz-background-size: cover;
-    background-size: cover;	
-    font: 1em/1.4 sans-serif;
-    height: 100%;
+	-moz-background-size: cover;
+	background-size: cover;	
+	font: 1em/1.4 sans-serif;
+	height: 100%;
 	@include breakpoint(maxi) {
 		font-size: 1.5em; 
 	}
@@ -96,45 +37,51 @@ body {
 #pageWrapper {
 	min-height: 100%;
 	margin-bottom:-2em;
+	overflow: hidden;
 }
 #pageContent {
-    width: 60em;
-    margin: 0 auto;
+	width: 60em;
+	margin: 0 auto;
 	padding: 1em 0 3em;
 }
 //global header
 #pageContent > header {
-    color: $secondary_color;
-    border: 3px solid $secondary_color;
-    border-width: 3px 0;
-    font-family: 'Orbitron', sans-serif;
-    letter-spacing: 0.4em;
-    margin-bottom: $double_space;
-    padding: 0 0.2em 0.2em;
-    @include border-radius($small_radius);
-    text-align: right;
-    text-transform: uppercase;
-    font-weight: normal;
-    font-size: 2em;
+	color: $secondary_color;
+	border: 3px solid $secondary_color;
+	border-width: 3px 0;
+	font-family: 'Orbitron', sans-serif;
+	letter-spacing: 0.4em;
+	margin-bottom: $double_space;
+	padding: 0 0.2em 0.2em;
+	@include border-radius($small_radius);
+	text-align: right;
+	text-transform: uppercase;
+	font-weight: normal;
+	font-size: 2em;
 }
 h1, h2 {
-    background: transparent;
-    font-size: 1em;
-    margin:0 0 -0.2em;
+	background: transparent;
+	font-size: 1em;
+	margin:0 0 -0.2em;
 }
 h2 {
-    font-size: 0.5em;
-    letter-spacing: 0.5em;
-    margin-bottom: 0;
-    margin-right: 0.5em;
-    text-transform: lowercase;
+	font-size: 0.5em;
+	letter-spacing: 0.5em;
+	margin-bottom: 0;
+	margin-right: 0.5em;
+	text-transform: lowercase;
+}
+ol, ul {
+	list-style: none;
+	padding: 0;
+	margin-top: 0;
 }
 .cwsCarousel {
 	height: 25em;//test
-    background: $secondary_color;
-    position: relative;
-    padding: 0 2em;
-	margin-top: 3em;
+	background: $secondary_color;
+	position: relative;
+	padding: 0 2em;
+	margin-top: 2em;
 	.carousel {
 		height: 100%;
 	}
@@ -188,7 +135,7 @@ h2 {
 	}
 	.cwsCprev {
 		left:0;
-	}        
+	}		 
 	.cwsCnext {
 		right:0;
 	}
@@ -223,8 +170,7 @@ h2 {
 }
 #controls {
 	position: absolute;
-	top: -2em;
-	padding-bottom: 3px;
+	top: -1.8em;
 }
 #setMultipleControl, #setLangControl{
 	display: inline-block;
@@ -235,10 +181,14 @@ h2 {
 		font-size: 0.85em;
 		display: inline-block;
 		vertical-align: middle;
+		padding-left: 0;
+		margin: 0;
 	}
 	li {
 		cursor: pointer;
 		margin-left:.3em;
+		@include transition-property(color);
+		@include transition-duration($short_time);		
 		&:hover, &.active {
 			color: $default_text_contrast_color;
 		}
@@ -247,7 +197,10 @@ h2 {
 		}
 	}
 }
-// content areas.. just some basics for now
+#setMultipleControl{
+	min-width: 14em;
+}
+// content areas... just some basics for now
 .cwsCarousel {
 	article {
 		line-height: 1.3;
@@ -286,66 +239,64 @@ h2 {
 	-webkit-perspective: 900px;
 
 	article{
-		transform: rotateY(90deg);
-			-webkit-transform: rotateY(90deg);
+		transform: rotateY(-20deg);
+			-webkit-transform: rotateY(-20deg);
 		transform-style: preserve-3d;
 			-webkit-transform-style: preserve-3d;
-		@include opacity(0);
+		//@include opacity(0);
 		@include prefix(backface-visibility, 'hidden');
-		@include prefix(transition, 'all 600ms ease-in');		
+		@include prefix(transition, 'all 600ms ease-in');
 	}
-
-
 
 	//forward
 	&.forward article:last-child{
-		transform: rotateY(50deg);
-			-webkit-transform: rotateY(50deg);
-		transition-delay: 50ms;
-			-webkit-transition-delay: 50ms;
+		transform: rotateY(50deg) translateX(50%);
+			-webkit-transform: rotateY(50deg) translateX(50%);
+		transition-delay: 1200ms;
+			-webkit-transition-delay: 1200ms;
 	}
 	&.forward article:nth-last-child(2){
-		transform: rotateY(40deg);
-			-webkit-transform: rotateY(40deg);
-		transition-delay: 400ms;
-			-webkit-transition-delay: 400ms;
-	}
-	&.forward article:nth-last-child(3){
-		transform: rotateY(30deg);
-			-webkit-transform: rotateY(30deg);
+		transform: rotateY(40deg) translateX(100%);
+			-webkit-transform: rotateY(40deg) translateX(100%);
 		transition-delay: 800ms;
 			-webkit-transition-delay: 800ms;
 	}
+	&.forward article:nth-last-child(3){
+		transform: rotateY(30deg) translateX(150%);
+			-webkit-transform: rotateY(30deg) translateX(150%);
+		transition-delay: 400ms;
+			-webkit-transition-delay: 400ms;
+	}
 	&.forward article:nth-last-child(4){
-		transform: rotateY(20deg);
-			-webkit-transform: rotateY(20deg);
-		transition-delay: 1200ms;	
-			-webkit-transition-delay: 1200ms;	
+		transform: rotateY(20deg) translateX(200%);
+			-webkit-transform: rotateY(20deg) translateX(200%);
+		transition-delay: 200ms;	
+			-webkit-transition-delay: 200ms;	
 	}
 	//back
 	&.back article:first-child{
-		transform: rotateY(-50deg);
-			-webkit-transform: rotateY(-50deg);
-		transition-delay: 50ms;
-			-webkit-transition-delay: 50ms;
+		transform: rotateY(-50deg) translateX(-50%);
+			-webkit-transform: rotateY(-50deg) translateX(-50%);
+		transition-delay: 1200ms;
+			-webkit-transition-delay: 1200ms;
 	}
 	&.back article:nth-child(2){
-		transform: rotateY(-40deg);
-			-webkit-transform: rotateY(-40deg);
+		transform: rotateY(-40deg) translateX(-100%);
+			-webkit-transform: rotateY(-40deg) translateX(-100%);
 		transition-delay: 400ms;
 			-webkit-transition-delay: 400ms;
 	}
 	&.back article:nth-child(3){
-		transform: rotateY(-30deg);
-			-webkit-transform: rotateY(-30deg);
+		transform: rotateY(-30deg) translateX(-150%);
+			-webkit-transform: rotateY(-30deg) translateX(-150%);
 		transition-delay: 800ms;
 			-webkit-transition-delay: 800ms;
 	}
 	&.back article:nth-child(4){
-		transform: rotateY(-20deg);
-			-webkit-transform: rotateY(-20deg);
+		transform: rotateY(-20deg) translateX(-200%);
+			-webkit-transform: rotateY(-20deg) translateX(-200%);
 		transition-delay: 1200ms;	
-			-webkit-transition-delay: 1200ms;	
+			-webkit-transition-delay: 1200ms;
 	}
 	//enter left
 	&.enterLeft article{
@@ -391,4 +342,5 @@ h2 {
 		transition-delay: 800ms;
 			-webkit-transition-delay: 800ms;
 	}
+
 }

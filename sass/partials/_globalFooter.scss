@@ -10,6 +10,9 @@ footer {
 		margin-right: $double_space;
 	}
 	&:hover {
-		color:#fff;
+		color: #fff;
+	}
+	.touch & {
+		color: #999;	
 	}
 }

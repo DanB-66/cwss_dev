@@ -102,7 +102,7 @@
 					"images": [
 						{
 							"title": "Brilliant Basics",
-							"url": "img/jobs/bb.png"
+							"url": "img/jobs/ga_tabletcrop.jpg"
 						}
 					]
 				}
@@ -126,7 +126,7 @@
 					"images": [
 						{
 							"title": "EE",
-							"url": "img/jobs/ee-logo.png"
+							"url": "img/jobs/ee_crop.jpg"
 						}
 					],
 					"links": [
@@ -300,8 +300,14 @@
 				"assets": {
 					"links": [
 						{
-							"title": "KBC Securities website",
-							"url": "https://www.kbcsecurities.com/"
+							"title": "Telenor",
+							"url": "http://www.telenor.com"
+						}
+					],
+					"images": [
+						{
+							"title": "Telenor site",
+							"url": "img/jobs/thumb_telenor.gif"
 						}
 					]
 				}
