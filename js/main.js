@@ -6,7 +6,7 @@ define(['jquery', 'history', 'dust', 'dustTemplate1'], function ($) {
 
 	var CwsC = {
 	
-		multiple : 3,//default 3, no if items per carousel page
+		multiple : 3,//default 3, no of items per carousel page
 		lang : 'en',//default en
 		carouselContent : '',// data
 		carouselUiContent : '',// ui label data
@@ -41,11 +41,7 @@ define(['jquery', 'history', 'dust', 'dustTemplate1'], function ($) {
 				this.contentIndex -= this.multiple;
 			}
 			this.currentPage = this.contentIndex/this.multiple;
-/*			
-			if (direction !== undefined){
-				console.log('DIRECTION PASSED TO SHOWPAGE ' +direction);
-			}
-*/
+
 			console.log('PUSH STATE: content index- '+this.contentIndex +'- page title' + this.pageTitle + ' page=' + this.currentPage + ' multiple=' + this.multiple + ' lang=' + this.lang);
 			this.History.pushState({state: this.contentIndex, 
 									rand: Math.random(), 
@@ -58,23 +54,23 @@ define(['jquery', 'history', 'dust', 'dustTemplate1'], function ($) {
 		},
 
 		buildControls : function() {// build the controls and intro with lang
-			//var intro = $('#intro');
-			//intro.addClass('shown');
-			//langMenu.find('#'+ newLang).addClass('active');
-			//uiDatai18n = CwsC.carouselContent.i18n;
-			//uiDatai1Intro = CwsC.carouselContent.generalIntro;
-			dust.render('cwsUI', CwsC.carouselUiContent);//'cwsUI' is a compiled dust template already registered. Its loaded by requirejs
+			var output;
+
+			//console.log('######### BUILD controls fn');
+			dust.render("cwsUI", this.carouselContent, function(err, out) {//'cwsUI' is a compiled dust template already registered. Its loaded by requirejs
+			  output = out;
+			});
+			return output;
 		},
 
 
 		buildUI : function(bIsRebuild) {// build ui on load, on lang change refresh with new data. Bind ui btns and statechange event
-			var renderTarget = $('.carouselWrap'),//elem to create it inside
-				controls = '<section id="intro">'+this.carouselContent.generalIntro.introCopy+'<span class="hide">'+this.carouselContent.i18n.uIhideIntro+'</span></section><section id="controls"><section id="setMultipleControl" class="test"><h4>'+this.carouselContent.i18n.uImultiItems+':</h4><ul><li>1</li><li>2</li><li>3</li><li>4</li></ul></section><section id="setLangControl"><h4>'+this.carouselContent.i18n.uImultiLang+':</h4><ul><li id="en">'+this.carouselContent.i18n.localeNames.uIen+'</li><li id="fr">'+this.carouselContent.i18n.localeNames.uIfr+'</li></ul></section><section id="toggleIntro">'+this.carouselContent.i18n.uIShowIntro+'</section></section>',
-				ui = '<a href="#" class="cwsCprev" title="'+this.carouselContent.i18n.uIprevious+'">'+this.carouselContent.i18n.uIprevious+'</a> <a href="#" class="cwsCnext" title="'+this.carouselContent.i18n.uInext+'">'+this.carouselContent.i18n.uInext+'</a><div class="carousel multiple'+CwsC.multiple+'"></div>';
-			renderTarget.html(controls + ui);
+			var renderTarget = $('.carouselWrap');//elem to create it inside
+
+			renderTarget.html(this.buildControls());
 			this.carouselContainer = renderTarget.children('.carousel');
+			this.carouselContainer.addClass('multiple'+CwsC.multiple);
 			if (bIsRebuild){// ie from lang select
-				console.log('ggggggg is rebuild');
 				bIsRebuild = 0;
 				this.showPage(undefined, undefined, CwsC.lang, undefined);
 			} else {
