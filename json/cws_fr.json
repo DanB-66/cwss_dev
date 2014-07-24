@@ -5,6 +5,8 @@
 			"uIprevious": "Précédent",
 			"uIimages": "Images",
 			"uIlinks": "Liens",
+			"uIhideIntro": "Cacher",
+			"uIShowIntro": "leIntro/Contact",
 			"uImultiItems": "Nombre d'articles par page",
 			"uImultiLang": "Langue",
 			"uIclient": "Client",
@@ -21,14 +23,46 @@
 				"uIfr": "Français"
 			}
 		},
-		"generalContent": {
+		"generalIntro": {
 			"siteTitle": "Code Workshop Systems Ltd",
-			"introCopy": "Code Workshop Systems is the commercial representation of myself, Dan Brown. For over a dozen years, I have provided London-based agencies and organisations with robust, reliable, standards-compliant digital content."
+			"introCopy": "Code Workshop Systems est le commercial representation of myself, Dan Brown. For over a dozen years, I have provided London-based agencies and organisations with robust, reliable, standards-compliant digital content."
 		},
 		"projects": [
 			{
+				"client": "'Big 6' le energy company",
+				"agency": "Fjord",
+				"projectName": "Confidential project",
+				"projectDescription": "Rapid prototyping project to develop a webapp for a major energy supplier.",
+				"duration": "2 months",
+				"shortDescription": "Webapp rapid prototyping",
+				"extendedInfo": {
+					"agencyDetails": "Fjord is a global service design consultancy that is part of Accenture Interactive",
+					"workUndertaken": "Part of a rapid development team of four devs working closely with Interaction and Visual Designers to implement creative explorations of future capabilities in technology and service provision.",
+					"otherDetails": [
+						"Backbone project",
+						"Require JS",
+						"Underscore templating",
+						"Grunt build tools"
+					]
+				},
+				"assets": {
+					"images": [
+						{
+							"title": "Fjord",
+							"url": "img/jobs/fjord.jpg"
+						}
+					],
+					"links": [
+						{
+							"title": "Fjord site",
+							"url": "http://www.fjordnet.com"
+						}
+					]
+				}
+			},
+			{
 				"client": "New Look",
-				"agency": "Velti",
+				"agency": "le Velti",
 				"projectName": "m.newlook.com",
 				"projectDescription": "Site mobile pour New Look détaillant de vêtements.",
 				"duration": "5 mois",

@@ -21,8 +21,8 @@ define(['jquery', 'history', 'dust', 'dustTemplate1'], function ($) {
 		newMultiple: '',
 		newLang: '',
 		newDirection: '',
-		prevBtn: $('.cwsCprev'),
-		nextBtn: $('.cwsCprev'),
+		//prevBtn: $('.cwsCprev'),
+		//nextBtn: $('.cwsCprev'),
 		isTransitioning: false,
 
 		showPage : function(direction, index, newLang, newMultiple){
@@ -57,13 +57,24 @@ define(['jquery', 'history', 'dust', 'dustTemplate1'], function ($) {
 			
 		},
 
+		buildControls : function() {// build the controls and intro with lang
+			//var intro = $('#intro');
+			//intro.addClass('shown');
+			//langMenu.find('#'+ newLang).addClass('active');
+			//uiDatai18n = CwsC.carouselContent.i18n;
+			//uiDatai1Intro = CwsC.carouselContent.generalIntro;
+			dust.render('cwsUI', CwsC.carouselUiContent);//'cwsUI' is a compiled dust template already registered. Its loaded by requirejs
+		},
+
+
 		buildUI : function(bIsRebuild) {// build ui on load, on lang change refresh with new data. Bind ui btns and statechange event
-			var renderTarget = $('.cwsCarousel'),//elem to create it inside
-				controls = '<section id="controls"><section id="setMultipleControl"><h4>'+this.carouselContent.i18n.uImultiItems+':</h4><ul><li>1</li><li>2</li><li>3</li><li>4</li></ul></section><section id="setLangControl"><h4>'+this.carouselContent.i18n.uImultiLang+':</h4><ul><li id="en">'+this.carouselContent.i18n.localeNames.uIen+'</li><li id="fr">'+this.carouselContent.i18n.localeNames.uIfr+'</li></ul></section></section>',
+			var renderTarget = $('.carouselWrap'),//elem to create it inside
+				controls = '<section id="intro">'+this.carouselContent.generalIntro.introCopy+'<span class="hide">'+this.carouselContent.i18n.uIhideIntro+'</span></section><section id="controls"><section id="setMultipleControl" class="test"><h4>'+this.carouselContent.i18n.uImultiItems+':</h4><ul><li>1</li><li>2</li><li>3</li><li>4</li></ul></section><section id="setLangControl"><h4>'+this.carouselContent.i18n.uImultiLang+':</h4><ul><li id="en">'+this.carouselContent.i18n.localeNames.uIen+'</li><li id="fr">'+this.carouselContent.i18n.localeNames.uIfr+'</li></ul></section><section id="toggleIntro">'+this.carouselContent.i18n.uIShowIntro+'</section></section>',
 				ui = '<a href="#" class="cwsCprev" title="'+this.carouselContent.i18n.uIprevious+'">'+this.carouselContent.i18n.uIprevious+'</a> <a href="#" class="cwsCnext" title="'+this.carouselContent.i18n.uInext+'">'+this.carouselContent.i18n.uInext+'</a><div class="carousel multiple'+CwsC.multiple+'"></div>';
 			renderTarget.html(controls + ui);
 			this.carouselContainer = renderTarget.children('.carousel');
 			if (bIsRebuild){// ie from lang select
+				console.log('ggggggg is rebuild');
 				bIsRebuild = 0;
 				this.showPage(undefined, undefined, CwsC.lang, undefined);
 			} else {
@@ -175,6 +186,19 @@ define(['jquery', 'history', 'dust', 'dustTemplate1'], function ($) {
 						CwsC.setLang(currId);
 					}
 				});
+
+				// delegate click on 'home/intro/contact' overlay close
+				renderTarget.on('click', '#intro > .hide', function() {
+					var intro = renderTarget.find('#intro');
+					intro.addClass('hidden');
+				});
+
+				// delegate click on 'home/intro/contact' overlay close
+				renderTarget.on('click', '#toggleIntro', function() {
+					var intro = renderTarget.find('#intro');
+					intro.removeClass('hidden');
+				});
+
 				this.showPage(undefined, CwsC.startItem, undefined, undefined);//show first set on load, potentially based on referrer
 
 			}
@@ -215,7 +239,9 @@ define(['jquery', 'history', 'dust', 'dustTemplate1'], function ($) {
 				};
 		
 			if (refreshLang){
-				//rebuild controls with new lang
+				console.log('gggggg REFRESH lang?');
+				//rebuild controls with new lang when back button after lang change
+				//$('#controls').html('<section id="intro">'+this.carouselContent.generalIntro.introCopy+'</section><section id="setMultipleControl"><h4>'+this.carouselContent.i18n.uImultiItems+':</h4><ul><li>1</li><li>2</li><li>3</li><li>4</li></ul></section><section id="setLangControl"><h4>'+this.carouselContent.i18n.uImultiLang+':</h4><ul><li id="en">'+this.carouselContent.i18n.localeNames.uIen+'</li><li id="fr">'+this.carouselContent.i18n.localeNames.uIfr+'</li></ul></section>');
 				$('#controls').html('<section id="setMultipleControl"><h4>'+this.carouselContent.i18n.uImultiItems+':</h4><ul><li>1</li><li>2</li><li>3</li><li>4</li></ul></section><section id="setLangControl"><h4>'+this.carouselContent.i18n.uImultiLang+':</h4><ul><li id="en">'+this.carouselContent.i18n.localeNames.uIen+'</li><li id="fr">'+this.carouselContent.i18n.localeNames.uIfr+'</li></ul></section>');
 				CwsC.markLang(CwsC.lang);
 			}
@@ -281,6 +307,12 @@ define(['jquery', 'history', 'dust', 'dustTemplate1'], function ($) {
 					CwsC.showPage(direction, undefined, undefined, undefined);
 				}
 			}
+		},
+
+		showHome : function() {// show the home/intro/contact overlay
+			var intro = $('#intro');
+			intro.addClass('shown');
+			langMenu.find('#'+ newLang).addClass('active');
 		},
 
 		markMultiple : function(newMultiple) {// mark the menu selection for multiple

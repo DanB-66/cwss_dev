@@ -69,7 +69,6 @@ h1, h2 {
 h2 {
 	font-size: 0.5em;
 	letter-spacing: 0.5em;
-	margin-bottom: 0;
 	margin-right: 0.5em;
 	text-transform: lowercase;
 }
@@ -78,7 +77,29 @@ ol, ul {
 	padding: 0;
 	margin-top: 0;
 }
-.cwsCarousel {
+#intro {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 30%;
+	background: #000;
+	color: #fff;
+	@include opacity(0.8);
+	padding: 3em 4em;
+	margin: 0 -3em;
+	z-index: 1;
+	display:block;
+	.hide{
+		position: absolute;
+		top: 1em;
+		right: 1em;
+		background-color: $control_background_color;
+	}
+	&.hidden{
+		display:none;
+	}
+}
+.carouselWrap {
 	height: 25em;//test
 	background: $secondary_color;
 	position: relative;
@@ -173,7 +194,7 @@ ol, ul {
 	position: absolute;
 	top: -1.8em;
 }
-#setMultipleControl, #setLangControl{
+#setMultipleControl, #setLangControl, #toggleIntro{
 	display: inline-block;
 	vertical-align: middle;
 	margin-right: $double_space;
@@ -202,7 +223,7 @@ ol, ul {
 	min-width: 14em;
 }
 // content areas... just some basics for now
-.cwsCarousel {
+.carouselWrap {
 	article {
 		line-height: 1.3;
 	}
@@ -228,6 +249,7 @@ ol, ul {
 }
 // some drivel
 .caveat {
+	display: none;
 	margin-bottom: $single_space;
 }
 .caveat a {

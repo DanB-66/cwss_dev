@@ -1,0 +1,33 @@
+#pageWrapper {
+ width: 300px;
+ background: #ccc;
+ margin: 40px auto;
+}
+#carousel {
+	width: 100%;
+	background: yellow;
+	height:200px;
+	overflow:hidden;
+}
+.carouselHolder {
+	width: 300%;
+	background: pink;
+	height:100%;
+	transition: margin-left 1s;
+}
+.carouselHolder.item1 {
+	margin-left: 0;
+}
+.carouselHolder.item2 {
+	margin-left: -100%;
+}
+.carouselHolder.item3 {
+	margin-left: -200%;
+}
+.carouselItem {
+	width: 33.333%;
+	height:100%;
+	background: teal;
+	float: left;
+	overflow-y:scroll;
+}

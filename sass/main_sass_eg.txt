@@ -76,7 +76,7 @@ ol, ul {
 	padding: 0;
 	margin-top: 0;
 }
-.cwsCarousel {
+.carouselWrap {
 	height: 25em;//test
 	background: $secondary_color;
 	position: relative;
@@ -201,7 +201,7 @@ ol, ul {
 	min-width: 14em;
 }
 // content areas... just some basics for now
-.cwsCarousel {
+.carouselWrap {
 	article {
 		line-height: 1.3;
 	}
