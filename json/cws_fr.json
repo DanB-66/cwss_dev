@@ -42,7 +42,8 @@
 						"Backbone project",
 						"Require JS",
 						"Underscore templating",
-						"Grunt build tools"
+						"Grunt build tools",
+						"Internet le Things"
 					]
 				},
 				"assets": {
@@ -135,8 +136,14 @@
 				"assets": {
 					"images": [
 						{
-							"title": "Brilliant Basics",
+							"title": "le Tablet Banking App",
 							"url": "img/jobs/ga_tabletcrop.jpg"
+						}
+					],
+					"links": [
+						{
+							"title": "le App on iTunes",
+							"url": "https://itunes.apple.com/gb/app/hsbc-mobile-banking/id565993818?mt=8"
 						}
 					]
 				}
@@ -208,7 +215,31 @@
 				}
 			},
 			{
-				"client": "Sure/Unilever",
+				"client": " le Global FMCG giant",
+				"agency": "SapientNitro",
+				"projectName": "Recipedia",
+				"projectDescription": "Unreleased recipe site",
+				"duration": "7 months",
+				"shortDescription": "Build of an innovative recipe site, including video assets, shopping lists and a fullscreen cooking mode.",
+				"extendedInfo": {
+					"agencyDetails": "Sapient is a consulting and technology company with a global headcount of over 7k.",
+					"workUndertaken": "Working with up to five frontend devs within a large team including BA's and offshore backend devs. Unfortunately the client decided not to release the project.",
+					"otherDetails": [
+						"Services driven scripting",
+						"Local storage"
+					]
+				},
+				"assets": {
+					"images": [
+						{
+							"title": "Recipedia",
+							"url": "img/jobs/recipedia.jpg"
+						}
+					]
+				}
+			},
+			{
+				"client": "le Unilever",
 				"agency": "Iris",
 				"projectName": "Sure Men Fast Cash Races",
 				"projectDescription": "En francais! Competition pack code redemption site",
@@ -268,12 +299,6 @@
 							"title": "Vodafone VIP",
 							"url": "img/jobs/voda_streamline.jpg"
 						}
-					],
-					"links": [
-						{
-							"title": "Vodafone home",
-							"url": "http://www.vodafone.com"
-						}
 					]
 				}
 			},
@@ -303,7 +328,7 @@
 				}
 			},
 			{
-				"client": "Telenor",
+				"client": "le Telenor",
 				"agency": "Tonic",
 				"projectName": "Telenor",
 				"projectDescription": "Full front end of Telenor website",
@@ -318,11 +343,17 @@
 							"title": "Telenor",
 							"url": "http://www.telenor.com"
 						}
+					],
+					"images": [
+						{
+							"title": "le Telenor site",
+							"url": "img/jobs/thumb_telenor.gif"
+						}
 					]
 				}
 			},
 			{
-				"client": "KBC Securities",
+				"client": "le KBC Securities",
 				"agency": "SAS",
 				"projectName": "KBC Securities website",
 				"projectDescription": "Build of website for KBC Securities",
@@ -334,14 +365,14 @@
 				"assets": {
 					"links": [
 						{
-							"title": "Telenor",
-							"url": "http://www.telenor.com"
+							"title": "KBC Securities website",
+							"url": "https://www.kbcsecurities.com/"
 						}
 					],
 					"images": [
 						{
-							"title": "Telenor site",
-							"url": "img/jobs/thumb_telenor.gif"
+							"title": "KBC site",
+							"url": "img/jobs/kbc.png"
 						}
 					]
 				}

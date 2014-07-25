@@ -27,7 +27,7 @@
 		</p>-->
 
 		<div class="carouselWrap">
-			<a href="projects.php">non js stuff...</a>
+			<a href="projects.php">sitemap...</a>
 		</div>
 
 	</div><!-- /#pageContent -->

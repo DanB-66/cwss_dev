@@ -48,16 +48,17 @@ define(['jquery', 'history', 'dust', 'dustTemplate1'], function ($) {
 									direction: direction, 
 									lang: this.lang, 
 									multiple: this.multiple}, 
-										this.pageTitle + ' - Page ' + this.currentPage, 
-											'?page=' + this.currentPage + '+multiple=' + this.multiple + '+lang=' + this.lang);
+									this.pageTitle + ' - Page ' + this.currentPage, 
+									'?page=' + this.currentPage + '+multiple=' + this.multiple + '+lang=' + this.lang);
 			
 		},
 
-		buildControls : function() {// build the controls and intro with lang
+		buildControls : function(){// build the controls and intro with lang
 			var output;
-
-			//console.log('######### BUILD controls fn');
 			dust.render("cwsUI", this.carouselContent, function(err, out) {//'cwsUI' is a compiled dust template already registered. Its loaded by requirejs
+				if(err !== null){
+					alert("dust ui templ error: " + err);
+				}
 			  output = out;
 			});
 			return output;
@@ -92,7 +93,7 @@ define(['jquery', 'history', 'dust', 'dustTemplate1'], function ($) {
 				/* STATECHANGE BINDING */
 				History.Adapter.bind(window,'statechange', function() {// ie both browser back/fwd btn and app ui btns and initial load - all logic to manipulate page should be here
 					var State = History.getState();
-					console.log('STATECHANGE, state info: ' + State.data.state + ' direction: ' + State.data.direction + ' mult: ' + State.data.multiple+ ' lang: ' + State.data.lang);//DIRECTION ALWAYS UNDEFINED?
+					console.log('STATECHANGE, state info: ' + State.data.state + ' direction: ' + State.data.direction + ' mult: ' + State.data.multiple+ ' lang: ' + State.data.lang);
 					
 					//fix Object.keys for ie8 - http://whattheheadsaid.com/2010/10/a-safer-object-keys-compatibility-implementation
 					Object.keys = Object.keys || (function () {
@@ -134,8 +135,8 @@ define(['jquery', 'history', 'dust', 'dustTemplate1'], function ($) {
 						if (State.data.state !== CwsC.contentIndex) {// back button pressed, go to previous page
 							console.log('back button pressed, go to previous page. cont index= '+CwsC.contentIndex+ 'state = '+State.data.state+' direction: '+State.data.direction);
 							//CwsC.newDirection = State.data.direction;//as its from back btn
-							//todo set gloab direction here for swipe? will be set above
-							//console.log('>>>>>>>>>>>>>State.data.direction= '+State.data.direction);//DIRECTION ALWAYS UNDEFINED??
+							//todo set global direction here for swipe? will be set above
+							//console.log('>>>>>>>>>>>>>State.data.direction= '+State.data.direction);
 							
 							
 							if(State.data.state < CwsC.contentIndex){// back buttn pressed, determine which direction to restore
@@ -149,7 +150,7 @@ define(['jquery', 'history', 'dust', 'dustTemplate1'], function ($) {
 							CwsC.contentIndex = State.data.state; //set so correct state from history when fade below
 						}
 						CwsC.carouselContainer.fadeTo(500, 0, function() {
-							console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@');
+							console.log('FFFF@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@de');
 							if (State.data.lang !== CwsC.lang) {// back button pressed, go to previous lang
 								CwsC.lang = State.data.lang;
 								CwsC.loadData(false, true);
@@ -202,7 +203,7 @@ define(['jquery', 'history', 'dust', 'dustTemplate1'], function ($) {
 
 		},
 
-		loadData : function(bIsRebuild, reloadData) {// load json - use beforeSend to set spinner?
+		loadData : function(bIsRebuild, reloadData) {// load json - todo use beforeSend to set spinner
 			$.ajax({
 				url: 'json/cws_'+CwsC.lang+'.json',
 				dataType: 'json',
@@ -214,7 +215,7 @@ define(['jquery', 'history', 'dust', 'dustTemplate1'], function ($) {
 					if (!reloadData){
 						CwsC.buildUI(bIsRebuild);
 					} else {
-						// back button hit after a lang change
+						console.log('LOad Data: back button hit after a lang change');
 						CwsC.renderItems(true);
 					}
 				},
@@ -235,10 +236,11 @@ define(['jquery', 'history', 'dust', 'dustTemplate1'], function ($) {
 				};
 		
 			if (refreshLang){
-				console.log('gggggg REFRESH lang?');
 				//rebuild controls with new lang when back button after lang change
-				//$('#controls').html('<section id="intro">'+this.carouselContent.generalIntro.introCopy+'</section><section id="setMultipleControl"><h4>'+this.carouselContent.i18n.uImultiItems+':</h4><ul><li>1</li><li>2</li><li>3</li><li>4</li></ul></section><section id="setLangControl"><h4>'+this.carouselContent.i18n.uImultiLang+':</h4><ul><li id="en">'+this.carouselContent.i18n.localeNames.uIen+'</li><li id="fr">'+this.carouselContent.i18n.localeNames.uIfr+'</li></ul></section>');
-				$('#controls').html('<section id="setMultipleControl"><h4>'+this.carouselContent.i18n.uImultiItems+':</h4><ul><li>1</li><li>2</li><li>3</li><li>4</li></ul></section><section id="setLangControl"><h4>'+this.carouselContent.i18n.uImultiLang+':</h4><ul><li id="en">'+this.carouselContent.i18n.localeNames.uIen+'</li><li id="fr">'+this.carouselContent.i18n.localeNames.uIfr+'</li></ul></section>');
+				//$('#controls').html('<section id="setMultipleControl"><h4>'+this.carouselContent.i18n.uImultiItems+':</h4><ul><li>1</li><li>2</li><li>3</li><li>4</li></ul></section><section id="setLangControl"><h4>'+this.carouselContent.i18n.uImultiLang+':</h4><ul><li id="en">'+this.carouselContent.i18n.localeNames.uIen+'</li><li id="fr">'+this.carouselContent.i18n.localeNames.uIfr+'</li></ul></section>');
+				var buffer = $(CwsC.buildControls());
+				$('#intro').replaceWith(buffer.slice(0,1));
+				$('#controls').replaceWith(buffer.slice(1,2));
 				CwsC.markLang(CwsC.lang);
 			}
 
@@ -276,7 +278,7 @@ define(['jquery', 'history', 'dust', 'dustTemplate1'], function ($) {
 				CwsC.isTransitioning = false;
 			});
 			
-			console.log('________________________________end render items');
+			console.log('________________________________end renderItems');
 		},
 
 		transitionContent : function(direction, bIsHistoryDriven) {
@@ -332,7 +334,6 @@ define(['jquery', 'history', 'dust', 'dustTemplate1'], function ($) {
 			//console.log('action newLang: ' , newLang);
 			this.lang = newLang;
 			this.carouselContainer.fadeTo(500, 0.2, function(){
-				//debugger;
 				CwsC.loadData(1);//1= only refresh data
 			});
 		},
