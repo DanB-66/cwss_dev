@@ -201,14 +201,12 @@ define(['jquery', 'history', 'dust', 'dustTemplate1'], function ($) {
 
 				// delegate click on 'home/intro/contact' overlay close
 				renderTarget.on('click', '#intro > .hide', function() {
-					var intro = renderTarget.find('#intro');
 					CwsC.introShow = false;
 					CwsC.showPage(undefined, undefined, undefined, undefined, CwsC.introShow);
 				});
 
 				// delegate click on 'home/intro/contact' overlay open
 				renderTarget.on('click', '#toggleIntro', function() {
-					var intro = renderTarget.find('#intro');
 					CwsC.introShow = true;
 					CwsC.showPage(undefined, undefined, undefined, undefined, CwsC.introShow);
 				});
