@@ -23,6 +23,7 @@ define(['jquery', 'history', 'dust', 'dustTemplate1'], function ($) {
 		newDirection: '',
 		introShow: true,
 		newIntroShow: undefined,
+		actionIntro: false,
 		//prevBtn: $('.cwsCprev'),
 		//nextBtn: $('.cwsCprev'),
 		isTransitioning: false,
@@ -139,6 +140,23 @@ define(['jquery', 'history', 'dust', 'dustTemplate1'], function ($) {
 						}
 						if (State.data.introShow !== CwsC.introShow) {// back pressed after toggle intro or value in pasted url
 							CwsC.introShow = State.data.introShow;
+							if (CwsC.introShow !== true){
+								$('#intro').addClass('hidden');
+							} else {
+								$('#intro').removeClass('hidden');
+							}
+							return;
+						}
+
+						if (CwsC.introShow !== true){//wip
+							$('#intro').addClass('hidden');
+						} else {
+							$('#intro').removeClass('hidden');
+						}
+
+						if(CwsC.actionIntro === true){
+							CwsC.actionIntro = false;
+							return;
 						}
 
 						if (State.data.state !== CwsC.contentIndex) {// back button pressed, go to previous page
@@ -157,11 +175,6 @@ define(['jquery', 'history', 'dust', 'dustTemplate1'], function ($) {
 							CwsC.transitionContent(CwsC.newDirection, true);//?????????????????????
 							
 							CwsC.contentIndex = State.data.state; //set so correct state from history when fade below
-						}
-						if (CwsC.introShow !== true){
-							$('#intro').addClass('hidden');
-						} else {
-							$('#intro').removeClass('hidden');
 						}
 
 						CwsC.carouselContainer.fadeTo(500, 0, function() {
@@ -202,12 +215,14 @@ define(['jquery', 'history', 'dust', 'dustTemplate1'], function ($) {
 				// delegate click on 'home/intro/contact' overlay close
 				renderTarget.on('click', '#intro > .hide', function() {
 					CwsC.introShow = false;
+					CwsC.actionIntro = true;
 					CwsC.showPage(undefined, undefined, undefined, undefined, CwsC.introShow);
 				});
 
 				// delegate click on 'home/intro/contact' overlay open
 				renderTarget.on('click', '#toggleIntro', function() {
 					CwsC.introShow = true;
+					CwsC.actionIntro = true;
 					CwsC.showPage(undefined, undefined, undefined, undefined, CwsC.introShow);
 				});
 
@@ -245,7 +260,7 @@ define(['jquery', 'history', 'dust', 'dustTemplate1'], function ($) {
 				carouselBuffer = '',
 				incrementBuffer = function(err, output){
 					if(err !== null){
-						alert("dust error: " + err);
+						alert("dust error proj templ: " + err);
 					}
 					carouselBuffer += output;
 				};
