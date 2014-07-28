@@ -21,18 +21,23 @@ define(['jquery', 'history', 'dust', 'dustTemplate1'], function ($) {
 		newMultiple: '',
 		newLang: '',
 		newDirection: '',
+		introShow: true,
+		newIntroShow: undefined,
 		//prevBtn: $('.cwsCprev'),
 		//nextBtn: $('.cwsCprev'),
 		isTransitioning: false,
 
-		showPage : function(direction, index, newLang, newMultiple){
-			console.log('OOO showPage - direction: '+direction+', index: '+index+', newLang: '+newLang+', newMultiple: '+newMultiple);
+		showPage : function(direction, index, newLang, newMultiple, newIntroShow){
+			console.log('OOO showPage - direction: '+direction+', index: '+index+', newLang: '+newLang+', newMultiple: '+newMultiple+', newIntroShow: '+newIntroShow);
 
 			if (newMultiple !== undefined) {
 				this.multiple = newMultiple;
 			}
 			if (index !== undefined){
 				this.contentIndex = index;
+			}
+			if (newIntroShow !== undefined){
+				this.introShow = newIntroShow;
 			}
 			if (direction === 'forward'){
 				this.contentIndex += this.multiple;
@@ -42,14 +47,15 @@ define(['jquery', 'history', 'dust', 'dustTemplate1'], function ($) {
 			}
 			this.currentPage = this.contentIndex/this.multiple;
 
-			console.log('PUSH STATE: content index- '+this.contentIndex +'- page title' + this.pageTitle + ' page=' + this.currentPage + ' multiple=' + this.multiple + ' lang=' + this.lang);
-			this.History.pushState({state: this.contentIndex, 
-									rand: Math.random(), 
-									direction: direction, 
-									lang: this.lang, 
-									multiple: this.multiple}, 
-									this.pageTitle + ' - Page ' + this.currentPage, 
-									'?page=' + this.currentPage + '+multiple=' + this.multiple + '+lang=' + this.lang);
+			console.log('PUSH STATE: content index- '+this.contentIndex +'- page title' + this.pageTitle + ' page=' + this.currentPage + ' multiple=' + this.multiple + ' lang=' + this.lang + ' intro=' + this.introShow);
+			this.History.pushState({state: this.contentIndex,
+										rand: Math.random(),
+										direction: direction,
+										lang: this.lang,
+										multiple: this.multiple,
+										introShow: this.introShow},
+									this.pageTitle + ' - Page ' + this.currentPage,
+									'?page=' + this.currentPage + '+multiple=' + this.multiple + '+lang=' + this.lang + '+intro=' + this.introShow);
 			
 		},
 
@@ -59,7 +65,7 @@ define(['jquery', 'history', 'dust', 'dustTemplate1'], function ($) {
 				if(err !== null){
 					alert("dust ui templ error: " + err);
 				}
-			  output = out;
+				output = out;
 			});
 			return output;
 		},
@@ -67,13 +73,12 @@ define(['jquery', 'history', 'dust', 'dustTemplate1'], function ($) {
 
 		buildUI : function(bIsRebuild) {// build ui on load, on lang change refresh with new data. Bind ui btns and statechange event
 			var renderTarget = $('.carouselWrap');//elem to create it inside
-
 			renderTarget.html(this.buildControls());
 			this.carouselContainer = renderTarget.children('.carousel');
 			this.carouselContainer.addClass('multiple'+CwsC.multiple);
 			if (bIsRebuild){// ie from lang select
 				bIsRebuild = 0;
-				this.showPage(undefined, undefined, CwsC.lang, undefined);
+				this.showPage(undefined, undefined, CwsC.lang, undefined, undefined);
 			} else {
 				renderTarget.on('click','.cwsCprev, .cwsCnext', function(event) {
 					if(CwsC.isTransitioning){
@@ -93,7 +98,7 @@ define(['jquery', 'history', 'dust', 'dustTemplate1'], function ($) {
 				/* STATECHANGE BINDING */
 				History.Adapter.bind(window,'statechange', function() {// ie both browser back/fwd btn and app ui btns and initial load - all logic to manipulate page should be here
 					var State = History.getState();
-					console.log('STATECHANGE, state info: ' + State.data.state + ' direction: ' + State.data.direction + ' mult: ' + State.data.multiple+ ' lang: ' + State.data.lang);
+					console.log('STATECHANGE, state info: ' + State.data.state + ' direction: ' + State.data.direction + ' mult: ' + State.data.multiple+ ' lang: ' + State.data.lang+ ' intro: ' + State.data.introShow);
 					
 					//fix Object.keys for ie8 - http://whattheheadsaid.com/2010/10/a-safer-object-keys-compatibility-implementation
 					Object.keys = Object.keys || (function () {
@@ -121,7 +126,7 @@ define(['jquery', 'history', 'dust', 'dustTemplate1'], function ($) {
 								for (var i = 0; i < DontEnumsLength; i++) {
 									if (hasOwnPropertyFlag.call(o, DontEnums[i]))
 										result.push(DontEnums[i]);
-								}	
+								}
 							}
 							return result;
 						};
@@ -132,6 +137,10 @@ define(['jquery', 'history', 'dust', 'dustTemplate1'], function ($) {
 						if (State.data.direction !== CwsC.newDirection) {
 							CwsC.newDirection = State.data.direction;
 						}
+						if (State.data.introShow !== CwsC.introShow) {// back pressed after toggle intro or value in pasted url
+							CwsC.introShow = State.data.introShow;
+						}
+
 						if (State.data.state !== CwsC.contentIndex) {// back button pressed, go to previous page
 							console.log('back button pressed, go to previous page. cont index= '+CwsC.contentIndex+ 'state = '+State.data.state+' direction: '+State.data.direction);
 							//CwsC.newDirection = State.data.direction;//as its from back btn
@@ -149,8 +158,14 @@ define(['jquery', 'history', 'dust', 'dustTemplate1'], function ($) {
 							
 							CwsC.contentIndex = State.data.state; //set so correct state from history when fade below
 						}
+						if (CwsC.introShow !== true){
+							$('#intro').addClass('hidden');
+						} else {
+							$('#intro').removeClass('hidden');
+						}
+
 						CwsC.carouselContainer.fadeTo(500, 0, function() {
-							console.log('FFFF@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@de');
+							console.log('F@de.......................');
 							if (State.data.lang !== CwsC.lang) {// back button pressed, go to previous lang
 								CwsC.lang = State.data.lang;
 								CwsC.loadData(false, true);
@@ -187,16 +202,18 @@ define(['jquery', 'history', 'dust', 'dustTemplate1'], function ($) {
 				// delegate click on 'home/intro/contact' overlay close
 				renderTarget.on('click', '#intro > .hide', function() {
 					var intro = renderTarget.find('#intro');
-					intro.addClass('hidden');
+					CwsC.introShow = false;
+					CwsC.showPage(undefined, undefined, undefined, undefined, CwsC.introShow);
 				});
 
-				// delegate click on 'home/intro/contact' overlay close
+				// delegate click on 'home/intro/contact' overlay open
 				renderTarget.on('click', '#toggleIntro', function() {
 					var intro = renderTarget.find('#intro');
-					intro.removeClass('hidden');
+					CwsC.introShow = true;
+					CwsC.showPage(undefined, undefined, undefined, undefined, CwsC.introShow);
 				});
 
-				this.showPage(undefined, CwsC.startItem, undefined, undefined);//show first set on load, potentially based on referrer
+				this.showPage(undefined, CwsC.startItem, undefined, undefined, CwsC.introShow);//show first set on load, potentially based on referrer
 
 			}
 			this.markLang(this.lang);// mark on page initial load and lang change
@@ -215,7 +232,7 @@ define(['jquery', 'history', 'dust', 'dustTemplate1'], function ($) {
 					if (!reloadData){
 						CwsC.buildUI(bIsRebuild);
 					} else {
-						console.log('LOad Data: back button hit after a lang change');
+						//console.log('back button hit after a lang change');
 						CwsC.renderItems(true);
 					}
 				},
@@ -237,12 +254,15 @@ define(['jquery', 'history', 'dust', 'dustTemplate1'], function ($) {
 		
 			if (refreshLang){
 				//rebuild controls with new lang when back button after lang change
-				//$('#controls').html('<section id="setMultipleControl"><h4>'+this.carouselContent.i18n.uImultiItems+':</h4><ul><li>1</li><li>2</li><li>3</li><li>4</li></ul></section><section id="setLangControl"><h4>'+this.carouselContent.i18n.uImultiLang+':</h4><ul><li id="en">'+this.carouselContent.i18n.localeNames.uIen+'</li><li id="fr">'+this.carouselContent.i18n.localeNames.uIfr+'</li></ul></section>');
 				var buffer = $(CwsC.buildControls());
 				$('#intro').replaceWith(buffer.slice(0,1));
+				if(CwsC.introShow === true){
+					$('#intro').removeClass('hidden');//and remove hidden if req
+				}
 				$('#controls').replaceWith(buffer.slice(1,2));
 				CwsC.markLang(CwsC.lang);
 			}
+
 
 			CwsC.carouselContainer.empty().removeClass('multiple1 multiple2 multiple3 multiple4').addClass('multiple'+CwsC.multiple);//cant remove fwd-back classes here as they will animate
 			CwsC.markMultiple(CwsC.multiple);
@@ -291,9 +311,9 @@ define(['jquery', 'history', 'dust', 'dustTemplate1'], function ($) {
 					if (transitionCount === CwsC.carouselContainer.children().length){
 						CwsC.carouselContainer.off('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend');
 						if(bIsHistoryDriven !== true){
-							CwsC.showPage(direction, undefined, undefined, undefined);
+							CwsC.showPage(direction, undefined, undefined, undefined, undefined);
 						} else {
-							console.log('history driven trans');
+							console.log('NOT history driven trans');
 							//return true;
 						}
 					}
@@ -302,17 +322,10 @@ define(['jquery', 'history', 'dust', 'dustTemplate1'], function ($) {
 
 			} else {// no transitions
 				if(bIsHistoryDriven !== true){
-					CwsC.showPage(direction, undefined, undefined, undefined);
+					CwsC.showPage(direction, undefined, undefined, undefined, undefined);
 				}
 			}
 		},
-
-		showHome : function() {// show the home/intro/contact overlay
-			var intro = $('#intro');
-			intro.addClass('shown');
-			langMenu.find('#'+ newLang).addClass('active');
-		},
-
 		markMultiple : function(newMultiple) {// mark the menu selection for multiple
 			var multipleMenu = $('#setMultipleControl');
 			multipleMenu.find('li').removeClass('active');
@@ -321,7 +334,7 @@ define(['jquery', 'history', 'dust', 'dustTemplate1'], function ($) {
 
 		setMultiple : function(newMultiple) {// action the new multiple
 			this.multiple = newMultiple;
-			this.showPage(undefined, CwsC.multiple, undefined, newMultiple);
+			this.showPage(undefined, CwsC.multiple, undefined, newMultiple, CwsC.introShow);
 		},
 
 		markLang : function(newLang) {// mark the menu selection for language
@@ -351,7 +364,7 @@ define(['jquery', 'history', 'dust', 'dustTemplate1'], function ($) {
 			} else {
 				prev.removeClass('disabled').attr('title', this.carouselContent.i18n.uIprevious);
 			}
-		},	
+		},
 
 		init : function() {
 			var pageFromUrl = 0,
@@ -369,7 +382,8 @@ define(['jquery', 'history', 'dust', 'dustTemplate1'], function ($) {
 			if (urlLocationType !== ''){
 				pageFromUrl = parseInt((urlLocationType.split('=')[1]).split('+')[0], 10);
 				this.multiple = parseInt(urlLocationType.split('+multiple=')[1].split('+lang=')[0], 10);
-				this.lang = urlLocationType.split('+lang=')[1].split('&')[0];
+				this.lang = urlLocationType.split('+lang=')[1].split('+intro=')[0];
+				this.introShow = urlLocationType.split('+intro=')[1] == 'true' ? true : false;
 			}
 
 			if(pageFromUrl !== 0){//ie it's a bookmarked/pasted url
@@ -377,12 +391,11 @@ define(['jquery', 'history', 'dust', 'dustTemplate1'], function ($) {
 			} else {
 				this.startItem = this.multiple;
 			}
-			
-			//console.log('start item............................'+this.startItem);
+
 			this.loadData(0);//0= rebuild full ui
 		}
 
-	}; 
+	};
 
 	$(document).ready(CwsC.init());
 
