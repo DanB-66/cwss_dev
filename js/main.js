@@ -383,7 +383,7 @@ define(['jquery', 'history', 'dust', 'dustTemplate1'], function ($) {
 				pageFromUrl = parseInt((urlLocationType.split('=')[1]).split('+')[0], 10);
 				this.multiple = parseInt(urlLocationType.split('+multiple=')[1].split('+lang=')[0], 10);
 				this.lang = urlLocationType.split('+lang=')[1].split('+intro=')[0];
-				this.introShow = urlLocationType.split('+intro=')[1] == 'true' ? true : false;
+				this.introShow = urlLocationType.split('+intro=')[1] == 'true' ? true : false;//ie convert string 'true' to a bool
 			}
 
 			if(pageFromUrl !== 0){//ie it's a bookmarked/pasted url
