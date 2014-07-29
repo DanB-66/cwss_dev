@@ -1,7 +1,7 @@
 <script type="text/html" id="UiTemplate">
 
 <section id="intro">
-    {generalIntro.introCopy}
+    {generalIntro.introCopy|s}
     <span class="hide">{i18n.uIhideIntro}</span>
 </section>
 
@@ -22,7 +22,11 @@
             <li id="fr">{i18n.localeNames.uIfr}</li>
         </ul>
     </section>
-    <section id="toggleIntro">{i18n.uIShowIntro}</section>
+    <section id="toggleIntro">
+        <ul>
+            <li>{i18n.uIShowIntro}</li>
+        </ul>
+    </section>
 </section>
 
 <a href="#" class="cwsCprev" title="{i18n.uIprevious}">{i18n.uIprevious}</a> 

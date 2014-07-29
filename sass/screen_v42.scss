@@ -89,6 +89,8 @@ ol, ul {
 	margin: 0 -3em;
 	z-index: 1;
 	display:block;
+	@include transition-property(all);
+	@include transition-duration($short_time);
 	.hide{
 		position: absolute;
 		top: 1em;
@@ -96,7 +98,9 @@ ol, ul {
 		background-color: $control_background_color;
 	}
 	&.hidden{
-		display:none;
+		@include opacity(0);
+		top:-30%;
+		@include scale(0);
 	}
 }
 .carouselWrap {
@@ -112,7 +116,7 @@ ol, ul {
 		display: inline-block;
 		vertical-align: top;
 		@include box-sizing(border-box);
-		width: 33.33%;// default
+		//width: 33.333333%; default
 		padding: 0 0.2em;
 		height: 100%;
 		//outline: 1px solid #000; bugs in ff and ie
@@ -129,7 +133,7 @@ ol, ul {
 	}
 	// three items
 	.multiple3 article {
-		width: 33.3333%;
+		width: 33.333333%;
 	}
 	// four items
 	.multiple4 article {
@@ -220,7 +224,7 @@ ol, ul {
 	}
 }
 #setMultipleControl{
-	min-width: 14em;
+	min-width: 8em;
 }
 // content areas... just some basics for now
 .carouselWrap {

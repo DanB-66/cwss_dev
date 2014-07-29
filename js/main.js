@@ -326,8 +326,7 @@ define(['jquery', 'history', 'dust', 'dustTemplate1'], function ($) {
 						if(bIsHistoryDriven !== true){
 							CwsC.showPage(direction, undefined, undefined, undefined, undefined);
 						} else {
-							console.log('NOT history driven trans');
-							//return true;
+							console.log('back/fwd button driven trans');
 						}
 					}
 
@@ -406,6 +405,7 @@ define(['jquery', 'history', 'dust', 'dustTemplate1'], function ($) {
 			}
 
 			this.loadData(0);//0= rebuild full ui
+			//test coomit
 		}
 
 	};
