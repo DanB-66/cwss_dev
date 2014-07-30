@@ -1,8 +1,10 @@
 footer { 
+	position: absolute;
+	bottom: 1em;
 	color: #2f2f2b;
 	font-size: 0.875em;
 	text-align: center;
-	//@include opacity(0.3);
+	width: 100%;
 	@include transition-property(color);
 	@include transition-duration(1.5s);
 	li {

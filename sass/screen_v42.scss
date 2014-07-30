@@ -11,7 +11,6 @@ body {
 	// $experimental-support-for-svg: true;
 	//@include background-image(linear-gradient(#fff, #999));
 	background: #000 url(../img/cowset.jpg) center 50% fixed no-repeat;
-	//background: #999;	
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	background-size: cover;	
@@ -50,16 +49,14 @@ body {
 	}
 }
 
-#pageWrapper {
-	@include prefix(transition, 'all 600ms ease-in');
-	min-height: 99%;
-	margin-bottom:-2em;
-	overflow: hidden;
-}
 #pageContent {
+	@include prefix(transition, 'all 600ms ease-in');
 	width: 60em;
-	margin: 0 auto;
-	padding: 1em 0 3em;
+	position: absolute;
+	top: 2em;
+	bottom: 4em;
+	left: 50%;
+	margin-left: -30em;
 }
 //global header
 #pageContent > header {
@@ -68,7 +65,6 @@ body {
 	border-width: 3px 0;
 	font-family: 'Orbitron', sans-serif;
 	letter-spacing: 0.4em;
-	margin-bottom: $double_space;
 	padding: 0 0.2em 0.2em;
 	@include border-radius($small_radius);
 	text-align: right;
@@ -119,12 +115,13 @@ ol, ul {
 	}
 }
 .carouselWrap {
-	height: 25em;//test
 	//fallback rgb?
 	background-color: $secondary_background_color_rgba;
-	//background-color: green;
-	position: relative;	
-	margin-top: 2em;
+	position: absolute;	
+	top: 7em;
+	bottom: 0;
+	left: 0;
+	right: 0;
 	.carousel {
 		height: 100%;
 		margin: 0 2.5em;
