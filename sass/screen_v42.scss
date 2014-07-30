@@ -18,26 +18,41 @@ body {
 	font: 1em/1.4 sans-serif;
 	height: 100%;
 	@include breakpoint(maxi) {
-		font-size: 1.5em; 
+		font-size: 1.5em;
+		.articleInner{
+			font-size:14px;
+		} 
 	}
 	@include breakpoint(midi) { 
-		font-size: 1em; 
+		font-size: 1em;
+		.articleInner{
+			font-size:14px;
+		}
 	}
 	@include breakpoint(mini) { 
-		font-size: 0.7708em; 
+		font-size: 0.7708em;
+		.articleInner{
+			font-size:12px;
+		} 
 	}
 	@include breakpoint(micro) { 
-		font-size: 0.55em; 
+		font-size: 0.55em;
+		.articleInner{
+			font-size:12px;
+		} 
 	}
 	@include breakpoint(nano) { 
 		font-size: 0.3125em;
-		-webkit-text-size-adjust: none;	// as this will take it below the 6px min... too small to read I know, just a quick test for now
+		-webkit-text-size-adjust: none;	// as this will take it below the 6px min
+		.articleInner{
+			font-size:12px;
+		}
 	}
 }
 
 #pageWrapper {
-	@include prefix(transition, 'all 600ms ease-in');// just for fun...
-	min-height: 100%;
+	@include prefix(transition, 'all 600ms ease-in');
+	min-height: 99%;
 	margin-bottom:-2em;
 	overflow: hidden;
 }
@@ -105,30 +120,32 @@ ol, ul {
 }
 .carouselWrap {
 	height: 25em;//test
-	background: $secondary_color;
-	position: relative;
-	padding: 0 2em;
+	//fallback rgb?
+	background: $secondary_background_color_rgba;
+	position: relative;	
 	margin-top: 2em;
 	.carousel {
 		height: 100%;
+		margin: 0 2.5em;
 	}
 	article {
 		display: inline-block;
 		vertical-align: top;
+		position: relative;
 		@include box-sizing(border-box);
 		//width: 33.333333%; default
-		padding: 0 0.2em;
 		height: 100%;
-		//outline: 1px solid #000; bugs in ff and ie
-		overflow-y: auto;
-		background: #a39d9f;
+		padding: 0.5em 0;
+		&:last-child > .articleInner{
+			margin-right: 0;
+		}		
 	}
 	// one items
-	.multiple1 article{
+	.multiple1 article {
 		width: 100%;
 	}
 	// two items
-	.multiple2 article{
+	.multiple2 article {
 		width: 50%;
 	}
 	// three items
@@ -139,6 +156,47 @@ ol, ul {
 	.multiple4 article {
 		width: 25%;
 	}
+	.articleInner {
+		overflow-y: auto;
+		overflow-x: hidden;
+		margin-right: $article_gutter;
+		height: 100%;
+		position: relative;
+		//fallback rgb?
+		background-color: $primary_background_color_rgba;
+		background-repeat: no-repeat;
+		-webkit-background-size: contain;
+		-moz-background-size: contain;
+		background-size: contain;
+		>*{
+			margin: 0 $article_gutter;
+		}
+		> h3{
+			margin: 9em 0 1em 0;
+			padding: 0.1em $article_gutter 0.12em $article_gutter;
+			font-weight: normal;
+			color: $default_text_color;
+			background-color: $secondary_color;
+		}
+		dd, dt {
+			display:inline-block;
+			vertical-align:top;
+			margin:0;
+		}
+		dt:nth-child(1), dt:nth-child(3){
+			width:22%;
+			font-weight:bold;
+		}
+		dd:nth-child(2), dd:nth-child(4){
+			padding-bottom: $single_space;
+			width:78%;
+			margin:0;
+		}
+			img{
+			margin:0;
+			width: 100%
+		}
+	}
 	.cwsCprev, .cwsCnext {
 		position: absolute;
 		top: 0;
@@ -147,7 +205,7 @@ ol, ul {
 		background-color: $control_background_color;
 		text-indent: -999px;//ff bug
 		white-space: nowrap;
-		outline: 1px solid #000;
+		//outline: 1px solid #000;
 		overflow: hidden;
 		@include transition-property(background-color);
 		@include transition-duration($short_time);
@@ -226,22 +284,7 @@ ol, ul {
 #setMultipleControl{
 	min-width: 8em;
 }
-// content areas... just some basics for now
-.carouselWrap {
-	article {
-		line-height: 1.3;
-	}
-	article h3 {
-		font-weight: bold;
-	}
-	article dd {
-		margin-left: $single_space;
-		margin-bottom: $single_space;
-	}
-	article img {
-		width: 100%;
-	}
-}
+
 // #projects on non-js
 #projects {
 	background: #ccc;
@@ -251,14 +294,7 @@ ol, ul {
 	font-weight: bold;
 	margin-top: $double_space;
 }
-// some drivel
-.caveat {
-	display: none;
-	margin-bottom: $single_space;
-}
-.caveat a {
-	color: $control_color;
-}
+
 //transitions
 .carousel{
 	position: relative;

@@ -330,7 +330,9 @@ FileETag None
 # performance impact: http://goo.gl/Mluzd
 
 <IfModule mod_rewrite.c>
-  Options +FollowSymlinks
+#  Options +FollowSymlinks
+# abovesymlinks not supported on fasthosts
+
 # Options +SymLinksIfOwnerMatch
   RewriteEngine On
 # RewriteBase /

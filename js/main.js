@@ -24,8 +24,6 @@ define(['jquery', 'history', 'dust', 'dustTemplate1'], function ($) {
 		introShow: true,
 		newIntroShow: undefined,
 		actionIntro: false,
-		//prevBtn: $('.cwsCprev'),
-		//nextBtn: $('.cwsCprev'),
 		isTransitioning: false,
 
 		showPage : function(direction, index, newLang, newMultiple, newIntroShow){
@@ -156,7 +154,7 @@ define(['jquery', 'history', 'dust', 'dustTemplate1'], function ($) {
 
 						if(CwsC.actionIntro === true){
 							CwsC.actionIntro = false;
-							return;
+							return;//stop and dont do transitions
 						}
 
 						if (State.data.state !== CwsC.contentIndex) {// back button pressed, go to previous page

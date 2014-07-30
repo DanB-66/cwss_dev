@@ -9,6 +9,9 @@ $default_text_contrast_color: #f60;//orange eg links
 $primary_color: #999;
 $secondary_color: #dcdcdc;
 
+$primary_background_color_rgba: rgba(200, 200, 211, 0.6);
+$secondary_background_color_rgba: rgba(10, 30, 110, 0.4);
+
 $control_color: #333;
 $control_hover_color: #ccc;
 $control_background_color: #666;
@@ -21,6 +24,8 @@ $double_space: 1.25rem;
 
 $small_radius: 1rem;
 $medium_radius: 1.5625rem;
+
+$article_gutter: 0.5em;
 
 $short_time: .5s;
 $medium_time: 2s;
