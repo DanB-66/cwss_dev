@@ -17,7 +17,7 @@
         <h3>{projectName}</h3>
 
         <section class="projectDescription">
-            <p>{projectDescription}:</p>
+            <p>{projectDescription}</p>
         </section>
 
         <dl class="client">

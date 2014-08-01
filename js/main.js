@@ -301,7 +301,7 @@ define(['jquery', 'history', 'dust', 'dustTemplate1'], function ($) {
 				transitionInClass = '';
 			}
 			CwsC.carouselContainer.html(carouselBuffer).addClass('noTransition').removeClass(CwsC.newDirection).addClass(transitionInClass);
-			var height = CwsC.carouselContainer[0].offsetHeight;//force repaint 
+			CwsC.carouselContainer[0].offsetWidth;//force repaint 
 			CwsC.carouselContainer.removeClass('noTransition').removeClass(transitionInClass);
 
 			CwsC.carouselContainer.fadeTo(500, 1, function(){

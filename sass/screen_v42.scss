@@ -8,9 +8,7 @@ html {
 }
 body {
 	color: $default_text_color;
-	// $experimental-support-for-svg: true;
-	//@include background-image(linear-gradient(#fff, #999));
-	background: #000 url(../img/cowset.jpg) center 50% fixed no-repeat;
+	background: #000 url(../img/cowset.jpg) no-repeat top center;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	background-size: cover;	
@@ -18,45 +16,46 @@ body {
 	height: 100%;
 	@include breakpoint(maxi) {
 		font-size: 1.5em;
-		.articleInner{
-			font-size:14px;
-		} 
 	}
 	@include breakpoint(midi) { 
 		font-size: 1em;
-		.articleInner{
-			font-size:14px;
-		}
 	}
 	@include breakpoint(mini) { 
-		font-size: 0.7708em;
-		.articleInner{
-			font-size:12px;
-		} 
+		font-size: 0.7708em; 
 	}
 	@include breakpoint(micro) { 
-		font-size: 0.55em;
-		.articleInner{
-			font-size:12px;
-		} 
+		font-size: 0.55em; 
 	}
 	@include breakpoint(nano) { 
 		font-size: 0.3125em;
-		-webkit-text-size-adjust: none;	// as this will take it below the 6px min
-		.articleInner{
-			font-size:12px;
-		}
 	}
 }
 
 #pageContent {
-	@include prefix(transition, 'all 600ms ease-in');
+	//@include prefix(transition, 'all 600ms ease-in');
+	-webkit-tap-highlight-color: transparent;
 	width: 60em;
 	position: absolute;
-	top: 2em;
-	bottom: 4em;
+	top: 2rem;
+	bottom: 2rem;
 	left: 50%;
 	margin-left: -30em;
+	@include breakpoint(nano) {
+		top: 2em;
+		left: 5em;
+		right: 5em;
+		//bottom: 2rem;
+		width: auto;
+		margin-left: 0;
+	}
+	@include breakpoint(devicePortrait) {
+		top: 2em;
+		left: 5em;
+		right: 5em;
+		//bottom: 2rem;
+		width: auto;
+		margin-left: 0;
+	}
 }
 //global header
 #pageContent > header {
@@ -70,23 +69,27 @@ body {
 	text-align: right;
 	text-transform: uppercase;
 	font-weight: normal;
-	font-size: 2em;
-}
-h1, h2 {
-	background: transparent;
-	font-size: 1em;
-	margin:0 0 -0.2em;
-}
-h2 {
-	font-size: 0.5em;
-	letter-spacing: 0.5em;
-	margin-right: 0.5em;
-	text-transform: lowercase;
+	font-size: 1rem;
+	@include breakpoint(devicePortrait) {
+		//font-size: 1.3rem;
+	}
+
+	h1, h2 {
+		background: transparent;
+		font-size: 2em;
+		margin:0 0 -0.2em;
+	}
+	h2 {
+		font-size: 1em;
+		letter-spacing: 0.5em;
+		margin-right: 1em;
+		text-transform: lowercase;
+	}
 }
 ol, ul {
 	list-style: none;
 	padding: 0;
-	margin-top: 0;
+	margin: 0;
 }
 #intro {
 	position: absolute;
@@ -118,13 +121,13 @@ ol, ul {
 	//fallback rgb?
 	background-color: $secondary_background_color_rgba;
 	position: absolute;	
-	top: 7em;
+	top: 7rem;
 	bottom: 0;
-	left: 0;
-	right: 0;
+	left: $nav_tab_width_normal - $article_gutter;
+	right: $nav_tab_width_normal - $article_gutter;
 	.carousel {
 		height: 100%;
-		margin: 0 2.5em;
+		margin: 0 $nav_tab_width_normal;
 	}
 	article {
 		display: inline-block;
@@ -161,7 +164,7 @@ ol, ul {
 		position: relative;
 		//fallback rgb?
 		background-color: $primary_background_color_rgba;
-		//@include border-radius($tiny_radius);//killing 3d transforms in ie
+		//@include border-radius($tiny_radius);//is killing 3d transforms in ie?
 		-webkit-border-radius: $tiny_radius;
 		-moz-border-radius: $tiny_radius;
 		padding-right: 12px;
@@ -171,19 +174,24 @@ ol, ul {
 		border-top:none;
 		-webkit-background-clip: padding-box;//will cause layers to crop to scrollbar on ie
 		>*{
-			margin: 0 (-$article_gutter) 0 $article_gutter;
+			margin: 0 (-$article_gutter) 0 $article_gutter;//?????????
 		}
 		> h3{
 			margin: 0 (-$article_gutter) 1em 0;
 			padding: 0.1em $article_gutter 0.12em $article_gutter;
 			font-weight: normal;
+			font-size: 1rem;
 			color: $default_text_color;
 			background-color: $secondary_color;
+		}
+		p{
+			font-size: 1rem;
 		}
 		dd, dt {
 			display: inline-block;
 			vertical-align: top;
 			margin: 0;
+			font-size: 1rem;
 		}
 		dt:nth-child(1), dt:nth-child(3){
 			width: 22%;
@@ -199,7 +207,7 @@ ol, ul {
 			width: 100%
 		}
 		.hero{
-			margin: 2em (-$article_gutter);
+			margin: $article_gutter 0;
 			height: 10.5em;
 			overflow: hidden;
 			img{
@@ -229,10 +237,12 @@ ol, ul {
 		cursor: default;
 	}
 	.cwsCprev {
-		left:0;
+		left: -($nav_tab_width_normal - $article_gutter);
+		@include border-left-radius($tiny_radius);
 	}		 
 	.cwsCnext {
-		right:0;
+		right: -($nav_tab_width_normal - $article_gutter);
+		@include border-right-radius($tiny_radius);
 	}
 	.cwsCprev:after, .cwsCnext:after {//generated triangles
 		content: " ";
@@ -261,19 +271,44 @@ ol, ul {
 		border-right-color: $control_color_disabled;
 		border-left-color: $control_color_disabled;
 	}
+	@include breakpoint(devicePortrait) {/* layout - override nav buttons to bottom on phone*/
+		left: 0;
+		right: 0;
+		top: 6.5rem;
+		bottom: $nav_tab_height_phone;
+		.carousel{
+			margin: 0 $article_gutter;
+			@include border-radius($tiny_radius);
+		}
+		.cwsCprev, .cwsCnext {
+			top: auto;
+			left: 0;
+			bottom: -($nav_tab_height_phone);
+			height: ($nav_tab_height_phone - (2 * $article_gutter));
+			width: 49%;
+		}
+		.cwsCnext {
+			right: 0;
+			left: auto;
+		}
+		#controls{
+			//font-size: 1.6rem;
+		}
+	}
 }
 #controls {
 	position: absolute;
 	top: -1.8em;
 	z-index: 1;
+	font-size: 1rem;
 }
 #setMultipleControl, #setLangControl, #toggleIntro{
 	display: inline-block;
 	vertical-align: middle;
-	margin-right: $double_space;
+	margin-right: $single_space;
 	h4, ul, li {
 		font-weight: normal;
-		font-size: 0.85em;
+		//font-size: 1em;
 		display: inline-block;
 		vertical-align: middle;
 		padding-left: 0;
@@ -281,7 +316,7 @@ ol, ul {
 	}
 	li {
 		cursor: pointer;
-		margin-left:.3em;
+		margin-left:.3rem;
 		@include transition-property(color);
 		@include transition-duration($short_time);		
 		&:hover, &.active {
@@ -293,7 +328,7 @@ ol, ul {
 	}
 }
 #setMultipleControl{
-	min-width: 8em;
+	//min-width: 8em;
 }
 
 // #projects on non-js
@@ -311,9 +346,9 @@ ol, ul {
 	position: relative;
 	-webkit-perspective: 900px;
 	perspective: 900px;
-		-webkit-transform-style: preserve-3d;
-		-moz-transform-style: preserve-3d;
-		transform-style: preserve-3d;
+	-webkit-transform-style: preserve-3d;
+	-moz-transform-style: preserve-3d;
+	transform-style: preserve-3d;
 
 	article, .articleInner{
 		//perspective: 900px;//req for ie bug here as well as above el	?

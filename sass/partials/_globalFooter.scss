@@ -1,12 +1,15 @@
 footer { 
 	position: absolute;
-	bottom: 1em;
+	bottom: 0.3rem;
 	color: #2f2f2b;
-	font-size: 0.875em;
+	font-size: 0.875rem;
 	text-align: center;
 	width: 100%;
 	@include transition-property(color);
 	@include transition-duration(1.5s);
+	ul{
+		margin: 0;
+	}
 	li {
 		display: inline-block;
 		margin-right: $double_space;
