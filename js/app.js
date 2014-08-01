@@ -6,6 +6,7 @@ requirejs.config({
 		//'dust': ['//cdnjs.cloudflare.com/ajax/libs/dustjs-linkedin/2.2.2/dust-core.min', 'dust-core-2.2.2.min'],
 		'jquery': 'jquery-1.10.2.min',
 		'history': 'jquery.history',
+		'touchSwipe': 'jquery.touchSwipe.min',
 		'dust': 'dust-core-2.3.5.min',
 		'dustTemplate1': '../../templates/_cws.tmplcompiled_v42'
 	},
@@ -13,6 +14,10 @@ requirejs.config({
 		'history': {
 			deps: ['jquery'],
 			exports: 'History'
+		},
+		'touchSwipe': {
+			deps: ['jquery'],
+			exports: 'swipe'
 		},
 		'dust': {
 			exports: 'dust'

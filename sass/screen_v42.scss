@@ -194,12 +194,12 @@ ol, ul {
 			font-size: 1rem;
 		}
 		dt:nth-child(1), dt:nth-child(3){
-			width: 22%;
+			//width: 22%;
 			font-weight: bold;
 		}
 		dd:nth-child(2), dd:nth-child(4){
 			padding-bottom: $single_space;
-			width: 78%;
+			//width: 78%;
 			margin: 0;
 		}
 			img{
@@ -356,7 +356,7 @@ ol, ul {
 		//-moz-transform-style: preserve-3d;
 		//transform-style: preserve-3d;
 		@include prefix(backface-visibility, 'hidden');
-		@include prefix(transition, 'all 800ms ease-in');
+		@include prefix(transition, 'all 600ms ease-in');
 	}
 
 	//forward

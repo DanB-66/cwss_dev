@@ -249,9 +249,9 @@ ol, ul { list-style: none; padding: 0; margin: 0; }
 @media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003190}}
 .carouselWrap .articleInner dd, .carouselWrap .articleInner dt { display: inline-block; vertical-align: top; margin: 0; font-size: 1rem; }
 @media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003196}}
-.carouselWrap .articleInner dt:nth-child(1), .carouselWrap .articleInner dt:nth-child(3) { width: 22%; font-weight: bold; }
+.carouselWrap .articleInner dt:nth-child(1), .carouselWrap .articleInner dt:nth-child(3) { font-weight: bold; }
 @media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003200}}
-.carouselWrap .articleInner dd:nth-child(2), .carouselWrap .articleInner dd:nth-child(4) { padding-bottom: 0.625em; width: 78%; margin: 0; }
+.carouselWrap .articleInner dd:nth-child(2), .carouselWrap .articleInner dd:nth-child(4) { padding-bottom: 0.625em; margin: 0; }
 @media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003205}}
 .carouselWrap .articleInner img { margin: 0; width: 100%; }
 @media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003209}}
@@ -308,7 +308,7 @@ ol, ul { list-style: none; padding: 0; margin: 0; }
 @media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003345}}
 .carousel { position: relative; -webkit-perspective: 900px; perspective: 900px; -webkit-transform-style: preserve-3d; -moz-transform-style: preserve-3d; transform-style: preserve-3d; }
 @media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003353}}
-.carousel article, .carousel .articleInner { -webkit-backface-visibility: hidden; -moz-backface-visibility: hidden; -o-backface-visibility: hidden; -ms-backface-visibility: hidden; backface-visibility: hidden; -webkit-transition: all 800ms ease-in; -moz-transition: all 800ms ease-in; -o-transition: all 800ms ease-in; -ms-transition: all 800ms ease-in; transition: all 800ms ease-in; }
+.carousel article, .carousel .articleInner { -webkit-backface-visibility: hidden; -moz-backface-visibility: hidden; -o-backface-visibility: hidden; -ms-backface-visibility: hidden; backface-visibility: hidden; -webkit-transition: all 600ms ease-in; -moz-transition: all 600ms ease-in; -o-transition: all 600ms ease-in; -ms-transition: all 600ms ease-in; transition: all 600ms ease-in; }
 @media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003363}}
 .carousel.forward article:last-child { -webkit-transform: rotateY(50deg) translateX(50%); transform: rotateY(50deg) translateX(50%); }
 @media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003369}}

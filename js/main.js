@@ -1,6 +1,6 @@
-/*global dust:true, History:true, Modernizr:true */
+/*global swipe:true, dust:true, History:true, Modernizr:true */
 
-define(['jquery', 'history', 'dust', 'dustTemplate1'], function ($) {
+require(['jquery', 'history', 'touchSwipe', 'dust', 'dustTemplate1'], function ($) {
 
 'use strict';
 
@@ -224,6 +224,10 @@ define(['jquery', 'history', 'dust', 'dustTemplate1'], function ($) {
 					CwsC.showPage(undefined, undefined, undefined, undefined, CwsC.introShow);
 				});
 
+				if (Modernizr.touch){// activate touchSwipe
+					this.swipeDetect();
+				}
+
 				this.showPage(undefined, CwsC.startItem, undefined, undefined, CwsC.introShow);//show first set on load, potentially based on referrer
 
 			}
@@ -301,7 +305,7 @@ define(['jquery', 'history', 'dust', 'dustTemplate1'], function ($) {
 				transitionInClass = '';
 			}
 			CwsC.carouselContainer.html(carouselBuffer).addClass('noTransition').removeClass(CwsC.newDirection).addClass(transitionInClass);
-			CwsC.carouselContainer[0].offsetWidth;//force repaint 
+			var dummy = CwsC.carouselContainer[0].offsetWidth;//force repaint 
 			CwsC.carouselContainer.removeClass('noTransition').removeClass(transitionInClass);
 
 			CwsC.carouselContainer.fadeTo(500, 1, function(){
@@ -376,6 +380,25 @@ define(['jquery', 'history', 'dust', 'dustTemplate1'], function ($) {
 			}
 		},
 
+
+		swipeDetect : function() {
+			CwsC.carouselContainer.swipe({
+				//Generic swipe handler for all directions
+				// swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
+				//	console.log("You swiped " + direction );
+				// },
+				swipeLeft:function() {
+					$('.cwsCprev').trigger('click');
+				},
+				swipeRight:function() {
+					$('.cwsCnext').trigger('click');
+				},
+				//Default is 75px, set to 0 for demo so any distance triggers swipe
+				threshold:75
+			});
+		},
+
+
 		init : function() {
 			var pageFromUrl = 0,
 				urlLocationType = '';
@@ -403,7 +426,8 @@ define(['jquery', 'history', 'dust', 'dustTemplate1'], function ($) {
 			}
 
 			this.loadData(0);//0= rebuild full ui
-			//test coomit
+
+
 		}
 
 	};
