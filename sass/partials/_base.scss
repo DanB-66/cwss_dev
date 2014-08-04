@@ -31,7 +31,7 @@ $article_gutter: 0.5em;
 $article_gutter_rem: 0.5rem;
 
 $nav_tab_width_normal: 3rem;
-$nav_tab_height_phone: 15em;
+$nav_tab_height_phone: 10em;
 
 $short_time: .5s;
 $medium_time: 2s;
@@ -40,32 +40,31 @@ $long_time: 6s;
 // breakpoints
 @mixin breakpoint($point) {
 	@if $point == maxi {
-		@media screen 
-		and (min-width: 1601px) 
+		@media only screen 
+		and (min-width: 1824px) 
 			{ @content; }
 	}
-	@if $point == midi {
+	@else if $point == midi {
 		@media screen 
 		and (min-width: 1025px) 
-		and (max-width: 1600px) 
+		and (max-width: 1823px) 
 			{ @content; }
 	}
 	@else if $point == mini {
 		@media screen 
-		and (min-width: 769px) 
-		and (max-width: 1024px)  
+		and (min-width: 768px) 
+		and (max-width: 1024px) 
 			{ @content; }
 	}
 	@else if $point == micro {
 		@media screen 
-		and (min-width: 601px) 
-		and (max-width: 768px)  
+		and (min-width: 321px) 
+		and (max-width: 767px)  
 			{ @content; }
 	}
 	@else if $point == nano {
 		@media screen 
-		and (max-width: 600px), 
-		screen and (max-device-width: 600px)  
+		and (max-width: 320px)
 			{ @content; }
 	}
 	@else if $point == devicePortrait {

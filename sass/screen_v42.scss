@@ -4,23 +4,43 @@
 		"partials/globalFooter";
 
 html {
-	font: 1em/1.4 sans-serif;
+	font: 1em/1.2 sans-serif;
 	height: 100%;
 	-webkit-text-size-adjust: none;
 	@include breakpoint(maxi) {
-		font-size: 1.5em;
+		font-size: 1.4em;
 	}
 	@include breakpoint(midi) { 
 		font-size: 1em;
 	}
 	@include breakpoint(mini) { 
 		font-size: 0.7708em; 
+		.articleInner > *{
+			font-size: 1.333333em;
+		}
+		body > footer{
+			font-size: 1.3em;
+		}
 	}
 	@include breakpoint(micro) { 
 		font-size: 0.55em; 
+		.articleInner > *{
+			font-size: 1.777777em;
+		}
+		body > footer{
+			font-size: 1.1em;
+		}
 	}
 	@include breakpoint(nano) { 
 		font-size: 0.3125em;
+		.articleInner > *{
+			font-size: 3em;
+		}
+		body > footer{
+			position: fixed;
+			background: #000;
+			bottom: 0;
+		}
 	}
 }
 body {
@@ -29,11 +49,7 @@ body {
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	background-size: cover;	
-	//font: 1em/1.4 sans-serif;
 	height: 100%;
-}
-#breakpoint_info{
-
 }
 #pageContent {
 	//@include prefix(transition, 'all 600ms ease-in');
@@ -44,19 +60,28 @@ body {
 	bottom: 2rem;
 	left: 50%;
 	margin-left: -30em;
-	@include breakpoint(nano) {
+	@include breakpoint(micro) {
 		top: 1rem;
 		left: 1rem;
 		right: 1rem;
-		//bottom: 2rem;
 		width: auto;
 		margin-left: 0;
+	}
+	@include breakpoint(nano) {
+		top: 1rem;
+		left: $article_gutter;
+		right: $article_gutter;
+		bottom: 2rem;
+		width: auto;
+		margin-left: 0;
+		& > header{
+			font-size:1.8em !important;
+		}
 	}
 	@include breakpoint(devicePortrait) {
 		top: 1rem;
 		left: 1rem;
 		right: 1rem;
-		//bottom: 2rem;
 		width: auto;
 		margin-left: 0;
 	}
@@ -74,9 +99,6 @@ body {
 	text-transform: uppercase;
 	font-weight: normal;
 	font-size: 1rem;
-	@include breakpoint(devicePortrait) {
-		//font-size: 1.3rem;
-	}
 
 	h1, h2 {
 		background: transparent;
@@ -99,12 +121,11 @@ ol, ul {
 	position: absolute;
 	left: 0;
 	right: 0;
-	top: 30%;
+	top: 13%;
 	background: #000;
 	color: #fff;
 	@include opacity(0.8);
-	padding: 3em 4em;
-	margin: 0 -3em;
+	padding: 10em 5em;
 	z-index: 1;
 	display:block;
 	@include transition-property(all);
@@ -125,16 +146,13 @@ ol, ul {
 	position: absolute;	
 	top: 7rem;
 	bottom: 0;
-	//left: $nav_tab_width_normal - $article_gutter;
 	left: 0;
-	//right: $nav_tab_width_normal - $article_gutter;
 	right: 0;
 	//fallback rgb?
 	background-color: $secondary_background_color_rgba;
 	@include border-radius($small_radius);
 	.carousel {
 		height: 100%;
-		//margin: 0 $nav_tab_width_normal + $article_gutter;
 		margin: 0 $nav_tab_width_normal;
 		padding: 0 $article_gutter_rem;
 	}
@@ -181,27 +199,23 @@ ol, ul {
 		border-left:none;
 		border-bottom:none;
 		border-top:none;
-		font-size: 1rem;
 		-webkit-background-clip: padding-box;//will cause layers to crop to scrollbar on ie
 		>*{
-			margin: 0 (-$article_gutter) 0 $article_gutter;//?????????
+			margin: 0 (-$article_gutter) 0 $article_gutter;
 		}
 		> h3{
 			margin: 0 (-$article_gutter) 1em 0;
 			padding: 0.1em $article_gutter 0.12em $article_gutter;
 			font-weight: normal;
-			font-size: 1em;
 			color: $default_text_color;
 			background-color: $secondary_color;
 		}
 		p{
-			font-size: 1em;
+			//font-size: 1em;
 		}
-		dl {}
 		dd, dt {
 			display: inline-block;
 			margin: 0;
-			font-size: 1em;
 			margin-right: $inline_space_horiz;
 		}
 		dt:nth-child(1), dt:nth-child(3){
@@ -215,9 +229,9 @@ ol, ul {
 			width: 100%
 		}
 		.hero{
-			margin: $article_gutter 0;
-			//height: 10.5em;
-			//overflow: hidden;
+			//margin:0 -($article_gutter);
+			height: 60px;
+			overflow: hidden;
 			img{
 				//height:30em;
 				//display:none;
@@ -245,12 +259,10 @@ ol, ul {
 		cursor: default;
 	}
 	.cwsCprev {
-		//left: -($nav_tab_width_normal - $article_gutter);
 		left: 0;
 		@include border-left-radius($tiny_radius);
 	}		 
 	.cwsCnext {
-		//right: -($nav_tab_width_normal - $article_gutter);
 		right: 0;
 		@include border-right-radius($tiny_radius);
 	}
@@ -282,8 +294,8 @@ ol, ul {
 		border-left-color: $control_color_disabled;
 	}
 	@include breakpoint(devicePortrait) {/* layout - override nav buttons to bottom on phone*/
-		left: 1rem;
-		right: 1rem;
+		left: 0;
+		right: 0;
 		top: 6.5rem;
 		bottom: $nav_tab_height_phone;
 		.carousel{
@@ -296,7 +308,7 @@ ol, ul {
 			left: 0;
 			bottom: -($nav_tab_height_phone);
 			height: ($nav_tab_height_phone - (2 * $article_gutter));
-			width: 49%;
+			width: 50%;
 		}
 		.cwsCnext {
 			right: 0;
@@ -304,6 +316,28 @@ ol, ul {
 		}
 		#controls{
 			//font-size: 1.6rem;
+		}
+	}
+	@include breakpoint(nano) {
+		position: relative;
+		margin: 0 $article_gutter;
+		top: 4em;
+		article{
+			display: block;
+			width: auto !important;
+			margin-left: $article_gutter;
+		}
+		#intro{
+			position: relative;
+			font-size: 2.1em;
+			padding: 1em;
+			margin: 0 2.1em;
+			.hide{
+				display: none;
+			}
+		}
+		#controls{
+			font-size: 1.8em;
 		}
 	}
 }
@@ -441,7 +475,7 @@ ol, ul {
 #breakpoint_debug{
 	position:absolute;
 	top:0.5em;
-	font-size:2em;
+	font-size:2rem;
 	@include breakpoint(maxi) {
 		.maxi{color: $default_text_contrast_color;}
 	}
