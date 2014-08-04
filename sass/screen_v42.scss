@@ -4,16 +4,9 @@
 		"partials/globalFooter";
 
 html {
-	height: 100%;
-}
-body {
-	color: $default_text_color;
-	background: #000 url(../img/cowset.jpg) no-repeat top center;
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	background-size: cover;	
 	font: 1em/1.4 sans-serif;
 	height: 100%;
+	-webkit-text-size-adjust: none;
 	@include breakpoint(maxi) {
 		font-size: 1.5em;
 	}
@@ -30,7 +23,18 @@ body {
 		font-size: 0.3125em;
 	}
 }
+body {
+	color: $default_text_color;
+	background: #000 url(../img/cowset.jpg) no-repeat top center;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	background-size: cover;	
+	//font: 1em/1.4 sans-serif;
+	height: 100%;
+}
+#breakpoint_info{
 
+}
 #pageContent {
 	//@include prefix(transition, 'all 600ms ease-in');
 	-webkit-tap-highlight-color: transparent;
@@ -41,17 +45,17 @@ body {
 	left: 50%;
 	margin-left: -30em;
 	@include breakpoint(nano) {
-		top: 2em;
-		left: 5em;
-		right: 5em;
+		top: 1rem;
+		left: 1rem;
+		right: 1rem;
 		//bottom: 2rem;
 		width: auto;
 		margin-left: 0;
 	}
 	@include breakpoint(devicePortrait) {
-		top: 2em;
-		left: 5em;
-		right: 5em;
+		top: 1rem;
+		left: 1rem;
+		right: 1rem;
 		//bottom: 2rem;
 		width: auto;
 		margin-left: 0;
@@ -118,16 +122,21 @@ ol, ul {
 	}
 }
 .carouselWrap {
-	//fallback rgb?
-	background-color: $secondary_background_color_rgba;
 	position: absolute;	
 	top: 7rem;
 	bottom: 0;
-	left: $nav_tab_width_normal - $article_gutter;
-	right: $nav_tab_width_normal - $article_gutter;
+	//left: $nav_tab_width_normal - $article_gutter;
+	left: 0;
+	//right: $nav_tab_width_normal - $article_gutter;
+	right: 0;
+	//fallback rgb?
+	background-color: $secondary_background_color_rgba;
+	@include border-radius($small_radius);
 	.carousel {
 		height: 100%;
+		//margin: 0 $nav_tab_width_normal + $article_gutter;
 		margin: 0 $nav_tab_width_normal;
+		padding: 0 $article_gutter_rem;
 	}
 	article {
 		display: inline-block;
@@ -135,7 +144,7 @@ ol, ul {
 		position: relative;
 		@include box-sizing(border-box);	
 		height: 100%;
-		padding: 0.5em 0;
+		padding: 0.5rem 0;
 		&:last-child > .articleInner{
 			margin-right: 0;
 		}		
@@ -159,19 +168,20 @@ ol, ul {
 	.articleInner {
 		overflow-y: auto;
 		overflow-x: hidden;
-		margin-right: $article_gutter;
+		margin-right: $article_gutter_rem;
 		height: 100%;
 		position: relative;
 		//fallback rgb?
 		background-color: $primary_background_color_rgba;
-		//@include border-radius($tiny_radius);//is killing 3d transforms in ie?
+		//@include border-radius($tiny_radius);//is killing 3d transforms in ie? drop ie for now
 		-webkit-border-radius: $tiny_radius;
 		-moz-border-radius: $tiny_radius;
-		padding-right: 12px;
-		border-right: 6px solid $primary_background_color_rgba;
+		padding-right: (2 * $article_gutter);
+		border-right: $article_gutter solid $primary_background_color_rgba;
 		border-left:none;
 		border-bottom:none;
 		border-top:none;
+		font-size: 1rem;
 		-webkit-background-clip: padding-box;//will cause layers to crop to scrollbar on ie
 		>*{
 			margin: 0 (-$article_gutter) 0 $article_gutter;//?????????
@@ -180,36 +190,34 @@ ol, ul {
 			margin: 0 (-$article_gutter) 1em 0;
 			padding: 0.1em $article_gutter 0.12em $article_gutter;
 			font-weight: normal;
-			font-size: 1rem;
+			font-size: 1em;
 			color: $default_text_color;
 			background-color: $secondary_color;
 		}
 		p{
-			font-size: 1rem;
+			font-size: 1em;
 		}
+		dl {}
 		dd, dt {
 			display: inline-block;
-			vertical-align: top;
 			margin: 0;
-			font-size: 1rem;
+			font-size: 1em;
+			margin-right: $inline_space_horiz;
 		}
 		dt:nth-child(1), dt:nth-child(3){
-			//width: 22%;
 			font-weight: bold;
 		}
 		dd:nth-child(2), dd:nth-child(4){
 			padding-bottom: $single_space;
-			//width: 78%;
-			margin: 0;
 		}
-			img{
+		img{
 			margin: 0;
 			width: 100%
 		}
 		.hero{
 			margin: $article_gutter 0;
-			height: 10.5em;
-			overflow: hidden;
+			//height: 10.5em;
+			//overflow: hidden;
 			img{
 				//height:30em;
 				//display:none;
@@ -220,9 +228,9 @@ ol, ul {
 		position: absolute;
 		top: 0;
 		bottom: 0;
-		width: 2em;
+		width: 3rem;
 		background-color: $control_background_color;
-		text-indent: -999px;//ff bug
+		text-indent: -999rem;
 		white-space: nowrap;
 		overflow: hidden;
 		@include transition-property(background-color);
@@ -237,31 +245,33 @@ ol, ul {
 		cursor: default;
 	}
 	.cwsCprev {
-		left: -($nav_tab_width_normal - $article_gutter);
+		//left: -($nav_tab_width_normal - $article_gutter);
+		left: 0;
 		@include border-left-radius($tiny_radius);
 	}		 
 	.cwsCnext {
-		right: -($nav_tab_width_normal - $article_gutter);
+		//right: -($nav_tab_width_normal - $article_gutter);
+		right: 0;
 		@include border-right-radius($tiny_radius);
 	}
 	.cwsCprev:after, .cwsCnext:after {//generated triangles
 		content: " ";
 		position: absolute;
 		top: 50%;
-		margin-top: -1em;
+		margin-top: -1rem;
 		width: 0;
 		height: 0;
-		border-top: 1em solid transparent;
-		border-right: 1.3em solid $control_color;
-		border-bottom: 1em solid transparent;
+		border-top: 1rem solid transparent;
+		border-right: 1.3rem solid $control_color;
+		border-bottom: 1rem solid transparent;
 	}
 	.cwsCprev:after {
-		left: 0.25em;
+		left: 1rem;
 	}
 	.cwsCnext:after {
-		right: 0.25em;
+		right: 1rem;
 		border-right: none;
-		border-left: 1.3em solid $control_color;
+		border-left: 1.3rem solid $control_color;
 	}
 	.cwsCprev:hover:after, .cwsCnext:hover:after, .cwsCprev:focus:after, .cwsCnext:focus:after {
 		border-right-color: $control_hover_color;
@@ -272,12 +282,13 @@ ol, ul {
 		border-left-color: $control_color_disabled;
 	}
 	@include breakpoint(devicePortrait) {/* layout - override nav buttons to bottom on phone*/
-		left: 0;
-		right: 0;
+		left: 1rem;
+		right: 1rem;
 		top: 6.5rem;
 		bottom: $nav_tab_height_phone;
 		.carousel{
 			margin: 0 $article_gutter;
+			padding: 0;
 			@include border-radius($tiny_radius);
 		}
 		.cwsCprev, .cwsCnext {
@@ -423,4 +434,30 @@ ol, ul {
 		transition-delay: 0;
 	}
 
+}
+
+/* utility temp */
+
+#breakpoint_debug{
+	position:absolute;
+	top:0.5em;
+	font-size:2em;
+	@include breakpoint(maxi) {
+		.maxi{color: $default_text_contrast_color;}
+	}
+	@include breakpoint(midi) {
+		.midi{color: $default_text_contrast_color;}
+	}
+	@include breakpoint(mini) {
+		.mini{color: $default_text_contrast_color;}
+	}
+	@include breakpoint(micro) {
+		.micro{color: $default_text_contrast_color;}
+	}
+	@include breakpoint(nano) {
+		.nano{color: $default_text_contrast_color;}
+	}
+	@include breakpoint(devicePortrait) {
+		.devicePortrait{color: $default_text_contrast_color;}
+	}
 }

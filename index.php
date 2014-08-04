@@ -18,6 +18,15 @@
 
 <div id="pageContent">
 
+<div id="breakpoint_debug">
+	<span class="maxi">maxi</span> 
+	<span class="midi">midi</span> 
+	<span class="mini">mini</span> 
+	<span class="micro">micro</span> 
+	<span class="nano">nano</span> 
+	<span class="devicePortrait">port</span> 
+</div>
+
 <?php include("includes/_header_global.php"); ?>
 
 <!--

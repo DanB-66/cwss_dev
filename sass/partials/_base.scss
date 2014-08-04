@@ -1,6 +1,6 @@
 /* sass base */
-@import "compass/css3",
-		"compass/utilities";
+@import "compass/css3";
+		//"compass/utilities";
 
 // colours
 $default_text_color: #000;//default  eg body text
@@ -16,20 +16,22 @@ $control_color: #333;
 $control_hover_color: #ccc;
 $control_background_color: #666;
 $control_background_hover_color: #999;
-$control_color_disabled: #ccc;
-$control_color_disabled_background: #d4d4d4;
+$control_color_disabled: #575757;//caret
+$control_color_disabled_background: #2e2e2e;
 
 $single_space: 0.625em;
 $double_space: 1.25em;
+$inline_space_horiz: 0.25em;
 
-$tiny_radius: 0.5em;
-$small_radius: 1em;
-$medium_radius: 1.5625em;
+$tiny_radius: 0.5rem;
+$small_radius: 1rem;
+$medium_radius: 1.5625rem;
 
 $article_gutter: 0.5em;
+$article_gutter_rem: 0.5rem;
 
-$nav_tab_width_normal: 1.5em;
-$nav_tab_height_phone: 10em;
+$nav_tab_width_normal: 3rem;
+$nav_tab_height_phone: 15em;
 
 $short_time: .5s;
 $medium_time: 2s;
@@ -38,22 +40,39 @@ $long_time: 6s;
 // breakpoints
 @mixin breakpoint($point) {
 	@if $point == maxi {
-		@media screen and (min-width: 1601px) { @content; }
+		@media screen 
+		and (min-width: 1601px) 
+			{ @content; }
 	}
 	@if $point == midi {
-		@media screen and (min-width: 1025px) and (max-width: 1600px) { @content; }
+		@media screen 
+		and (min-width: 1025px) 
+		and (max-width: 1600px) 
+			{ @content; }
 	}
 	@else if $point == mini {
-		@media screen and (min-width: 769px) and (max-width: 1024px)  { @content; }
+		@media screen 
+		and (min-width: 769px) 
+		and (max-width: 1024px)  
+			{ @content; }
 	}
 	@else if $point == micro {
-		@media screen and (min-width: 601px) and (max-width: 768px)  { @content; }
+		@media screen 
+		and (min-width: 601px) 
+		and (max-width: 768px)  
+			{ @content; }
 	}
 	@else if $point == nano {
-		@media screen and (max-width: 600px), screen and (max-device-width: 600px)  { @content; }
+		@media screen 
+		and (max-width: 600px), 
+		screen and (max-device-width: 600px)  
+			{ @content; }
 	}
 	@else if $point == devicePortrait {
-		@media screen and (orientation: portrait) and (max-device-width: 600px)  { @content; }
+		@media screen 
+		and (orientation: portrait) 
+		and (max-device-width: 768px)  
+			{ @content; }
 	}
 }
 
@@ -90,7 +109,7 @@ article{
 		-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
 		-webkit-border-radius: 10px;
 		border-radius: 10px;
-		margin: 8px 0;
+		margin: $article_gutter 0;
 	}
 	 
 	/* Handle */

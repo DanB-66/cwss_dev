@@ -225,7 +225,7 @@ require(['jquery', 'history', 'touchSwipe', 'dust', 'dustTemplate1'], function (
 				});
 
 				if (Modernizr.touch){// activate touchSwipe
-					this.swipeDetect();
+					this.swipeListener();
 				}
 
 				this.showPage(undefined, CwsC.startItem, undefined, undefined, CwsC.introShow);//show first set on load, potentially based on referrer
@@ -381,9 +381,8 @@ require(['jquery', 'history', 'touchSwipe', 'dust', 'dustTemplate1'], function (
 		},
 
 
-		swipeDetect : function() {
+		swipeListener : function() {
 			CwsC.carouselContainer.swipe({
-				//Generic swipe handler for all directions
 				// swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
 				//	console.log("You swiped " + direction );
 				// },
@@ -393,7 +392,7 @@ require(['jquery', 'history', 'touchSwipe', 'dust', 'dustTemplate1'], function (
 				swipeRight:function() {
 					$('.cwsCnext').trigger('click');
 				},
-				//Default is 75px, set to 0 for demo so any distance triggers swipe
+				//Default is 75px
 				threshold:75
 			});
 		},
