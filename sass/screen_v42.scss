@@ -7,6 +7,8 @@ html {
 	font: 1em/1.2 sans-serif;
 	height: 100%;
 	-webkit-text-size-adjust: none;
+	-moz-text-size-adjust: none;
+	-ms-text-size-adjust: none;
 	@include breakpoint(maxi) {
 		font-size: 1.4em;
 	}
@@ -42,6 +44,20 @@ html {
 			bottom: 0;
 		}
 	}
+	@include breakpoint(deviceLandscape) {
+		font-size: 1em;
+		.articleInner > *{
+			font-size: 1.3em;
+		}
+	}
+	@include breakpoint(devicePortrait) {
+		//font-size: 1rem;
+		.articleInner > *{
+			//font-size: 1.8em;
+		}
+	}
+
+
 }
 body {
 	color: $default_text_color;
@@ -85,6 +101,13 @@ body {
 		width: auto;
 		margin-left: 0;
 	}
+	@include breakpoint(deviceLandscape) {
+		top: 1rem;
+		left: 1rem;
+		right: 1rem;
+		width: auto;
+		margin-left: 0;
+	}
 }
 //global header
 #pageContent > header {
@@ -99,7 +122,10 @@ body {
 	text-transform: uppercase;
 	font-weight: normal;
 	font-size: 1rem;
-
+	@include breakpoint(deviceLandscape) {
+		width: 54%;
+		float: right;
+	}
 	h1, h2 {
 		background: transparent;
 		font-size: 2em;
@@ -145,14 +171,18 @@ ol, ul {
 .carouselWrap {
 	position: absolute;	
 	top: 7rem;
+	@include breakpoint(deviceLandscape) {
+		top: 4.5rem;
+	}
 	bottom: 0;
 	left: 0;
 	right: 0;
-	//fallback rgb?
+	//fallback rgb for ie8?
 	background-color: $secondary_background_color_rgba;
 	@include border-radius($small_radius);
 	.carousel {
 		height: 100%;
+		overflow: hidden;
 		margin: 0 $nav_tab_width_normal;
 		padding: 0 $article_gutter_rem;
 	}
@@ -181,12 +211,13 @@ ol, ul {
 	}
 	// four items
 	.multiple4 article {
-		width: 25%;
+		width: 50%;
+		height: 50%;
 	}
 	.articleInner {
 		overflow-y: auto;
 		overflow-x: hidden;
-		margin-right: $article_gutter_rem;
+		margin-right: $article_gutter_rem;		
 		height: 100%;
 		position: relative;
 		//fallback rgb?
@@ -237,6 +268,13 @@ ol, ul {
 				//display:none;
 			}
 		}
+	}
+	//adjust for 4 iems quad grid
+	.multiple4 article:nth-child(-n+2) {
+		padding-bottom: 0;
+	}
+	.multiple4 article:nth-child(even) .articleInner {
+		margin-right: 0;
 	}
 	.cwsCprev, .cwsCnext {
 		position: absolute;
@@ -301,7 +339,7 @@ ol, ul {
 		.carousel{
 			margin: 0 $article_gutter;
 			padding: 0;
-			@include border-radius($tiny_radius);
+			//@include border-radius($tiny_radius);
 		}
 		.cwsCprev, .cwsCnext {
 			top: auto;
@@ -315,7 +353,7 @@ ol, ul {
 			left: auto;
 		}
 		#controls{
-			//font-size: 1.6rem;
+			font-size: 1.6rem;
 		}
 	}
 	@include breakpoint(nano) {
@@ -361,7 +399,7 @@ ol, ul {
 	}
 	li {
 		cursor: pointer;
-		margin-left:.3rem;
+		margin-left:0.3rem;
 		@include transition-property(color);
 		@include transition-duration($short_time);		
 		&:hover, &.active {
@@ -402,6 +440,9 @@ ol, ul {
 		//transform-style: preserve-3d;
 		@include prefix(backface-visibility, 'hidden');
 		@include prefix(transition, 'all 600ms ease-in');
+	}
+	.articleInner{
+		@include prefix(transition, 'margin-right 0');
 	}
 
 	//forward
@@ -474,8 +515,9 @@ ol, ul {
 
 #breakpoint_debug{
 	position:absolute;
+	//display:none;
 	top:0.5em;
-	font-size:2rem;
+	font-size:1.5em;
 	@include breakpoint(maxi) {
 		.maxi{color: $default_text_contrast_color;}
 	}
@@ -493,5 +535,8 @@ ol, ul {
 	}
 	@include breakpoint(devicePortrait) {
 		.devicePortrait{color: $default_text_contrast_color;}
+	}
+	@include breakpoint(deviceLandscape) {
+		.deviceLandscape{color: $default_text_contrast_color;}
 	}
 }

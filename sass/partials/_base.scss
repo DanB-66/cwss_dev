@@ -46,14 +46,14 @@ $long_time: 6s;
 	}
 	@else if $point == midi {
 		@media screen 
-		and (min-width: 1025px) 
+		and (min-width: 1024px) 
 		and (max-width: 1823px) 
 			{ @content; }
 	}
 	@else if $point == mini {
 		@media screen 
 		and (min-width: 768px) 
-		and (max-width: 1024px) 
+		and (max-width: 1023px) 
 			{ @content; }
 	}
 	@else if $point == micro {
@@ -67,10 +67,16 @@ $long_time: 6s;
 		and (max-width: 320px)
 			{ @content; }
 	}
+	@else if $point == deviceLandscape {
+		@media screen 
+		and (orientation: landscape) 
+		and (max-device-width: 1000px)  
+			{ @content; }
+	}
 	@else if $point == devicePortrait {
 		@media screen 
 		and (orientation: portrait) 
-		and (max-device-width: 768px)  
+		and (max-device-width: 1000px)  
 			{ @content; }
 	}
 }
@@ -84,18 +90,6 @@ $prefixes: ('-webkit-','-moz-', '-o-', '-ms-', '');
 	}
 }
 
-//retina
-@mixin image-2x($image, $width, $height) {
-	@media	(min--moz-device-pixel-ratio: 1.3),
-			(-o-min-device-pixel-ratio: 2.6/2),
-			(-webkit-min-device-pixel-ratio: 1.3),
-			(min-device-pixel-ratio: 1.3),
-			(min-resolution: 1.3dppx) {
-		/* on retina, use image thats scaled by 2 */
-		background-image: url($image);
-		background-size: $width $height;
-	}
-}
 article{
 	/* custom scrollbars webkit */
 	::-webkit-scrollbar {
