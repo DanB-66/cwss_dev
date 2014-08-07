@@ -12,6 +12,9 @@ $secondary_color: #dcdcdc;
 $primary_background_color_rgba: rgba(200, 200, 211, 0.6);
 $secondary_background_color_rgba: rgba(10, 30, 110, 0.4);
 
+$link_on_dark_color: #fff;
+$link_on_light_color: #999;
+
 $control_color: #333;
 $control_hover_color: #ccc;
 $control_background_color: #666;
@@ -27,15 +30,16 @@ $tiny_radius: 0.5rem;
 $small_radius: 1rem;
 $medium_radius: 1.5625rem;
 
+$short_time: .5s;
+$medium_time: 1s;
+$long_time: 6s;
+
 $article_gutter: 0.5em;
 $article_gutter_rem: 0.5rem;
 
 $nav_tab_width_normal: 3rem;
 $nav_tab_height_phone: 7em;
-
-$short_time: .5s;
-$medium_time: 2s;
-$long_time: 6s;
+$controls_height: 2em;
 
 // breakpoints
 @mixin breakpoint($point) {

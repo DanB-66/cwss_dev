@@ -153,24 +153,35 @@ ol, ul {
 	position: absolute;
 	left: 0;
 	right: 0;
-	top: 13%;
+	top: 0;
+	bottom: 0;
 	background: #000;
 	color: #fff;
-	@include opacity(0.8);
+	//@include opacity(0.8);
+	background-color: #000;//ie8
+	background-color: rgba(0, 0, 0, 0.8);
+	@include border-radius($tiny_radius);
 	padding: 10em 5em;
 	z-index: 1;
-	display:block;
+	display: block;
 	@include transition-property(all);
-	@include transition-duration($short_time);
+	@include transition-duration($medium_time);
+	a {
+		color: $link_on_dark_color;
+		text-decoration: none;
+	}
 	.hide{
 		position: absolute;
-		top: 1em;
-		right: 1em;
+		top: 3em;
+		right: 2em;
+		padding: 1em;
+		color: $link_on_light_color;
+		@include border-radius($tiny_radius);
 		background-color: $control_background_color;
 	}
 	&.hidden{
 		@include opacity(0);
-		top:-30%;
+		top:-112%;
 		@include scale(0);
 	}
 	&.noTransition {
@@ -404,9 +415,17 @@ ol, ul {
 }
 #controls {
 	position: absolute;
-	top: -1.8em;
+	overflow: hidden;
+	top: 0;
+	bottom: 100%;
 	z-index: 1;
 	font-size: 1rem;
+	@include transition-property(top);
+	@include transition-duration($short_time);
+	@include transition-delay($short_time);	
+	&.shown{
+		top: -($controls_height);		
+	}
 }
 #setMultipleControl, #setLangControl, #toggleIntro{
 	display: inline-block;
@@ -424,7 +443,7 @@ ol, ul {
 		cursor: pointer;
 		margin-left:0.3rem;
 		@include transition-property(color);
-		@include transition-duration($short_time);		
+		@include transition-duration($short_time);			
 		&:hover, &.active {
 			color: $default_text_contrast_color;
 		}

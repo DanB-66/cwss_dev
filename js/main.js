@@ -76,10 +76,7 @@ require(['jquery', 'history', 'touchSwipe', 'dust', 'dustTemplate1'], function (
 		buildUI : function(bIsRebuild) {// build ui on load, on lang change refresh with new data. Bind ui btns and statechange event
 			var renderTarget = $('.carouselWrap');//elem to create it inside
 
-			if (bIsRebuild !== 0){// ie from lang select
-				//bIsRebuild = 0;//? needed?
-				console.log('lang change in build ui');
-			} else {
+			if (bIsRebuild === 0){
 				renderTarget.html(this.buildControls());
 				this.carouselContainer = renderTarget.children('.carousel');
 				this.carouselContainer.addClass('multiple'+CwsC.multiple);
@@ -116,10 +113,11 @@ require(['jquery', 'history', 'touchSwipe', 'dust', 'dustTemplate1'], function (
 				});
 
 				// delegate click on 'home/intro/contact' overlay close
-				renderTarget.on('click', '#intro > .hide', function() {
+				renderTarget.on('click', '#intro > .hide', function(event) {
 					CwsC.introShow = false;
 					CwsC.actionIntro = true;
 					CwsC.pushPageState(undefined, undefined, undefined, undefined, CwsC.introShow);
+					event.preventDefault();
 				});
 
 				// delegate click on 'home/intro/contact' overlay open
@@ -180,18 +178,23 @@ require(['jquery', 'history', 'touchSwipe', 'dust', 'dustTemplate1'], function (
 							CwsC.introShow = State.data.introShow;
 							if (CwsC.introShow !== true){
 								$('#intro').addClass('hidden');
+								$('#controls').addClass('shown');
 							} else {
 								$('#intro').removeClass('noTransition hidden');
+								//$('#controls').removeClass('noTransition shown');
 							}
 							return;
 						}
 						if (CwsC.introShow !== true && CwsC.actionIntro !== true){//when refresh page
 							$('#intro').addClass('noTransition');
+							//$('#controls').addClass('noTransition');
 						}
 						if (CwsC.introShow !== true){
 							$('#intro').addClass('hidden');
+							$('#controls').addClass('shown');
 						} else {
 							$('#intro').removeClass('hidden');
+							$('#controls').removeClass('shown');
 						}
 
 						if(CwsC.actionIntro === true){

@@ -1,8 +1,8 @@
 <script type="text/html" id="UiTemplate">
 
 <section id="intro">
+    <a href="#" class="hide" tabindex="1">{i18n.uIhideIntro}</a>
     {generalIntro.introCopy|s}
-    <span class="hide">{i18n.uIhideIntro}</span>
 </section>
 
 <section id="controls">
