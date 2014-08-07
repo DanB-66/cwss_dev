@@ -489,6 +489,7 @@ ol, ul {
 	}
 	.articleInner{
 		//@include prefix(transition, 'margin-right 0');
+		@include prefix(backface-visibility, 'hidden');
 	}
 
 	//forward
