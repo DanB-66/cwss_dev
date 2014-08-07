@@ -57,7 +57,7 @@ html {
 		}
 	}
 	@include breakpoint(devicePortrait) {
-		font-size: 1.3rem;
+		font-size: 1.3em;
 		.articleInner > *{
 			font-size: 1.4em;
 		}
@@ -78,22 +78,22 @@ body {
 	-webkit-tap-highlight-color: transparent;
 	width: 60em;
 	position: absolute;
-	top: 2rem;
-	bottom: 2rem;
+	top: 2em;
+	bottom: 2em;
 	left: 50%;
 	margin-left: -30em;
 	@include breakpoint(micro) {
-		top: 1rem;
-		left: 1rem;
-		right: 1rem;
+		top: 1em;
+		left: 1em;
+		right: 1em;
 		width: auto;
 		margin-left: 0;
 	}
 	@include breakpoint(nano) {
-		top: 1rem;
+		top: 1em;
 		left: $article_gutter;
 		right: $article_gutter;
-		bottom: 2rem;
+		bottom: 2em;
 		width: auto;
 		margin-left: 0;
 		& > header{
@@ -101,16 +101,16 @@ body {
 		}
 	}
 	@include breakpoint(devicePortrait) {
-		top: 1rem;
-		left: 1rem;
-		right: 1rem;
+		top: 1em;
+		left: 1em;
+		right: 1em;
 		width: auto;
 		margin-left: 0;
 	}
 	@include breakpoint(deviceLandscape) {
-		top: 1rem;
-		left: 1rem;
-		right: 1rem;
+		top: 1em;
+		left: 1em;
+		right: 1em;
 		width: auto;
 		margin-left: 0;
 	}
@@ -127,7 +127,7 @@ body {
 	text-align: right;
 	text-transform: uppercase;
 	font-weight: normal;
-	font-size: 1rem;
+	font-size: 1em;
 	@include breakpoint(deviceLandscape) {
 		width: 54%;
 		float: right;
@@ -162,7 +162,7 @@ ol, ul {
 	background-color: rgba(0, 0, 0, 0.8);
 	@include border-radius($tiny_radius);
 	padding: 10em 5em;
-	z-index: 1;
+	z-index: 2;
 	display: block;
 	@include transition-property(all);
 	@include transition-duration($medium_time);
@@ -180,9 +180,11 @@ ol, ul {
 		background-color: $control_background_color;
 	}
 	&.hidden{
+
 		@include opacity(0);
 		top:-112%;
 		@include scale(0);
+		display: none\9;//ie8 only hack
 	}
 	&.noTransition {
 		-moz-transition: none;
@@ -193,21 +195,22 @@ ol, ul {
 }
 .carouselWrap {
 	position: absolute;	
-	top: 7rem;
+	top: 7em;
 	@include breakpoint(deviceLandscape) {
-		top: 4.5rem;
+		top: 4.5em;
 	}
 	bottom: 0;
 	left: 0;
 	right: 0;
-	//fallback rgb for ie8?
+	background-color:#eee;//fallback rgb for ie8
 	background-color: $secondary_background_color_rgba;
 	@include border-radius($small_radius);
 	.carousel {
 		height: 100%;
+		z-index: 1;
 		overflow: hidden;
 		margin: 0 $nav_tab_width_normal;
-		padding: 0 $article_gutter_rem;
+		padding: 0 $article_gutter;
 	}
 	article {
 		display: inline-block;
@@ -215,7 +218,7 @@ ol, ul {
 		position: relative;
 		@include box-sizing(border-box);	
 		height: 100%;
-		padding: 0.5rem 0;
+		padding: 0.5em 0;
 		&:last-child > .articleInner{
 			margin-right: 0;
 		}		
@@ -240,10 +243,10 @@ ol, ul {
 	.articleInner {
 		overflow-y: auto;
 		overflow-x: hidden;
-		margin-right: $article_gutter_rem;		
+		margin-right: $article_gutter;		
 		height: 100%;
 		position: relative;
-		//fallback rgb?
+		background-color: #ddd; //fallback ie8
 		background-color: $primary_background_color_rgba;
 		//@include border-radius($tiny_radius);//is killing 3d transforms in ie? drop ie for now
 		-webkit-border-radius: $tiny_radius;
@@ -303,11 +306,12 @@ ol, ul {
 		position: absolute;
 		top: 0;
 		bottom: 0;
-		width: 3rem;
+		width: 3em;
 		background-color: $control_background_color;
-		text-indent: -999rem;
+		text-indent: -999em;
 		white-space: nowrap;
 		overflow: hidden;
+		z-index: 1;
 		@include transition-property(background-color);
 		@include transition-duration($short_time);
 	}
@@ -333,20 +337,20 @@ ol, ul {
 		content: " ";
 		position: absolute;
 		top: 50%;
-		margin-top: -1rem;
+		margin-top: -1em;
 		width: 0;
 		height: 0;
-		border-top: 1rem solid transparent;
-		border-right: 1.3rem solid $control_color;
-		border-bottom: 1rem solid transparent;
+		border-top: 1em solid transparent;
+		border-right: 1.3em solid $control_color;
+		border-bottom: 1em solid transparent;
 	}
 	.cwsCprev:after {
-		left: 1rem;
+		left: 1em;
 	}
 	.cwsCnext:after {
-		right: 1rem;
+		right: 1em;
 		border-right: none;
-		border-left: 1.3rem solid $control_color;
+		border-left: 1.3em solid $control_color;
 	}
 	//.cwsCprev:hover:after, .cwsCnext:hover:after, .cwsCprev:focus:after, .cwsCnext:focus:after {
 	.cwsCprev:hover:after, .cwsCnext:hover:after {
@@ -361,7 +365,7 @@ ol, ul {
 	@include breakpoint(devicePortrait) {/* layout - override nav buttons to bottom on phone*/
 		left: 0;
 		right: 0;
-		top: 6.5rem;
+		top: 6.5em;
 		bottom: $nav_tab_height_phone;
 		.carousel{
 			margin: 0 $article_gutter;
@@ -380,7 +384,7 @@ ol, ul {
 			left: auto;
 		}
 		#controls{
-			font-size: 1.6rem;
+			font-size: 1.6em;
 		}
 	}
 	@include breakpoint(nano) {
@@ -419,7 +423,7 @@ ol, ul {
 	top: 0;
 	bottom: 100%;
 	z-index: 1;
-	font-size: 1rem;
+	font-size: 1em;
 	@include transition-property(top);
 	@include transition-duration($short_time);
 	@include transition-delay($short_time);	
@@ -441,7 +445,7 @@ ol, ul {
 	}
 	li {
 		cursor: pointer;
-		margin-left:0.3rem;
+		margin-left:0.3em;
 		@include transition-property(color);
 		@include transition-duration($short_time);			
 		&:hover, &.active {
