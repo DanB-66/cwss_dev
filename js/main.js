@@ -19,21 +19,24 @@ require(['jquery', 'history', 'touchSwipe', 'dust', 'dustTemplate1'], function (
 		startItem: '',
 		currentPage: '',
 		newMultiple: '',
-		newLang: '',
+		langChangedByUI: false,
 		newDirection: '',
 		introShow: true,
 		newIntroShow: undefined,
 		actionIntro: false,
 		isTransitioning: false,
 
-		showPage : function(direction, index, newLang, newMultiple, newIntroShow){
-			console.log('OOO showPage - direction: '+direction+', index: '+index+', newLang: '+newLang+', newMultiple: '+newMultiple+', newIntroShow: '+newIntroShow);
+		pushPageState : function(direction, index, newLang, newMultiple, newIntroShow){
+			console.log('OOO pushPageState input vals: - direction: '+direction+', index: '+index+', newLang: '+newLang+', newMultiple: '+newMultiple+', newIntroShow: '+newIntroShow);
 
 			if (newMultiple !== undefined) {
 				this.multiple = newMultiple;
 			}
 			if (index !== undefined){
 				this.contentIndex = index;
+			}
+			if (newLang !== undefined) {
+				this.lang = newLang;
 			}
 			if (newIntroShow !== undefined){
 				this.introShow = newIntroShow;
@@ -72,13 +75,16 @@ require(['jquery', 'history', 'touchSwipe', 'dust', 'dustTemplate1'], function (
 
 		buildUI : function(bIsRebuild) {// build ui on load, on lang change refresh with new data. Bind ui btns and statechange event
 			var renderTarget = $('.carouselWrap');//elem to create it inside
-			renderTarget.html(this.buildControls());
-			this.carouselContainer = renderTarget.children('.carousel');
-			this.carouselContainer.addClass('multiple'+CwsC.multiple);
-			if (bIsRebuild){// ie from lang select
-				bIsRebuild = 0;
-				this.showPage(undefined, undefined, CwsC.lang, undefined, undefined);
+
+			if (bIsRebuild !== 0){// ie from lang select
+				bIsRebuild = 0;//? needed?
+				console.log('lang change in build ui? about to pushPagState from buildui');
+				//this.pushPageState(undefined, undefined, CwsC.lang, undefined, undefined);//HERE????????
 			} else {
+				console.log('BUILD UI not rebuild');
+				renderTarget.html(this.buildControls());
+				this.carouselContainer = renderTarget.children('.carousel');
+				this.carouselContainer.addClass('multiple'+CwsC.multiple);
 				renderTarget.on('click','.cwsCprev, .cwsCnext', function(event) {
 					if(CwsC.isTransitioning){
 						return false;
@@ -94,10 +100,44 @@ require(['jquery', 'history', 'touchSwipe', 'dust', 'dustTemplate1'], function (
 					event.preventDefault();
 				});
 
+				// delegate click on 'set multiple' control
+				renderTarget.on('click', '#setMultipleControl li', function() {
+					var currMultiple = $(this).index()+1;
+					if(currMultiple !== CwsC.multiple){
+						CwsC.setMultiple(currMultiple);
+					}
+				});
+				
+				// delegate click on 'set lang' control
+				renderTarget.on('click', '#setLangControl li', function() {
+					var currId = $(this).attr('id');
+					if(currId !== CwsC.lang){
+						CwsC.setLang(currId);
+					}
+				});
+
+				// delegate click on 'home/intro/contact' overlay close
+				renderTarget.on('click', '#intro > .hide', function() {
+					CwsC.introShow = false;
+					CwsC.actionIntro = true;
+					CwsC.pushPageState(undefined, undefined, undefined, undefined, CwsC.introShow);
+				});
+
+				// delegate click on 'home/intro/contact' overlay open
+				renderTarget.on('click', '#toggleIntro', function() {
+					CwsC.introShow = true;
+					CwsC.actionIntro = true;
+					CwsC.pushPageState(undefined, undefined, undefined, undefined, CwsC.introShow);
+				});
+
+				if (Modernizr.touch){// activate touchSwipe
+					this.swipeListener();
+				}
+
 				/* STATECHANGE BINDING */
 				History.Adapter.bind(window,'statechange', function() {// ie both browser back/fwd btn and app ui btns and initial load - all logic to manipulate page should be here
 					var State = History.getState();
-					console.log('STATECHANGE, state info: ' + State.data.state + ' direction: ' + State.data.direction + ' mult: ' + State.data.multiple+ ' lang: ' + State.data.lang+ ' intro: ' + State.data.introShow);
+					console.log('STATECHANGE event, state info: ' + State.data.state + ' direction: ' + State.data.direction + ' mult: ' + State.data.multiple+ ' lang: ' + State.data.lang+ ' intro: ' + State.data.introShow);
 					
 					//fix Object.keys for ie8 - http://whattheheadsaid.com/2010/10/a-safer-object-keys-compatibility-implementation
 					Object.keys = Object.keys || (function () {
@@ -130,7 +170,7 @@ require(['jquery', 'history', 'touchSwipe', 'dust', 'dustTemplate1'], function (
 							return result;
 						};
 					})();
-
+					//end Object.keys fix
 
 					if (Object.keys(State.data).length !== 0) {
 						if (State.data.direction !== CwsC.newDirection) {
@@ -159,10 +199,6 @@ require(['jquery', 'history', 'touchSwipe', 'dust', 'dustTemplate1'], function (
 
 						if (State.data.state !== CwsC.contentIndex) {// back button pressed, go to previous page
 							console.log('back button pressed, go to previous page. cont index= '+CwsC.contentIndex+ 'state = '+State.data.state+' direction: '+State.data.direction);
-							//CwsC.newDirection = State.data.direction;//as its from back btn
-							//todo set global direction here for swipe? will be set above
-							//console.log('>>>>>>>>>>>>>State.data.direction= '+State.data.direction);
-							
 							
 							if(State.data.state < CwsC.contentIndex){// back buttn pressed, determine which direction to restore
 								CwsC.newDirection = 'back';
@@ -176,10 +212,17 @@ require(['jquery', 'history', 'touchSwipe', 'dust', 'dustTemplate1'], function (
 						}
 
 						CwsC.carouselContainer.fadeTo(500, 0, function() {
-							console.log('F@de.......................');
-							if (State.data.lang !== CwsC.lang) {// back button pressed, go to previous lang
+							console.log('F@de.......................CwsC.lang:'+ CwsC.lang+' State.data.lang: '+State.data.lang);
+							if(CwsC.langChangedByUI !== false){
+								console.log('changed lang');
+								CwsC.loadData(1);
+								CwsC.langChangedByUI = false;
+							}
+							else if (State.data.lang !== CwsC.lang) {// back button pressed, go to previous lang
+								console.log('lang2 change ??back?');
+								CwsC.newDirection = undefined;
 								CwsC.lang = State.data.lang;
-								CwsC.loadData(false, true);
+								CwsC.loadData(1);
 							} else if (State.data.multiple !== CwsC.multiple) {// back button pressed, go to previous multiple
 								CwsC.multiple = State.data.multiple;
 								CwsC.renderItems(false);
@@ -189,53 +232,19 @@ require(['jquery', 'history', 'touchSwipe', 'dust', 'dustTemplate1'], function (
 						});
 
 					} else {
-						history.back();//no State.data left, so do NORMAL history back to prev site(note lowercase h)
+						history.back();//no State.data left, so do NORMAL history back to prev location (note lowercase h)
 					}
 
 				});
 
-				// delegate click on 'set multiple' control
-				renderTarget.on('click', '#setMultipleControl li', function() {
-					var currMultiple = $(this).index()+1;
-					if(currMultiple !== CwsC.multiple){
-						CwsC.setMultiple(currMultiple);
-					}
-				});
-				
-				// delegate click on 'set lang' control
-				renderTarget.on('click', '#setLangControl li', function() {
-					var currId = $(this).attr('id');
-					if(currId !== CwsC.lang){
-						CwsC.setLang(currId);
-					}
-				});
-
-				// delegate click on 'home/intro/contact' overlay close
-				renderTarget.on('click', '#intro > .hide', function() {
-					CwsC.introShow = false;
-					CwsC.actionIntro = true;
-					CwsC.showPage(undefined, undefined, undefined, undefined, CwsC.introShow);
-				});
-
-				// delegate click on 'home/intro/contact' overlay open
-				renderTarget.on('click', '#toggleIntro', function() {
-					CwsC.introShow = true;
-					CwsC.actionIntro = true;
-					CwsC.showPage(undefined, undefined, undefined, undefined, CwsC.introShow);
-				});
-
-				if (Modernizr.touch){// activate touchSwipe
-					this.swipeListener();
-				}
-
-				this.showPage(undefined, CwsC.startItem, undefined, undefined, CwsC.introShow);//show first set on load, potentially based on referrer
+				this.pushPageState(undefined, CwsC.startItem, undefined, undefined, CwsC.introShow);//show first set on load, potentially based on referrer
 
 			}
 			this.markLang(this.lang);// mark on page initial load and lang change
 
 		},
 
-		loadData : function(bIsRebuild, reloadData) {// load json - todo use beforeSend to set spinner
+		loadData : function(bIsRebuild) {// load json - todo use beforeSend to set spinner
 			$.ajax({
 				url: 'json/cws_'+CwsC.lang+'.json',
 				dataType: 'json',
@@ -244,10 +253,9 @@ require(['jquery', 'history', 'touchSwipe', 'dust', 'dustTemplate1'], function (
 					CwsC.carouselContent = data.cwsData;//data
 					CwsC.carouselUiContent = data.cwsData.i18n;//ui labels data
 					CwsC.carouselContentLength = CwsC.carouselContent.projects.length;// length of the projects data 
-					if (!reloadData){
+					if (!bIsRebuild){
 						CwsC.buildUI(bIsRebuild);
 					} else {
-						//console.log('back button hit after a lang change');
 						CwsC.renderItems(true);
 					}
 				},
@@ -267,17 +275,18 @@ require(['jquery', 'history', 'touchSwipe', 'dust', 'dustTemplate1'], function (
 					carouselBuffer += output;
 				};
 		
-			if (refreshLang){
-				//rebuild controls with new lang when back button after lang change
+			if (refreshLang === true){
+				//rebuild controls with new lang  after lang change
+				console.log('rebuild controls with new lang ');
 				var buffer = $(CwsC.buildControls());
 				$('#intro').replaceWith(buffer.slice(0,1));
 				if(CwsC.introShow === true){
 					$('#intro').removeClass('hidden');//and remove hidden if req
 				}
 				$('#controls').replaceWith(buffer.slice(1,2));
+				buffer = '';
 				CwsC.markLang(CwsC.lang);
 			}
-
 
 			CwsC.carouselContainer.empty().removeClass('multiple1 multiple2 multiple3 multiple4').addClass('multiple'+CwsC.multiple);//cant remove fwd-back classes here as they will animate
 			CwsC.markMultiple(CwsC.multiple);
@@ -326,7 +335,7 @@ require(['jquery', 'history', 'touchSwipe', 'dust', 'dustTemplate1'], function (
 					if (transitionCount === CwsC.carouselContainer.children().length){
 						CwsC.carouselContainer.off('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend');
 						if(bIsHistoryDriven !== true){
-							CwsC.showPage(direction, undefined, undefined, undefined, undefined);
+							CwsC.pushPageState(direction, undefined, undefined, undefined, undefined);
 						} else {
 							console.log('back/fwd button driven trans');
 						}
@@ -336,7 +345,7 @@ require(['jquery', 'history', 'touchSwipe', 'dust', 'dustTemplate1'], function (
 
 			} else {// no transitions
 				if(bIsHistoryDriven !== true){
-					CwsC.showPage(direction, undefined, undefined, undefined, undefined);
+					CwsC.pushPageState(direction, undefined, undefined, undefined, undefined);
 				}
 			}
 		},
@@ -348,7 +357,7 @@ require(['jquery', 'history', 'touchSwipe', 'dust', 'dustTemplate1'], function (
 
 		setMultiple : function(newMultiple) {// action the new multiple
 			this.multiple = newMultiple;
-			this.showPage(undefined, CwsC.multiple, undefined, newMultiple, CwsC.introShow);
+			this.pushPageState(undefined, CwsC.multiple, undefined, newMultiple, CwsC.introShow);
 		},
 
 		markLang : function(newLang) {// mark the menu selection for language
@@ -357,12 +366,13 @@ require(['jquery', 'history', 'touchSwipe', 'dust', 'dustTemplate1'], function (
 			langMenu.find('#'+ newLang).addClass('active');
 		},
 
-		setLang : function(newLang) {// action the new lang
-			//console.log('action newLang: ' , newLang);
-			this.lang = newLang;
-			this.carouselContainer.fadeTo(500, 0.2, function(){
-				CwsC.loadData(1);//1= only refresh data
-			});
+		setLang : function(newLangChoice) {// action the new lang
+			//this.lang = newLangChoice;
+			this.langChangedByUI = true;
+			//this.carouselContainer.fadeTo(500, 0, function(){
+				//CwsC.loadData(1);//1= only refresh data
+			//});
+			CwsC.pushPageState(undefined, undefined, newLangChoice, undefined, undefined);// HERE NEED TO PASS TO LOAD DATA?
 		},
 
 		setNav : function() {// ui paging back/fwd buttons toggle inactive state
@@ -392,7 +402,7 @@ require(['jquery', 'history', 'touchSwipe', 'dust', 'dustTemplate1'], function (
 				swipeRight:function() {
 					$('.cwsCnext').trigger('click');
 				},
-				//Default is 75px
+				//Default 75px
 				threshold:75
 			});
 		},

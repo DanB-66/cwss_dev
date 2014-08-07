@@ -21,7 +21,7 @@ html {
 			font-size: 1.333333em;
 		}
 		body > footer{
-			font-size: 1.3em;
+			font-size: 1.1em;
 		}
 	}
 	@include breakpoint(micro) { 
@@ -30,7 +30,7 @@ html {
 			font-size: 1.777777em;
 		}
 		body > footer{
-			font-size: 1.1em;
+			font-size: 0.875em;
 		}
 	}
 	@include breakpoint(nano) { 
@@ -38,10 +38,16 @@ html {
 		.articleInner > *{
 			font-size: 3em;
 		}
+		body{
+			background-image: none;
+			background-color: #999;
+		}
 		body > footer{
 			position: fixed;
 			background: #000;
 			bottom: 0;
+			padding: 2px;
+			font-size: 2em;
 		}
 	}
 	@include breakpoint(deviceLandscape) {
@@ -51,9 +57,9 @@ html {
 		}
 	}
 	@include breakpoint(devicePortrait) {
-		//font-size: 1rem;
+		font-size: 1.3rem;
 		.articleInner > *{
-			//font-size: 1.8em;
+			font-size: 1.4em;
 		}
 	}
 
@@ -365,14 +371,21 @@ ol, ul {
 			width: auto !important;
 			margin-left: $article_gutter;
 		}
-		#intro{
+		#intro, #intro.hidden{
 			position: relative;
+			display:block;
+			@include opacity(1);
+			top:0;
+			@include scale(1);
 			font-size: 2.1em;
 			padding: 1em;
 			margin: 0 2.1em;
 			.hide{
 				display: none;
 			}
+		}
+		#toggleIntro{
+			display: none;
 		}
 		#controls{
 			font-size: 1.8em;
@@ -433,7 +446,7 @@ ol, ul {
 	-moz-transform-style: preserve-3d;
 	transform-style: preserve-3d;
 
-	article, .articleInner{
+	article{
 		//perspective: 900px;//req for ie bug here as well as above el	?
 		//-webkit-transform-style: preserve-3d;
 		//-moz-transform-style: preserve-3d;
@@ -442,7 +455,7 @@ ol, ul {
 		@include prefix(transition, 'all 600ms ease-in');
 	}
 	.articleInner{
-		@include prefix(transition, 'margin-right 0');
+		//@include prefix(transition, 'margin-right 0');
 	}
 
 	//forward
@@ -515,7 +528,7 @@ ol, ul {
 
 #breakpoint_debug{
 	position:absolute;
-	//display:none;
+	display:none;
 	top:0.5em;
 	font-size:1.5em;
 	@include breakpoint(maxi) {
