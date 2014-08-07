@@ -12,7 +12,7 @@ require(['jquery', 'history', 'touchSwipe', 'dust', 'dustTemplate1'], function (
 		carouselUiContent : '',// ui label data
 		carouselContainer : '',
 		carouselContentLength : '',
-		contentIndex : '',//index of the last shown project item
+		contentIndex : '',//index of the last shown project item in a page
 		bHasCssTransforms : false,// test with modernizer
 		History : window.History,//history lib in use
 		pageTitle : document.title,
@@ -77,11 +77,9 @@ require(['jquery', 'history', 'touchSwipe', 'dust', 'dustTemplate1'], function (
 			var renderTarget = $('.carouselWrap');//elem to create it inside
 
 			if (bIsRebuild !== 0){// ie from lang select
-				bIsRebuild = 0;//? needed?
-				console.log('lang change in build ui? about to pushPagState from buildui');
-				//this.pushPageState(undefined, undefined, CwsC.lang, undefined, undefined);//HERE????????
+				//bIsRebuild = 0;//? needed?
+				console.log('lang change in build ui');
 			} else {
-				console.log('BUILD UI not rebuild');
 				renderTarget.html(this.buildControls());
 				this.carouselContainer = renderTarget.children('.carousel');
 				this.carouselContainer.addClass('multiple'+CwsC.multiple);
@@ -105,6 +103,7 @@ require(['jquery', 'history', 'touchSwipe', 'dust', 'dustTemplate1'], function (
 					var currMultiple = $(this).index()+1;
 					if(currMultiple !== CwsC.multiple){
 						CwsC.setMultiple(currMultiple);
+						CwsC.newDirection = undefined;
 					}
 				});
 				
@@ -209,7 +208,9 @@ require(['jquery', 'history', 'touchSwipe', 'dust', 'dustTemplate1'], function (
 								CwsC.newDirection = 'forward';
 							}
 							console.log('CwsC.newDirection= '+CwsC.newDirection);
-							CwsC.transitionContent(CwsC.newDirection, true);//?????????????????????
+							if (State.data.multiple === CwsC.multiple) {// back button NOT pressed, ie from ui
+								CwsC.transitionContent(CwsC.newDirection, true);
+							}
 							
 							CwsC.contentIndex = State.data.state; //set so correct state from history when fade below
 						}
@@ -227,6 +228,7 @@ require(['jquery', 'history', 'touchSwipe', 'dust', 'dustTemplate1'], function (
 								CwsC.lang = State.data.lang;
 								CwsC.loadData(1);
 							} else if (State.data.multiple !== CwsC.multiple) {// back button pressed, go to previous multiple
+								CwsC.newDirection = undefined;
 								CwsC.multiple = State.data.multiple;
 								CwsC.renderItems(false);
 							} else {// all other renders. ie: normal load and ui btns AND back l/r states driven by history
@@ -331,24 +333,22 @@ require(['jquery', 'history', 'touchSwipe', 'dust', 'dustTemplate1'], function (
 		},
 
 		transitionContent : function(direction, bIsHistoryDriven) {
-			console.log('xxxxxx TRANSITION CONTENT DIRECTION: '+direction+' bIsHistoryDriven: '+bIsHistoryDriven);
-			CwsC.isTransitioning = true;//TRANSITIONING 
+			//console.log('xxxxxx TRANSITION CONTENT DIRECTION: '+direction+' bIsHistoryDriven: '+bIsHistoryDriven);
+			CwsC.isTransitioning = true;
 			if (CwsC.bHasCssTransforms){// wait for n transitions to end (sequenced)
 				var transitionCount = 0;
 				CwsC.carouselContainer.addClass(direction).on('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function() {
 					transitionCount++;
 					if (transitionCount === CwsC.carouselContainer.children().length){
 						CwsC.carouselContainer.off('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend');
-						if(bIsHistoryDriven !== true){
+						if(bIsHistoryDriven !== true){// ie from ui btns
 							CwsC.pushPageState(direction, undefined, undefined, undefined, undefined);
-						} else {
-							console.log('back/fwd button driven trans');
 						}
 					}
 
 				});
 
-			} else {// no transitions
+			} else {// no css transitions support
 				if(bIsHistoryDriven !== true){
 					CwsC.pushPageState(direction, undefined, undefined, undefined, undefined);
 				}
@@ -372,11 +372,7 @@ require(['jquery', 'history', 'touchSwipe', 'dust', 'dustTemplate1'], function (
 		},
 
 		setLang : function(newLangChoice) {// action the new lang
-			//this.lang = newLangChoice;
 			this.langChangedByUI = true;
-			//this.carouselContainer.fadeTo(500, 0, function(){
-				//CwsC.loadData(1);//1= only refresh data
-			//});
 			CwsC.pushPageState(undefined, undefined, newLangChoice, undefined, undefined);// HERE NEED TO PASS TO LOAD DATA?
 		},
 

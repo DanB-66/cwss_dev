@@ -294,106 +294,109 @@ ol, ul { list-style: none; padding: 0; margin: 0; }
 .carouselWrap .multiple4 article:nth-child(even) .articleInner { margin-right: 0; }
 @media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003291}}
 .carouselWrap .cwsCprev, .carouselWrap .cwsCnext { position: absolute; top: 0; bottom: 0; width: 3rem; background-color: #666666; text-indent: -999rem; white-space: nowrap; overflow: hidden; -webkit-transition-property: background-color; -moz-transition-property: background-color; -o-transition-property: background-color; transition-property: background-color; -webkit-transition-duration: 0.5s; -moz-transition-duration: 0.5s; -o-transition-duration: 0.5s; transition-duration: 0.5s; }
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003303}}
-.carouselWrap .cwsCprev:hover, .carouselWrap .cwsCnext:hover, .carouselWrap .cwsCprev:focus, .carouselWrap .cwsCnext:focus { background-color: #999999; cursor: pointer; }
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003307}}
-.carouselWrap .cwsCprev.disabled, .carouselWrap .cwsCnext.disabled, .carouselWrap .cwsCprev.disabled:hover, .carouselWrap .cwsCnext.disabled:hover, .carouselWrap .cwsCprev.disabled:focus, .carouselWrap .cwsCnext.disabled:focus { background-color: #2e2e2e; cursor: default; }
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003311}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003304}}
+.carouselWrap .cwsCprev:hover, .carouselWrap .cwsCnext:hover { background-color: #999999; cursor: pointer; }
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003309}}
+.carouselWrap .cwsCprev.disabled, .carouselWrap .cwsCnext.disabled, .carouselWrap .cwsCprev.disabled:hover, .carouselWrap .cwsCnext.disabled:hover { background-color: #2e2e2e; cursor: default; }
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003313}}
 .carouselWrap .cwsCprev { left: 0; -moz-border-radius-topleft: 0.5rem; -webkit-border-top-left-radius: 0.5rem; border-top-left-radius: 0.5rem; -moz-border-radius-bottomleft: 0.5rem; -webkit-border-bottom-left-radius: 0.5rem; border-bottom-left-radius: 0.5rem; }
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003315}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003317}}
 .carouselWrap .cwsCnext { right: 0; -moz-border-radius-topright: 0.5rem; -webkit-border-top-right-radius: 0.5rem; border-top-right-radius: 0.5rem; -moz-border-radius-bottomright: 0.5rem; -webkit-border-bottom-right-radius: 0.5rem; border-bottom-right-radius: 0.5rem; }
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003319}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003321}}
 .carouselWrap .cwsCprev:after, .carouselWrap .cwsCnext:after { content: " "; position: absolute; top: 50%; margin-top: -1rem; width: 0; height: 0; border-top: 1rem solid transparent; border-right: 1.3rem solid #333333; border-bottom: 1rem solid transparent; }
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003330}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003332}}
 .carouselWrap .cwsCprev:after { left: 1rem; }
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003333}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003335}}
 .carouselWrap .cwsCnext:after { right: 1rem; border-right: none; border-left: 1.3rem solid #333333; }
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003338}}
-.carouselWrap .cwsCprev:hover:after, .carouselWrap .cwsCnext:hover:after, .carouselWrap .cwsCprev:focus:after, .carouselWrap .cwsCnext:focus:after { border-right-color: #cccccc; border-left-color: #cccccc; }
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003342}}
-.carouselWrap .disabled:after, .carouselWrap .cwsCprev.disabled:hover:after, .carouselWrap .cwsCnext.disabled:hover:after, .carouselWrap .cwsCprev.disabled:focus:after, .carouselWrap .cwsCnext.disabled:focus:after { border-right-color: #575757; border-left-color: #575757; }
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003341}}
+.carouselWrap .cwsCprev:hover:after, .carouselWrap .cwsCnext:hover:after { border-right-color: #cccccc; border-left-color: #cccccc; }
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003346}}
+.carouselWrap .disabled:after, .carouselWrap .cwsCprev.disabled:hover:after, .carouselWrap .cwsCnext.disabled:hover:after { border-right-color: #575757; border-left-color: #575757; }
 @media screen and (orientation: portrait) and (max-device-width: 1000px) { @media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003183}}
   .carouselWrap { /* layout - override nav buttons to bottom on phone*/ left: 0; right: 0; top: 6.5rem; bottom: 7em; }
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003351}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003355}}
   .carouselWrap .carousel { margin: 0 0.5em; padding: 0; }
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003356}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003360}}
   .carouselWrap .cwsCprev, .carouselWrap .cwsCnext { top: auto; left: 0; bottom: -7em; height: 6em; width: 50%; }
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003363}}
-  .carouselWrap .cwsCnext { right: 0; left: auto; }
 @media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003367}}
+  .carouselWrap .cwsCnext { right: 0; left: auto; }
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003371}}
   .carouselWrap #controls { font-size: 1.6rem; } }
 @media screen and (max-width: 320px) { @media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003183}}
   .carouselWrap { position: relative; margin: 0 0.5em; top: 4em; }
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003375}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003379}}
   .carouselWrap article { display: block; width: auto !important; margin-left: 0.5em; }
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003380}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003384}}
   .carouselWrap #intro, .carouselWrap #intro.hidden { position: relative; display: block; filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100); opacity: 1; top: 0; -webkit-transform: scale(1, 1); -moz-transform: scale(1, 1); -ms-transform: scale(1, 1); -o-transform: scale(1, 1); transform: scale(1, 1); font-size: 2.1em; padding: 1em; margin: 0 2.1em; }
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003389}}
-  .carouselWrap #intro .hide, .carouselWrap #intro.hidden .hide { display: none; }
 @media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003393}}
+  .carouselWrap #intro .hide, .carouselWrap #intro.hidden .hide { display: none; }
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003397}}
   .carouselWrap #toggleIntro { display: none; }
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003396}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003400}}
   .carouselWrap #controls { font-size: 1.8em; } }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003401}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003405}}
 #controls { position: absolute; top: -1.8em; z-index: 1; font-size: 1rem; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003407}}
-#setMultipleControl, #setLangControl, #toggleIntro { display: inline-block; vertical-align: middle; margin-right: 0.625em; }
 @media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003411}}
+#setMultipleControl, #setLangControl, #toggleIntro { display: inline-block; vertical-align: middle; margin-right: 0.625em; }
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003415}}
 #setMultipleControl h4, #setMultipleControl ul, #setMultipleControl li, #setLangControl h4, #setLangControl ul, #setLangControl li, #toggleIntro h4, #toggleIntro ul, #toggleIntro li { font-weight: normal; display: inline-block; vertical-align: middle; padding-left: 0; margin: 0; }
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003419}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003423}}
 #setMultipleControl li, #setLangControl li, #toggleIntro li { cursor: pointer; margin-left: 0.3rem; -webkit-transition-property: color; -moz-transition-property: color; -o-transition-property: color; transition-property: color; -webkit-transition-duration: 0.5s; -moz-transition-duration: 0.5s; -o-transition-duration: 0.5s; transition-duration: 0.5s; }
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003424}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003428}}
 #setMultipleControl li:hover, #setMultipleControl li.active, #setLangControl li:hover, #setLangControl li.active, #toggleIntro li:hover, #toggleIntro li.active { color: #ff6600; }
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003427}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003431}}
 #setMultipleControl li.active, #setMultipleControl li.active:hover, #setLangControl li.active, #setLangControl li.active:hover, #toggleIntro li.active, #toggleIntro li.active:hover { cursor: default; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003437}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003441}}
 #projects { background: #ccc; padding: 1.25em; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003441}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003445}}
 #projects h3 { font-weight: bold; margin-top: 1.25em; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003447}}
-.carousel { position: relative; -webkit-perspective: 900px; perspective: 900px; -webkit-transform-style: preserve-3d; -moz-transform-style: preserve-3d; transform-style: preserve-3d; }
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003455}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003451}}
+.carousel { position: relative; -webkit-perspective: 900px; perspective: 900px; -webkit-transform-style: preserve-3d; -moz-transform-style: preserve-3d; transform-style: preserve-3d; /*	&.noDelay article {
+		-moz-transition-delay: 0;
+		-webkit-transition-delay: 0;
+		-o-transition-delay: 0;
+		transition-delay: 0;
+	}*/ }
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003459}}
 .carousel article { -webkit-backface-visibility: hidden; -moz-backface-visibility: hidden; -o-backface-visibility: hidden; -ms-backface-visibility: hidden; backface-visibility: hidden; -webkit-transition: all 600ms ease-in; -moz-transition: all 600ms ease-in; -o-transition: all 600ms ease-in; -ms-transition: all 600ms ease-in; transition: all 600ms ease-in; }
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003468}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003472}}
 .carousel.forward article:last-child { -webkit-transform: rotateY(50deg) translateX(50%); transform: rotateY(50deg) translateX(50%); }
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003474}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003476}}
 .carousel.forward article:nth-last-child(2) { -webkit-transform: rotateY(40deg) translateX(100%); transform: rotateY(40deg) translateX(100%); }
 @media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003480}}
 .carousel.forward article:nth-last-child(3) { -webkit-transform: rotateY(30deg) translateX(150%); transform: rotateY(30deg) translateX(150%); }
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003486}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003484}}
 .carousel.forward article:nth-last-child(4) { -webkit-transform: rotateY(20deg) translateX(200%); transform: rotateY(20deg) translateX(200%); }
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003493}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003489}}
 .carousel.back article:first-child { -webkit-transform: rotateY(-50deg) translateX(-50%); transform: rotateY(-50deg) translateX(-50%); }
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003499}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003493}}
 .carousel.back article:nth-child(2) { -webkit-transform: rotateY(-40deg) translateX(-100%); transform: rotateY(-40deg) translateX(-100%); }
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003505}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003497}}
 .carousel.back article:nth-child(3) { -webkit-transform: rotateY(-30deg) translateX(-150%); transform: rotateY(-30deg) translateX(-150%); }
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003511}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003501}}
 .carousel.back article:nth-child(4) { -webkit-transform: rotateY(-20deg) translateX(-200%); transform: rotateY(-20deg) translateX(-200%); }
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003518}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003506}}
 .carousel.noTransition article { -moz-transition: none; -webkit-transition: none; -o-transition: all 0 none; transition: none; }
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003524}}
-.carousel.noDelay article { -moz-transition-delay: 0; -webkit-transition-delay: 0; -o-transition-delay: 0; transition-delay: 0; }
 
 /* utility temp */
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003535}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003523}}
 #breakpoint_debug { position: absolute; display: none; top: 0.5em; font-size: 1.5em; }
-@media only screen and (min-width: 1824px) { @media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003541}}
+@media only screen and (min-width: 1824px) { @media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003529}}
   #breakpoint_debug .maxi { color: #ff6600; } }
-@media screen and (min-width: 1024px) and (max-width: 1823px) { @media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003544}}
+@media screen and (min-width: 1024px) and (max-width: 1823px) { @media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003532}}
   #breakpoint_debug .midi { color: #ff6600; } }
-@media screen and (min-width: 768px) and (max-width: 1023px) { @media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003547}}
+@media screen and (min-width: 768px) and (max-width: 1023px) { @media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003535}}
   #breakpoint_debug .mini { color: #ff6600; } }
-@media screen and (min-width: 321px) and (max-width: 767px) { @media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003550}}
+@media screen and (min-width: 321px) and (max-width: 767px) { @media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003538}}
   #breakpoint_debug .micro { color: #ff6600; } }
-@media screen and (max-width: 320px) { @media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003553}}
+@media screen and (max-width: 320px) { @media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003541}}
   #breakpoint_debug .nano { color: #ff6600; } }
-@media screen and (orientation: portrait) and (max-device-width: 1000px) { @media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003556}}
+@media screen and (orientation: portrait) and (max-device-width: 1000px) { @media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003544}}
   #breakpoint_debug .devicePortrait { color: #ff6600; } }
-@media screen and (orientation: landscape) and (max-device-width: 1000px) { @media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003559}}
+@media screen and (orientation: landscape) and (max-device-width: 1000px) { @media -sass-debug-info{filename{font-family:file\:\/\/D\:\/PROJ\/CWSS\/2013\/dev\/sass\/screen_v42\.scss}line{font-family:\00003547}}
   #breakpoint_debug .deviceLandscape { color: #ff6600; } }

@@ -300,11 +300,13 @@ ol, ul {
 		@include transition-property(background-color);
 		@include transition-duration($short_time);
 	}
-	.cwsCprev:hover, .cwsCnext:hover, .cwsCprev:focus, .cwsCnext:focus {
+	//.cwsCprev:hover, .cwsCnext:hover, .cwsCprev:focus, .cwsCnext:focus {
+	.cwsCprev:hover, .cwsCnext:hover {
 		background-color: $control_background_hover_color;
 		cursor: pointer;
 	}
-	.cwsCprev.disabled, .cwsCnext.disabled, .cwsCprev.disabled:hover, .cwsCnext.disabled:hover, .cwsCprev.disabled:focus, .cwsCnext.disabled:focus {
+	//.cwsCprev.disabled, .cwsCnext.disabled, .cwsCprev.disabled:hover, .cwsCnext.disabled:hover, .cwsCprev.disabled:focus, .cwsCnext.disabled:focus {
+	.cwsCprev.disabled, .cwsCnext.disabled, .cwsCprev.disabled:hover, .cwsCnext.disabled:hover{
 		background-color: $control_color_disabled_background;
 		cursor: default;
 	}
@@ -335,11 +337,13 @@ ol, ul {
 		border-right: none;
 		border-left: 1.3rem solid $control_color;
 	}
-	.cwsCprev:hover:after, .cwsCnext:hover:after, .cwsCprev:focus:after, .cwsCnext:focus:after {
+	//.cwsCprev:hover:after, .cwsCnext:hover:after, .cwsCprev:focus:after, .cwsCnext:focus:after {
+	.cwsCprev:hover:after, .cwsCnext:hover:after {
 		border-right-color: $control_hover_color;
 		border-left-color: $control_hover_color;
 	}
-	.disabled:after, .cwsCprev.disabled:hover:after, .cwsCnext.disabled:hover:after, .cwsCprev.disabled:focus:after, .cwsCnext.disabled:focus:after{
+	//.disabled:after, .cwsCprev.disabled:hover:after, .cwsCnext.disabled:hover:after, .cwsCprev.disabled:focus:after, .cwsCnext.disabled:focus:after{
+	.disabled:after, .cwsCprev.disabled:hover:after, .cwsCnext.disabled:hover:after{
 		border-right-color: $control_color_disabled;
 		border-left-color: $control_color_disabled;
 	}
@@ -468,51 +472,35 @@ ol, ul {
 	&.forward article:last-child{
 		-webkit-transform: rotateY(50deg) translateX(50%);
 		transform: rotateY(50deg) translateX(50%);
-		//transition-delay: 1200ms;
-			//-webkit-transition-delay: 1200ms;
 	}
 	&.forward article:nth-last-child(2){
 		-webkit-transform: rotateY(40deg) translateX(100%);
 		transform: rotateY(40deg) translateX(100%);
-		//transition-delay: 800ms;
-			//-webkit-transition-delay: 800ms;
 	}
 	&.forward article:nth-last-child(3){
 		-webkit-transform: rotateY(30deg) translateX(150%);
 		transform: rotateY(30deg) translateX(150%);
-		//transition-delay: 400ms;
-			//-webkit-transition-delay: 400ms;
 	}
 	&.forward article:nth-last-child(4){
 		-webkit-transform: rotateY(20deg) translateX(200%);
 		transform: rotateY(20deg) translateX(200%);
-		//transition-delay: 200ms;	
-			//-webkit-transition-delay: 200ms;	
 	}
 	//back
 	&.back article:first-child{
 		-webkit-transform: rotateY(-50deg) translateX(-50%);
 		transform: rotateY(-50deg) translateX(-50%);
-		//transition-delay: 1200ms;
-			//-webkit-transition-delay: 1200ms;
 	}
 	&.back article:nth-child(2){
 		-webkit-transform: rotateY(-40deg) translateX(-100%);
 		transform: rotateY(-40deg) translateX(-100%);
-		//transition-delay: 400ms;
-			//-webkit-transition-delay: 400ms;
 	}
 	&.back article:nth-child(3){
 		-webkit-transform: rotateY(-30deg) translateX(-150%);
 		transform: rotateY(-30deg) translateX(-150%);
-		//transition-delay: 800ms;
-			//-webkit-transition-delay: 800ms;
 	}
 	&.back article:nth-child(4){
 		-webkit-transform: rotateY(-20deg) translateX(-200%);
 		transform: rotateY(-20deg) translateX(-200%);
-		//transition-delay: 1200ms;	
-			//-webkit-transition-delay: 1200ms;	
 	}
 
 	&.noTransition article {
@@ -521,12 +509,12 @@ ol, ul {
 		-o-transition: all 0 none;
 		transition: none;
 	}
-	&.noDelay article {
+/*	&.noDelay article {
 		-moz-transition-delay: 0;
 		-webkit-transition-delay: 0;
 		-o-transition-delay: 0;
 		transition-delay: 0;
-	}
+	}*/
 
 }
 
