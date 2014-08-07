@@ -173,6 +173,12 @@ ol, ul {
 		top:-30%;
 		@include scale(0);
 	}
+	&.noTransition {
+		-moz-transition: none;
+		-webkit-transition: none;
+		-o-transition: all 0 none;
+		transition: none;
+	}
 }
 .carouselWrap {
 	position: absolute;	

@@ -127,6 +127,7 @@ require(['jquery', 'history', 'touchSwipe', 'dust', 'dustTemplate1'], function (
 				renderTarget.on('click', '#toggleIntro', function() {
 					CwsC.introShow = true;
 					CwsC.actionIntro = true;
+					$('#intro').removeClass('noTransition');
 					CwsC.pushPageState(undefined, undefined, undefined, undefined, CwsC.introShow);
 				});
 
@@ -181,12 +182,14 @@ require(['jquery', 'history', 'touchSwipe', 'dust', 'dustTemplate1'], function (
 							if (CwsC.introShow !== true){
 								$('#intro').addClass('hidden');
 							} else {
-								$('#intro').removeClass('hidden');
+								$('#intro').removeClass('noTransition hidden');
 							}
 							return;
 						}
-
-						if (CwsC.introShow !== true){//wip
+						if (CwsC.introShow !== true && CwsC.actionIntro !== true){//when refresh page
+							$('#intro').addClass('noTransition');
+						}
+						if (CwsC.introShow !== true){
 							$('#intro').addClass('hidden');
 						} else {
 							$('#intro').removeClass('hidden');
@@ -194,7 +197,7 @@ require(['jquery', 'history', 'touchSwipe', 'dust', 'dustTemplate1'], function (
 
 						if(CwsC.actionIntro === true){
 							CwsC.actionIntro = false;
-							return;//stop and dont do transitions
+							return;
 						}
 
 						if (State.data.state !== CwsC.contentIndex) {// back button pressed, go to previous page
@@ -274,7 +277,7 @@ require(['jquery', 'history', 'touchSwipe', 'dust', 'dustTemplate1'], function (
 					}
 					carouselBuffer += output;
 				};
-		
+
 			if (refreshLang === true){
 				//rebuild controls with new lang  after lang change
 				console.log('rebuild controls with new lang ');
@@ -282,6 +285,8 @@ require(['jquery', 'history', 'touchSwipe', 'dust', 'dustTemplate1'], function (
 				$('#intro').replaceWith(buffer.slice(0,1));
 				if(CwsC.introShow === true){
 					$('#intro').removeClass('hidden');//and remove hidden if req
+				} else {
+					$('#intro').addClass('hidden');//and add hidden if req
 				}
 				$('#controls').replaceWith(buffer.slice(1,2));
 				buffer = '';
