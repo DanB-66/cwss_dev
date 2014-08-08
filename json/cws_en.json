@@ -25,7 +25,7 @@
 		},
 		"generalIntro": {
 			"siteTitle": "Code Workshop Systems Ltd",
-			"introCopy": "Code Workshop Systems is owned and operated by myself, Dan Brown. For over a dozen years, I have provided London-based agencies and organisations with robust, reliable, standards-compliant digital content.<br/><br/>Capabilities include...<br/><br/>Contact me via LinkedIn: <a href='https://www.linkedin.com/in/danbrownfrontend' tabindex='-1'>www.linkedin.com/in/danbrownfrontend</a><br/><br/>Please have a browse of a selection of projects."
+			"introCopy": "<p>Code Workshop Systems is owned and operated by myself, Dan Brown. For over a dozen years, I have provided London-based agencies and organisations with robust, reliable, standards-compliant digital content.</p><p>This page is still a work in progress, but it does demonstrate frontend techniques including:</p><ul><li>Responsive/adaptive layout</li><li>State management of all ui actions</li><li>JSON parsing and manipulation</li><li>Dust templating with conditional logic eg adapting to the content of the data</li></ul><p>Please contact me via LinkedIn: <a href='https://www.linkedin.com/in/danbrownfrontend' tabindex='-1'>www.linkedin.com/in/danbrownfrontend</a></p><p>Please have a browse<span class='touchshow'> (swipe!)</span> of a selection of projects.</p>"
 		},
 		"projects": [
 			{
@@ -183,7 +183,7 @@
 				"client": "Toni+Guy/Unilever",
 				"agency": "SapientNitro",
 				"projectName": "Hair meet Wardrobe",
-				"projectDescription": "Hair Fashion inspiration from Toni&Guy. Recreate this season's catwalk & street-style looks with 4 style collections",
+				"projectDescription": "Hair Fashion inspiration from Toni&Guy",
 				"duration": "3 months",
 				"shortDescription": "Part of a three man 'Phase 2' FE team extending and bug fixing existing code.",
 				"extendedInfo": {

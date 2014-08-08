@@ -161,7 +161,7 @@ ol, ul {
 	background-color: #000;//ie8
 	background-color: rgba(0, 0, 0, 0.8);
 	@include border-radius($tiny_radius);
-	padding: 10em 5em;
+	padding: 8em 5em;
 	z-index: 2;
 	display: block;
 	@include transition-property(all);
@@ -169,6 +169,20 @@ ol, ul {
 	a {
 		color: $link_on_dark_color;
 		text-decoration: none;
+	}
+	ul{//move to generic
+		margin:2em 1em;
+		list-style-type: square;
+	}
+	img{
+		float: left;
+		margin: 0 $double_space $double_space 0;
+	}
+	p{
+		margin-top: 0;
+	}
+	p:nth-of-type(2){
+		clear: both
 	}
 	.hide{
 		position: absolute;
@@ -181,8 +195,8 @@ ol, ul {
 	}
 	&.hidden{
 
-		@include opacity(0);
-		top:-112%;
+		//@include opacity(0);
+		//top:-112%;
 		@include scale(0);
 		display: none\9;//ie8 only hack
 	}
@@ -395,6 +409,7 @@ ol, ul {
 			display: block;
 			width: auto !important;
 			margin-left: $article_gutter;
+			margin-bottom: (2*$article_gutter);
 		}
 		#intro, #intro.hidden{
 			position: relative;
@@ -443,7 +458,7 @@ ol, ul {
 		padding-left: 0;
 		margin: 0;
 	}
-	li {
+	button {
 		cursor: pointer;
 		margin-left:0.3em;
 		@include transition-property(color);
@@ -460,7 +475,7 @@ ol, ul {
 	//min-width: 8em;
 }
 
-// #projects on non-js
+// #projects on non-js page
 #projects {
 	background: #ccc;
 	padding: $double_space;

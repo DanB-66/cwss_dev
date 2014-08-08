@@ -93,6 +93,13 @@ $prefixes: ('-webkit-','-moz-', '-o-', '-ms-', '');
 	}
 }
 
+.touchshow{
+	display: none;
+}
+.touch .touchshow{
+	display: inline;
+}
+
 article{
 	/* custom scrollbars webkit */
 	::-webkit-scrollbar {
