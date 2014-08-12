@@ -11,10 +11,13 @@
 	<meta name="description" content="Code Workshop">
 
 <?php include("includes/_head_assets.php"); ?>
-
+<!--
+	DEV NOTES:
+	What's this then? It's strictly a WIP...  
+	...and it's early stages. Still reading? It uses *json/cws_en.json*  content files, *js/main.js* (via a require.js *js/app.js* stub) to render that out into a carousel/paging system via *templates/_cws.tmpl.js* dust templates, which are very simple so far but do demo conditional logic eg absent nodes in the data. *sass/screen_v42.scss* Sass helps (a lot...) with the styling. Native browser back/fwd will drive the UI and state is maintained cross-browser eg bookmarking retaining 'page', 'multiple' and 'lang' selections. Fully functional in IE8. 3D transitions: just a start... There will be some sort of *projects.php* non js content rendered by php from the same json. Completely incomplete!
+-->
 </head>
 <body>
-
 
 <div id="pageContent">
 
@@ -30,14 +33,11 @@
 
 <?php include("includes/_header_global.php"); ?>
 
-<!--
-			DEV NOTES:
-			What's this then? It's strictly a WIP...  
-			...and it's early stages. Still reading? It uses *json/cws_en.json*  content files, *js/main.js* (via a require.js *js/app.js* stub) to render that out into a carousel/paging system via *templates/_cws.tmpl.js* dust templates, which are very simple so far but do demo conditional logic eg absent nodes in the data. *sass/screen_v42.scss* Sass helps (a lot...) with the styling. Native browser back/fwd will drive the UI and state is maintained cross-browser eg bookmarking retaining 'page', 'multiple' and 'lang' selections. Works in IE8. 3D transitions: just a start... There will be some sort of *projects.php* non js content rendered by php from the same json. Completely incomplete!
--->
-
-	<div class="carouselWrap">
-		<a href="projects.php">sitemap...</a>
+	<div class="carouselWrap" id="carouselWrap">
+		<div id="info">
+			<a href="projects.php" class="nonjs">Project list for non js...</a>
+			<p class="jsonly">starting app...</p>
+		</div>
 	</div>
 
 </div><!-- /#pageContent -->

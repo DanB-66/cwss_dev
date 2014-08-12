@@ -17,7 +17,7 @@ html {
 	}
 	@include breakpoint(mini) { 
 		font-size: 0.7708em; 
-		.articleInner > *{
+		.articleInner > *, #controls button, #controls h4, #intro{
 			font-size: 1.333333em;
 		}
 		body > footer{
@@ -26,17 +26,20 @@ html {
 	}
 	@include breakpoint(micro) { 
 		font-size: 0.55em; 
-		.articleInner > *{
+		.articleInner > *, #controls button, #controls h4, #intro{
 			font-size: 1.777777em;
 		}
+		#controls.shown{
+			top: -($phone_nav_height);
+		}
 		body > footer{
-			font-size: 0.875em;
+			font-size: 1.55em;
 		}
 	}
 	@include breakpoint(nano) { 
-		font-size: 0.3125em;
-		.articleInner > *{
-			font-size: 3em;
+		font-size: 0.5517em;
+		.articleInner > *, #controls button, #controls h4, #intro{
+			font-size: 1.7777em;
 		}
 		body{
 			background-image: none;
@@ -47,22 +50,24 @@ html {
 			background: #000;
 			bottom: 0;
 			padding: 2px;
-			font-size: 2em;
+			font-size: 1.3em;
+		}
+		#intro{
+			z-index: 3;
 		}
 	}
 	@include breakpoint(deviceLandscape) {
-		font-size: 1em;
+		//font-size: 1em;
 		.articleInner > *{
-			font-size: 1.3em;
+			//font-size: 1.3em;
 		}
 	}
 	@include breakpoint(devicePortrait) {
-		font-size: 1.3em;
+		//font-size: 1.3em;
 		.articleInner > *{
-			font-size: 1.4em;
+			//font-size: 1.4em;
 		}
 	}
-
 
 }
 body {
@@ -76,41 +81,42 @@ body {
 #pageContent {
 	//@include prefix(transition, 'all 600ms ease-in');
 	-webkit-tap-highlight-color: transparent;
-	width: 60em;
+	width: 60rem;
 	position: absolute;
-	top: 2em;
-	bottom: 2em;
+	top: 2rem;
+	bottom: 2rem;
 	left: 50%;
-	margin-left: -30em;
+	margin-left: -30rem;
 	@include breakpoint(micro) {
-		top: 1em;
-		left: 1em;
-		right: 1em;
+		top: 1rem;
+		left: 1rem;
+		right: 1rem;
+		bottom: 4rem;
 		width: auto;
 		margin-left: 0;
 	}
 	@include breakpoint(nano) {
-		top: 1em;
+		top: 1rem;
 		left: $article_gutter;
 		right: $article_gutter;
-		bottom: 2em;
+		bottom: 2rem;
 		width: auto;
 		margin-left: 0;
 		& > header{
-			font-size:1.8em !important;
+			margin: 0 $article_gutter;
 		}
 	}
 	@include breakpoint(devicePortrait) {
-		top: 1em;
-		left: 1em;
-		right: 1em;
+		top: 1rem;
+		left: 1rem;
+		right: 1rem;
 		width: auto;
 		margin-left: 0;
 	}
 	@include breakpoint(deviceLandscape) {
-		top: 1em;
-		left: 1em;
-		right: 1em;
+		top: 1rem;
+		left: 1rem;
+		right: 1rem;
 		width: auto;
 		margin-left: 0;
 	}
@@ -121,13 +127,13 @@ body {
 	border: 3px solid $secondary_color;
 	border-width: 3px 0;
 	font-family: 'Orbitron', sans-serif;
-	letter-spacing: 0.4em;
-	padding: 0 0.2em 0.2em;
+	letter-spacing: 0.4rem;
+	padding: 0 0.2rem 0.2rem;
 	@include border-radius($small_radius);
 	text-align: right;
 	text-transform: uppercase;
 	font-weight: normal;
-	font-size: 1em;
+	font-size: 1rem;
 	@include breakpoint(deviceLandscape) {
 		width: 54%;
 		float: right;
@@ -157,12 +163,11 @@ ol, ul {
 	bottom: 0;
 	background: #000;
 	color: #fff;
-	//@include opacity(0.8);
 	background-color: #000;//ie8
 	background-color: rgba(0, 0, 0, 0.8);
 	@include border-radius($tiny_radius);
-	padding: 8em 5em;
-	z-index: 2;
+	padding: 8rem 4rem 2rem;
+	z-index: 9;
 	display: block;
 	@include transition-property(all);
 	@include transition-duration($medium_time);
@@ -171,8 +176,9 @@ ol, ul {
 		text-decoration: none;
 	}
 	ul{//move to generic
-		margin:2em 1em;
+		margin:2rem 1rem;
 		list-style-type: square;
+		list-style-position: outside;
 	}
 	img{
 		float: left;
@@ -186,9 +192,9 @@ ol, ul {
 	}
 	.hide{
 		position: absolute;
-		top: 3em;
-		right: 2em;
-		padding: 1em;
+		top: 3rem;
+		right: 2rem;
+		padding: 1rem;
 		color: $link_on_light_color;
 		@include border-radius($tiny_radius);
 		background-color: $control_background_color;
@@ -209,9 +215,12 @@ ol, ul {
 }
 .carouselWrap {
 	position: absolute;	
-	top: 7em;
+	top: 7rem;
+	@include breakpoint(micro) {
+		top: 8rem;
+	}
 	@include breakpoint(deviceLandscape) {
-		top: 4.5em;
+		top: 4.5rem;
 	}
 	bottom: 0;
 	left: 0;
@@ -221,7 +230,7 @@ ol, ul {
 	@include border-radius($small_radius);
 	.carousel {
 		height: 100%;
-		z-index: 1;
+		z-index: 3;
 		overflow: hidden;
 		margin: 0 $nav_tab_width_normal;
 		padding: 0 $article_gutter;
@@ -232,7 +241,7 @@ ol, ul {
 		position: relative;
 		@include box-sizing(border-box);	
 		height: 100%;
-		padding: 0.5em 0;
+		padding: 0.5rem 0;
 		&:last-child > .articleInner{
 			margin-right: 0;
 		}		
@@ -255,6 +264,7 @@ ol, ul {
 		height: 50%;
 	}
 	.articleInner {
+		//max-height:5000em;
 		overflow-y: auto;
 		overflow-x: hidden;
 		margin-right: $article_gutter;		
@@ -275,8 +285,8 @@ ol, ul {
 			margin: 0 (-$article_gutter) 0 $article_gutter;
 		}
 		> h3{
-			margin: 0 (-$article_gutter) 1em 0;
-			padding: 0.1em $article_gutter 0.12em $article_gutter;
+			margin: 0 (-$article_gutter) 1rem 0;
+			padding: 0.1rem $article_gutter 0.12rem $article_gutter;
 			font-weight: normal;
 			color: $default_text_color;
 			background-color: $secondary_color;
@@ -309,7 +319,7 @@ ol, ul {
 			}
 		}
 	}
-	//adjust for 4 iems quad grid
+	//adjust for 4 items quad grid
 	.multiple4 article:nth-child(-n+2) {
 		padding-bottom: 0;
 	}
@@ -320,9 +330,9 @@ ol, ul {
 		position: absolute;
 		top: 0;
 		bottom: 0;
-		width: 3em;
+		width: 3rem;
 		background-color: $control_background_color;
-		text-indent: -999em;
+		text-indent: -999rem;
 		white-space: nowrap;
 		overflow: hidden;
 		z-index: 1;
@@ -351,20 +361,20 @@ ol, ul {
 		content: " ";
 		position: absolute;
 		top: 50%;
-		margin-top: -1em;
+		margin-top: -1rem;
 		width: 0;
 		height: 0;
-		border-top: 1em solid transparent;
-		border-right: 1.3em solid $control_color;
-		border-bottom: 1em solid transparent;
+		border-top: 1rem solid transparent;
+		border-right: 1.3rem solid $control_color;
+		border-bottom: 1rem solid transparent;
 	}
 	.cwsCprev:after {
-		left: 1em;
+		left: 1rem;
 	}
 	.cwsCnext:after {
-		right: 1em;
+		right: 1rem;
 		border-right: none;
-		border-left: 1.3em solid $control_color;
+		border-left: 1.3rem solid $control_color;
 	}
 	//.cwsCprev:hover:after, .cwsCnext:hover:after, .cwsCprev:focus:after, .cwsCnext:focus:after {
 	.cwsCprev:hover:after, .cwsCnext:hover:after {
@@ -379,12 +389,11 @@ ol, ul {
 	@include breakpoint(devicePortrait) {/* layout - override nav buttons to bottom on phone*/
 		left: 0;
 		right: 0;
-		top: 6.5em;
+		top: $nav_tab_height_phone;
 		bottom: $nav_tab_height_phone;
 		.carousel{
 			margin: 0 $article_gutter;
 			padding: 0;
-			//@include border-radius($tiny_radius);
 		}
 		.cwsCprev, .cwsCnext {
 			top: auto;
@@ -397,14 +406,14 @@ ol, ul {
 			right: 0;
 			left: auto;
 		}
-		#controls{
-			font-size: 1.6em;
+		#intro{
+			bottom: -($nav_tab_height_phone);
 		}
 	}
 	@include breakpoint(nano) {
 		position: relative;
-		margin: 0 $article_gutter;
-		top: 4em;
+		margin: 0 $article_gutter 5rem;
+		top: $phone_nav_height + $nav_gutter;
 		article{
 			display: block;
 			width: auto !important;
@@ -417,62 +426,217 @@ ol, ul {
 			@include opacity(1);
 			top:0;
 			@include scale(1);
-			font-size: 2.1em;
-			padding: 1em;
-			margin: 0 2.1em;
+			padding: 1rem;
 			.hide{
 				display: none;
 			}
 		}
-		#toggleIntro{
-			display: none;
-		}
-		#controls{
-			font-size: 1.8em;
-		}
 	}
-}
-#controls {
-	position: absolute;
-	overflow: hidden;
-	top: 0;
-	bottom: 100%;
-	z-index: 1;
-	font-size: 1em;
-	@include transition-property(top);
-	@include transition-duration($short_time);
-	@include transition-delay($short_time);	
-	&.shown{
-		top: -($controls_height);		
+	@include breakpoint(mini) {
+		//top: $phone_nav_height + $nav_gutter;
 	}
+
 }
+
 #setMultipleControl, #setLangControl, #toggleIntro{
 	display: inline-block;
 	vertical-align: middle;
 	margin-right: $single_space;
+	height: 100%;
 	h4, ul, li {
 		font-weight: normal;
-		//font-size: 1em;
 		display: inline-block;
 		vertical-align: middle;
+		height: 100%;
 		padding-left: 0;
 		margin: 0;
 	}
+	h4{
+		height: auto;
+		margin-right: $button_gutter/2;
+	}
 	button {
 		cursor: pointer;
-		margin-left:0.3em;
-		@include transition-property(color);
+		margin-right: $button_gutter;
+		padding: 0 $button_gutter;
+		height: 100%;
+		border: none;
+		outline: none;
+		background-color: $nav_button_bgcolor;
+		@include border-top-radius($tiny_radius);
+		@include transition-property(all);
 		@include transition-duration($short_time);			
 		&:hover, &.active {
-			color: $default_text_contrast_color;
+			color: $nav_button_text_hover_color;
+			background-color: $nav_button_hover_bgcolor;
 		}
 		&.active, &.active:hover {
 			cursor: default;
 		}
 	}
 }
-#setMultipleControl{
-	//min-width: 8em;
+
+#controls {
+	position: absolute;
+	top: 0;
+	bottom: 100%;
+	z-index: 0;
+	@include transition-property(top);
+	@include transition-duration($short_time);
+	@include transition-delay($short_time);	
+	&.shown{
+		top: -($controls_height);
+	}
+	ul{
+		@include transition-property(height);
+		@include transition-duration($short_time);		
+	}
+
+	@include breakpoint(devicePortrait){
+		top: 0;
+		z-index: 4;
+		&.shown{
+			top: -($phone_nav_height);
+		}
+		ul{
+			height: 0;
+			position: absolute;
+			left: 0;
+			top: $phone_nav_height;
+			width: 100%;
+			&.open{
+				height: 100%;
+			}
+			li{
+				display: block;
+				cursor: pointer;
+			}
+		}
+		h4{
+			cursor: pointer;
+			padding: 0 $button_gutter;
+			line-height: $phone_nav_height;
+			border: none;
+			background-color: $nav_button_bgcolor;
+			@include border-top-radius($tiny_radius);
+			@include transition-property(all);
+			@include transition-duration($short_time);
+			@include transition-delay($short_time);
+			height:0;
+			overflow:hidden;				
+			&:hover, &.active {
+				color: $nav_button_text_hover_color;
+				background-color: $nav_button_hover_bgcolor;
+			}
+			&.active, &.active:hover {
+				cursor: default;
+			}
+		}
+		&.shown h4{
+			height: 100%;
+		}
+		button{
+			line-height: $phone_nav_height;
+			width: 100%;
+		}
+	}
+	@include breakpoint(micro){
+		top: 0;
+		z-index: 4;
+		&.shown{
+			top: -($phone_nav_height);
+		}
+		ul{
+			height: 0;
+			position: absolute;
+			left: 0;
+			top: $phone_nav_height;
+			width: 100%;
+			&.open{
+				height: 100%;
+			}
+			li{
+				display: block;
+			}
+		}
+		h4{
+			cursor: pointer;
+			padding: 0 $button_gutter;
+			line-height: $phone_nav_height;
+			border: none;
+			display: block;
+			height: 100%;
+			background-color: $nav_button_bgcolor;
+			@include border-top-radius($tiny_radius);
+			@include transition-property(all);
+			@include transition-duration($short_time);
+			@include transition-delay($short_time);		
+			&:hover, &.active {
+				color: $nav_button_text_hover_color;
+				background-color: $nav_button_hover_bgcolor;
+			}
+			&.active, &.active:hover {
+				cursor: default;
+			}
+		}
+		&.shown h4{
+			height: 100%;
+		}
+		button{
+			line-height: $phone_nav_height;
+			width: 100%;
+		}
+	}
+	@include breakpoint(nano){
+		top: -($phone_nav_height);
+		&.shown{
+			top: -($phone_nav_height);
+		}
+		ul{
+			height: 0;
+			position: absolute;
+			left: 0;
+			top: $phone_nav_height;
+			width: 100%;
+			&.open{
+				height: 100%;
+			}
+			li{
+				display: block;
+			}
+		}
+		h4{
+			cursor: pointer;
+			padding: 0 $button_gutter;
+			line-height: $phone_nav_height;
+			border: none;
+			display: block;
+			height: 100%;
+			background-color: $nav_button_bgcolor;
+			@include border-top-radius($tiny_radius);
+			@include transition-property(all);
+			@include transition-duration($short_time);
+			@include transition-delay($short_time);		
+			&:hover, &.active {
+				color: $nav_button_text_hover_color;
+				background-color: $nav_button_hover_bgcolor;
+			}
+			&.active, &.active:hover {
+				cursor: default;
+			}
+		}
+		&.shown h4{
+			height: 100%;
+		}
+		button{
+			line-height: $phone_nav_height;
+			width: 100%;
+		}
+		#toggleIntro{
+			display: none;
+		}
+	}
+
 }
 
 // #projects on non-js page
@@ -503,7 +667,6 @@ ol, ul {
 		@include prefix(transition, 'all 600ms ease-in');
 	}
 	.articleInner{
-		//@include prefix(transition, 'margin-right 0');
 		@include prefix(backface-visibility, 'hidden');
 	}
 
@@ -557,13 +720,28 @@ ol, ul {
 
 }
 
+
+//content styling
+
+h6, h5, h4, h3, h2{
+	font-size: 1em;
+	margin-bottom: 0;
+	+p{
+		margin-top: 0;
+	}
+}
+h6, h5, h4, h3, h2, p, ul, dl{
+	max-height: 1000000px;//fixhack chrome mobile unwanted font boosting
+}
+
+
 /* utility temp */
 
 #breakpoint_debug{
 	position:absolute;
-	display:none;
-	top:0.5em;
-	font-size:1.5em;
+	//display:none;
+	top:0.5rem;
+	font-size:1.5rem;
 	@include breakpoint(maxi) {
 		.maxi{color: $default_text_contrast_color;}
 	}

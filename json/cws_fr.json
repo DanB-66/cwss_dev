@@ -28,20 +28,20 @@
 			"introCopy": "<p>Code Workshop Systems est détenu et exploité par moi-même, Dan Brown. Depuis plus de douze ans, j'ai fourni les agences et les organisations basées à Londres avec robustes, fiables, conforme aux normes de contenu numérique.</p><p>Cette page est encore un travail en cours, mais il ne la démonstration des techniques de frontend y compris:</p><ul><li>Mise en page responsive / adaptative</li><li>La gestion de State de toutes les actions ui</li><li>JSON analyse et la manipulation</li><li>DUST gabarits avec sursis logique par exemple l'adaptation au le contenu des données</li></ul><p>S'il vous plaît me contacter via LinkedIn: <a href='https://www.linkedin.com/in/danbrownfrontend' tabindex='-1'> www.linkedin.com/en/danbrownfrontend</a></p><p>S'il vous plaît avoir une navigation<span class='touchshow'> (coup!)</ span> d'une sélection de projets.</p>"		},
 		"projects": [
 			{
-				"client": "'Big 6' le energy company",
+				"client": "'Big 6' le utility",
 				"agency": "Fjord",
 				"projectName": "Confidential project",
-				"projectDescription": "Rapid prototyping project to develop a webapp for a major energy supplier.",
+				"projectDescription": "Rapid prototyping project to develop a webapp for a major utility.",
 				"duration": "2 months",
 				"shortDescription": "Webapp rapid prototyping",
 				"extendedInfo": {
-					"agencyDetails": "Fjord is a global service design consultancy that is part of Accenture Interactive",
-					"workUndertaken": "Part of a rapid development team of four devs working closely with Interaction and Visual Designers to implement creative explorations of future capabilities in technology and service provision.",
+					"agencyDetails": "Le Fjord is a global service design consultancy that is part of Accenture Interactive",
+					"workUndertaken": "FR: Part of a rapid development team of four devs working closely with Interaction and Visual Designers to implement creative explorations of future capabilities in technology and service provision.",
 					"otherDetails": [
 						"Backbone project",
 						"Require JS",
 						"Underscore templating",
-						"Grunt build tools",
+						"Le Grunt build tools",
 						"Internet le Things"
 					]
 				},

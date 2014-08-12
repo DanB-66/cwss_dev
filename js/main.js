@@ -1,4 +1,9 @@
 /*global swipe:true, dust:true, History:true, Modernizr:true */
+// window.onload = function(){
+// 	document.getElementById("carouselWrap").innerHtml += 'loading assets...';
+// 	alert('main');
+// };
+// debugger;
 
 require(['jquery', 'history', 'touchSwipe', 'dust', 'dustTemplate1'], function ($) {
 
@@ -23,7 +28,7 @@ require(['jquery', 'history', 'touchSwipe', 'dust', 'dustTemplate1'], function (
 		newDirection: '',
 		introShow: true,
 		newIntroShow: undefined,
-		actionIntro: false,//this var redundant?
+		actionIntro: false,
 		isTransitioning: false,
 
 		pushPageState : function(direction, index, newLang, newMultiple, newIntroShow){
@@ -116,6 +121,8 @@ require(['jquery', 'history', 'touchSwipe', 'dust', 'dustTemplate1'], function (
 				CwsC.introShow = false;
 				CwsC.actionIntro = true;
 				CwsC.pushPageState(undefined, undefined, undefined, undefined, CwsC.introShow);
+				$('#controls').find('ul').removeClass('open');
+				$('#catcher').hide();
 				event.preventDefault();
 			});
 
@@ -125,6 +132,39 @@ require(['jquery', 'history', 'touchSwipe', 'dust', 'dustTemplate1'], function (
 				CwsC.actionIntro = true;
 				$('#intro').removeClass('noTransition');
 				CwsC.pushPageState(undefined, undefined, undefined, undefined, CwsC.introShow);
+			});
+
+			// delegate click on h4s in the menu if narrow screen
+			renderTarget.on('click', '#controls h4', function() {
+				if ($(this).css('backgroundColor')) {//ie we are on a device
+
+					if($(this).next('ul').hasClass('open')){
+						$(this).next('ul').removeClass('open');
+						return;
+					}
+					var thisItem = ($(this).parent().index());
+					$('#controls').find('section:not(thisItem)').find('ul').removeClass('open');
+					if (!$('#catcher').length){
+						$('body').prepend('<div id="catcher"/>');
+						$('#catcher').on('click', function() {
+							$('#controls').find('ul').removeClass('open');
+							$(this).hide();
+						});
+					} else {
+						$('#catcher').show();
+					}
+					//$('body').prepend('<div id="catcher"/>');
+					//$('#catcher').on('click', function() {
+						//$('#controls').find('ul').removeClass('open');
+						//$(this).remove();
+					//});
+					$(this).next('ul').toggleClass('open').on('click', 'li', function() {
+						$(this).parent().removeClass('open');
+						$('#catcher').hide();
+					});
+
+					
+				}
 			});
 
 			if (Modernizr.touch){// activate touchSwipe
@@ -179,16 +219,12 @@ require(['jquery', 'history', 'touchSwipe', 'dust', 'dustTemplate1'], function (
 							$('#controls').addClass('shown');
 						} else { // back btn from intro without lang change
 							$('#intro').removeClass('noTransition hidden');
-							$('#controls').addClass('noTransition shown');
+							$('#controls').removeClass('shown');
 						}
 						CwsC.introShow = State.data.introShow;
 						return;
 					}
-					if (CwsC.introShow !== true && CwsC.actionIntro !== true){//when refresh page
-						//alert('dingggg');
-						//$('#intro').addClass('noTransition');
-						//$('#controls').addClass('noTransition');
-					}
+
 					if (CwsC.introShow !== true){
 						$('#intro').addClass('hidden');
 						$('#controls').addClass('shown');
@@ -197,7 +233,7 @@ require(['jquery', 'history', 'touchSwipe', 'dust', 'dustTemplate1'], function (
 						$('#controls').removeClass('shown');
 					}
 
-					if(CwsC.actionIntro === true){
+					if(CwsC.actionIntro === true){//stop here if just toggling intro
 						CwsC.actionIntro = false;
 						return;
 					}
@@ -226,7 +262,7 @@ require(['jquery', 'history', 'touchSwipe', 'dust', 'dustTemplate1'], function (
 							CwsC.langChangedByUI = false;
 						}
 						else if (State.data.lang !== CwsC.lang) {// back button pressed, go to previous lang
-							console.log('lang2 change ??back?');
+							//console.log('lang2 change ??back?');
 							CwsC.newDirection = undefined;
 							CwsC.lang = State.data.lang;
 							CwsC.loadData(1);
@@ -254,7 +290,7 @@ require(['jquery', 'history', 'touchSwipe', 'dust', 'dustTemplate1'], function (
 			$.ajax({
 				url: 'json/cws_'+CwsC.lang+'.json',
 				dataType: 'json',
-				cache: false,
+				cache: true,
 				success: function(data) {
 					CwsC.carouselContent = data.cwsData;//data
 					CwsC.carouselUiContent = data.cwsData.i18n;//ui labels data
@@ -267,6 +303,35 @@ require(['jquery', 'history', 'touchSwipe', 'dust', 'dustTemplate1'], function (
 				},
 				error: function() {
 					alert('json failed to load...');
+				}
+			});
+		},
+
+		//preload imgs. hmm, should dry this up a bit
+		preloadImages : function() {// load img 
+			$.ajax({
+				url: 'json/cws_en.json',
+				dataType: 'json',
+				cache: true,
+				beforeSend: function() {
+					$('#info').text('preloading images...');
+				},
+				success: function(data) {
+					var imgs = [],
+						carouselProjectsIndex = data.cwsData.projects.length;
+					while (carouselProjectsIndex > 0){
+						if(data.cwsData.projects[carouselProjectsIndex - 1].assets.images){
+							imgs.push(data.cwsData.projects[carouselProjectsIndex - 1].assets.images[0].url);// only preloading first image for now
+						}
+						carouselProjectsIndex--;
+					}
+					$(imgs).each(function(){
+						$('<img/>')[0].src = this;//cache image
+					});
+					$('#info').text('preparing ui...');
+				},
+				error: function() {
+					alert('json/img failed to load...');
 				}
 			});
 		},
@@ -284,23 +349,17 @@ require(['jquery', 'history', 'touchSwipe', 'dust', 'dustTemplate1'], function (
 			if (refreshLang === true){
 				//rebuild controls with new lang  after lang change
 				console.log('rebuild controls with new lang ');
-				//alert('CwsC.introShow : '+CwsC.introShow);
 				var buffer = $(CwsC.buildControls());
 				$('#intro').replaceWith(buffer.slice(0,1));
 				$('#controls').replaceWith(buffer.slice(1,2));
 				if(CwsC.introShow !== true){
 					$('#intro').addClass('noTransition hidden');//remove hidden and prevent transitions
-					//$('#intro').removeClass('noTransition');
 					$('#controls').addClass('shown');
-				} else {
-					alert('never?'+CwsC.introShow);//?????????????????????????????????????????????????????????????????????????????????
-					//$('#intro').addClass('hidden');//and add hidden if req
-					//$('#controls').addClass('shown');
 				}
 
 				buffer = '';
 				CwsC.markLang(CwsC.lang);
-			} 
+			}
 
 			CwsC.carouselContainer.empty().removeClass('multiple1 multiple2 multiple3 multiple4').addClass('multiple'+CwsC.multiple);//cant remove fwd-back classes here as they will animate
 			CwsC.markMultiple(CwsC.multiple);
@@ -415,12 +474,15 @@ require(['jquery', 'history', 'touchSwipe', 'dust', 'dustTemplate1'], function (
 			});
 		},
 
-
 		init : function() {
 			var pageFromUrl = 0,
 				urlLocationType = '';
 			if (Modernizr.csstransforms3d){
 				this.bHasCssTransforms = true;
+			}
+			//alert(window.innerWidth);
+			if (screen.width <= 699) {
+				this.multiple = 1;//for small/mobile set default to 1 article at a time
 			}
 
 			// extract the page no, multiple and lang from url, if its present (eg bookmark, refresh, pasted/shared url)
@@ -441,7 +503,9 @@ require(['jquery', 'history', 'touchSwipe', 'dust', 'dustTemplate1'], function (
 			} else {
 				this.startItem = this.multiple;
 			}
-
+			
+			this.preloadImages();
+			
 			this.loadData(0);//0= rebuild full ui
 
 
