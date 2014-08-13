@@ -153,11 +153,6 @@ require(['jquery', 'history', 'touchSwipe', 'dust', 'dustTemplate1'], function (
 					} else {
 						$('#catcher').show();
 					}
-					//$('body').prepend('<div id="catcher"/>');
-					//$('#catcher').on('click', function() {
-						//$('#controls').find('ul').removeClass('open');
-						//$(this).remove();
-					//});
 					$(this).next('ul').toggleClass('open').on('click', 'li', function() {
 						$(this).parent().removeClass('open');
 						$('#catcher').hide();

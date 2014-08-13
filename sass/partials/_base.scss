@@ -40,7 +40,7 @@ $article_gutter: 0.5rem;
 
 $nav_tab_width_normal: 3rem;
 $nav_tab_height_phone: 7.5rem;
-$controls_height: 2rem;
+$controls_height: 1.7rem;
 $nav_button_bgcolor: $control_background_color;
 $nav_button_hover_bgcolor: $control_background_hover_color;
 $nav_button_text_color: $control_color;
@@ -53,17 +53,17 @@ $phone_nav_height: 3rem;
 
 $button_gutter: $nav_gutter;
 
-// breakpoints
+// breakpoints 1824
 @mixin breakpoint($point) {
 	@if $point == maxi {
 		@media only screen 
-		and (min-width: 1824px) 
+		and (min-width: 1600px) 
 			{ @content; }
 	}
 	@else if $point == midi {
 		@media screen 
 		and (min-width: 1024px) 
-		and (max-width: 1823px) 
+		and (max-width: 1599px) 
 			{ @content; }
 	}
 	@else if $point == mini {
@@ -86,13 +86,13 @@ $button_gutter: $nav_gutter;
 	@else if $point == deviceLandscape {
 		@media screen 
 		and (orientation: landscape) 
-		and (max-device-width: 1000px)  
+		and (max-width: 1000px)  
 			{ @content; }
 	}
 	@else if $point == devicePortrait {
 		@media screen 
 		and (orientation: portrait) 
-		and (max-device-width: 1000px)  
+		and (max-width: 1000px)  
 			{ @content; }
 	}
 }
