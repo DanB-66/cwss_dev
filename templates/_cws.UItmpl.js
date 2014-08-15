@@ -1,6 +1,6 @@
 <script type="text/html" id="UiTemplate">
 
-<section id="intro">
+<section id="intro" class="noTransition">
     <img src="img/dan7.jpg"/>
     <a href="#" class="hide" tabindex="1">{i18n.uIhideIntro}</a>
     {generalIntro.introCopy|s}

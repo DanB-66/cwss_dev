@@ -57,16 +57,13 @@ html {
 		}
 	}
 	@include breakpoint(deviceLandscape) {
-		//font-size: 1em;
-		.articleInner > *{
-			//font-size: 1.3em;
+		font-size: 1em;
+		header{
+			font-size: 0.6em;
 		}
 	}
 	@include breakpoint(devicePortrait) {
-		//font-size: 1.3em;
-		.articleInner > *{
-			//font-size: 1.4em;
-		}
+		font-size: 1.3em;
 	}
 
 }
@@ -104,6 +101,7 @@ body {
 		margin-left: 0;
 		& > header{
 			margin: 0 $article_gutter;
+			font-siz: 0.95rem;
 		}
 	}
 	@include breakpoint(devicePortrait) {
@@ -117,6 +115,7 @@ body {
 		top: 1rem;
 		left: 1rem;
 		right: 1rem;
+		bottom: 3em;
 		width: auto;
 		margin-left: 0;
 	}
@@ -135,18 +134,18 @@ body {
 	font-weight: normal;
 	font-size: 1rem;
 	@include breakpoint(deviceLandscape) {
-		width: 54%;
+		width: 43%;
 		float: right;
+		font-size:0.6em;
 	}
 	h1, h2 {
 		background: transparent;
 		font-size: 2em;
-		margin:0 0 -0.1em;
+		margin:0.05rem 0.5rem -0.05rem;
 	}
 	h2 {
 		font-size: 1em;
-		letter-spacing: 0.5em;
-		margin-right: 1em;
+		letter-spacing: 0.4em;
 		text-transform: lowercase;
 	}
 }
@@ -166,7 +165,7 @@ ol, ul {
 	background-color: #000;//ie8
 	background-color: rgba(0, 0, 0, 0.8);
 	@include border-radius($tiny_radius);
-	padding: 7rem 4rem 1rem;
+	padding: 7.5rem 4rem 1rem;
 	z-index: 9;
 	display: block;
 	@include transition-property(all);
@@ -187,15 +186,15 @@ ol, ul {
 		top: 3rem;
 		right: 2rem;
 		padding: 1rem;
-		color: $link_on_light_color;
+		color: #fff;
 		@include border-radius($tiny_radius);
-		background-color: $control_background_color;
-		&:hover{
+		background-color: $control_background_hover_color;
+/*		&:hover{
 			color: #fff;
 			background-color: $control_background_hover_color;
 			@include transition-property(all);
 			@include transition-duration($short_time);	
-		}
+		}*/
 	}
 	&.hidden{
 
@@ -213,12 +212,12 @@ ol, ul {
 }
 .carouselWrap {
 	position: absolute;	
-	top: 6rem;
+	top: 6.5rem;
 	@include breakpoint(micro) {
 		top: 8rem;
 	}
 	@include breakpoint(deviceLandscape) {
-		top: 4.5rem;
+		top: $phone_nav_height;
 	}
 	bottom: 0;
 	left: 0;
@@ -271,7 +270,6 @@ ol, ul {
 		background-color: $primary_background_color_rgba;
 		//@include border-radius($tiny_radius);//is killing 3d transforms in ie? drop ie for now
 		-webkit-border-radius: $tiny_radius;
-		-moz-border-radius: $tiny_radius;
 		padding-right: (2 * $article_gutter);
 		border-right: $article_gutter solid $primary_background_color_rgba;
 		border-left:none;
@@ -280,6 +278,7 @@ ol, ul {
 		-webkit-background-clip: padding-box;//will cause layers to crop to scrollbar on ie
 		>*{
 			margin: 0 (-$article_gutter) 0 $article_gutter;
+			max-height: 1000000px; //hack chrome mobile to prevent font boosting
 		}
 		> h3{
 			margin: 0 (-$article_gutter) 1rem 0;
@@ -383,7 +382,7 @@ ol, ul {
 	@include breakpoint(devicePortrait) {/* layout - override nav buttons to bottom on phone*/
 		left: 0;
 		right: 0;
-		top: $nav_tab_height_phone;
+		top: 8rem;
 		bottom: $nav_tab_height_phone;
 		.carousel{
 			margin: 0 $article_gutter;
@@ -426,16 +425,15 @@ ol, ul {
 			}
 		}
 	}
-	@include breakpoint(mini) {
-		//top: $phone_nav_height + $nav_gutter;
-	}
-
 }
 
 #setMultipleControl, #setLangControl, #toggleIntro{
 	display: inline-block;
 	vertical-align: middle;
 	margin-right: $single_space;
+	@include breakpoint(micro) {
+		margin-right: 0;
+	}
 	height: 100%;
 	h4, ul, li {
 		font-weight: normal;
@@ -461,6 +459,7 @@ ol, ul {
 		@include border-top-radius($tiny_radius);
 		@include transition-property(all);
 		@include transition-duration($short_time);			
+		@include transition-delay(0);			
 		&:hover, &.active {
 			color: $nav_button_text_hover_color;
 			background-color: $nav_button_hover_bgcolor;
@@ -474,6 +473,7 @@ ol, ul {
 #controls {
 	position: absolute;
 	top: 0;
+	left: $nav_gutter;
 	bottom: 100%;
 	z-index: 0;
 	overflow: hidden;
@@ -485,10 +485,10 @@ ol, ul {
 	}
 	ul{
 		@include transition-property(height);
-		@include transition-duration($short_time);		
+		@include transition-duration($short_time);	
 	}
 
-	@include breakpoint(devicePortrait){
+	@include breakpoint(deviceLandscape){
 		top: 0;
 		z-index: 4;
 		&.shown{
@@ -501,6 +501,7 @@ ol, ul {
 			left: 0;
 			top: $phone_nav_height;
 			width: 100%;
+			z-index: 3;
 			li{
 				display: block;
 				button{
@@ -509,6 +510,7 @@ ol, ul {
 			}
 			&.open{
 				height: 100%;
+				z-index: 4;
 			}
 
 		}
@@ -522,7 +524,63 @@ ol, ul {
 			@include border-top-radius($tiny_radius);
 			@include transition-property(all);
 			@include transition-duration($short_time);
-			@include transition-delay($short_time);
+			@include transition-delay(0);
+			height: 0;
+			overflow: hidden;				
+			&:hover, &.active {
+				color: $nav_button_text_hover_color;
+				background-color: $nav_button_hover_bgcolor;
+			}
+			&.active, &.active:hover {
+				cursor: default;
+			}
+		}
+		&.shown h4{
+			height: 100%;
+		}
+		button{
+			line-height: $phone_nav_height;
+			width: 100%;
+			overflow: hidden;
+		}
+	}
+	@include breakpoint(devicePortrait){
+		top: 0;
+		z-index: 4;
+		&.shown{
+			top: -($phone_nav_height);
+			overflow: visible;
+		}
+		ul{
+			height: 0;
+			position: absolute;
+			left: 0;
+			top: $phone_nav_height;
+			width: 100%;
+			z-index: 3;
+			li{
+				display: block;
+				button{
+					@include border-radius(0);
+				}
+			}
+			&.open{
+				height: 100%;
+				z-index: 4;
+			}
+
+		}
+		h4{
+			cursor: pointer;
+			padding: 0 $button_gutter;
+			line-height: $phone_nav_height;
+			border: none;
+			display: block;
+			background-color: $nav_button_bgcolor;
+			@include border-top-radius($tiny_radius);
+			@include transition-property(all);
+			@include transition-duration($short_time);
+			@include transition-delay(0);
 			height: 0;
 			overflow: hidden;				
 			&:hover, &.active {
@@ -555,6 +613,7 @@ ol, ul {
 			left: 0;
 			top: $phone_nav_height;
 			width: 100%;
+			z-index: 3;
 			li{
 				display: block;
 				button{
@@ -563,6 +622,7 @@ ol, ul {
 			}
 			&.open{
 				height: 100%;
+				z-index: 4;
 			}
 
 		}
@@ -578,7 +638,7 @@ ol, ul {
 			@include border-top-radius($tiny_radius);
 			@include transition-property(all);
 			@include transition-duration($short_time);
-			@include transition-delay($short_time);		
+			@include transition-delay(0);		
 			&:hover, &.active {
 				color: $nav_button_text_hover_color;
 				background-color: $nav_button_hover_bgcolor;
@@ -610,6 +670,7 @@ ol, ul {
 			left: 0;
 			top: $phone_nav_height;
 			width: 100%;
+			z-index: 3;
 			li{
 				display: block;
 				button{
@@ -618,6 +679,7 @@ ol, ul {
 			}
 			&.open{
 				height: 100%;
+				z-index: 4;
 			}
 
 		}
@@ -633,7 +695,7 @@ ol, ul {
 			@include border-top-radius($tiny_radius);
 			@include transition-property(all);
 			@include transition-duration($short_time);
-			@include transition-delay($short_time);		
+			@include transition-delay(0);	
 			&:hover, &.active {
 				color: $nav_button_text_hover_color;
 				background-color: $nav_button_hover_bgcolor;
@@ -748,9 +810,6 @@ h6, h5, h4, h3, h2{
 		margin-top: 0;
 	}
 }
-h6, h5, h4, h3, h2, p, ul, dl{
-	max-height: 1000000px;//fixhack chrome mobile unwanted font boosting
-}
 p{
 	margin-top: 0;
 }
@@ -767,10 +826,10 @@ ul{
 /* utility temp */
 
 #breakpoint_debug{
-	position:absolute;
-	display:none;
-	top:0.5rem;
-	font-size:1.5rem;
+	position: absolute;
+	//display: none;
+	top: 1rem;
+	font-size:1rem;
 	@include breakpoint(maxi) {
 		.maxi{color: $default_text_contrast_color;}
 	}

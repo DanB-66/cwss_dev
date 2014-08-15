@@ -25,7 +25,7 @@
 		},
 		"generalIntro": {
 			"siteTitle": "Code Workshop Systems Ltd",
-			"introCopy": "<p>Code Workshop Systems is owned and operated by myself, Dan Brown. For over a dozen years, I have provided London-based agencies and organisations with robust, reliable, standards-compliant digital content.</p><p>This page is still a work in progress, but it does demonstrate frontend techniques including:</p><ul><li>Responsive/adaptive layout</li><li>State management of all ui actions</li><li>JSON parsing and manipulation</li><li>Dust templating with conditional logic eg adapting to the content of the data</li></ul><p>Please contact me via LinkedIn: <a href='https://www.linkedin.com/in/danbrownfrontend' tabindex='-1'>www.linkedin.com/in/danbrownfrontend</a></p><p>Please have a browse<span class='touchshow'> (swipe!)</span> of a selection of projects.</p>"
+			"introCopy": "<p>Code Workshop Systems is owned and operated by myself, Dan Brown. For over a dozen years, I have provided London-based agencies and organisations with robust, reliable, standards-compliant digital content.</p><p>This page is still a work in progress, but it does demonstrate frontend techniques including:</p><ul><li>Responsive/adaptive layout with 28 permutations</li><li>State management of all ui actions</li><li>JSON parsing and manipulation</li><li>Dust templating with conditional logic eg adapting to the content and structure of the data</li></ul><p>Please contact me via LinkedIn: <a href='https://www.linkedin.com/in/danbrownfrontend' tabindex='-1'>www.linkedin.com/in/danbrownfrontend</a></p><p>Please have a browse<span class='touchshow'> (swipe!)</span> of a selection of projects.</p>"
 		},
 		"projects": [
 			{

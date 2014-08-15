@@ -5,6 +5,9 @@ footer {
 	font-size: 0.875rem;
 	text-align: center;
 	width: 100%;
+	@include breakpoint(deviceLandscape) {
+		min-height: 2.5em;
+	}
 	@include transition-property(color);
 	@include transition-duration(1.5s);
 	ul{

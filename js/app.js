@@ -1,5 +1,6 @@
 requirejs.config({
 	baseUrl: 'js/vendor',
+	waitSeconds: 15,
 	paths: {
 		//'jquery': ['//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min', 'jquery-1.10.2.min'],
 		//'history': ['//cdnjs.cloudflare.com/ajax/libs/history.js/1.8/bundled/html4+html5/jquery.history.min', 'jquery.history'],

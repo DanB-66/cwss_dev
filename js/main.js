@@ -30,6 +30,7 @@ require(['jquery', 'history', 'touchSwipe', 'dust', 'dustTemplate1'], function (
 		newIntroShow: undefined,
 		actionIntro: false,
 		isTransitioning: false,
+		isFirstRun: true,
 
 		pushPageState : function(direction, index, newLang, newMultiple, newIntroShow){
 			console.log('OOO pushPageState input vals: - direction: '+direction+', index: '+index+', newLang: '+newLang+', newMultiple: '+newMultiple+', newIntroShow: '+newIntroShow);
@@ -118,6 +119,7 @@ require(['jquery', 'history', 'touchSwipe', 'dust', 'dustTemplate1'], function (
 
 			// delegate click on 'home/intro/contact' overlay close
 			renderTarget.on('click', '#intro > .hide', function(event) {
+				$('#intro').removeClass('noTransition');
 				CwsC.introShow = false;
 				CwsC.actionIntro = true;
 				CwsC.pushPageState(undefined, undefined, undefined, undefined, CwsC.introShow);
@@ -146,7 +148,7 @@ require(['jquery', 'history', 'touchSwipe', 'dust', 'dustTemplate1'], function (
 					$('#controls').find('section:not(thisItem)').find('ul').removeClass('open');
 					if (!$('#catcher').length){
 						$('body').prepend('<div id="catcher"/>');
-						$('#catcher').on('click', function() {
+						$('#catcher').on('click. mouseenter', function() {
 							$('#controls').find('ul').removeClass('open');
 							$(this).hide();
 						});
@@ -212,7 +214,7 @@ require(['jquery', 'history', 'touchSwipe', 'dust', 'dustTemplate1'], function (
 						if (State.data.introShow !== true){//only when back btn from intro after lang change
 							$('#intro').addClass('hidden');
 							$('#controls').addClass('shown');
-						} else { // back btn from intro without lang change
+						} else { // back btn from intro without lang change);
 							$('#intro').removeClass('noTransition hidden');
 							$('#controls').removeClass('shown');
 						}
@@ -220,8 +222,11 @@ require(['jquery', 'history', 'touchSwipe', 'dust', 'dustTemplate1'], function (
 						return;
 					}
 
-					if (CwsC.introShow !== true){
+					if (CwsC.introShow !== true && CwsC.actionIntro === true){
 						$('#intro').addClass('hidden');
+						$('#controls').addClass('shown');
+					} else if (CwsC.introShow !== true && CwsC.actionIntro !== true){
+						$('#intro').addClass('noTransition hidden');
 						$('#controls').addClass('shown');
 					} else {
 						$('#intro').removeClass('hidden');
@@ -286,47 +291,54 @@ require(['jquery', 'history', 'touchSwipe', 'dust', 'dustTemplate1'], function (
 				url: 'json/cws_'+CwsC.lang+'.json',
 				dataType: 'json',
 				cache: true,
+				beforeSend: function() {
+					$('#info').text('loading data...');
+				},
 				success: function(data) {
+					var playOn = function(){
+						if (!bIsRebuild){
+							CwsC.buildUI();
+						} else {
+							CwsC.renderItems(true);
+						}
+					};
 					CwsC.carouselContent = data.cwsData;//data
 					CwsC.carouselUiContent = data.cwsData.i18n;//ui labels data
 					CwsC.carouselContentLength = CwsC.carouselContent.projects.length;// length of the projects data 
-					if (!bIsRebuild){
-						CwsC.buildUI();
-					} else {
-						CwsC.renderItems(true);
-					}
-				},
-				error: function() {
-					alert('json failed to load...');
-				}
-			});
-		},
 
-		//preload imgs. hmm, should dry this up a bit
-		preloadImages : function() {// load img 
-			$.ajax({
-				url: 'json/cws_en.json',
-				dataType: 'json',
-				cache: true,
-				beforeSend: function() {
-					$('#info').text('preloading images...');
-				},
-				success: function(data) {
-					var imgs = [],
-						carouselProjectsIndex = data.cwsData.projects.length;
-					while (carouselProjectsIndex > 0){
-						if(data.cwsData.projects[carouselProjectsIndex - 1].assets.images){
-							imgs.push(data.cwsData.projects[carouselProjectsIndex - 1].assets.images[0].url);// only preloading first image for now
+					if(CwsC.isFirstRun === true){//preload imgs
+						var imgs = [],
+							loadedImgs = 0,
+							carouselProjectsIndex = CwsC.carouselContentLength,
+							trackLoading = function(){
+								loadedImgs++;
+								$('#info').text('preloading images: '+loadedImgs+' of '+CwsC.carouselContentLength);
+								if (loadedImgs == CwsC.carouselContentLength) {
+									$('#info').text('app ready...');
+									CwsC.isFirstRun = false;
+									setTimeout(function(){playOn();}, 1000);
+								}
+							};
+						while (carouselProjectsIndex > 0){
+							if(data.cwsData.projects[carouselProjectsIndex - 1].assets.images){
+								imgs.push(data.cwsData.projects[carouselProjectsIndex - 1].assets.images[0].url);// only preloading first image for now
+							}
+							carouselProjectsIndex--;
 						}
-						carouselProjectsIndex--;
+						$(imgs).each(function(){
+							try {
+								var _img = new Image();
+								_img.src = this;//cache image
+								_img.addEventListener('load', trackLoading, true);
+							} catch (e) { }
+						});
+
+					} else {
+						setTimeout(function(){playOn();}, 1500);
 					}
-					$(imgs).each(function(){
-						$('<img/>')[0].src = this;//cache image
-					});
-					$('#info').text('preparing ui...');
 				},
-				error: function() {
-					alert('json/img failed to load...');
+				error: function(){
+					$('#info').text('error: json failed to load...');
 				}
 			});
 		},
@@ -343,7 +355,7 @@ require(['jquery', 'history', 'touchSwipe', 'dust', 'dustTemplate1'], function (
 
 			if (refreshLang === true){
 				//rebuild controls with new lang  after lang change
-				console.log('rebuild controls with new lang ');
+				//console.log('rebuild controls with new lang ');
 				var buffer = $(CwsC.buildControls());
 				$('#intro').replaceWith(buffer.slice(0,1));
 				$('#controls').replaceWith(buffer.slice(1,2));
@@ -456,7 +468,7 @@ require(['jquery', 'history', 'touchSwipe', 'dust', 'dustTemplate1'], function (
 		swipeListener : function() {
 			CwsC.carouselContainer.swipe({
 				// swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
-				//	console.log("You swiped " + direction );
+				//	console.log("swiped! " + direction );
 				// },
 				swipeLeft:function() {
 					$('.cwsCprev').trigger('click');
@@ -475,8 +487,7 @@ require(['jquery', 'history', 'touchSwipe', 'dust', 'dustTemplate1'], function (
 			if (Modernizr.csstransforms3d){
 				this.bHasCssTransforms = true;
 			}
-			//alert(window.innerWidth);
-			if (screen.width <= 699) {
+			if (screen.width <= 767) {
 				this.multiple = 1;//for small/mobile set default to 1 article at a time
 			}
 
@@ -498,8 +509,6 @@ require(['jquery', 'history', 'touchSwipe', 'dust', 'dustTemplate1'], function (
 			} else {
 				this.startItem = this.multiple;
 			}
-			
-			this.preloadImages();
 			
 			this.loadData(0);//0= rebuild full ui
 

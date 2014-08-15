@@ -39,7 +39,7 @@ $long_time: 6s;
 $article_gutter: 0.5rem;
 
 $nav_tab_width_normal: 3rem;
-$nav_tab_height_phone: 7.5rem;
+$nav_tab_height_phone: 5rem;
 $controls_height: 1.7rem;
 $nav_button_bgcolor: $control_background_color;
 $nav_button_hover_bgcolor: $control_background_hover_color;
@@ -86,13 +86,18 @@ $button_gutter: $nav_gutter;
 	@else if $point == deviceLandscape {
 		@media screen 
 		and (orientation: landscape) 
-		and (max-width: 1000px)  
+		and (max-device-width: 1000px)  
 			{ @content; }
 	}
 	@else if $point == devicePortrait {
 		@media screen 
 		and (orientation: portrait) 
-		and (max-width: 1000px)  
+		and (max-device-width: 1000px)  
+			{ @content; }
+	}
+	@else if $point == collapseMenu {
+		@media screen 
+		and (max-width: 767px)  
 			{ @content; }
 	}
 }

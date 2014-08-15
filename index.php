@@ -35,8 +35,8 @@
 
 	<div class="carouselWrap" id="carouselWrap">
 		<div id="info">
-			<a href="projects.php" class="nonjs">Project list for non js...</a>
-			<p class="jsonly">starting app...</p>
+			<a href="projects.php" class="nonjs">Previous projects list</a>
+			<p class="jsonly">hello world...</p>
 		</div>
 	</div>
 
