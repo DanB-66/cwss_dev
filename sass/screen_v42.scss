@@ -4,7 +4,7 @@
 		"partials/globalFooter";
 
 html {
-	font: 1em/1.2 sans-serif;
+	font: 1em/1.16 sans-serif;
 	height: 100%;
 	-webkit-text-size-adjust: none;
 	-moz-text-size-adjust: none;
@@ -189,17 +189,8 @@ ol, ul {
 		color: #fff;
 		@include border-radius($tiny_radius);
 		background-color: $control_background_hover_color;
-/*		&:hover{
-			color: #fff;
-			background-color: $control_background_hover_color;
-			@include transition-property(all);
-			@include transition-duration($short_time);	
-		}*/
 	}
 	&.hidden{
-
-		//@include opacity(0);
-		//top:-112%;
 		@include scale(0);
 		display: none\9;//ie8 only hack
 	}
@@ -263,7 +254,7 @@ ol, ul {
 	.articleInner {
 		overflow-y: auto;
 		overflow-x: hidden;
-		margin-right: $article_gutter;		
+		margin-right: $article_gutter;			
 		height: 100%;
 		position: relative;
 		background-color: #ddd; //fallback ie8
@@ -277,39 +268,12 @@ ol, ul {
 		border-top:none;
 		-webkit-background-clip: padding-box;//will cause layers to crop to scrollbar on ie
 		>*{
-			margin: 0 (-$article_gutter) 0 $article_gutter;
+			margin-right: (-$article_gutter);
+			margin-left: $article_gutter;
 			max-height: 1000000px; //hack chrome mobile to prevent font boosting
 		}
-		> h3{
-			margin: 0 (-$article_gutter) 1rem 0;
-			padding: 0.1rem $article_gutter 0.12rem $article_gutter;
-			font-weight: normal;
-			color: $default_text_color;
-			background-color: $secondary_color;
-		}
-		dd, dt {
-			display: inline-block;
-			margin: 0;
-			margin-right: $inline_space_horiz;
-		}
-		dt:nth-child(1), dt:nth-child(3){
-			font-weight: bold;
-		}
-		dd:nth-child(2), dd:nth-child(4){
-			padding-bottom: $single_space;
-		}
-		img{
-			margin: 0;
-			width: 100%
-		}
-		.hero{
-			//margin:0 -($article_gutter);
-			height: 60px;
-			overflow: hidden;
-			img{
-				//height:30em;
-				//display:none;
-			}
+		section:last-child{
+			margin-bottom: $article_gutter*2;	
 		}
 	}
 	//adjust for 4 items quad grid
@@ -488,7 +452,7 @@ ol, ul {
 		@include transition-duration($short_time);	
 	}
 
-	@include breakpoint(deviceLandscape){
+	@include breakpoint(collapseMenu){
 		top: 0;
 		z-index: 4;
 		&.shown{
@@ -525,7 +489,7 @@ ol, ul {
 			@include transition-property(all);
 			@include transition-duration($short_time);
 			@include transition-delay(0);
-			height: 0;
+			height: 100%;
 			overflow: hidden;				
 			&:hover, &.active {
 				color: $nav_button_text_hover_color;
@@ -535,183 +499,13 @@ ol, ul {
 				cursor: default;
 			}
 		}
-		&.shown h4{
-			height: 100%;
-		}
 		button{
 			line-height: $phone_nav_height;
 			width: 100%;
 			overflow: hidden;
-		}
-	}
-	@include breakpoint(devicePortrait){
-		top: 0;
-		z-index: 4;
-		&.shown{
-			top: -($phone_nav_height);
-			overflow: visible;
-		}
-		ul{
-			height: 0;
-			position: absolute;
-			left: 0;
-			top: $phone_nav_height;
-			width: 100%;
-			z-index: 3;
-			li{
-				display: block;
-				button{
-					@include border-radius(0);
-				}
-			}
-			&.open{
-				height: 100%;
-				z-index: 4;
-			}
-
-		}
-		h4{
-			cursor: pointer;
-			padding: 0 $button_gutter;
-			line-height: $phone_nav_height;
-			border: none;
-			display: block;
-			background-color: $nav_button_bgcolor;
-			@include border-top-radius($tiny_radius);
-			@include transition-property(all);
-			@include transition-duration($short_time);
-			@include transition-delay(0);
-			height: 0;
-			overflow: hidden;				
-			&:hover, &.active {
-				color: $nav_button_text_hover_color;
-				background-color: $nav_button_hover_bgcolor;
-			}
-			&.active, &.active:hover {
-				cursor: default;
-			}
-		}
-		&.shown h4{
-			height: 100%;
-		}
-		button{
-			line-height: $phone_nav_height;
-			width: 100%;
-			overflow: hidden;
-		}
-	}
-	@include breakpoint(micro){
-		top: 0;
-		z-index: 4;
-		&.shown{
-			top: -($phone_nav_height);
-			overflow: visible;
-		}
-		ul{
-			height: 0;
-			position: absolute;
-			left: 0;
-			top: $phone_nav_height;
-			width: 100%;
-			z-index: 3;
-			li{
-				display: block;
-				button{
-					@include border-radius(0);
-				}
-			}
-			&.open{
-				height: 100%;
-				z-index: 4;
-			}
-
-		}
-		h4{
-			cursor: pointer;
-			padding: 0 $button_gutter;
-			line-height: $phone_nav_height;
-			border: none;
-			display: block;
-			height: 0;
-			overflow: hidden;
-			background-color: $nav_button_bgcolor;
-			@include border-top-radius($tiny_radius);
-			@include transition-property(all);
-			@include transition-duration($short_time);
-			@include transition-delay(0);		
-			&:hover, &.active {
-				color: $nav_button_text_hover_color;
-				background-color: $nav_button_hover_bgcolor;
-			}
-			&.active, &.active:hover {
-				cursor: default;
-			}
-		}
-		&.shown h4{
-			height: 100%;
-		}
-		button{
-			line-height: $phone_nav_height;
-			width: 100%;
-			overflow:hidden;
 		}
 	}
 	@include breakpoint(nano){
-		top: -($phone_nav_height);
-		z-index: 4;
-		overflow: visible;
-		&.shown{
-			top: -($phone_nav_height);
-			overflow: visible;
-		}
-		ul{
-			height: 0;
-			position: absolute;
-			left: 0;
-			top: $phone_nav_height;
-			width: 100%;
-			z-index: 3;
-			li{
-				display: block;
-				button{
-					@include border-radius(0);
-				}
-			}
-			&.open{
-				height: 100%;
-				z-index: 4;
-			}
-
-		}
-		h4{
-			cursor: pointer;
-			padding: 0 $button_gutter;
-			line-height: $phone_nav_height;
-			border: none;
-			display: block;
-			height: 100%;
-			overflow: hidden;
-			background-color: $nav_button_bgcolor;
-			@include border-top-radius($tiny_radius);
-			@include transition-property(all);
-			@include transition-duration($short_time);
-			@include transition-delay(0);	
-			&:hover, &.active {
-				color: $nav_button_text_hover_color;
-				background-color: $nav_button_hover_bgcolor;
-			}
-			&.active, &.active:hover {
-				cursor: default;
-			}
-		}
-		&.shown h4{
-			height: 100%;
-		}
-		button{
-			line-height: $phone_nav_height;
-			width: 100%;
-			overflow:hidden;
-		}
 		#toggleIntro{
 			display: none;
 		}
@@ -803,18 +597,71 @@ ol, ul {
 
 //content styling
 
+.articleInner{
+	header h3{
+		margin: 0 (-$article_gutter) 1rem 0;
+		padding: 0.1rem $article_gutter 0.12rem $article_gutter;
+		font-weight: normal;
+		font-size: 1.5em;
+		color: $default_text_color;
+		background-color: $secondary_color;
+	}
+	a, a:link, a:visited{		
+		color: $default_text_color;
+		border-bottom: 2px solid $default_text_contrast_color;
+		text-decoration: none;
+		&:hover{
+			color: $default_text_contrast_color;
+			background: $default_text_color;
+		}
+	}
+	dl{
+		background-color: $secondary_background_color_rgba;
+		padding: ($article_gutter/2) $article_gutter;
+	}
+	dd, dt {
+		margin: 0;
+		font-size: 0.98em;
+	}
+	dt{
+		font-weight: bold;
+		float: left;
+		margin-right: $inline_space_horiz;
+	}
+	dd{
+		
+	}
+	img{
+		margin: 0;
+		width: 100%
+	}
+	.hero{
+		//margin:0 -($article_gutter);
+		height: 60px;
+		overflow: hidden;
+		img{
+			//height:30em;
+			//display:none;
+		}
+	}
+	.projectDescription{
+		font-weight: 700;
+	}
+}
+
 h6, h5, h4, h3, h2{
 	font-size: 1em;
-	margin-bottom: 0;
+	margin: 0.5em 0 0;
 	+p{
 		margin-top: 0;
 	}
 }
 p{
-	margin-top: 0;
+	margin: 0 0 $article_gutter;
+
 }
 ul{
-	margin: 1rem;
+	margin: 0 1em;
 	list-style-type: square;
 	list-style-position: outside;
 }
@@ -827,9 +674,8 @@ ul{
 
 #breakpoint_debug{
 	position: absolute;
-	//display: none;
-	top: 1rem;
-	font-size:1rem;
+	display: none;
+	top: 0;
 	@include breakpoint(maxi) {
 		.maxi{color: $default_text_contrast_color;}
 	}
@@ -850,5 +696,8 @@ ul{
 	}
 	@include breakpoint(deviceLandscape) {
 		.deviceLandscape{color: $default_text_contrast_color;}
+	}
+	@include breakpoint(collapseMenu) {
+		.collapseMenu{color: $default_text_contrast_color;}
 	}
 }
