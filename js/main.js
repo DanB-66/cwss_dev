@@ -1,9 +1,4 @@
 /*global swipe:true, dust:true, History:true, Modernizr:true */
-// window.onload = function(){
-// 	document.getElementById("carouselWrap").innerHtml += 'loading assets...';
-// 	alert('main');
-// };
-// debugger;
 
 require(['jquery', 'history', 'touchSwipe', 'dust', 'dustTemplate1'], function ($) {
 
@@ -11,16 +6,16 @@ require(['jquery', 'history', 'touchSwipe', 'dust', 'dustTemplate1'], function (
 
 	var CwsC = {
 	
-		multiple : 3,//default 3, no of items per carousel page
-		lang : 'en',//default en
-		carouselContent : '',// data
-		carouselUiContent : '',// ui label data
-		carouselContainer : '',
-		carouselContentLength : '',
-		contentIndex : '',//index of the last shown project item in a page
-		bHasCssTransforms : false,// test with modernizer
-		History : window.History,//history lib in use
-		pageTitle : document.title,
+		multiple: 3,//default 3, no of items per carousel page
+		lang: 'en',//default en
+		carouselContent: '',// data
+		carouselUiContent: '',// ui label data
+		carouselContainer: '',
+		carouselContentLength: '',
+		contentIndex: '',//index of the last shown project item in a page
+		bHasCssTransforms: false,// test with modernizer
+		History: window.History,//history lib in use
+		pageTitle: document.title,
 		startItem: '',
 		currentPage: '',
 		newMultiple: '',
@@ -32,7 +27,7 @@ require(['jquery', 'history', 'touchSwipe', 'dust', 'dustTemplate1'], function (
 		isTransitioning: false,
 		isFirstRun: true,
 
-		pushPageState : function(direction, index, newLang, newMultiple, newIntroShow){
+		pushPageState: function(direction, index, newLang, newMultiple, newIntroShow){
 			console.log('OOO pushPageState input vals: - direction: '+direction+', index: '+index+', newLang: '+newLang+', newMultiple: '+newMultiple+', newIntroShow: '+newIntroShow);
 
 			if (newMultiple !== undefined) {
@@ -67,7 +62,7 @@ require(['jquery', 'history', 'touchSwipe', 'dust', 'dustTemplate1'], function (
 			
 		},
 
-		buildControls : function(){// build the controls and intro with lang
+		buildControls: function(){// build the controls and intro with lang
 			var output;
 			dust.render("cwsUI", this.carouselContent, function(err, out) {//'cwsUI' is a compiled dust template already registered. Its loaded by requirejs
 				if(err !== null){
@@ -79,7 +74,7 @@ require(['jquery', 'history', 'touchSwipe', 'dust', 'dustTemplate1'], function (
 		},
 
 
-		buildUI : function() {// build ui on load. Bind ui btns, swipe and statechange event
+		buildUI: function() {// build ui on load. Bind ui btns, swipe and statechange event
 			var renderTarget = $('.carouselWrap');//elem to create it inside
 
 			renderTarget.html(this.buildControls());
@@ -98,6 +93,15 @@ require(['jquery', 'history', 'touchSwipe', 'dust', 'dustTemplate1'], function (
 					}
 				}
 				event.preventDefault();
+			});
+
+			renderTarget.on('touchstart','.cwsCprev, .cwsCnext', function() {
+				$(this).addClass('fauxHover');
+			});
+			renderTarget.on('touchend','.cwsCprev, .cwsCnext', function() {
+				$(this).removeClass('fauxHover');
+				//that = this;
+				//setTimeout(function(){$(that).removeClass('fauxHover');}, 1000);
 			});
 
 			// delegate click on 'set multiple' control
@@ -257,12 +261,11 @@ require(['jquery', 'history', 'touchSwipe', 'dust', 'dustTemplate1'], function (
 					CwsC.carouselContainer.fadeTo(500, 0, function() {
 						console.log('F@de.......................CwsC.lang:'+ CwsC.lang+' State.data.lang: '+State.data.lang);
 						if(CwsC.langChangedByUI !== false){// change lang via ui btns
-							console.log('changed lang');
+							CwsC.carouselContainer.before('<div id="langload">Loading new language data...</div>');
 							CwsC.loadData(1);
 							CwsC.langChangedByUI = false;
 						}
 						else if (State.data.lang !== CwsC.lang) {// back button pressed, go to previous lang
-							//console.log('lang2 change ??back?');
 							CwsC.newDirection = undefined;
 							CwsC.lang = State.data.lang;
 							CwsC.loadData(1);
@@ -286,7 +289,7 @@ require(['jquery', 'history', 'touchSwipe', 'dust', 'dustTemplate1'], function (
 
 		},
 
-		loadData : function(bIsRebuild) {// load json - todo use beforeSend to set spinner
+		loadData: function(bIsRebuild) {// load json - todo use beforeSend to set spinner
 			$.ajax({
 				url: 'json/cws_'+CwsC.lang+'.json',
 				dataType: 'json',
@@ -302,6 +305,7 @@ require(['jquery', 'history', 'touchSwipe', 'dust', 'dustTemplate1'], function (
 							CwsC.renderItems(true);
 						}
 					};
+					
 					CwsC.carouselContent = data.cwsData;//data
 					CwsC.carouselUiContent = data.cwsData.i18n;//ui labels data
 					CwsC.carouselContentLength = CwsC.carouselContent.projects.length;// length of the projects data 
@@ -343,7 +347,7 @@ require(['jquery', 'history', 'touchSwipe', 'dust', 'dustTemplate1'], function (
 			});
 		},
 
-		renderItems : function(refreshLang) {
+		renderItems: function(refreshLang) {
 			var projData, uiData, mergedJson,
 				carouselBuffer = '',
 				incrementBuffer = function(err, output){
@@ -366,6 +370,7 @@ require(['jquery', 'history', 'touchSwipe', 'dust', 'dustTemplate1'], function (
 
 				buffer = '';
 				CwsC.markLang(CwsC.lang);
+				$('#langload').remove();//only present on lang change
 			}
 
 			CwsC.carouselContainer.empty().removeClass('multiple1 multiple2 multiple3 multiple4').addClass('multiple'+CwsC.multiple);//cant remove fwd-back classes here as they will animate
@@ -405,7 +410,7 @@ require(['jquery', 'history', 'touchSwipe', 'dust', 'dustTemplate1'], function (
 			console.log('________________________________end renderItems');
 		},
 
-		transitionContent : function(direction, bIsHistoryDriven) {
+		transitionContent: function(direction, bIsHistoryDriven) {
 			//console.log('xxxxxx TRANSITION CONTENT DIRECTION: '+direction+' bIsHistoryDriven: '+bIsHistoryDriven);
 			CwsC.isTransitioning = true;
 			if (CwsC.bHasCssTransforms){// wait for n transitions to end (sequenced)
@@ -427,29 +432,29 @@ require(['jquery', 'history', 'touchSwipe', 'dust', 'dustTemplate1'], function (
 				}
 			}
 		},
-		markMultiple : function(newMultiple) {// mark the menu selection for multiple
+		markMultiple: function(newMultiple) {// mark the menu selection for multiple
 			var multipleMenu = $('#setMultipleControl');
 			multipleMenu.find('button').removeClass('active');
 			multipleMenu.find('li:eq('+ --newMultiple +')>button').addClass('active');
 		},
 
-		setMultiple : function(newMultiple) {// action the new multiple
+		setMultiple: function(newMultiple) {// action the new multiple
 			this.multiple = newMultiple;
 			this.pushPageState(undefined, CwsC.multiple, undefined, newMultiple, CwsC.introShow);
 		},
 
-		markLang : function(newLang) {// mark the menu selection for language
+		markLang: function(newLang) {// mark the menu selection for language
 			var langMenu = $('#setLangControl');
 			langMenu.find('button').removeClass('active');
 			langMenu.find('#'+ newLang +'>button').addClass('active');
 		},
 
-		setLang : function(newLangChoice) {// action the new lang
+		setLang: function(newLangChoice) {// action the new lang
 			this.langChangedByUI = true;
 			CwsC.pushPageState(undefined, undefined, newLangChoice, undefined, undefined);
 		},
 
-		setNav : function() {// ui paging back/fwd buttons toggle inactive state
+		setNav: function() {// ui paging back/fwd buttons toggle inactive state
 			var next = $('.cwsCnext'),
 				prev = $('.cwsCprev');
 			if (this.contentIndex < this.carouselContentLength ) {
@@ -462,10 +467,11 @@ require(['jquery', 'history', 'touchSwipe', 'dust', 'dustTemplate1'], function (
 			} else {
 				prev.removeClass('disabled').attr('title', this.carouselContent.i18n.uIprevious);
 			}
+
 		},
 
 
-		swipeListener : function() {
+		swipeListener: function() {
 			CwsC.carouselContainer.swipe({
 				// swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
 				//	console.log("swiped! " + direction );
@@ -477,11 +483,11 @@ require(['jquery', 'history', 'touchSwipe', 'dust', 'dustTemplate1'], function (
 					$('.cwsCnext').trigger('click');
 				},
 				//Default 75px
-				threshold:75
+				threshold:85
 			});
 		},
 
-		init : function() {
+		init: function() {
 			var pageFromUrl = 0,
 				urlLocationType = '';
 			if (Modernizr.csstransforms3d){

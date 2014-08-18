@@ -34,7 +34,7 @@
 
 <?php include("includes/_header_global.php"); ?>
 
-	<div class="carouselWrap" id="carouselWrap">
+	<div class="carouselWrap">
 		<div id="info">
 			<a href="projects.php" class="nonjs">Previous projects list</a>
 			<p class="jsonly">hello world...</p>

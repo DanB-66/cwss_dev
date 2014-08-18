@@ -133,16 +133,21 @@ $prefixes: ('-webkit-','-moz-', '-o-', '-ms-', '');
 	display: none;
 }
 #info{
-	margin: 3rem;
-	color: #fff;
+	margin: 3rem 0 0 6rem;
+	color: #ddd;
 	a{
-		color: #fff;
+		color: #ddd;
 	}
 	&.jsonly{
 		display: block;
 	}
 }
-
+#langload{
+	position: absolute;
+	color: #ddd;
+	top: 3rem;
+	left: 6rem;
+}
 
 //wrap long links
 a{

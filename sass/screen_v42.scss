@@ -76,7 +76,7 @@ body {
 	height: 100%;
 }
 #pageContent {
-	//@include prefix(transition, 'all 600ms ease-in');
+	@include prefix(transition, 'all 600ms ease-in');
 	-webkit-tap-highlight-color: transparent;
 	width: 60rem;
 	position: absolute;
@@ -283,66 +283,7 @@ ol, ul {
 	.multiple4 article:nth-child(even) .articleInner {
 		margin-right: 0;
 	}
-	.cwsCprev, .cwsCnext {
-		position: absolute;
-		top: 0;
-		bottom: 0;
-		width: 3rem;
-		background-color: $control_background_color;
-		text-indent: -999rem;
-		white-space: nowrap;
-		overflow: hidden;
-		z-index: 1;
-		@include transition-property(background-color);
-		@include transition-duration($short_time);
-	}
-	//.cwsCprev:hover, .cwsCnext:hover, .cwsCprev:focus, .cwsCnext:focus {
-	.cwsCprev:hover, .cwsCnext:hover {
-		background-color: $control_background_hover_color;
-		cursor: pointer;
-	}
-	//.cwsCprev.disabled, .cwsCnext.disabled, .cwsCprev.disabled:hover, .cwsCnext.disabled:hover, .cwsCprev.disabled:focus, .cwsCnext.disabled:focus {
-	.cwsCprev.disabled, .cwsCnext.disabled, .cwsCprev.disabled:hover, .cwsCnext.disabled:hover{
-		background-color: $control_color_disabled_background;
-		cursor: default;
-	}
-	.cwsCprev {
-		left: 0;
-		@include border-left-radius($tiny_radius);
-	}		 
-	.cwsCnext {
-		right: 0;
-		@include border-right-radius($tiny_radius);
-	}
-	.cwsCprev:after, .cwsCnext:after {//generated triangles
-		content: " ";
-		position: absolute;
-		top: 50%;
-		margin-top: -1rem;
-		width: 0;
-		height: 0;
-		border-top: 1rem solid transparent;
-		border-right: 1.3rem solid $control_color;
-		border-bottom: 1rem solid transparent;
-	}
-	.cwsCprev:after {
-		left: 1rem;
-	}
-	.cwsCnext:after {
-		right: 1rem;
-		border-right: none;
-		border-left: 1.3rem solid $control_color;
-	}
-	//.cwsCprev:hover:after, .cwsCnext:hover:after, .cwsCprev:focus:after, .cwsCnext:focus:after {
-	.cwsCprev:hover:after, .cwsCnext:hover:after {
-		border-right-color: $control_hover_color;
-		border-left-color: $control_hover_color;
-	}
-	//.disabled:after, .cwsCprev.disabled:hover:after, .cwsCnext.disabled:hover:after, .cwsCprev.disabled:focus:after, .cwsCnext.disabled:focus:after{
-	.disabled:after, .cwsCprev.disabled:hover:after, .cwsCnext.disabled:hover:after{
-		border-right-color: $control_color_disabled;
-		border-left-color: $control_color_disabled;
-	}
+
 	@include breakpoint(devicePortrait) {/* layout - override nav buttons to bottom on phone*/
 		left: 0;
 		right: 0;
@@ -389,6 +330,64 @@ ol, ul {
 			}
 		}
 	}
+}
+.cwsCprev, .cwsCnext {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	width: 3rem;
+	background-color: $control_background_color;
+	text-indent: -999rem;
+	white-space: nowrap;
+	overflow: hidden;
+	z-index: 1;
+	@include transition-property(background-color);
+	@include transition-duration($short_time);
+}
+
+.no-touch .cwsCprev:hover, .no-touch .cwsCnext:hover, .fauxHover {
+	background-color: $control_background_hover_color;
+	cursor: pointer;
+}
+
+.cwsCprev.disabled, .cwsCnext.disabled, .no-touch .cwsCprev.disabled:hover, .no-touch .cwsCnext.disabled:hover{
+	background-color: $control_color_disabled_background;
+	cursor: default;
+}
+.cwsCprev {
+	left: 0;
+	@include border-left-radius($tiny_radius);
+}		 
+.cwsCnext {
+	right: 0;
+	@include border-right-radius($tiny_radius);
+}
+.cwsCprev:after, .cwsCnext:after {//generated triangles
+	content: " ";
+	position: absolute;
+	top: 50%;
+	margin-top: -1rem;
+	width: 0;
+	height: 0;
+	border-top: 1rem solid transparent;
+	border-right: 1.3rem solid $control_color;
+	border-bottom: 1rem solid transparent;
+}
+.cwsCprev:after {
+	left: 1rem;
+}
+.cwsCnext:after {
+	right: 1rem;
+	border-right: none;
+	border-left: 1.3rem solid $control_color;
+}
+.no-touch .cwsCprev:hover:after, .no-touch .cwsCnext:hover:after {
+	border-right-color: $control_hover_color;
+	border-left-color: $control_hover_color;
+}
+.disabled:after, .no-touch .cwsCprev.disabled:hover:after, .no-touch .cwsCnext.disabled:hover:after{
+	border-right-color: $control_color_disabled;
+	border-left-color: $control_color_disabled;
 }
 
 #setMultipleControl, #setLangControl, #toggleIntro{
@@ -533,10 +532,6 @@ ol, ul {
 	transform-style: preserve-3d;
 
 	article{
-		//perspective: 900px;//req for ie bug here as well as above el	?
-		//-webkit-transform-style: preserve-3d;
-		//-moz-transform-style: preserve-3d;
-		//transform-style: preserve-3d;
 		@include prefix(backface-visibility, 'hidden');
 		@include prefix(transition, 'all 600ms ease-in');
 	}
@@ -585,13 +580,14 @@ ol, ul {
 		-o-transition: all 0 none;
 		transition: none;
 	}
-/*	&.noDelay article {
-		-moz-transition-delay: 0;
-		-webkit-transition-delay: 0;
-		-o-transition-delay: 0;
-		transition-delay: 0;
-	}*/
-
+	//test
+	&.multiple4{
+		&.forward article:nth-last-child(4){
+			//-webkit-transform: rotateY(20deg) translateX(200%);
+			//transform: rotateY(20deg) translateX(200%);
+			//color:red;
+		}		
+	}
 }
 
 
@@ -604,7 +600,7 @@ ol, ul {
 		font-weight: normal;
 		font-size: 1.5em;
 		color: $default_text_color;
-		background-color: $secondary_color;
+		background-color: $primary_background_color_rgba;
 	}
 	a, a:link, a:visited{		
 		color: $default_text_color;
@@ -637,7 +633,7 @@ ol, ul {
 	}
 	.hero{
 		//margin:0 -($article_gutter);
-		height: 60px;
+		height: 6em;
 		overflow: hidden;
 		img{
 			//height:30em;

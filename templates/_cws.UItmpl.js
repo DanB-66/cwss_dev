@@ -8,7 +8,7 @@
 
 <section id="controls">
     <section id="setMultipleControl">
-        <h4>{i18n.uImultiItems}:</h4>
+        <h4>{i18n.uImultiItems}</h4>
         <ul>
             <li><button>1</button></li>
             <li><button>2</button></li>
@@ -17,7 +17,7 @@
         </ul>
     </section>
     <section id="setLangControl">
-        <h4>{i18n.uImultiLang}:</h4>
+        <h4>{i18n.uImultiLang}</h4>
         <ul>
             <li id="en"><button>{i18n.localeNames.uIen}</button></li>
             <li id="fr"><button>{i18n.localeNames.uIfr}</button></li>
