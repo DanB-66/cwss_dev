@@ -318,7 +318,7 @@ require(['jquery', 'history', 'touchSwipe', 'dust', 'dustTemplate1'], function (
 								loadedImgs++;
 								$('#info').text('preloading images: '+loadedImgs+' of '+CwsC.carouselContentLength);
 								if (loadedImgs == CwsC.carouselContentLength) {
-									$('#info').text('app ready...');
+									$('#info').text('ready...');
 									CwsC.isFirstRun = false;
 									setTimeout(function(){playOn();}, 1000);
 								}

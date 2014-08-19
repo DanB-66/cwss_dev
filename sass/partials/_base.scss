@@ -53,7 +53,7 @@ $phone_nav_height: 3rem;
 
 $button_gutter: $nav_gutter;
 
-// breakpoints 1824
+// breakpoints 
 @mixin breakpoint($point) {
 	@if $point == maxi {
 		@media only screen 

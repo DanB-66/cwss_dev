@@ -46,9 +46,9 @@ html {
 			background-color: #999;
 		}
 		body > footer{
-			position: fixed;
+			//position: fixed;
 			background: #000;
-			bottom: 0;
+			//bottom: 0;
 			padding: 2px;
 			font-size: 1.3em;
 		}
@@ -137,7 +137,7 @@ body {
 		margin-left: 0;
 	}
 }
-//global header
+//global header 
 #pageContent > header {
 	color: $secondary_color;
 	border: 0.1875em solid $secondary_color;
