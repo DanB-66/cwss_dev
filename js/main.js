@@ -359,12 +359,11 @@ require(['jquery', 'history', 'touchSwipe', 'dust', 'dustTemplate1'], function (
 
 			if (refreshLang === true){
 				//rebuild controls with new lang  after lang change
-				//console.log('rebuild controls with new lang ');
 				var buffer = $(CwsC.buildControls());
 				$('#intro').replaceWith(buffer.slice(0,1));
 				$('#controls').replaceWith(buffer.slice(1,2));
 				if(CwsC.introShow !== true){
-					$('#intro').addClass('noTransition hidden');//remove hidden and prevent transitions
+					$('#intro').addClass('noTransition hidden');
 					$('#controls').addClass('shown');
 				}
 
@@ -390,7 +389,7 @@ require(['jquery', 'history', 'touchSwipe', 'dust', 'dustTemplate1'], function (
 			}
 
 			var transitionInClass;
-			console.log('new dir: '+CwsC.newDirection);
+			//console.log('new dir: '+CwsC.newDirection);
 			if (CwsC.newDirection === 'back'){
 				transitionInClass = 'forward';
 			} else if (CwsC.newDirection === 'forward'){

@@ -39,7 +39,7 @@ html {
 	@include breakpoint(nano) { 
 		font-size: 0.5517em;
 		.articleInner > *, #controls button, #controls h4, #intro{
-			font-size: 1.7777em;
+			font-size: 1.777777em;
 		}
 		body{
 			background-image: none;
@@ -58,13 +58,29 @@ html {
 	}
 	@include breakpoint(deviceLandscape) {
 		font-size: 1em;
-		header{
-			font-size: 0.6em;
+		width: 100%;
+		position: fixed;//ios7 landscape bug
+		@include breakpoint(smallDevice) {
+			#intro{
+				font-size: 0.95em;
+			}
 		}
 	}
 	@include breakpoint(devicePortrait) {
 		font-size: 1.3em;
+		@include breakpoint(smallDevice) {
+			.articleInner > *, #controls button, #controls h4, #intro{
+				font-size: 1.7em;
+			}
+		}
 	}
+	@include breakpoint(smallDevice) {
+		#controls button, #controls h4{
+			font-size: 2.1em;
+		}
+
+	}
+
 
 }
 body {
@@ -74,6 +90,7 @@ body {
 	-moz-background-size: cover;
 	background-size: cover;	
 	height: 100%;
+	-webkit-touch-callout: none; 
 }
 #pageContent {
 	@include prefix(transition, 'all 600ms ease-in');
@@ -101,7 +118,7 @@ body {
 		margin-left: 0;
 		& > header{
 			margin: 0 $article_gutter;
-			font-siz: 0.95rem;
+			font-size: 0.95rem;
 		}
 	}
 	@include breakpoint(devicePortrait) {
@@ -115,13 +132,43 @@ body {
 		top: 1rem;
 		left: 1rem;
 		right: 1rem;
-		bottom: 3em;
+		bottom: 2em;
 		width: auto;
 		margin-left: 0;
 	}
 }
 //global header
 #pageContent > header {
+	color: $secondary_color;
+	border: 0.1875em solid $secondary_color;
+	border-width: 0.1875em 0;
+	font-family: 'Orbitron', sans-serif;
+	letter-spacing: 0.4em;
+	padding: 0.4rem 1rem;
+	@include border-radius(1.4rem);
+	text-align: right;
+	text-transform: uppercase;
+	font-weight: normal;
+	font-size: 1rem;
+	line-height: 1.12;
+	@include breakpoint(deviceLandscape) {
+		width: 43%;
+		float: right;
+		font-size: 0.4rem;
+	}
+	h1{
+		font-size: 2em;
+		margin: 0;
+	}
+	h2 {
+		font-size: 1em;
+		letter-spacing: 0.4em;
+		margin: 0;
+		text-transform: lowercase;
+	}
+}
+
+/*#pageContent > header {
 	color: $secondary_color;
 	border: 0.1875rem solid $secondary_color;
 	border-width: 0.1875rem 0;
@@ -148,12 +195,8 @@ body {
 		letter-spacing: 0.4em;
 		text-transform: lowercase;
 	}
-}
-ol, ul {
-	list-style: none;
-	padding: 0;
-	margin: 0;
-}
+}*/
+
 #intro {
 	position: absolute;
 	left: 0;
@@ -165,7 +208,7 @@ ol, ul {
 	background-color: #000;//ie8
 	background-color: rgba(0, 0, 0, 0.8);
 	@include border-radius($tiny_radius);
-	padding: 7.5rem 4rem 1rem;
+	padding: 3.5rem 4rem 0;
 	z-index: 9;
 	display: block;
 	@include transition-property(all);
@@ -178,13 +221,17 @@ ol, ul {
 		float: left;
 		margin: 0 $double_space $double_space 0;
 	}
+	@include breakpoint(micro) {
+		p:nth-of-type(1){
+			clear: right;
+		}
+	}
 	p:nth-of-type(2){
 		clear: both
 	}
 	.hide{
-		position: absolute;
-		top: 3rem;
-		right: 2rem;
+		float: right;
+		margin: 0 0 2rem 2rem;
 		padding: 1rem;
 		color: #fff;
 		@include border-radius($tiny_radius);
@@ -200,12 +247,13 @@ ol, ul {
 		-o-transition: all 0 none;
 		transition: none;
 	}
+
 }
 .carouselWrap {
 	position: absolute;	
-	top: 6.5rem;
+	top: 7rem;
 	@include breakpoint(micro) {
-		top: 8rem;
+		top: 8.5rem;
 	}
 	@include breakpoint(deviceLandscape) {
 		top: $phone_nav_height;
@@ -343,6 +391,7 @@ ol, ul {
 	z-index: 1;
 	@include transition-property(background-color);
 	@include transition-duration($short_time);
+	-webkit-user-select: none;
 }
 
 .no-touch .cwsCprev:hover, .no-touch .cwsCnext:hover, .fauxHover {
@@ -409,6 +458,14 @@ ol, ul {
 	h4{
 		height: auto;
 		margin-right: $button_gutter/2;
+		&:after{
+			content: ":";
+		}
+		@include breakpoint(collapseMenu) {
+			&:after{
+				content: "";
+			}
+		}
 	}
 	button {
 		cursor: pointer;
@@ -467,8 +524,10 @@ ol, ul {
 			z-index: 3;
 			li{
 				display: block;
+				margin-top:-1px;
 				button{
 					@include border-radius(0);
+					border-width: 0;			
 				}
 			}
 			&.open{
@@ -656,6 +715,11 @@ p{
 	margin: 0 0 $article_gutter;
 
 }
+ol, ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
 ul{
 	margin: 0 1em;
 	list-style-type: square;
@@ -672,6 +736,7 @@ ul{
 	position: absolute;
 	display: none;
 	top: 0;
+	z-index: 999;
 	@include breakpoint(maxi) {
 		.maxi{color: $default_text_contrast_color;}
 	}
@@ -695,5 +760,8 @@ ul{
 	}
 	@include breakpoint(collapseMenu) {
 		.collapseMenu{color: $default_text_contrast_color;}
+	}
+	@include breakpoint(smallDevice) {
+		.smallDevice{color: $default_text_contrast_color;}
 	}
 }

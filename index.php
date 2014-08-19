@@ -30,6 +30,7 @@
 	<span class="devicePortrait">port</span> 
 	<span class="deviceLandscape">land</span> 
 	<span class="collapseMenu">menu</span> 
+	<span class="smallDevice">smallDevice</span> 
 </div>
 
 <?php include("includes/_header_global.php"); ?>

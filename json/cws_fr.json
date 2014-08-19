@@ -6,7 +6,7 @@
 			"uIimages": "Images",
 			"uIlinks": "Liens",
 			"uIhideIntro": "Parcourir projets",
-			"uIShowIntro": "leIntro/Contact",
+			"uIShowIntro": "Intro/Contacter",
 			"uImultiItems": "Disposition",
 			"uImultiLang": "Langue",
 			"uIclient": "Client",
@@ -28,21 +28,21 @@
 			"introCopy": "<p>Code Workshop Systems est détenu et exploité par moi-même, Dan Brown. Depuis plus de douze ans, j'ai fourni les agences et les organisations basées à Londres avec robustes, fiables, conforme aux normes de contenu numérique.</p><p>Cette page est encore un travail en cours, mais il ne la démonstration des techniques de frontend y compris:</p><ul><li>Mise en page responsive / adaptative</li><li>La gestion de State de toutes les actions ui</li><li>JSON analyse et la manipulation</li><li>DUST gabarits avec sursis logique par exemple l'adaptation au le contenu des données</li></ul><p>S'il vous plaît me contacter via LinkedIn: <a href='https://www.linkedin.com/in/danbrownfrontend' tabindex='-1'> www.linkedin.com/en/danbrownfrontend</a></p><p>S'il vous plaît avoir une navigation<span class='touchshow'> (coup!)</ span> d'une sélection de projets.</p>"		},
 		"projects": [
 			{
-				"client": "'Big 6' le utility",
+				"client": "'Big 6' société d'énergie",
 				"agency": "Fjord",
-				"projectName": "Confidential project",
-				"projectDescription": "Rapid prototyping project to develop a webapp for a major utility.",
-				"duration": "2 months",
-				"shortDescription": "Webapp rapid prototyping",
+				"projectName": "Projet confidentiel",
+				"projectDescription": "Projet de prototypage rapide pour développer une application web pour une importante société d'énergie.",
+				"duration": "2 moins",
+				"shortDescription": "Webapp prototypage rapide",
 				"extendedInfo": {
-					"agencyDetails": "Le Fjord is a global service design consultancy that is part of Accenture Interactive",
-					"workUndertaken": "FR: Part of a rapid development team of four devs working closely with Interaction and Visual Designers to implement creative explorations of future capabilities in technology and service provision.",
+					"agencyDetails": "Fjord est une agence de design global de services qui fait partie d'Accenture Interactive",
+					"workUndertaken": "Partie d'une équipe de développement rapide de quatre développeurs qui travaillent en étroite collaboration avec l'interaction et les visuels concepteurs de mettre en œuvre explorations créatives de capacités futures de la technologie et prestation de services.",
 					"otherDetails": [
-						"Backbone project",
+						"Backbone projet",
 						"Require JS",
-						"Underscore templating",
-						"Le Grunt build tools",
-						"Internet le Things"
+						"Underscore templates",
+						"Construire des outils Grunt",
+						"Internet des objets"
 					]
 				},
 				"assets": {
@@ -62,7 +62,7 @@
 			},
 			{
 				"client": "New Look",
-				"agency": "le Velti",
+				"agency": "Velti",
 				"projectName": "m.newlook.com",
 				"projectDescription": "Site mobile pour New Look détaillant de vêtements.",
 				"duration": "5 mois",
@@ -148,18 +148,18 @@
 				}
 			},
 			{
-				"client": "fr EE",
-				"agency": "fr Sapient Nitro",
-				"projectName": "EE launch",
-				"projectDescription": "En francais! Partner portal for existing EE, T-mobile and Orange resellers to access branding and marketing information.",
-				"duration": "3 weeks",
-				"shortDescription": "En francais! HTML/CSS/JS implementation for EE launch",
+				"client": "EE",
+				"agency": "Sapient Nitro",
+				"projectName": "EE lancement",
+				"projectDescription": "Portail partenaire pour EE existant, T-Mobile et d'Orange revendeurs d'accéder à l'image de marque et la commercialisation d'informations.",
+				"duration": "3 semaine",
+				"shortDescription": "HTML/CSS/JS mise en œuvre pour EE lancement",
 				"extendedInfo": {
-					"agencyDetails": "Sapient is a consulting and technology company with a global headcount of over 7k.",
-					"workUndertaken": "En francais!  I was part of a two-man front end team developing a portal site for internal partners. Due to a short deadline, the pages were developed from wireframes and styleguides with full GD for only some of the elements, this was sucessfully accomplished by an ongoing consultation and review process with designers and IA's.",
+					"agencyDetails": "Sapient est une société de conseil et de la technologie avec un effectif global de plus de 7k.",
+					"workUndertaken": "Je faisais partie d'une équipe avant de la fin de deux homme développement d'un site portail pour les partenaires internes. En raison d'un délai très court, les pages ont été développées à partir de fil de fer et des guides de style en pleine GD pour une partie seulement des éléments, cela a été réalisé avec succès par un processus de consultation et de révision en cours avec des designers et IA de.",
 					"otherDetails": [
-						"Login form scripting for clientside validation and querying REST login service",
-						"Front end support for Jahia CMS developers"
+						"Connexion forme de script de validation côté client et l'interrogation de service de connexion REST",
+						"Soutien Frontend pour les développeurs Jahia CMS"
 					]
 				},
 				"assets": {
@@ -171,7 +171,7 @@
 					],
 					"links": [
 						{
-							"title": "EE Partner Portal login page",
+							"title": "Portail des partenaires EE page de connexion",
 							"url": "https://partnerportal.ee.co.uk"
 						}
 					]
@@ -180,52 +180,52 @@
 			{
 				"client": "Toni+Guy/Unilever",
 				"agency": "Sapient Nitro",
-				"projectName": "Hair meet Wardrobe",
-				"projectDescription": "En francais! Hair Fashion inspiration from Toni&Guy. Recreate this season's catwalk & street-style looks with 4 style collections",
-				"duration": "3 months",
-				"shortDescription": "En francais! Part of a three man 'Phase 2' FE team extending and bug fixing existing code.",
+				"projectName": "Rencontrent cheveux armoire",
+				"projectDescription": "Hair Fashion inspiration de Toni&Guy. Recréer passerelle et la rue de style de cette saison s'annonce avec 4 collections de style",
+				"duration": "3 moins",
+				"shortDescription": "Partie d'un homme trois 'Phase 2' de l'équipe FE extension et corrections de bugs code existant.",
 				"extendedInfo": {
-					"agencyDetails": "Sapient is a consulting and technology company with a global headcount of over 7k.",
-					"workUndertaken": "En francais!  UI development, additional and extended product templates and functionality, implementation and specification of Google hashbang (#!) url mapping to SEO content, url manipulation for additional locales.",
+					"agencyDetails": "Sapient est une société de conseil et de la technologie avec un effectif global de plus de 7k.",
+					"workUndertaken": "Le développement de l'interface utilisateur, les modèles de produits supplémentaires et étendues et la fonctionnalité, mise en œuvre et la spécification de Google Hashbang (#!) Cartographie URL pour le contenu SEO, la manipulation des URL pour les paramètres régionaux supplémentaires.",
 					"otherDetails": [
-						"Work with nationally and internationally distributed teams",
-						"Agile methodology",
-						"Extensive work with legacy systems",
-						"Scripting work with existing codebase"
+						"Travailler avec des équipes nationale et internationale distribués",
+						"Méthodologie Agile",
+						"Un travail important avec les systèmes existants",
+						"Travail de script avec base de code existante"
 					]
 				},
 				"assets": {
 					"images": [
 						{
-							"title": "Toni+Guy: Hair Meet Wardrobe",
+							"title": "Toni+Guy: Rencontrent cheveux armoire",
 							"url": "img/jobs/toni_guy.jpg"
 						},
 						{
-							"title": "Toni+Guy: Hair Meet Wardrobe",
+							"title": "Toni+Guy: Rencontrent cheveux armoire",
 							"url": "img/jobs/toni_guy2.jpg"
 						}
 					],
 					"links": [
 						{
-							"title": "Hair Meet Wardrobe",
+							"title": "Rencontrent cheveux armoire",
 							"url": "http://www.hairmeetwardrobe.com/"
 						}
 					]
 				}
 			},
 			{
-				"client": " le Global FMCG giant",
+				"client": "Géant FMCG mondiale",
 				"agency": "SapientNitro",
 				"projectName": "Recipedia",
-				"projectDescription": "Unreleased recipe site",
-				"duration": "7 months",
-				"shortDescription": "Build of an innovative recipe site, including video assets, shopping lists and a fullscreen cooking mode.",
+				"projectDescription": "Unreleased site de recettes",
+				"duration": "7 moins",
+				"shortDescription": "Construire un site de recettes innovantes, y compris les actifs vidéo, des listes de courses et un mode de cuisson en plein écran.",
 				"extendedInfo": {
-					"agencyDetails": "Sapient is a consulting and technology company with a global headcount of over 7k.",
-					"workUndertaken": "Working with up to five frontend devs within a large team including BA's and offshore backend devs. Unfortunately the client decided not to release the project.",
+					"agencyDetails": "Sapient est une société de conseil et de la technologie avec un effectif global de plus de 7k.",
+					"workUndertaken": "Travailler avec un maximum de cinq développeurs frontend sein d'une grande équipe, y compris BA et développeurs backend offshore. Malheureusement, le client a décidé de ne pas divulguer le projet.",
 					"otherDetails": [
-						"Services driven scripting",
-						"Local storage"
+						"Les scripts des services axés",
+						"Le stockage local"
 					]
 				},
 				"assets": {
@@ -238,18 +238,18 @@
 				}
 			},
 			{
-				"client": "le Unilever",
+				"client": "Unilever",
 				"agency": "Iris",
 				"projectName": "Sure Men Fast Cash Races",
-				"projectDescription": "En francais! Competition pack code redemption site",
-				"duration": "1 month",
-				"shortDescription": "En francais! HTML5 build of competition site, including video assets of races and work with .net developer.",
+				"projectDescription": "Pack Compétition place un code de rachat",
+				"duration": "1 moin",
+				"shortDescription": "HTML5 construire des lieux de la compétition, y compris les actifs vidéo de courses et de travailler avec le développeur .net.",
 				"extendedInfo": {
-					"agencyDetails": "Iris are one of the world's leading independent integrated agency groups.",
-					"workUndertaken": "En francais!  Build of 'Sure Men Fast Cash Races' which allowed consumers to enter a pack code and then watch a series of 'Top Gear' style drag races with the possibility of winning £10!",
+					"agencyDetails": "Iris sont l'un des principaux groupes d'agences indépendantes intégrées au monde.",
+					"workUndertaken": "Construire des 'Sure Men Fast Cash Races' qui a permis aux consommateurs d'entrer un code de paquet, puis de regarder une série de courses d'accélération de style 'Top Gear' avec la possibilité de gagner £ 10!",
 					"otherDetails": [
-						"HTML5 template development for .net",
-						"Video encoding"
+						"Le développement de modèles HTML5 pour .net",
+						"Le codage de la vidéo"
 					]
 				},
 				"assets": {
@@ -261,11 +261,11 @@
 					],
 					"links": [
 						{
-							"title": "Write up in mag",
+							"title": "Ecrire dans le mag",
 							"url": "http://www.haystackonline.com/page/177824/agencies/iris/the-v8-fast-cash-races"
 						},
 						{
-							"title": "Iris blurb on youtube",
+							"title": "Iris présentation sur youtube",
 							"url": "http://www.youtube.com/watch?v=U2i7fx2xz14"
 						}
 					]
@@ -275,28 +275,34 @@
 				"client": "Vodafone",
 				"agency": "SapientNitro",
 				"projectName": "Vodafone BAU",
-				"projectDescription": "'Business As Usual' ongoing work for Vodafone",
-				"duration": "8 months",
-				"shortDescription": "HTML/CSS/JS implementation and maintenance work on the Vodafone uk site, including ongoing BAU work and new microsites.",
+				"projectDescription": "'Business As Usual' travaux en cours pour Vodafone",
+				"duration": "8 moins",
+				"shortDescription": "HTML/CSS/JS travaux de mise en œuvre et la maintenance sur le site Vodafone uk, y compris les travaux de BAU en cours et de nouveaux microsites.",
 				"extendedInfo": {
-					"agencyDetails": "Sapient is a consulting and technology company with a global headcount of over 7k.",
-					"workUndertaken": "En francais!  I was brought in as part of a team to help improve the existing codebase and to implement new projects, including a microsite for the launch of the iPhone 4 on the Vodafone network.",
+					"agencyDetails": "Sapient est une société de conseil et de la technologie avec un effectif global de plus de 7k.",
+					"workUndertaken": "J'ai été élevé dans le cadre d'une équipe pour aider à améliorer la base de code existante et de mettre en œuvre de nouveaux projets, y compris un microsite pour le lancement de l'iPhone 4 sur le réseau Vodafone.",
 					"otherDetails": [
-						"Work with nationally and internationally distributed teams",
-						"Agile methodology",
-						"Extensive work with legacy systems",
-						"Scripting work with existing internal libraries"
+						"Travailler avec des équipes nationale et internationale distribués",
+						"Méthodologie Agile",
+						"Un travail important avec les systèmes existants",
+						"Travail de script avec des bibliothèques internes existants"
 					]
 				},
 				"assets": {
 					"images": [
 						{
-							"title": "Vodafone iPhone 4 selector page",
+							"title": "La page de sélection Vodafone iPhone 4",
 							"url": "img/jobs/voda_iphone.jpg"
 						},
 						{
 							"title": "Vodafone VIP",
 							"url": "img/jobs/voda_streamline.jpg"
+						}
+					],
+					"links": [
+						{
+							"title": "Code archivé",
+							"url": "http://www.codeworkshop.co.uk/samples/voda_ip4/index.html"
 						}
 					]
 				}
@@ -305,16 +311,16 @@
 				"client": "Morrison's",
 				"agency": "Candi",
 				"projectName": "Morrison's",
-				"projectDescription": "'Offers' and Wine Chooser module",
-				"shortDescription": "HTML/CSS/JS implementation work on Morrison's including a 'Wine Chooser' module and 'Offers' pages.",
+				"projectDescription": "Et le module Sélecteur de vin 'offres'",
+				"shortDescription": "HTML/CSS/JS travail de mise en œuvre sur Morrison avec module un 'vin Sélecteur' et les pages 'Offres'.",
 				"extendedInfo": {
-					"agencyDetails": "Candi International was a UK digital agency dedicated to retailers and consumer brands.",
-					"workUndertaken": "En francais! I was brought in as part of a team to implement new projects, including working alongside .net devs."
+					"agencyDetails": "Candi international était une agence numérique au Royaume-Uni dédié aux détaillants et aux marques de grande consommation.",
+					"workUndertaken": "J'ai été élevé dans le cadre d'une équipe pour mettre en œuvre de nouveaux projets, notamment en travaillant aux côtés de développeurs .net."
 				},
 				"assets": {
 					"images": [
 						{
-							"title": "Wine chooser",
+							"title": "Vin Sélecteur",
 							"url": "img/jobs/thumb_morrisons.gif"
 						}
 					],
@@ -327,14 +333,14 @@
 				}
 			},
 			{
-				"client": "le Telenor",
+				"client": "Telenor",
 				"agency": "Tonic",
 				"projectName": "Telenor",
-				"projectDescription": "Full front end of Telenor website",
-				"shortDescription": "HTML/CSS/JS build of templates for the Telenor website.",
+				"projectDescription": "Fin de face complète de site Telenor",
+				"shortDescription": "HTML/CSS/JS construire des modèles pour le site Telenor.",
 				"extendedInfo": {
-					"agencyDetails": "Tonic was an award winning digital agency in London.",
-					"workUndertaken": "En francais! Built the original front end. Client decided to change the background from white to black at the very last minute which was relatively easy with my well structured css."
+					"agencyDetails": "Tonic a été primé agence numérique à Londres.",
+					"workUndertaken": "Construit à la fin avant d'origine. Client a décidé de changer le fond du blanc au noir à la dernière minute, ce qui était relativement facile avec mon css bien structuré."
 				},
 				"assets": {
 					"links": [
@@ -345,32 +351,32 @@
 					],
 					"images": [
 						{
-							"title": "le Telenor site",
+							"title": "Telenor site",
 							"url": "img/jobs/thumb_telenor.gif"
 						}
 					]
 				}
 			},
 			{
-				"client": "le KBC Securities",
+				"client": "KBC Securities",
 				"agency": "SAS",
-				"projectName": "KBC Securities website",
-				"projectDescription": "Build of website for KBC Securities",
-				"shortDescription": "Implementation of designers layouts for a new website for KBC Securities.",
+				"projectName": "Site KBC Securities",
+				"projectDescription": "Construire de site pour KBC Securities",
+				"shortDescription": "La mise en œuvre de designers mises en page pour un nouveau site Web pour KBC Securities.",
 				"extendedInfo": {
-					"agencyDetails": "SAS London is an award-winning digital marketing and design agency specialising in digital, corporate, employee and brand communications.",
-					"workUndertaken": "En francais! I was brought in to develop a new site from designers layouts - the work is still in use today."
+					"agencyDetails": "SAS Londres est une agence de marketing et de design numérique primée spécialisée dans le numérique, des entreprises, des employés et des marques communications.",
+					"workUndertaken": "J'ai été élevé pour développer un nouveau site de designers layouts - le travail est encore en usage aujourd'hui."
 				},
 				"assets": {
 					"links": [
 						{
-							"title": "KBC Securities website",
+							"title": "Site KBC Securities",
 							"url": "https://www.kbcsecurities.com/"
 						}
 					],
 					"images": [
 						{
-							"title": "KBC site",
+							"title": "Site KBC",
 							"url": "img/jobs/kbc.png"
 						}
 					]

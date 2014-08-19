@@ -158,7 +158,7 @@
 				"shortDescription": "HTML/CSS/JS implementation for EE launch",
 				"extendedInfo": {
 					"agencyDetails": "Sapient is a consulting and technology company with a global headcount of over 7k.",
-					"workUndertaken": "I was part of a two-man front end team developing a portal site for internal partners. Due to a short deadline, the pages were developed from wireframes and styleguides with full GD for only some of the elements, this was sucessfully accomplished by an ongoing consultation and onscreen review process with designers and IA's.",
+					"workUndertaken": "I was part of a two-man front end team developing a portal site for internal partners. Due to a short deadline, the pages were developed from wireframes and styleguides with full GD for only some of the elements, this was successfully accomplished by an ongoing consultation and onscreen review process with designers and IA's.",
 					"otherDetails": [
 						"Login form scripting for clientside validation and querying REST login service",
 						"Front end support for offshore Jahia CMS developers"

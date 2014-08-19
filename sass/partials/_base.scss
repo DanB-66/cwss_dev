@@ -102,6 +102,11 @@ $button_gutter: $nav_gutter;
 		and (max-device-width: 1000px)
 			{ @content; }
 	}
+	@else if $point == smallDevice {
+		@media screen 
+		and (max-device-width: 767px)
+			{ @content; }
+	}
 }
 
 //prefix for vendors
