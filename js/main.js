@@ -1,4 +1,4 @@
-/*global swipe:true, dust:true, History:true, Modernizr:true */
+/*global dust:true, History:true, require: true, Modernizr:true */
 
 require(['jquery', 'history', 'touchSwipe', 'dust', 'dustTemplate1'], function ($) {
 
@@ -28,7 +28,7 @@ require(['jquery', 'history', 'touchSwipe', 'dust', 'dustTemplate1'], function (
 		isFirstRun: true,
 
 		pushPageState: function(direction, index, newLang, newMultiple, newIntroShow){
-			console.log('OOO pushPageState input vals: - direction: '+direction+', index: '+index+', newLang: '+newLang+', newMultiple: '+newMultiple+', newIntroShow: '+newIntroShow);
+			//console.log('OOO pushPageState input vals: - direction: '+direction+', index: '+index+', newLang: '+newLang+', newMultiple: '+newMultiple+', newIntroShow: '+newIntroShow);
 
 			if (newMultiple !== undefined) {
 				this.multiple = newMultiple;
@@ -75,11 +75,18 @@ require(['jquery', 'history', 'touchSwipe', 'dust', 'dustTemplate1'], function (
 
 
 		buildUI: function() {// build ui on load. Bind ui btns, swipe and statechange event
-			var renderTarget = $('.carouselWrap');//elem to create it inside
+			var renderTarget = $('.carouselWrap'),//elem to create it inside
+				paginatorContent = '';
 
 			renderTarget.html(this.buildControls());
 			this.carouselContainer = renderTarget.children('.carousel');
 			this.carouselContainer.addClass('multiple'+CwsC.multiple);
+			//paginator build
+			for (var i = 0; i < this.carouselContentLength; i++) {
+				paginatorContent += '<li>&#9679;</li>';
+			}
+			renderTarget.append('<ul id="paginator">'+paginatorContent+'</ul>');
+
 			renderTarget.on('click','.cwsCprev, .cwsCnext', function(event) {
 				if(CwsC.isTransitioning){
 					return false;
@@ -95,13 +102,29 @@ require(['jquery', 'history', 'touchSwipe', 'dust', 'dustTemplate1'], function (
 				event.preventDefault();
 			});
 
+			//stop devices rubberbanding page off screen top, bottom
+			$('body').on('touchmove', function(e){
+				e.preventDefault();
+			});
+			//...but still allow divs to scroll
+			$('.carousel, #intro').on('touchmove', function(e){
+				e.stopPropagation();
+			}); 
+
+
+			//faux hover for touch
 			renderTarget.on('touchstart','.cwsCprev, .cwsCnext', function() {
-				$(this).addClass('fauxHover');
+				$(this).removeClass('shortDelay').addClass('fauxHover');
+				//$(this).addClass('fauxHover');
 			});
 			renderTarget.on('touchend','.cwsCprev, .cwsCnext', function() {
-				$(this).removeClass('fauxHover');
-				//that = this;
-				//setTimeout(function(){$(that).removeClass('fauxHover');}, 1000);
+				// that = $(this);
+				// setTimeout(function() {
+				// 	that.removeClass('fauxHover');
+				// 	console.log('removed? ');
+				// }, 300);
+				$(this).addClass('shortDelay').removeClass('fauxHover');
+				//$(this).removeClass('fauxHover');
 			});
 
 			// delegate click on 'set multiple' control
@@ -149,10 +172,10 @@ require(['jquery', 'history', 'touchSwipe', 'dust', 'dustTemplate1'], function (
 						return;
 					}
 					var thisItem = ($(this).parent().index());
-					$('#controls').find('section:not(thisItem)').find('ul').removeClass('open');
+					$('#controls').find('section:not('+thisItem+')').find('ul').removeClass('open');
 					if (!$('#catcher').length){
 						$('body').prepend('<div id="catcher"/>');
-						$('#catcher').on('click. mouseenter', function() {
+						$('#catcher').on('click, mouseenter', function() {
 							$('#controls').find('ul').removeClass('open');
 							$(this).hide();
 						});
@@ -259,7 +282,7 @@ require(['jquery', 'history', 'touchSwipe', 'dust', 'dustTemplate1'], function (
 					}
 
 					CwsC.carouselContainer.fadeTo(500, 0, function() {
-						console.log('F@de.......................CwsC.lang:'+ CwsC.lang+' State.data.lang: '+State.data.lang);
+						console.log('FadeTo.......................CwsC.lang:'+ CwsC.lang+' State.data.lang: '+State.data.lang);
 						if(CwsC.langChangedByUI !== false){// change lang via ui btns
 							CwsC.carouselContainer.before('<div id="langload">Loading new language data...</div>');
 							CwsC.loadData(1);
@@ -388,6 +411,9 @@ require(['jquery', 'history', 'touchSwipe', 'dust', 'dustTemplate1'], function (
 				CwsC.contentIndex++;
 			}
 
+			//update paginator
+			$('#paginator').find('li').removeClass('active').slice((CwsC.contentIndex - CwsC.multiple), CwsC.contentIndex).addClass('active');
+
 			var transitionInClass;
 			//console.log('new dir: '+CwsC.newDirection);
 			if (CwsC.newDirection === 'back'){
@@ -398,7 +424,8 @@ require(['jquery', 'history', 'touchSwipe', 'dust', 'dustTemplate1'], function (
 				transitionInClass = '';
 			}
 			CwsC.carouselContainer.html(carouselBuffer).addClass('noTransition').removeClass(CwsC.newDirection).addClass(transitionInClass);
-			var dummy = CwsC.carouselContainer[0].offsetWidth;//force repaint 
+			//var dummy = CwsC.carouselContainer[0].offsetWidth;//force repaint 
+			CwsC.carouselContainer[0].offsetWidth;//force repaint 
 			CwsC.carouselContainer.removeClass('noTransition').removeClass(transitionInClass);
 
 			CwsC.carouselContainer.fadeTo(500, 1, function(){
@@ -493,7 +520,7 @@ require(['jquery', 'history', 'touchSwipe', 'dust', 'dustTemplate1'], function (
 				this.bHasCssTransforms = true;
 			}
 			if (screen.width <= 767) {
-				this.multiple = 1;//for small/mobile set default to 1 article at a time
+				this.multiple = 1;//for small/mobile set default to 1 article at a time 
 			}
 
 			// extract the page no, multiple and lang from url, if its present (eg bookmark, refresh, pasted/shared url)
@@ -506,7 +533,7 @@ require(['jquery', 'history', 'touchSwipe', 'dust', 'dustTemplate1'], function (
 				pageFromUrl = parseInt((urlLocationType.split('=')[1]).split('+')[0], 10);
 				this.multiple = parseInt(urlLocationType.split('+multiple=')[1].split('+lang=')[0], 10);
 				this.lang = urlLocationType.split('+lang=')[1].split('+intro=')[0];
-				this.introShow = urlLocationType.split('+intro=')[1] == 'true' ? true : false;//ie convert string 'true' to a bool
+				this.introShow = urlLocationType.split('+intro=')[1] === 'true' ? true : false;//ie convert string 'true' to a bool
 			}
 
 			if(pageFromUrl !== 0){//ie it's a bookmarked/pasted url

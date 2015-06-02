@@ -1,6 +1,3 @@
 		<header role="banner">
-			<hgroup>
-				<h1>Code Workshop</h1>
-				<h2>Frontend development services</h2>
-			</hgroup>
+			<h1>Code Workshop<span class="subheading">Frontend development services</span></h1>
 		</header>

@@ -6,9 +6,10 @@
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 <head>
 	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title><?php if(isset($title)) { echo $title; } else { echo "Code Workshop"; } ?></title>
 	<meta name="description" content="Code Workshop">
+	<meta name="viewport" content="initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,width=device-width,user-scalable=no">
 
 <?php include("includes/_head_assets.php"); ?>
 <!--

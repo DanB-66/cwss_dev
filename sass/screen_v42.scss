@@ -23,6 +23,9 @@ html {
 		body > footer{
 			font-size: 1.1em;
 		}
+		#paginator{
+			font-size: 1em;
+		}
 	}
 	@include breakpoint(micro) { 
 		font-size: 0.55em; 
@@ -33,7 +36,10 @@ html {
 			top: -($phone_nav_height);
 		}
 		body > footer{
-			font-size: 1.55em;
+			font-size: 1em;
+		}
+		#paginator{
+			font-size: 1em;
 		}
 	}
 	@include breakpoint(nano) { 
@@ -55,30 +61,34 @@ html {
 		#intro{
 			z-index: 3;
 		}
+		#paginator{
+			font-size: 1em;
+		}
 	}
 	@include breakpoint(deviceLandscape) {
-		font-size: 1em;
+		//font-size: 1em;
 		width: 100%;
 		position: fixed;//ios7 landscape bug
+		#paginator{
+			//padding-left:2rem;
+			//font-size:1.5rem;
+		}
 		@include breakpoint(smallDevice) {
 			#intro{
-				font-size: 0.95em;
+				//font-size: 0.95em;
 			}
 		}
 	}
 	@include breakpoint(devicePortrait) {
-		font-size: 1.3em;
+		//font-size: 1em;
+		#paginator{
+			//font-size:2rem;
+		}
 		@include breakpoint(smallDevice) {
 			.articleInner > *, #controls button, #controls h4, #intro{
-				font-size: 1.7em;
+				//font-size: 1em;
 			}
 		}
-	}
-	@include breakpoint(smallDevice) {
-		#controls button, #controls h4{
-			font-size: 2.1em;
-		}
-
 	}
 
 
@@ -152,50 +162,22 @@ body {
 	font-size: 1rem;
 	line-height: 1.12;
 	@include breakpoint(deviceLandscape) {
-		width: 43%;
+		width: 38%;
 		float: right;
 		font-size: 0.4rem;
 	}
 	h1{
 		font-size: 2em;
 		margin: 0;
-	}
-	h2 {
-		font-size: 1em;
-		letter-spacing: 0.4em;
-		margin: 0;
-		text-transform: lowercase;
+		.subheading {
+			display: block;
+			font-size: 0.5em;
+			letter-spacing: 0.4em;
+			margin: 0;
+			text-transform: lowercase;
+		}
 	}
 }
-
-/*#pageContent > header {
-	color: $secondary_color;
-	border: 0.1875rem solid $secondary_color;
-	border-width: 0.1875rem 0;
-	font-family: 'Orbitron', sans-serif;
-	letter-spacing: 0.4rem;
-	padding: 0 0.2rem 0.2rem;
-	@include border-radius($small_radius);
-	text-align: right;
-	text-transform: uppercase;
-	font-weight: normal;
-	font-size: 1rem;
-	@include breakpoint(deviceLandscape) {
-		width: 43%;
-		float: right;
-		font-size:0.6em;
-	}
-	h1, h2 {
-		background: transparent;
-		font-size: 2em;
-		margin:0.05rem 0.5rem -0.05rem;
-	}
-	h2 {
-		font-size: 1em;
-		letter-spacing: 0.4em;
-		text-transform: lowercase;
-	}
-}*/
 
 #intro {
 	position: absolute;
@@ -216,6 +198,7 @@ body {
 	a {
 		color: $link_on_dark_color;
 		text-decoration: none;
+		@include word-wrap;
 	}
 	img{
 		float: left;
@@ -223,11 +206,11 @@ body {
 	}
 	@include breakpoint(micro) {
 		p:nth-of-type(1){
-			clear: right;
+			clear: both;
 		}
 	}
 	p:nth-of-type(2){
-		clear: both
+		clear: both;
 	}
 	.hide{
 		float: right;
@@ -252,12 +235,16 @@ body {
 .carouselWrap {
 	position: absolute;	
 	top: 7rem;
+	@include breakpoint(mini) {
+		top: 8rem;
+	}
 	@include breakpoint(micro) {
 		top: 8.5rem;
 	}
 	@include breakpoint(deviceLandscape) {
 		top: $phone_nav_height;
 	}
+	padding-bottom: ($article_gutter*2);//for paginator
 	bottom: 0;
 	left: 0;
 	right: 0;
@@ -324,12 +311,33 @@ body {
 			margin-bottom: $article_gutter*2;	
 		}
 	}
+	//adjust
+	.multiple1 .articleInner, .multiple2 .articleInner, .multiple3 .articleInner{
+		.hero{
+			width: 50%;
+			max-height: 50%;
+			overflow: hidden;
+			float: left;
+			margin-right: 1em;
+		}
+	}
+
 	//adjust for 4 items quad grid
 	.multiple4 article:nth-child(-n+2) {
 		padding-bottom: 0;
 	}
 	.multiple4 article:nth-child(even) .articleInner {
 		margin-right: 0;
+	}
+	.multiple4 .articleInner{
+		.hero{
+			width: 35%;
+			height: 50%;
+			overflow: hidden;
+			float: left;
+			margin-right: 1em;
+			background:#fff;
+		}
 	}
 
 	@include breakpoint(devicePortrait) {/* layout - override nav buttons to bottom on phone*/
@@ -354,6 +362,17 @@ body {
 		}
 		#intro{
 			bottom: -($nav_tab_height_phone);
+		}
+	}
+	@include breakpoint(micro) {
+		#intro{
+			top: -3rem;
+			padding: 2rem;
+			overflow-x: hidden;
+			overflow-y: auto;
+			img{
+				width: 15%;
+			}
 		}
 	}
 	@include breakpoint(nano) {
@@ -383,7 +402,7 @@ body {
 	position: absolute;
 	top: 0;
 	bottom: 0;
-	width: 3rem;
+	width: $nav_tab_width_normal;
 	background-color: $control_background_color;
 	text-indent: -999rem;
 	white-space: nowrap;
@@ -400,6 +419,7 @@ body {
 }
 
 .cwsCprev.disabled, .cwsCnext.disabled, .no-touch .cwsCprev.disabled:hover, .no-touch .cwsCnext.disabled:hover{
+	@include transition-delay(0);
 	background-color: $control_color_disabled_background;
 	cursor: default;
 }
@@ -571,6 +591,29 @@ body {
 
 }
 
+//paginator ul
+#paginator{
+	list-style: none;
+	line-height: $article_gutter;
+	margin: 0;
+	display:table;
+	font-size: 0.8em;
+	@include box-sizing(border-box);
+	width:100%;
+	padding-left:($nav_tab_width_normal + ($article_gutter*2));
+	li{
+		display: table-cell;
+		width: $article_gutter;	
+		overflow: hidden;
+		color: $control_color_disabled;
+		@include prefix(transition, 'all 500ms ease-in');
+		&.active{
+			color: $control_background_hover_color;
+		}
+	}
+
+}
+
 // #projects on non-js page
 #projects {
 	background: #ccc;
@@ -648,13 +691,16 @@ body {
 		}		
 	}
 }
+.shortDelay{
+	@include transition-delay(1s);	
+}
 
 
 //content styling
 
 .articleInner{
 	header h3{
-		margin: 0 (-$article_gutter) 1rem 0;
+		margin: 0 0 1rem 0;
 		padding: 0.1rem $article_gutter 0.12rem $article_gutter;
 		font-weight: normal;
 		font-size: 1.5em;
@@ -692,7 +738,7 @@ body {
 	}
 	.hero{
 		//margin:0 -($article_gutter);
-		height: 6em;
+		//height: 6em;
 		overflow: hidden;
 		img{
 			//height:30em;
