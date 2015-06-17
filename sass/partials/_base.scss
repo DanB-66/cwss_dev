@@ -1,6 +1,7 @@
 /* sass base */
+
 @import "compass/css3";
-		//"compass/utilities";
+		// "compass/utilities";
 
 // colours
 $default_text_color: #000;//default  eg body text
@@ -32,7 +33,7 @@ $tiny_radius: 0.5rem;
 $small_radius: 1rem;
 $medium_radius: 1.5625rem;
 
-$short_time: .5s;
+$short_time: .5s; 
 $medium_time: 1s;
 $long_time: 6s;
 

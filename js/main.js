@@ -316,7 +316,7 @@ require(['jquery', 'history', 'touchSwipe', 'dust', 'dustTemplate1'], function (
 			$.ajax({
 				url: 'json/cws_'+CwsC.lang+'.json',
 				dataType: 'json',
-				cache: true,
+				cache: false,
 				beforeSend: function() {
 					$('#info').text('loading data...');
 				},

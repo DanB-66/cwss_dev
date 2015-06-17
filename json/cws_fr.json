@@ -28,6 +28,59 @@
 			"introCopy": "<p>Code Workshop Systems est détenu et exploité par moi-même, Dan Brown. Depuis plus de douze ans, j'ai fourni les agences et les organisations basées à Londres avec robustes, fiables, conforme aux normes de contenu numérique.</p><p>Cette page est encore un travail en cours, mais il ne la démonstration des techniques de frontend y compris:</p><ul><li>Mise en page responsive / adaptative</li><li>La gestion de State de toutes les actions ui</li><li>JSON analyse et la manipulation</li><li>DUST gabarits avec sursis logique par exemple l'adaptation au le contenu des données</li></ul><p>S'il vous plaît me contacter via LinkedIn: <a href='https://www.linkedin.com/in/danbrownfrontend' tabindex='-1'> www.linkedin.com/en/danbrownfrontend</a></p><p>S'il vous plaît avoir une navigation<span class='touchshow'> (coup!)</ span> d'une sélection de projets.</p>"		},
 		"projects": [
 			{
+				"client": "Installation sportive emblématique",
+				"agency": "Future Platforms",
+				"projectName": "Projet confidentiel",
+				"projectDescription": "iPad / outil de bureau pour la vente de forfaits de sièges.",
+				"duration": "6 moins",
+				"shortDescription": "iPad outil de vente",
+				"extendedInfo": {
+					"agencyDetails": "Future Platforms est spécialisé dans un mélange de technologie et innovation pour créer des solutions numériques qui sont véritablement utiles aux clients et leurs clients.",
+					"workUndertaken": "iPad / bureau outil de vente pour un lieu sportif emblématique, intégrant l'interaction personnalisée de contact avec une carte SVG affichage des données de l'API sièges / ventes clients.",
+					"otherDetails": [
+						"Guidé par les données de SVG",
+						"Interactions tactiles sur mesure",
+						".Net projet"
+					]
+				},
+				"assets": {
+					"images": [
+						{
+							"title": "Carte générale",
+							"url": "img/jobs/cwst1.jpg"
+						},
+						{
+							"title": "Carte détaillée",
+							"url": "img/jobs/cwst2.png"
+						}
+					]
+				}
+			},
+			{
+				"client": "Détaillant de mode",
+				"agency": "Amaze",
+				"projectName": "Projet confidentiel",
+				"projectDescription": "Modèles initiaux pour un site de commerce électronique en réponse.",
+				"duration": "2 moins",
+				"shortDescription": "Le développement du modèle Responsive",
+				"extendedInfo": {
+					"agencyDetails": "Amaze est un service complet marketing numérique, la technologie et le commerce de conseil",
+					"workUndertaken": "Les travaux sur des modèles pour un site de commerce électronique en réponse à l'aide avancée SASS. Le projet a nécessité des considérations 'blancs étiquetage' et l'approche de développement modulaire.",
+					"otherDetails": [
+						"Avancée SASS",
+						"Développement modulaire"
+					]
+				},
+				"assets": {
+					"images": [
+						{
+							"title": "Amaze",
+							"url": "img/amaze_logo.gif"
+						}
+					]
+				}
+			},		
+			{
 				"client": "'Big 6' société d'énergie",
 				"agency": "Fjord",
 				"projectName": "Projet confidentiel",
@@ -50,6 +103,18 @@
 						{
 							"title": "Fjord",
 							"url": "img/jobs/fjord.jpg"
+						},
+						{
+							"title": "'Power now' écran",
+							"url": "img/jobs/powernow.png"
+						},
+						{
+							"title": "'Appliances' écran",
+							"url": "img/jobs/appliances.png"
+						},
+						{
+							"title": "'Comparison' écran",
+							"url": "img/jobs/home.png"
 						}
 					],
 					"links": [
@@ -112,6 +177,10 @@
 						{
 							"title": "La banque du futur",
 							"url": "img/jobs/future_banking.png"
+						},
+						{
+							"title": "La banque du futur",
+							"url": "img/jobs/acc1.jpg"
 						}
 					]
 				}

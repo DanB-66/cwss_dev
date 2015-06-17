@@ -29,7 +29,60 @@
 		},
 		"projects": [
 			{
-				"client": "Major utility",
+				"client": "Iconic sporting venue",
+				"agency": "Future Platforms",
+				"projectName": "Confidential project",
+				"projectDescription": "iPad/desktop tool for selling seating packages.",
+				"duration": "6 months",
+				"shortDescription": "iPad/desktop sales tool",
+				"extendedInfo": {
+					"agencyDetails": "Future Platforms specialises in blending technology with innovation to create digital solutions that are genuinely useful to clients and their customers.",
+					"workUndertaken": "iPad/desktop sales tool for an iconic sporting venue, incorporating custom touch interaction with an SVG map displaying data from the clients seating/sales API.",
+					"otherDetails": [
+						"Data driven SVG's",
+						"Custom touch interactions",
+						".Net project"
+					]
+				},
+				"assets": {
+					"images": [
+						{
+							"title": "Overview map",
+							"url": "img/jobs/cwst1.jpg"
+						},
+						{
+							"title": "Detail map",
+							"url": "img/jobs/cwst2.png"
+						}
+					]
+				}
+			},
+			{
+				"client": "Fashion retailer",
+				"agency": "Amaze",
+				"projectName": "Confidential project",
+				"projectDescription": "Initial templates for a responsive ecommerce site.",
+				"duration": "2 months",
+				"shortDescription": "Responsive template development",
+				"extendedInfo": {
+					"agencyDetails": "Amaze is a full service digital marketing, technology and commerce consultancy",
+					"workUndertaken": "Work on templates for a responsive ecommerce site using advanced SASS. The project required 'white labeling' considerations and modular development approach.",
+					"otherDetails": [
+						"Advanced SASS",
+						"Modular development"
+					]
+				},
+				"assets": {
+					"images": [
+						{
+							"title": "Amaze",
+							"url": "img/amaze_logo.gif"
+						}
+					]
+				}
+			},
+			{
+				"client": "'Big 6' energy company",
 				"agency": "Fjord",
 				"projectName": "Confidential project",
 				"projectDescription": "Rapid prototyping project to develop a webapp for a major utility.",
@@ -51,6 +104,18 @@
 						{
 							"title": "Fjord",
 							"url": "img/jobs/fjord.jpg"
+						},
+						{
+							"title": "'Power now' screen",
+							"url": "img/jobs/powernow.png"
+						},
+						{
+							"title": "'Appliances' screen",
+							"url": "img/jobs/appliances.png"
+						},
+						{
+							"title": "'Comparison' screen",
+							"url": "img/jobs/home.png"
 						}
 					],
 					"links": [
@@ -113,6 +178,10 @@
 						{
 							"title": "Future Banking",
 							"url": "img/jobs/future_banking.png"
+						},
+						{
+							"title": "Future Banking",
+							"url": "img/jobs/acc1.jpg"
 						}
 					]
 				}

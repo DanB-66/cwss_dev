@@ -69,10 +69,10 @@ html {
 		//font-size: 1em;
 		width: 100%;
 		position: fixed;//ios7 landscape bug
-		#paginator{
+		//#paginator{
 			//padding-left:2rem;
 			//font-size:1.5rem;
-		}
+		//}
 		@include breakpoint(smallDevice) {
 			#intro{
 				//font-size: 0.95em;
@@ -160,7 +160,7 @@ body {
 	text-transform: uppercase;
 	font-weight: normal;
 	font-size: 1rem;
-	line-height: 1.12;
+	//line-height: 1.12;
 	@include breakpoint(deviceLandscape) {
 		width: 38%;
 		float: right;
@@ -168,12 +168,13 @@ body {
 	}
 	h1{
 		font-size: 2em;
+		line-height: 1em;
 		margin: 0;
 		.subheading {
 			display: block;
 			font-size: 0.5em;
 			letter-spacing: 0.4em;
-			margin: 0;
+			margin: 0 0 -0.45em 0;
 			text-transform: lowercase;
 		}
 	}
@@ -312,13 +313,23 @@ body {
 		}
 	}
 	//adjust
-	.multiple1 .articleInner, .multiple2 .articleInner, .multiple3 .articleInner{
-		.hero{
-			width: 50%;
-			max-height: 50%;
-			overflow: hidden;
+	.multiple1 .articleInner .hero, .multiple2 .articleInner .hero, .multiple3 .articleInner .hero {
+		width: 100%;
+		max-height: 11rem;
+		//min-height: 15rem;
+		overflow: hidden;
+		margin-right: 1em;
+	}
+
+	.multiple1 .articleInner {
+		.hero {
+			width: 35%;
 			float: left;
-			margin-right: 1em;
+			margin-bottom: 1rem;
+		}
+		.jobDetail {
+			clear: both;
+			margin-top: 0.5rem;
 		}
 	}
 
@@ -329,13 +340,9 @@ body {
 	.multiple4 article:nth-child(even) .articleInner {
 		margin-right: 0;
 	}
-	.multiple4 .articleInner{
+	.multiple4 .articleInner {
 		.hero{
-			width: 35%;
 			height: 50%;
-			overflow: hidden;
-			float: left;
-			margin-right: 1em;
 			background:#fff;
 		}
 	}
@@ -719,6 +726,9 @@ body {
 	dl{
 		background-color: $secondary_background_color_rgba;
 		padding: ($article_gutter/2) $article_gutter;
+		margin-top: 0;
+		margin-bottom: 0;
+		clear: both;
 	}
 	dd, dt {
 		margin: 0;
@@ -774,6 +784,9 @@ ul{
 .projImages ul, .projLinks ul{
 	margin: 0;
 	list-style: none;
+}
+.projImages li{
+	margin-bottom: 0.4rem;
 }
 
 /* utility temp */
