@@ -32,16 +32,17 @@
 				"client": "Iconic sporting venue",
 				"agency": "Future Platforms",
 				"projectName": "Confidential project",
-				"projectDescription": "iPad/desktop tool for selling seating packages.",
+				"projectDescription": "iPad/desktop sales tool.",
 				"duration": "6 months",
 				"shortDescription": "iPad/desktop sales tool",
 				"extendedInfo": {
 					"agencyDetails": "Future Platforms specialises in blending technology with innovation to create digital solutions that are genuinely useful to clients and their customers.",
-					"workUndertaken": "iPad/desktop sales tool for an iconic sporting venue, incorporating custom touch interaction with an SVG map displaying data from the clients seating/sales API.",
+					"workUndertaken": "iPad/desktop sales tool for an iconic sporting venue. I was responsible for building the entire UI alongside a .net backend dev. The project incorporates custom touch interactions with an SVG map displaying data from the clients seating/sales API and programmatic zooming to arbitrary seat blocks.",
 					"otherDetails": [
 						"Data driven SVG's",
 						"Custom touch interactions",
-						".Net project"
+						".Net project working in Visual Studio",
+						"Agile project team including UX and visual designers"
 					]
 				},
 				"assets": {
@@ -66,7 +67,7 @@
 				"shortDescription": "Responsive template development",
 				"extendedInfo": {
 					"agencyDetails": "Amaze is a full service digital marketing, technology and commerce consultancy",
-					"workUndertaken": "Work on templates for a responsive ecommerce site using advanced SASS. The project required 'white labeling' considerations and modular development approach.",
+					"workUndertaken": "Work on templates for a responsive ecommerce site using advanced SASS. The project required 'white labeling' considerations and a modular development approach.",
 					"otherDetails": [
 						"Advanced SASS",
 						"Modular development"
@@ -76,7 +77,7 @@
 					"images": [
 						{
 							"title": "Amaze",
-							"url": "img/amaze_logo.gif"
+							"url": "img/jobs/code-breakpoints.png"
 						}
 					]
 				}

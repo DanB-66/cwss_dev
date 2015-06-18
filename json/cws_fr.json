@@ -36,11 +36,12 @@
 				"shortDescription": "iPad outil de vente",
 				"extendedInfo": {
 					"agencyDetails": "Future Platforms est spécialisé dans un mélange de technologie et innovation pour créer des solutions numériques qui sont véritablement utiles aux clients et leurs clients.",
-					"workUndertaken": "iPad / bureau outil de vente pour un lieu sportif emblématique, intégrant l'interaction personnalisée de contact avec une carte SVG affichage des données de l'API sièges / ventes clients.",
+					"workUndertaken": "iPad outil de vente pour un lieu sportif emblématique, intégrant l'interaction personnalisée de contact avec une carte SVG affichage des données de l'API sièges / ventes clients.",
 					"otherDetails": [
 						"Guidé par les données de SVG",
 						"Interactions tactiles sur mesure",
-						".Net projet"
+						".Net projet travaillant dans Visual Studio",
+						"Équipe de projet Agile y compris UX et les concepteurs visuels"
 					]
 				},
 				"assets": {
@@ -75,7 +76,7 @@
 					"images": [
 						{
 							"title": "Amaze",
-							"url": "img/amaze_logo.gif"
+							"url": "img/jobs/code-breakpoints.png"
 						}
 					]
 				}
