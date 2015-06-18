@@ -1,7 +1,7 @@
 # cwss_dev
 My folio wip...
 
-Adopting a "minimum viable product" approach! Which meant starting with data, then manipulating said data... and worrying about the visual representation later ;)
+Adopting a "minimum viable product" approach... Which meant starting with data, then manipulating said data... and worrying about the visual representation later ;)
 
 It uses *json/cws_en.json*  content files, 
 javascript *js/main.js* (via a require.js *js/app.js* stub) to render that out into a carousel/paging system 
