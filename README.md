@@ -10,6 +10,6 @@ via *templates/_cws.tmpl.js* dust templates, which are very simple so far but do
 Native browser back/fwd will drive the UI and state is maintained cross-browser eg bookmarking retaining 'page', 'multiple' and 'lang' selections. 
 Fully functional in IE8. 
 3D transitions: just a start... 
-There will be some sort of *projects.php* non js content rendered by php from the same json. 
+There will be some sort of *projects.php* non js content rendered by php from the same json, aim is to get this to recreate an SEO view from the url 
 
 Completely incomplete!
