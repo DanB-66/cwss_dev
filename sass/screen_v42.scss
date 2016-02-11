@@ -73,23 +73,23 @@ html {
 			//padding-left:2rem;
 			//font-size:1.5rem;
 		//}
-		@include breakpoint(smallDevice) {
-			#intro{
+		//@include breakpoint(smallDevice) {
+			//#intro{
 				//font-size: 0.95em;
-			}
-		}
+			//}
+		//}
 	}
-	@include breakpoint(devicePortrait) {
+	//@include breakpoint(devicePortrait) {
 		//font-size: 1em;
-		#paginator{
+		//#paginator{
 			//font-size:2rem;
-		}
-		@include breakpoint(smallDevice) {
-			.articleInner > *, #controls button, #controls h4, #intro{
+		//}
+		//@include breakpoint(smallDevice) {
+			//.articleInner > *, #controls button, #controls h4, #intro{
 				//font-size: 1em;
-			}
-		}
-	}
+			//}
+		//}
+	//}
 
 
 }
@@ -200,6 +200,9 @@ body {
 		color: $link_on_dark_color;
 		text-decoration: none;
 		@include word-wrap;
+		&:hover{
+			color: $control_hover_color;	
+		}
 	}
 	img{
 		float: left;
@@ -212,6 +215,9 @@ body {
 	}
 	p:nth-of-type(2){
 		clear: both;
+	}
+	ul{
+		margin-bottom: 0.5rem;
 	}
 	.hide{
 		float: right;
@@ -448,6 +454,8 @@ body {
 	border-top: 1rem solid transparent;
 	border-right: 1.3rem solid $control_color;
 	border-bottom: 1rem solid transparent;
+	@include transition-property(border-color);
+	@include transition-duration($short_time);
 }
 .cwsCprev:after {
 	left: 1rem;
@@ -608,6 +616,7 @@ body {
 	@include box-sizing(border-box);
 	width:100%;
 	padding-left:($nav_tab_width_normal + ($article_gutter*2));
+	padding-right:($nav_tab_width_normal - ($article_gutter*4));
 	li{
 		display: table-cell;
 		width: $article_gutter;	
@@ -708,9 +717,10 @@ body {
 .articleInner{
 	header h3{
 		margin: 0 0 1rem 0;
-		padding: 0.1rem $article_gutter 0.12rem $article_gutter;
+		padding: 0.1rem $article_gutter 0.2rem $article_gutter;
 		font-weight: normal;
 		font-size: 1.5em;
+		line-height: 1.1;
 		color: $default_text_color;
 		background-color: $primary_background_color_rgba;
 	}

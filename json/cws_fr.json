@@ -28,6 +28,78 @@
 			"introCopy": "<p>Code Workshop Systems est détenu et exploité par moi-même, Dan Brown. Depuis plus de douze ans, j'ai fourni les agences et les organisations basées à Londres avec robustes, fiables, conforme aux normes de contenu numérique.</p><p>Cette page est encore un travail en cours, mais il ne la démonstration des techniques de frontend y compris:</p><ul><li>Mise en page responsive / adaptative</li><li>La gestion de State de toutes les actions ui</li><li>JSON analyse et la manipulation</li><li>DUST gabarits avec sursis logique par exemple l'adaptation au le contenu des données</li></ul><p>S'il vous plaît me contacter via LinkedIn: <a href='https://www.linkedin.com/in/danbrownfrontend' tabindex='-1'> www.linkedin.com/en/danbrownfrontend</a></p><p>S'il vous plaît avoir une navigation<span class='touchshow'> (coup!)</ span> d'une sélection de projets.</p>"		},
 		"projects": [
 			{
+			"client": "Barclays",
+			"agency": "SapientNitro",
+			"projectName": "Barclays 'FTB'",
+			"projectDescription": "Composants réactif et des calculatrices pour Barclays.co.uk",
+			"duration": "2 moins",
+			"shortDescription": "Composants réactif et des calculatrices pour Barclays.co.uk",
+			"extendedInfo": {
+				"agencyDetails": "Sapient est une société de conseil et de la technologie avec un effectif global de plus de 7k.",
+				"workUndertaken": "Je faisais partie de l'équipe responsable de refactoring composants et calculateurs existants de travailler avec le nouveau CMS réactif sur Barclays.co.uk",
+				"otherDetails": [
+					"Travaillant directement avec les chefs de produits, les concepteurs et UX",
+					"Grunt, SASS, réactif media queries",
+					"Travailler en tenant compte des modèles, des modules et des exigences de la CMS existants"
+					]
+				},
+				"assets": {
+					"images": [
+						{
+							"title": "Barclays Car Loan Calculator",
+							"url": "img/jobs/barclays_carloan.jpg"
+						},
+						{
+							"title": "Barclays Budget Planner",
+							"url": "img/jobs/barclays_planner.jpg"
+						}
+					],
+					"links": [
+						{
+							"title": "Barclays Car Loan Calculator",
+							"url": "http://www.barclays.co.uk/Howtoapply/Lookingforacarloan/P1242639326816"
+						},
+						{
+							"title": "Barclays Budget Planner",
+							"url": "http://www.barclays.co.uk/Helpandsupport/Budgetplanner/P1242619752549"
+						}
+					]					
+				}
+			},
+			{
+			"client": "AllSaints",
+			"agency": "Company direct",
+			"projectName": "AllSaints",
+			"projectDescription": "Les nouvelles fonctionnalités et les travaux de BAU.",
+			"duration": "3 months",
+			"shortDescription": "Les nouvelles fonctionnalités et les travaux de BAU.",
+			"extendedInfo": {
+				"agencyDetails": "AllSaints est une maison de mode britannique haut de gamme avec une équipe numérique dédié de plus de 70 personnes.",
+				"workUndertaken": "Je suis impliqué dans le développement de nouvelles fonctionnalités et des travaux de BAU y compris une vaste correction des bugs sur plusieurs cycles de libération.",
+				"otherDetails": [
+					"PHP/Twig/LESS environnement",
+					"Agile/Stash/Kanban flux de travail",
+					"Travailler avec une application Chrome kiosque emballé utilisé dans magasins dans le monde",
+					"I18n y compris coréenne",
+					"Soutien d'un microsite de recrutement en utilisant Squarespace"
+					]
+				},
+				"assets": {
+					"images": [
+						{
+							"title": "AllSaints",
+							"url": "img/jobs/allsaints.jpg"
+						}
+					],
+					"links": [
+						{
+							"title": "AllSaints site",
+							"url": "http://www.allsaints.com"
+						}
+					]					
+				}
+			},
+			{
 				"client": "Installation sportive emblématique",
 				"agency": "Future Platforms",
 				"projectName": "Projet confidentiel",

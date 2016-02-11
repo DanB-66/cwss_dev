@@ -29,6 +29,78 @@
 		},
 		"projects": [
 			{
+			"client": "Barclays",
+			"agency": "SapientNitro",
+			"projectName": "Barclays 'FTB'",
+			"projectDescription": "Responsive components and calculators for Barclays.co.uk",
+			"duration": "2 months",
+			"shortDescription": "Responsive components and calculators for Barclays.co.uk",
+			"extendedInfo": {
+				"agencyDetails": "Sapient is a consulting and technology company with a global headcount of over 7k.",
+				"workUndertaken": "I was part of team responsible for refactoring existing components and calculators to work with the new responsive CMS on Barclays.co.uk",
+				"otherDetails": [
+					"Working directly with Product Managers, designers and UX",
+					"Grunt, SASS, responsive media queries",
+					"Work with consideration of existing templates, modules and requirements of the CMS"
+					]
+				},
+				"assets": {
+					"images": [
+						{
+							"title": "Barclays Car Loan Calculator",
+							"url": "img/jobs/barclays_carloan.jpg"
+						},
+						{
+							"title": "Barclays Budget Planner",
+							"url": "img/jobs/barclays_planner.jpg"
+						}
+					],
+					"links": [
+						{
+							"title": "Barclays Car Loan Calculator",
+							"url": "http://www.barclays.co.uk/Howtoapply/Lookingforacarloan/P1242639326816"
+						},
+						{
+							"title": "Barclays Budget Planner",
+							"url": "http://www.barclays.co.uk/Helpandsupport/Budgetplanner/P1242619752549"
+						}
+					]					
+				}
+			},
+			{
+			"client": "AllSaints",
+			"agency": "Company direct",
+			"projectName": "AllSaints",
+			"projectDescription": "New features and BAU work.",
+			"duration": "3 months",
+			"shortDescription": "New features and BAU work.",
+			"extendedInfo": {
+				"agencyDetails": "AllSaints is a premium British fashion house with a dedicated digital team of over 70 people.",
+				"workUndertaken": "I was involved with developing new features and BAU work including extensive bugfixing over several release cycles.",
+				"otherDetails": [
+					"PHP/Twig/LESS environment",
+					"Agile/Stash/Kanban workflow",
+					"Work with a packaged Chrome app kiosk used in stores worldwide",
+					"I18n including Korean",
+					"Support of a recruitment microsite using Squarespace "
+					]
+				},
+				"assets": {
+					"images": [
+						{
+							"title": "AllSaints",
+							"url": "img/jobs/allsaints.jpg"
+						}
+					],
+					"links": [
+						{
+							"title": "AllSaints site",
+							"url": "http://www.allsaints.com"
+						}
+					]					
+				}
+			},
+			{
 				"client": "Iconic sporting venue",
 				"agency": "Future Platforms",
 				"projectName": "Confidential project",
