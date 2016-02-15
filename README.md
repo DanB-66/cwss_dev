@@ -22,9 +22,11 @@ I've since spent time with Backbone etc, but the end result is really a simple M
 
 Although it was certainly a good learning exercise I wont be taking it much further for the following reasons:
 
-* My javascript has moved along substantially, and I'm obviously more interested in modern, component-based approaches rather than what Addy Osami would rightly describe as "a tangled mess of jQuery selectors and callbacks, all desperately trying to keep data in sync between the HTML for your UI, the logic in your JavaScript, and calls to your API for data."
+* My javascript has moved along substantially, and I'm obviously more interested in emerging component-based approaches rather than what Addy Osami would rightly describe as "a tangled mess of jQuery selectors and callbacks, all desperately trying to keep data in sync between the HTML for your UI, the logic in your JavaScript, and calls to your API for data."
 * The UX is pretty awful as is and would need a lot more work... what's with all those tiny scrolling panels?
 * The content is pretty weak... I'm sure I'm not the only developer with this problem, but so much of my prior stuff is stung by NDA's, private prototype work or simply dead and gone... the end result is that there is often nothing live I can point to and very little to show. 
+
+And the portfolio question? Unless you are a highly visual developer, I'm not sure it's really worth spending much time in comparison to a simple list of urls and code samples.
 
 Thanks for reading!
 
