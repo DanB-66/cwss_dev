@@ -12,11 +12,11 @@ html {
 	@include breakpoint(maxi) {
 		font-size: 1.6em;
 	}
-	@include breakpoint(midi) { 
+	@include breakpoint(midi) {
 		font-size: 1em;
 	}
-	@include breakpoint(mini) { 
-		font-size: 0.7708em; 
+	@include breakpoint(mini) {
+		font-size: 0.7708em;
 		.articleInner > *, #controls button, #controls h4, #intro{
 			font-size: 1.333333em;
 		}
@@ -27,8 +27,8 @@ html {
 			font-size: 1em;
 		}
 	}
-	@include breakpoint(micro) { 
-		font-size: 0.55em; 
+	@include breakpoint(micro) {
+		font-size: 0.55em;
 		.articleInner > *, #controls button, #controls h4, #intro{
 			font-size: 1.777777em;
 		}
@@ -42,7 +42,7 @@ html {
 			font-size: 1em;
 		}
 	}
-	@include breakpoint(nano) { 
+	@include breakpoint(nano) {
 		font-size: 0.5517em;
 		.articleInner > *, #controls button, #controls h4, #intro{
 			font-size: 1.777777em;
@@ -98,9 +98,9 @@ body {
 	background: #000 url(../img/cowset.jpg) no-repeat top center;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
-	background-size: cover;	
+	background-size: cover;
 	height: 100%;
-	-webkit-touch-callout: none; 
+	-webkit-touch-callout: none;
 }
 #pageContent {
 	@include prefix(transition, 'all 600ms ease-in');
@@ -147,7 +147,7 @@ body {
 		margin-left: 0;
 	}
 }
-//global header 
+//global header
 #pageContent > header {
 	color: $secondary_color;
 	border: 0.1875em solid $secondary_color;
@@ -201,7 +201,7 @@ body {
 		text-decoration: none;
 		@include word-wrap;
 		&:hover{
-			color: $control_hover_color;	
+			color: $control_hover_color;
 		}
 	}
 	img{
@@ -240,7 +240,7 @@ body {
 
 }
 .carouselWrap {
-	position: absolute;	
+	position: absolute;
 	top: 7rem;
 	@include breakpoint(mini) {
 		top: 8rem;
@@ -269,12 +269,12 @@ body {
 		display: inline-block;
 		vertical-align: top;
 		position: relative;
-		@include box-sizing(border-box);	
+		@include box-sizing(border-box);
 		height: 100%;
 		padding: 0.5rem 0;
 		&:last-child > .articleInner{
 			margin-right: 0;
-		}		
+		}
 	}
 	// one items
 	.multiple1 article {
@@ -296,7 +296,7 @@ body {
 	.articleInner {
 		overflow-y: auto;
 		overflow-x: hidden;
-		margin-right: $article_gutter;			
+		margin-right: $article_gutter;
 		height: 100%;
 		position: relative;
 		background-color: #ddd; //fallback ie8
@@ -315,7 +315,7 @@ body {
 			max-height: 1000000px; //hack chrome mobile to prevent font boosting
 		}
 		section:last-child{
-			margin-bottom: $article_gutter*2;	
+			margin-bottom: $article_gutter*2;
 		}
 	}
 	//adjust
@@ -439,7 +439,7 @@ body {
 .cwsCprev {
 	left: 0;
 	@include border-left-radius($tiny_radius);
-}		 
+}
 .cwsCnext {
 	right: 0;
 	@include border-right-radius($tiny_radius);
@@ -513,8 +513,8 @@ body {
 		background-color: $nav_button_bgcolor;
 		@include border-top-radius($tiny_radius);
 		@include transition-property(all);
-		@include transition-duration($short_time);			
-		@include transition-delay(0);			
+		@include transition-duration($short_time);
+		@include transition-delay(0);
 		&:hover, &.active {
 			color: $nav_button_text_hover_color;
 			background-color: $nav_button_hover_bgcolor;
@@ -534,13 +534,13 @@ body {
 	overflow: hidden;
 	@include transition-property(top);
 	@include transition-duration($short_time);
-	@include transition-delay($short_time);	
+	@include transition-delay($short_time);
 	&.shown{
 		top: -($controls_height);
 	}
 	ul{
 		@include transition-property(height);
-		@include transition-duration($short_time);	
+		@include transition-duration($short_time);
 	}
 
 	@include breakpoint(collapseMenu){
@@ -562,7 +562,7 @@ body {
 				margin-top:-1px;
 				button{
 					@include border-radius(0);
-					border-width: 0;			
+					border-width: 0;
 				}
 			}
 			&.open{
@@ -583,7 +583,7 @@ body {
 			@include transition-duration($short_time);
 			@include transition-delay(0);
 			height: 100%;
-			overflow: hidden;				
+			overflow: hidden;
 			&:hover, &.active {
 				color: $nav_button_text_hover_color;
 				background-color: $nav_button_hover_bgcolor;
@@ -619,7 +619,7 @@ body {
 	padding-right:($nav_tab_width_normal - ($article_gutter*4));
 	li{
 		display: table-cell;
-		width: $article_gutter;	
+		width: $article_gutter;
 		overflow: hidden;
 		color: $control_color_disabled;
 		@include prefix(transition, 'all 500ms ease-in');
@@ -650,47 +650,55 @@ body {
 	transform-style: preserve-3d;
 
 	article{
-		@include prefix(backface-visibility, 'hidden');
+		//@include prefix(backface-visibility, 'hidden');
 		@include prefix(transition, 'all 600ms ease-in');
 	}
 	.articleInner{
-		@include prefix(backface-visibility, 'hidden');
+		//@include prefix(backface-visibility, 'hidden');
 	}
 
 	//forward
-	&.forward article:last-child{
-		-webkit-transform: rotateY(50deg) translateX(50%);
-		transform: rotateY(50deg) translateX(50%);
+	&.forward article{
+		-webkit-transform: rotateY(-54deg) translateX(-60%);
+		transform: rotateY(-54deg) translateX(-60%);
 	}
-	&.forward article:nth-last-child(2){
-		-webkit-transform: rotateY(40deg) translateX(100%);
-		transform: rotateY(40deg) translateX(100%);
-	}
-	&.forward article:nth-last-child(3){
-		-webkit-transform: rotateY(30deg) translateX(150%);
-		transform: rotateY(30deg) translateX(150%);
-	}
-	&.forward article:nth-last-child(4){
-		-webkit-transform: rotateY(20deg) translateX(200%);
-		transform: rotateY(20deg) translateX(200%);
-	}
+	//&.forward article:last-child{
+	//	-webkit-transform: rotateY(-50deg) translateX(-50%);
+	//	transform: rotateY(-50deg) translateX(-50%);
+	//}
+	//&.forward article:nth-last-child(2){
+	//	-webkit-transform: rotateY(-40deg) translateX(-100%);
+	//	transform: rotateY(-40deg) translateX(-100%);
+	//}
+	//&.forward article:nth-last-child(3){
+	//	-webkit-transform: rotateY(-30deg) translateX(-150%);
+	//	transform: rotateY(-30deg) translateX(-150%);
+	//}
+	//&.forward article:nth-last-child(4){
+	//	-webkit-transform: rotateY(-20deg) translateX(-200%);
+	//	transform: rotateY(-20deg) translateX(-200%);
+	//}
 	//back
-	&.back article:first-child{
-		-webkit-transform: rotateY(-50deg) translateX(-50%);
-		transform: rotateY(-50deg) translateX(-50%);
+	&.back article{
+		-webkit-transform: rotateY(54deg) translateX(60%);
+		transform: rotateY(54deg) translateX(60%);
 	}
-	&.back article:nth-child(2){
-		-webkit-transform: rotateY(-40deg) translateX(-100%);
-		transform: rotateY(-40deg) translateX(-100%);
-	}
-	&.back article:nth-child(3){
-		-webkit-transform: rotateY(-30deg) translateX(-150%);
-		transform: rotateY(-30deg) translateX(-150%);
-	}
-	&.back article:nth-child(4){
-		-webkit-transform: rotateY(-20deg) translateX(-200%);
-		transform: rotateY(-20deg) translateX(-200%);
-	}
+	//&.back article:first-child{
+	//	-webkit-transform: rotateY(50deg) translateX(50%);
+	//	transform: rotateY(50deg) translateX(50%);
+	//}
+	//&.back article:nth-child(2){
+	//	-webkit-transform: rotateY(40deg) translateX(100%);
+	//	transform: rotateY(40deg) translateX(100%);
+	//}
+	//&.back article:nth-child(3){
+	//	-webkit-transform: rotateY(30deg) translateX(150%);
+	//	transform: rotateY(30deg) translateX(150%);
+	//}
+	//&.back article:nth-child(4){
+	//	-webkit-transform: rotateY(20deg) translateX(200%);
+	//	transform: rotateY(20deg) translateX(200%);
+	//}
 
 	&.noTransition article {
 		-moz-transition: none;
@@ -699,16 +707,35 @@ body {
 		transition: none;
 	}
 	//test
-	&.multiple4{
-		&.forward article:nth-last-child(4){
-			//-webkit-transform: rotateY(20deg) translateX(200%);
-			//transform: rotateY(20deg) translateX(200%);
-			//color:red;
-		}		
-	}
+	//&.multiple4{
+	//	&.forward article:nth-last-child(2){
+	//		-webkit-transform: rotateY(-54deg) translateX(-55%);
+	//		transform: rotateY(-54deg) translateX(-55%);
+	//	}
+	//	&.back article:nth-last-child(2){
+	//		-webkit-transform: rotateY(54deg) translateX(55%);
+	//		transform: rotateY(54deg) translateX(55%);
+	//	}
+	//	&.forward article:nth-last-child(3){
+	//		-webkit-transform: rotateY(-54deg) translateX(-60%);
+	//		transform: rotateY(-54deg) translateX(-60%);
+	//	}
+	//	&.back article:nth-last-child(3){
+	//		-webkit-transform: rotateY(54deg) translateX(60%);
+	//		transform: rotateY(54deg) translateX(60%);
+	//	}
+	//	&.forward article:nth-last-child(4){
+	//		-webkit-transform: rotateY(-54deg) translateX(-55%);
+	//		transform: rotateY(-54deg) translateX(-55%);
+	//	}
+	//	&.back article:nth-last-child(4){
+	//		-webkit-transform: rotateY(54deg) translateX(55%);
+	//		transform: rotateY(54deg) translateX(55%);
+	//	}
+	//}
 }
 .shortDelay{
-	@include transition-delay(1s);	
+	@include transition-delay(1s);
 }
 
 
@@ -724,7 +751,7 @@ body {
 		color: $default_text_color;
 		background-color: $primary_background_color_rgba;
 	}
-	a, a:link, a:visited{		
+	a, a:link, a:visited{
 		color: $default_text_color;
 		border-bottom: 2px solid $default_text_contrast_color;
 		text-decoration: none;
@@ -750,7 +777,7 @@ body {
 		margin-right: $inline_space_horiz;
 	}
 	dd{
-		
+
 	}
 	img{
 		margin: 0;
