@@ -5,7 +5,7 @@ require(['jquery', 'history', 'touchSwipe', 'dust', 'dustTemplate1'], function (
 'use strict';
 
 	var CwsC = {
-	
+
 		multiple: 3,//default 3, no of items per carousel page
 		lang: 'en',//default en
 		carouselContent: '',// data
@@ -59,11 +59,11 @@ require(['jquery', 'history', 'touchSwipe', 'dust', 'dustTemplate1'], function (
 										introShow: this.introShow},
 									this.pageTitle + ' - Page ' + this.currentPage,
 									'?page=' + this.currentPage + '+multiple=' + this.multiple + '+lang=' + this.lang + '+intro=' + this.introShow);
-			
+
 		},
 
 		buildControls: function(){// build the controls and intro with lang
-			var output;
+			var output = '';
 			dust.render("cwsUI", this.carouselContent, function(err, out) {//'cwsUI' is a compiled dust template already registered. Its loaded by requirejs
 				if(err !== null){
 					alert("dust ui templ error: " + err);
@@ -109,7 +109,7 @@ require(['jquery', 'history', 'touchSwipe', 'dust', 'dustTemplate1'], function (
 			//...but still allow divs to scroll
 			$('.carousel, #intro').on('touchmove', function(e){
 				e.stopPropagation();
-			}); 
+			});
 
 
 			//faux hover for touch
@@ -135,7 +135,7 @@ require(['jquery', 'history', 'touchSwipe', 'dust', 'dustTemplate1'], function (
 					CwsC.newDirection = undefined;
 				}
 			});
-			
+
 			// delegate click on 'set lang' control
 			renderTarget.on('click', '#setLangControl li', function() {
 				var currId = $(this).attr('id');
@@ -187,7 +187,7 @@ require(['jquery', 'history', 'touchSwipe', 'dust', 'dustTemplate1'], function (
 						$('#catcher').hide();
 					});
 
-					
+
 				}
 			});
 
@@ -199,7 +199,7 @@ require(['jquery', 'history', 'touchSwipe', 'dust', 'dustTemplate1'], function (
 			History.Adapter.bind(window,'statechange', function() {// ie both browser back/fwd btn and app ui btns and initial load - all logic to manipulate page should be here
 				var State = History.getState();
 				console.log('STATECHANGE event, state info: ' + State.data.state + ' direction: ' + State.data.direction + ' mult: ' + State.data.multiple+ ' lang: ' + State.data.lang+ ' intro: ' + State.data.introShow);
-				
+
 				//fix Object.keys for ie8 - http://whattheheadsaid.com/2010/10/a-safer-object-keys-compatibility-implementation
 				Object.keys = Object.keys || (function () {
 					var hasOwnPropertyFlag = Object.prototype.hasOwnProperty,
@@ -267,7 +267,7 @@ require(['jquery', 'history', 'touchSwipe', 'dust', 'dustTemplate1'], function (
 
 					if (State.data.state !== CwsC.contentIndex) {// back button pressed, go to previous page
 						console.log('back button pressed, go to previous page. cont index= '+CwsC.contentIndex+ 'state = '+State.data.state+' direction: '+State.data.direction);
-						
+
 						if(State.data.state < CwsC.contentIndex){// back buttn pressed, determine which direction to restore
 							CwsC.newDirection = 'back';
 						} else if (State.data.state > CwsC.contentIndex){
@@ -277,7 +277,7 @@ require(['jquery', 'history', 'touchSwipe', 'dust', 'dustTemplate1'], function (
 						if (State.data.multiple === CwsC.multiple) {// back button NOT pressed, ie from ui
 							CwsC.transitionContent(CwsC.newDirection, true);
 						}
-						
+
 						CwsC.contentIndex = State.data.state; //set so correct state from history when fade below
 					}
 
@@ -312,7 +312,7 @@ require(['jquery', 'history', 'touchSwipe', 'dust', 'dustTemplate1'], function (
 
 		},
 
-		loadData: function(bIsRebuild) {// load json - todo use beforeSend to set spinner
+		loadData: function(bIsRebuild) {// load json
 			$.ajax({
 				url: 'json/cws_'+CwsC.lang+'.json',
 				dataType: 'json',
@@ -328,10 +328,10 @@ require(['jquery', 'history', 'touchSwipe', 'dust', 'dustTemplate1'], function (
 							CwsC.renderItems(true);
 						}
 					};
-					
+
 					CwsC.carouselContent = data.cwsData;//data
 					CwsC.carouselUiContent = data.cwsData.i18n;//ui labels data
-					CwsC.carouselContentLength = CwsC.carouselContent.projects.length;// length of the projects data 
+					CwsC.carouselContentLength = CwsC.carouselContent.projects.length;// length of the projects data
 
 					if(CwsC.isFirstRun === true){//preload imgs
 						var imgs = [],
@@ -424,15 +424,15 @@ require(['jquery', 'history', 'touchSwipe', 'dust', 'dustTemplate1'], function (
 				transitionInClass = '';
 			}
 			CwsC.carouselContainer.html(carouselBuffer).addClass('noTransition').removeClass(CwsC.newDirection).addClass(transitionInClass);
-			//var dummy = CwsC.carouselContainer[0].offsetWidth;//force repaint 
-			CwsC.carouselContainer[0].offsetWidth;//force repaint 
+			//var dummy = CwsC.carouselContainer[0].offsetWidth;//force repaint
+			CwsC.carouselContainer[0].offsetWidth;//force repaint
 			CwsC.carouselContainer.removeClass('noTransition').removeClass(transitionInClass);
 
 			CwsC.carouselContainer.fadeTo(500, 1, function(){
 				CwsC.setNav();
 				CwsC.isTransitioning = false;
 			});
-			
+
 			console.log('________________________________end renderItems');
 		},
 
@@ -520,7 +520,7 @@ require(['jquery', 'history', 'touchSwipe', 'dust', 'dustTemplate1'], function (
 				this.bHasCssTransforms = true;
 			}
 			if (screen.width <= 767) {
-				this.multiple = 1;//for small/mobile set default to 1 article at a time 
+				this.multiple = 1;//for small/mobile set default to 1 article at a time
 			}
 
 			// extract the page no, multiple and lang from url, if its present (eg bookmark, refresh, pasted/shared url)
@@ -541,7 +541,7 @@ require(['jquery', 'history', 'touchSwipe', 'dust', 'dustTemplate1'], function (
 			} else {
 				this.startItem = this.multiple;
 			}
-			
+
 			this.loadData(0);//0= rebuild full ui
 
 
