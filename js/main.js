@@ -503,10 +503,10 @@ require(['jquery', 'history', 'touchSwipe', 'dust', 'dustTemplate1'], function (
 				//	console.log("swiped! " + direction );
 				// },
 				swipeLeft:function() {
-					$('.cwsCprev').trigger('click');
+					$('.cwsCnext').trigger('click');
 				},
 				swipeRight:function() {
-					$('.cwsCnext').trigger('click');
+					$('.cwsCprev').trigger('click');
 				},
 				//Default 75px
 				threshold:85
