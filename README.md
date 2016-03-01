@@ -12,7 +12,7 @@ My old folio... Completely incomplete!
 * There is a basic _(projects.php)_ non js content page rendered by php from the same json, aiming to get this to recreate an SEO view
 
 ##Edit 2016: 
-Oh dear... This was a start of a portfolio site originally written around 2012 which ended up turning into a bit of a strange beast. At the time, I had been involved in some js-heavy presentational sites (eg Toni and Guy) and wanted specifically to practice and develop skills in data parsing and manipulation, "SPA style" state management and responsive/adaptive css. 
+Oh dear... This was a start of a portfolio site originally written around 2012 which ended up turning into a bit of a strange beast... and then abandoned (apart from json content files). At the time, I had been involved in some js-heavy presentational sites (eg Toni and Guy) and wanted specifically to practice and develop skills in data parsing and manipulation, "SPA style" state management and responsive/adaptive css. 
 
 I resisted the usual temptation to spend ages faffing around in Photoshop (no, I'm not a designer...) and to try and adopt a "minimum viable product" approach as to what I wanted to achieve technically without worrying about the visual representation at all. 
 
