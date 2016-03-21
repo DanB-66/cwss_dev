@@ -1,7 +1,7 @@
 # cwss_dev
 My old folio... Completely incomplete!
 
-* It uses _(json/cws_en.json)_ content files - the French translations (straight outta google!) - are really just to demo data loading
+* It uses _(json/cws_en.json)_ content files - the French translations (google!) - are really just to demo data loading
 * Javascript _(js/main.js)_ via a require.js _(js/app.js)_ stub renders data into a carousel/paging system 
 * Uses _(templates/_cws.tmpl.js)_ Dust client side templates, which are very simple so far but do demo conditional logic eg absent nodes in the data 
 * Sass _(sass/screen_v42.scss)_ helps (a lot...) with the styling 
@@ -25,9 +25,8 @@ Although it was certainly a good learning exercise I wont be taking it much furt
 * My javascript has moved along substantially, and I'm obviously more interested in emerging component-based approaches rather than what Addy Osami would rightly describe as "a tangled mess of jQuery selectors and callbacks, all desperately trying to keep data in sync between the HTML for your UI, the logic in your JavaScript, and calls to your API for data."
 * The UX is pretty awful as is and would need a lot more work... what's with all those tiny scrolling panels?
 * A "js only" project no longer cuts it... and the isomorphic approach would be a challenge with this setup (although not impossible, and I had already been thinking around that area).
-* Unfortunately, the content is pretty well rotted... I'm sure I'm not the only developer with this problem, but so much of my prior stuff is stung by NDA's, private prototype work or simply dead and gone... the end result is that there is often nothing live I can point to and very little to show.
 
-Unless you are a highly visual developer, I'm not sure it's really worth spending much time on a folio in comparison to putting up a simple list of urls and code samples, which is what I will be doing.
+Unless you are a highly visual developer, in the end I'm not sure it's really worth spending much time on a folio in comparison to putting up a simple list of urls and code samples.
 
 Thanks for reading!
 
